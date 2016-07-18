@@ -111,7 +111,7 @@ module.exports.loop = function () {
    */
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
-    if (!(name < 0)) {
+    if (!(name < 0) && name != undefined) {
         console.log("Spawned new creep: " + name);
     }
 };
