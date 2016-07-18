@@ -43,7 +43,7 @@ module.exports.loop = function () {
         }
     }
 
-    var towers = Game.rooms.W24S23.find(FIND_STRUCTURES, {
+    var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
         filter: (s) => s.structureType == STRUCTURE_TOWER
     });
     for (let tower of towers) {
@@ -54,7 +54,7 @@ module.exports.loop = function () {
     }
 
     // setup some minimum numbers for different roles
-    var minimumNumberOfHarvesters = 2;
+    var minimumNumberOfHarvesters = 1;
     var minimumNumberOfUpgraders = 1;
     var minimumNumberOfBuilders = 1;
     var minimumNumberOfRepairers = 1;
@@ -104,11 +104,11 @@ module.exports.loop = function () {
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'wallRepairer');
     }
-    else {
+   /* else {
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
-
+   */
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0)) {
