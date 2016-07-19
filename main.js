@@ -12,9 +12,9 @@ module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     var underAttack = false;
-    if(meanies != undefined) {
+    if(meanies.length > 0) {
 	underAttack = true;
-	console.log("OH FUCK" + meanies);
+	console.log("OH FUCK");
 }
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
