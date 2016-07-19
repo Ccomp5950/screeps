@@ -21,7 +21,7 @@ module.exports = function() {
 		bodyset = true;
 		break;
             case 4:
-		body = [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE];
+		body = [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
 		bodyset = true;
 		break;
 	    }
