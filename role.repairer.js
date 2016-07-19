@@ -28,7 +28,7 @@ module.exports = {
             });
 		console.log("Builder is trying to build: " + structure);
             // if we find one
-            if (structure != undefined) {
+            if (structure && structure != undefined) {
                 // try to repair it, if it is out of range
                 if (creep.repair(structure) == ERR_NOT_IN_RANGE) {
                     // move towards it
