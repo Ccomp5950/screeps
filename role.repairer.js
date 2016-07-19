@@ -42,7 +42,7 @@ module.exports = {
             }
         }
         else {
-		creep.customharvest();
+		creep.customharvest(creep);
         }
 
     }
