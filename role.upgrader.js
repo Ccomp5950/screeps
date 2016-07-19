@@ -10,6 +10,7 @@ module.exports = {
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
+            creep.memory.source = null;
         }
 
         // if creep is supposed to transfer energy to the controller
@@ -25,13 +26,13 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
-            // find closest source
-            var source = creep.pos.findClosestByPath(FIND_SOURCES);
-            // try to harvest energy, if the source is not in range
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                // move towards the source
-                creep.moveTo(source);
+            if(!creep.memory.source) {
+                    var creep.memory.source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
+            }
+            if (creep.memory.source && creep.harvest(creep.memory.source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(creep.memory.source);
             }
         }
+
     }
 };
