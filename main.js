@@ -13,6 +13,7 @@ module.exports.loop = function () {
         // and checking if the creep is still alive
         if (Game.creeps[name] == undefined) {
             // if not, delete the memory entry
+		console.log("RIP: " + name + " the " +Memory.creeps[name].role);
             delete Memory.creeps[name];
         }
     }
@@ -73,9 +74,10 @@ module.exports.loop = function () {
 
     var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
     var name = undefined;
-
+    var job = null;
     // if not enough harvesters
     if (numberOfHarvesters < minimumNumberOfHarvesters) {
+	job = "Harvester";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'harvester');
 
@@ -88,25 +90,30 @@ module.exports.loop = function () {
     }
     // if not enough upgraders
     else if (numberOfUpgraders < minimumNumberOfUpgraders) {
+	job = "Upgrader";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'upgrader');
     }
     // if not enough repairers
     else if (numberOfRepairers < minimumNumberOfRepairers) {
+	job = "Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'repairer');
     }
     // if not enough builders
     else if (numberOfBuilders < minimumNumberOfBuilders) {
+	job = "Builder";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
     // if not enough wallRepairers
     else if (numberOfWallRepairers < minimumNumberOfWallRepairers) {
+	job = "Wall Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'wallRepairer');
     }
     else if (spawnInfinite) {
+	job = "Builder";
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
@@ -114,6 +121,6 @@ module.exports.loop = function () {
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0) && name != undefined) {
-        console.log("Spawned new creep: " + name);
+        console.log("Spawned new creep: " + name + " the " + job);
     }
 };
