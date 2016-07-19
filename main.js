@@ -29,7 +29,7 @@ module.exports.loop = function () {
         // get the creep object
         var creep = Game.creeps[name];
 
-	if(underAttack || creep.memory.role = 'towertender') {
+	if(underAttack == true || creep.memory.role = 'towertender') {
 		roleTowerTender.run(creep);
 	}
 	
