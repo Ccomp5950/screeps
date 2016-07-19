@@ -1,7 +1,7 @@
 module.exports = function() {
     // create a new function for StructureSpawn
     Creep.prototype.customharvest =
-        function() {
+        function(creep) {
             var source = null;
             if(!creep.memory.source) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
