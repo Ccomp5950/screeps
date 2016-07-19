@@ -6,9 +6,15 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleWallRepairer = require('role.wallRepairer');
+var roleTowerTender = require('role.towertender');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
+    var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
+    var underAttack = false;
+    if(meanies != undefined) {
+	underAttack = true;
+}
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
         if (Game.creeps[name] == undefined) {
@@ -23,8 +29,13 @@ module.exports.loop = function () {
         // get the creep object
         var creep = Game.creeps[name];
 
+	if(underAttack || creep.memory.role = 'towertender') {
+		roleTowerTender.run(creep);
+	}
+	
+
         // if creep is harvester, call harvester script
-        if (creep.memory.role == 'harvester') {
+        else if (creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         }
         // if creep is upgrader, call upgrader script
@@ -62,6 +73,7 @@ module.exports.loop = function () {
     var minimumNumberOfBuilders = 1;
     var minimumNumberOfRepairers = 2;
     var minimumNumberOfWallRepairers = 0;
+    var minimumNumberOfTowerTender = 0;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
@@ -71,6 +83,7 @@ module.exports.loop = function () {
     var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder');
     var numberOfRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'repairer');
     var numberOfWallRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'wallRepairer');
+    var numberOfTowerTenders = _.sum(Game.creeps, (c) => c.memory.role == 'towertender');
 
     var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
     var name = undefined;
@@ -111,6 +124,11 @@ module.exports.loop = function () {
 	job = "Wall Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'wallRepairer');
+    }
+    else if (numberOfWallRepairers < minimumNumberOfWallRepairers) {
+        job = "Tower Tender";
+        // try to spawn one
+        name = Game.spawns.Spawn1.createCustomCreep(energy, 'towertender');
     }
     else if (spawnInfinite) {
 	job = "Builder";
