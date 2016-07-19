@@ -26,9 +26,8 @@ module.exports = {
                 // we use the arrow operator to define it
                 filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
             });
-		console.log("Builder is trying to build: " + structure);
             // if we find one
-            if (structure != null && structure != undefined) {
+            if (structure != undefined) {
                 // try to repair it, if it is out of range
                 if (creep.repair(structure) == ERR_NOT_IN_RANGE) {
                     // move towards it
