@@ -22,19 +22,24 @@ module.exports = {
             var constructionSite = null;
 	    if(!creep.memory.build && !Game.getObjectById(creep.memory.build)) {
 		var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
-		creep.memory.build = constructionSite.id
+		if(constructionSite) {
+			creep.memory.build = constructionSite.id
+		}
 	    }
-	    constructionSite = Game.getObjectById(creep.memory.build)
-            // if one is found
-            if (constructionSite != undefined) {
-                // try to build, if the constructionSite is not in range
-                if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
-                    // move towards the constructionSite
-                    creep.moveTo(constructionSite);
-                }
-            }
+	    if(creep.memory.build) {
+		    constructionSite = Game.getObjectById(creep.memory.build)
+	            // if one is found
+	            if (constructionSite != undefined) {
+	                // try to build, if the constructionSite is not in range
+	                if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
+	                    // move towards the constructionSite
+	                    creep.moveTo(constructionSite);
+	                }
+	            }
+	    }
             // if no constructionSite is found
             else {
+		creep.memory.build = null;
                 // go upgrading the controller
                 roleUpgrader.run(creep);
             }
