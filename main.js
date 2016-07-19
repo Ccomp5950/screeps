@@ -105,11 +105,11 @@ module.exports.loop = function () {
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'wallRepairer');
     }
-   /* else {
+    else {
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
-   */
+   
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0) && name != undefined) {
