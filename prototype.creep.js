@@ -7,9 +7,9 @@ module.exports = function() {
                         source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
 			creep.memory.source = source.id;
             }
-	    source = Game.getObjectByID(creep.memory.source);
-            if (creep.memory.source && creep.harvest(Game.getObjectByID(creep.memory.source)) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.memory.source);
+	    source = Game.getObjectById(creep.memory.source);
+            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source);
             }
         };
 };
