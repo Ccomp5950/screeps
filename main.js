@@ -70,9 +70,9 @@ module.exports.loop = function () {
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
     var minimumNumberOfHarvesters = 3;
-    var minimumNumberOfUpgraders = 1;
+    var minimumNumberOfUpgraders = 22;
     var minimumNumberOfBuilders = 1;
-    var minimumNumberOfRepairers = 2;
+    var minimumNumberOfRepairers = 1;
     var minimumNumberOfWallRepairers = 0;
     var minimumNumberOfTowerTender = 0;
 
