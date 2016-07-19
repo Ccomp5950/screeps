@@ -7,6 +7,7 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
+            creep.memory.build = null;
         }
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
@@ -18,7 +19,12 @@ module.exports = {
         // if creep is supposed to complete a constructionSite
         if (creep.memory.working == true) {
             // find closest constructionSite
-            var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+            var constructionSite = null;
+	    if(!creep.memory.build && !getObjectById(creep.memory.build)) {
+		var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+		creep.memory.build = constructionSite.id
+	    }
+	    constructionSite = Game.getObjectById(creep.memory.build)
             // if one is found
             if (constructionSite != undefined) {
                 // try to build, if the constructionSite is not in range
