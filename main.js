@@ -14,6 +14,7 @@ module.exports.loop = function () {
     var underAttack = false;
     if(meanies != undefined) {
 	underAttack = true;
+	log.console ("OH FUCK");
 }
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
