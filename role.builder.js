@@ -21,12 +21,12 @@ module.exports = {
             // find closest constructionSite
             var constructionSite = null;
 	    if(!creep.memory.build && !Game.getObjectById(creep.memory.build)) {
-		var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+		constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 		if(constructionSite) {
 			creep.memory.build = constructionSite.id
 		}
 	    }
-	    if(creep.memory.build) {
+	    if(creep.memory.build != null) {
 		    constructionSite = Game.getObjectById(creep.memory.build)
 	            // if one is found
 	            if (constructionSite != undefined) {
