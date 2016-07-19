@@ -9,7 +9,9 @@ module.exports = function() {
             }
 	    source = Game.getObjectById(creep.memory.source);
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source);
+                if(creep.moveTo(source) == ERR_NO_PATH) {
+			creep.memory.source = null;
+		};
             }
         };
 };
