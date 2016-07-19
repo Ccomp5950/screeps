@@ -6,35 +6,39 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
-	if(roleName == "repairer") {
-		switch(numberOfParts) {
-		
-		case 1:
-			body = [WORK,CARRY,MOVE,MOVE];
-			break;
-		case 2:
-			body = [WORK,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE];
-			break;
-		case 3:
-			body = [WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE];
-			break;		
-
-		}
-		bodyset = true;
-	}
-	
 	if(!bodyset) {
 	    switch(numberOfParts) {
             case 1:
 	    	body = [WORK, CARRY, CARRY, MOVE];
+		bodyset = true;
 		break;
 	    case 2:
 		body = [WORK,WORK,CARRY,CARRY,CARRY,MOVE];
+		bodyset = true;
 		break;
 	    case 3:
 		body = [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE];
+		bodyset = true;
+		break;
+            case 4:
+		body = [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE];
+		bodyset = true;
 		break;
 	    }
+		
+
+
+	}
+	if(!bodyset) {
+            for (let i = 0; i < numberOfParts; i++) {
+                body.push(WORK);
+            }
+            for (let i = 0; i < numberOfParts; i++) {
+                body.push(CARRY);
+            }
+            for (let i = 0; i < numberOfParts; i++) {
+                body.push(MOVE);
+            }	
 	}
 
             // create creep with the created body and the given role
