@@ -43,7 +43,7 @@ module.exports = {
         }
         else {
             if(!creep.memory.source) {
-                    var creep.memory.source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
+                    creep.memory.source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
             }
             if (creep.memory.source && creep.harvest(creep.memory.source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.memory.source);
