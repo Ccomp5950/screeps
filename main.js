@@ -110,7 +110,7 @@ module.exports.loop = function () {
     var job = null;
     var readyToSpawn = false;
 
-    if(floor(energy / 200) == floor(myEnergy/200) {
+    if(floor(energy / 200) == floor(myEnergy/200)) {
 	readyToSpawn = true;
     }
 
