@@ -11,7 +11,7 @@ var roleScout = require('role.scout');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
-    memory.myrooms = ["E48S31"];
+    Memory.myrooms = ["E48S31"];
     PathFinder.use(true);
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     var underAttack = false;
