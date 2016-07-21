@@ -19,9 +19,9 @@ module.exports = {
             // if (creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 
             // try to upgrade the controller
-            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+            if (creep.upgradeController(Game.rooms.E48S31.controller) == ERR_NOT_IN_RANGE) {
                 // if not in range, move towards the controller
-                creep.moveTo(creep.room.controller);
+                creep.moveTo(Game.rooms.E48S31.controller);
             }
         }
         // if creep is supposed to harvest energy from source
