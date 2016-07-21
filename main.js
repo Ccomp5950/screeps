@@ -11,6 +11,7 @@ var roleScout = require('role.scout');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
+    memory.myrooms = ["E48S31"];
     PathFinder.use(true);
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     var underAttack = false;
@@ -168,7 +169,9 @@ module.exports.loop = function () {
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
-   
+    if(job != null) {
+	console.log("Debug 123");
+    } 
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0) && name != undefined) {
