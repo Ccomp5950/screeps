@@ -170,7 +170,7 @@ module.exports.loop = function () {
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
     if(job != null) {
-	console.log("Debug 123");
+	console.log("Job: "+ job + " error =".name);
     } 
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
