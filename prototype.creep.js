@@ -5,7 +5,7 @@ module.exports = function() {
             var source = null;
             if(!creep.memory.source) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (s) => s.energy > creep.carryCapacity || s.ticksToRegeneration < 30 
+				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30 
 				});
 			if(source) {
 				creep.memory.source = source.id;
