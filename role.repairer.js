@@ -24,8 +24,14 @@ module.exports = {
                 // the second argument for findClosestByPath is an object which takes
                 // a property called filter which can be a function
                 // we use the arrow operator to define it
-                filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
+                filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hitsMax / s.hitsMax < 0.05)
             });
+	    if (structure == undefined) {
+		 structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                 filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
+                                                                         });
+                //                                                             
+	    }
             // if we find one
             if (structure != undefined) {
                 // try to repair it, if it is out of range
