@@ -4,9 +4,9 @@ module.exports = function() {
         function(creep) {
             var source = null;
             if(!creep.memory.source) {
-                        source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE {
-				filter: (s) => s.energy > creep.carryCapacity || s.ticksToRegeneration < 30 }
-				);
+                        source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE, {
+				filter: (s) => s.energy > creep.carryCapacity || s.ticksToRegeneration < 30 
+				});
 			if(source) {
 				creep.memory.source = source.id;
 			} else {
