@@ -3,7 +3,7 @@ module.exports = {
     run: function(creep) {
 		if(!Game.flags.scout1 === undefined) {
 			if(creep.getRangeTo(Game.flags.scout1) > 2) {
-				creep.MoveTo(Game.flags.scout1);
+				creep.moveTo(Game.flags.scout1);
 			}
 		}
 
