@@ -26,35 +26,54 @@ module.exports.loop = function () {
     }
 
     // for every creep name in Game.creeps
+
+    var numberOfHarvesters = 0;
+    var numberOfUpgraders = 0;
+    var numberOfBuilders = 0;
+    var numberOfRepairers = 0;
+    var numberOfWallRepairers = 0;
+    var numberOfTowerTenders = 0;
+    var numberOfScouts = 0;
+
     for (let name in Game.creeps) {
         // get the creep object
         var creep = Game.creeps[name];
 
 	if(underAttack || creep.memory.role == 'towertender') {
+		numberOfTowerTenders++;
 		roleTowerTender.run(creep);
 	}
 	
 
         // if creep is harvester, call harvester script
         else if (creep.memory.role == 'harvester') {
+	    numberOfHarvesters++;
             roleHarvester.run(creep);
         }
         // if creep is upgrader, call upgrader script
         else if (creep.memory.role == 'upgrader') {
+            numberOfUpgraders++;
             roleUpgrader.run(creep);
         }
         // if creep is builder, call builder script
         else if (creep.memory.role == 'builder') {
+            numberOfBuilders++;
             roleBuilder.run(creep);
         }
         // if creep is repairer, call repairer script
         else if (creep.memory.role == 'repairer') {
+            numberOfRepairers++;
             roleRepairer.run(creep);
         }
         // if creep is wallRepairer, call wallRepairer script
         else if (creep.memory.role == 'wallRepairer') {
+            numberOfWallRepairers++
             roleWallRepairer.run(creep);
         }
+	else if (creep.memory.role == 'scout') {
+	    numberOfScouts++;
+            roleScout.run(creep);
+	}
     }
 
     var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
@@ -67,6 +86,11 @@ module.exports.loop = function () {
         }
     }
 
+    if(underAttack) {
+	    return;
+    }
+    
+
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
     var minimumNumberOfHarvesters = 3;
@@ -74,21 +98,23 @@ module.exports.loop = function () {
     var minimumNumberOfBuilders = 2;
     var minimumNumberOfRepairers = 1;
     var minimumNumberOfWallRepairers = 0;
-    var minimumNumberOfTowerTender = 0;
+    var minimumNumberOfTowerTenders = 0;
+    var minimumNumberOfScouts = 1;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
     //  arrow function, which checks for the creep being a harvester
-    var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == 'harvester');
-    var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');
-    var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder');
-    var numberOfRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'repairer');
-    var numberOfWallRepairers = _.sum(Game.creeps, (c) => c.memory.role == 'wallRepairer');
-    var numberOfTowerTenders = _.sum(Game.creeps, (c) => c.memory.role == 'towertender');
-
     var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
+    var myEnergy = Game.spawns.Spawn1.room.energyAvailable;
     var name = undefined;
     var job = null;
+    var readyToSpawn = false;
+
+    if(floor(energy / 200) == floor(myEnergy/200) {
+	readyToSpawn = true;
+    }
+
+
     // if not enough harvesters
     if (numberOfHarvesters < minimumNumberOfHarvesters) {
 	job = "Harvester";
@@ -103,35 +129,39 @@ module.exports.loop = function () {
         }
     }
     // if not enough upgraders
-    else if (numberOfUpgraders < minimumNumberOfUpgraders) {
+    else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
 	job = "Upgrader";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'upgrader');
     }
     // if not enough repairers
-    else if (numberOfRepairers < minimumNumberOfRepairers) {
+    else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
 	job = "Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'repairer');
     }
     // if not enough builders
-    else if (numberOfBuilders < minimumNumberOfBuilders) {
+    else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
 	job = "Builder";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');
     }
     // if not enough wallRepairers
-    else if (numberOfWallRepairers < minimumNumberOfWallRepairers) {
+    else if (readyToSpawn && numberOfWallRepairers < minimumNumberOfWallRepairers) {
 	job = "Wall Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'wallRepairer');
     }
-    else if (numberOfWallRepairers < minimumNumberOfWallRepairers) {
+    else if (readyToSpawn && numberOfTowerTenders < minimumNumberOfTowerTenders) {
         job = "Tower Tender";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'towertender');
     }
-    else if (spawnInfinite) {
+    else if (myEnergy > 200 && numberOfScouts < minimumNumberOfScouts) {
+	job = "Scout";
+	name = Game.spawns.Spawn1.createCustomCreep(energy, 'scout');
+    }
+    else if (readyToSpawn && spawnInfinite) {
 	job = "Builder";
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'builder');

@@ -6,6 +6,10 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
+	if(roleName == "scout") {
+		body = [MOVE, MOVE, MOVE, MOVE];
+		bodyset = true;
+	}
 	if(!bodyset) {
 	    switch(numberOfParts) {
             case 1:
