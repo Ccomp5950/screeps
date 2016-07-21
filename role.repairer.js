@@ -37,7 +37,6 @@ module.exports = {
             // if we can't fine one
             else {
                 // look for construction sites
-		console.log("yeah we actually get here");
                 roleBuilder.run(creep);
             }
         }
