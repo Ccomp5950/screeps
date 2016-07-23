@@ -44,6 +44,12 @@ module.exports = {
                     // break the loop
                     break;
                 }
+		if (percentage >= 0.01) {
+			percentage += 0.0099;
+		}
+		else if (percentage >= 0.001) {
+			percentage += 0.0009;
+		}
             }
 
             // if we find a wall that has to be repaired
