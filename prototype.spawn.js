@@ -11,7 +11,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "attacker") {
-		body = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE];
+		body = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
 		bodyset = true;
 	}
 

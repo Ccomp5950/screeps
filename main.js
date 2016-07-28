@@ -172,7 +172,7 @@ module.exports.loop = function () {
 	job = "Scout";
 	name = Game.spawns.Spawn1.createCustomCreep(energy, 'scout');
     }
-    else if (myEnergy >= 700 && numberOfAttackers < minimumNumberOfAttackers) {
+    else if (myEnergy >= 800 && numberOfAttackers < minimumNumberOfAttackers) {
         job = "Attacker";
         name = Game.spawns.Spawn1.createCustomCreep(energy, 'attacker');
     }
