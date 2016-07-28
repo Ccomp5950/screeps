@@ -10,6 +10,11 @@ module.exports = function() {
 		body = [MOVE, MOVE, MOVE, MOVE];
 		bodyset = true;
 	}
+	else if(roleName == "attacker") {
+		body = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE];
+		bodyset = true;
+	}
+
 	if(!bodyset) {
 	    switch(numberOfParts) {
             case 1:
