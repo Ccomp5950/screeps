@@ -14,6 +14,7 @@ module.exports = {
 	                    if (creep.attack(target) == ERR_NOT_IN_RANGE) {
 	                        creep.moveTo(target);
 				}
+		creep.say("Going after " + target);
 		return;
 		}
 		target = creep.pos.findClosestByRange(FIND_HOSTILE_SPAWNS);
@@ -21,6 +22,7 @@ module.exports = {
                             if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target);
                                 }
+		creep.say("Going after " + target);
                 return;
                 }
                 target = creep.pos.findClosestByRange(FIND_HOSTILE_CONSTRUCTION_SITES);
@@ -28,6 +30,7 @@ module.exports = {
                             if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target);
                                 }
+		creep.say("Going after " + target);
                 return;
                 }
 
@@ -36,6 +39,7 @@ module.exports = {
                             if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target);
                                 }
+		creep.say("Going after " + target);
                 return;
                 }
         }
