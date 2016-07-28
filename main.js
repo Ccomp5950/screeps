@@ -110,7 +110,7 @@ module.exports.loop = function () {
     var minimumNumberOfWallRepairers = 1;
     var minimumNumberOfTowerTenders = 0;
     var minimumNumberOfScouts = 0;
-    var minimumNumberOfAttackers = 0;
+    var minimumNumberOfAttackers = 2;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
