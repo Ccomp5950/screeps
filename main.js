@@ -80,7 +80,7 @@ module.exports.loop = function () {
             roleScout.run(creep);
 	}
         else if (creep.memory.role == 'attacker') {
-            numberOfScouts++;
+            numberOfAttackers++;
             roleAttacker.run(creep);
         }
 
