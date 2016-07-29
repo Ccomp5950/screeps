@@ -18,7 +18,13 @@ module.exports.loop = function () {
     var underAttack = false;
     if(meanies.length > 0) {
 	underAttack = true;
-	console.log("OH FUCK " + meanies.length);
+	var meaniename = "";
+	for (let enemy_creep in meanies) {
+		if(enemy_creep.owner != undefined) {
+		meaniename = "from " + enemy_creep.owner.username;
+		}
+	}
+	console.log("OH FUCK " + meanies.length + meaniename);
 }
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
