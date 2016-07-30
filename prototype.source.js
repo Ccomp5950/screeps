@@ -1,9 +1,12 @@
 module.exports = function() {
     // create a new function for StructureSpawn
    	Source.prototype.isFree =
-        function() {
+        function(creep) {
                 var opens = 0;
                 var spawn = this;
+		if(creep.pos.getRangeTo(spawn) <= 1) {
+			return true;
+		}
                 var offsets =   [[1,1],
                                  [1,0],
                                  [0,1],
@@ -19,7 +22,7 @@ module.exports = function() {
                         let checkpos = new RoomPosition(xa, ya, spawn.room.name);
                         let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
                         if(terrain.length) {
-                                continue;
+				continue;
                         }
                         return true;
                 }
