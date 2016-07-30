@@ -46,7 +46,7 @@ module.exports = function() {
 				threat += 1;
 			}
                         if(Memory.debug) {
-                                console.log("Checking Body Part: Type="+body.type+" hits="body.hits" current_threat="+threat);
+                                console.log("Checking Body Part: Type=" + body.type + " hits=" + body.hits + " current_threat=" + threat);
                         }
 		}
 		return threat;
