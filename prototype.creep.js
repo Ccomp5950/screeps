@@ -27,6 +27,7 @@ module.exports = function() {
 		}
 	    }
 	    if(source != undefined) {
+			console.log("[" + creep.name +"] in do it section");
 		    if(source.structureType == STRUCTURE_STORAGE) {
 			     console.log("[" + creep.name +"] memory type = storage ");
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
