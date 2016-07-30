@@ -14,7 +14,7 @@ module.exports = function() {
 				creep.memory.source = null;
 			}
             }
-	    if(source == undefined and creep.memory.role != "harvester") {
+	    if(source == undefined && creep.memory.role != "harvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] < 1;
