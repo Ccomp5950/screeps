@@ -20,7 +20,7 @@ module.exports.loop = function () {
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     var underAttack = false;
     var biggestThreat = null;
-    var biggestThreatRating = 0;
+    var biggestThreatRating = -2;
     if(meanies.length > 0) {
 	underAttack = true;
 	var meaniename = "";
