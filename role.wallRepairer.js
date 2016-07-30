@@ -29,8 +29,8 @@ module.exports = {
 		    var maxPercentage = Memory.wallMinHealth / walls[0].hitsMax;
 	            var target = undefined;
 		    var potentialTarget = creep.memory.repair;
-
-		    if(var tmpTarget = Game.getObjectById(creep.memory.repair)) {
+		    var tmpTarget = Game.getObjectById(creep.memory.repair);
+		    if(tmpTarget != undefined) {
 			if(tmpTarget.hits > wallMinHealth) {
 	       			target = tmpTarget;
 			} else {
