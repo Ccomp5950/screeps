@@ -32,7 +32,7 @@ module.exports.loop = function () {
 		}
 	}
 	console.log("OH FUCK " + meanies.length + meaniename + "Biggest Threat: " + biggestThreatRating);
-}
+	}
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
         if (Game.creeps[name] == undefined) {
@@ -99,7 +99,7 @@ module.exports.loop = function () {
 
     }
 
-    if(underattack) {
+    if(underAttack) {
 	    var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
 	        filter: (s) => s.structureType == STRUCTURE_TOWER
 	    });
