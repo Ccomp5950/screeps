@@ -192,7 +192,7 @@ module.exports.loop = function () {
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
     }
     else if (myEnergy >= 800 && numberOfDefenders < minimumNumberOfDefenders) {
-        job = "Attacker";
+        job = "Defender";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
     }
 
