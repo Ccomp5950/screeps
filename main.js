@@ -23,9 +23,10 @@ module.exports.loop = function () {
 	let sourcesA = Game.rooms[room].find(FIND_SOURCES);
 	validSources[room] = [];
 	for(let sourceM of sourcesA) {
-		console.log("Source has room is "+ sourceM.energy);
-		if(sourceM.energy > 2 && sourceM.isFree()) {
-			validSources[room].push(sourceM);
+		let source = getObjectById(sourceM.id);
+		console.log("Source has room is "+ source.energy);
+		if(source.energy > 2 && source.isFree()) {
+			validSources[room].push(source);
 		}
 	}
         meaniesA[room] = [];
