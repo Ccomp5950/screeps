@@ -24,7 +24,7 @@ module.exports.loop = function () {
 	validSources[room] = [];
 	for(let sourceM of sourcesA) {
 		console.log("Source has room is "+ sourceM.energy);
-		if(sourceM.energy > 2 && sourceM.hasRoom()) {
+		if(sourceM.energy > 2 && sourceM.isFree()) {
 			validSources[room].push(sourceM);
 		}
 	}
