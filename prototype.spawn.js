@@ -23,6 +23,11 @@ module.exports = function() {
 		body = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
 		bodyset = true;
 	}
+	else if (roleName == "defender") {
+		body = [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,HEAL,MOVE,MOVE,MOVE,MOVE,MOVE];
+		bodyset = true;
+	}
+
 
 	if(!bodyset) {
 	    switch(numberOfParts) {

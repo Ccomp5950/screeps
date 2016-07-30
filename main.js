@@ -9,6 +9,7 @@ var roleWallRepairer = require('role.wallRepairer');
 var roleTowerTender = require('role.towertender');
 var roleScout = require('role.scout');
 var roleAttacker = require('role.attacker');
+var roleDefender = require('role.defender');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -77,7 +78,7 @@ module.exports.loop = function () {
         // get the creep object
         var creep = Game.creeps[name];
 
-	if(underAttack[creep.room.name] || creep.memory.role == 'towertender') {
+	if((underAttack[creep.room.name] && creep.memory.role != "defender") || creep.memory.role == 'towertender') {
 		numberOfTowerTenders++;
 		roleTowerTender.run(creep);
 	}
@@ -88,6 +89,11 @@ module.exports.loop = function () {
 	    numberOfHarvesters++;
             roleHarvester.run(creep);
         }
+        else if (creep.memory.role == 'defender') {
+            numberOfDefenders++;
+            roleDefender.run(creep);
+        }
+
         // if creep is upgrader, call upgrader script
         else if (creep.memory.role == 'upgrader') {
             numberOfUpgraders++;
@@ -142,6 +148,7 @@ module.exports.loop = function () {
     var minimumNumberOfTowerTenders = 0;
     var minimumNumberOfScouts = 0;
     var minimumNumberOfAttackers = 0;
+    var minimumNumberOfDefenders = 1;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
@@ -183,6 +190,11 @@ module.exports.loop = function () {
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
     }
+    else if (myEnergy >= 800 && numberOfDefenders < minimumNumberOfDefenders) {
+        job = "Attacker";
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
+    }
+
     // if not enough builders
     else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
 	job = "Builder";
