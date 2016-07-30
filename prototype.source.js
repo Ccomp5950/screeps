@@ -17,7 +17,7 @@ module.exports = function() {
                         let xa = spawn.pos.x + offset[0];
                         let ya = spawn.pos.y + offset[1];
 			console.log("xa and ya are (" + xa + ", "+ ya + ")");
-                        let checkpos = new RoomPosition(xa, ya, spawn.room);
+                        let checkpos = new RoomPosition(xa, ya, spawn.room.name);
                         let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
                         if(terrain.length) {
                                 continue;
