@@ -174,43 +174,43 @@ module.exports.loop = function () {
     else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
 	job = "Upgrader";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'upgrader');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'upgrader');
     }
     // if not enough repairers
     else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
 	job = "Repairer";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'repairer');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
     }
     // if not enough builders
     else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
 	job = "Builder";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'builder');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
     }
     // if not enough wallRepairers
     else if (readyToSpawn && numberOfWallRepairers < minimumNumberOfWallRepairers) {
 	job = "Wall Repairer";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'wallRepairer');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'wallRepairer');
     }
     else if (readyToSpawn && numberOfTowerTenders < minimumNumberOfTowerTenders) {
         job = "Tower Tender";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'towertender');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'towertender');
     }
     else if (myEnergy >= 200 && numberOfScouts < minimumNumberOfScouts) {
 	job = "Scout";
-	name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'scout');
+	name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'scout');
     }
     else if (myEnergy >= 800 && numberOfAttackers < minimumNumberOfAttackers) {
         job = "Attacker";
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'attacker');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'attacker');
     }
     else if (readyToSpawn && spawnInfinite) {
 	job = "Builder";
         // else try to spawn a builder
-        name = Game.spawns.Spawn1.createCustomCreep(MyEnergy, 'builder');
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
     }
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
