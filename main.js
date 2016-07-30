@@ -22,7 +22,7 @@ module.exports.loop = function () {
 	var sources = Game.rooms[room].find(FIND_SOURCES);
 	validSources[room] = [];
 	for(let source of sources) {
-		console.log("Source has room is "+ source.hasRoom());
+		console.log("Source has room is "+ source.energy);
 		if(source.energy > 2 && source.hasRoom()) {
 			validSources[room].push(source);
 		}
