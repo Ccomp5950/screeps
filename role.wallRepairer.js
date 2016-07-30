@@ -40,9 +40,9 @@ module.exports = {
                     filter: (s) => s.structureType == STRUCTURE_WALL &&
                                    s.hits / s.hitsMax < percentage
                 });
-		if (Memory.wallsMinHealth / s.hitsMax < percentage){
-			break;
-		}
+		//if (Memory.wallsMinHealth / .hitsMax < percentage){
+		//	break;
+		//}
                 // if there is one
                 if (target != undefined) {
                     // break the loop
