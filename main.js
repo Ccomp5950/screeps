@@ -16,10 +16,18 @@ module.exports.loop = function () {
     if(Memory.wallMinHealth == undefined) {
 	Memory.wallMinHealth = 3000000;
     }
+    var validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
+	var sources = room.find(FIND_SOURCES) 
+	validSources[room] = [];
+	for(let source of sources) {
+		console.log("Source report: "+ source.id + " has " + source.hasRoom());
+		if(source.energy > 2 && source.hasRoom();
+		validSources[room].push(source);
+	}
         meaniesA[room] = [];
-	meaniesA[room] = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
+	meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
     }
     var underAttack = [];;
     var biggestThreat = [];
