@@ -17,7 +17,7 @@ module.exports.loop = function () {
     if(Memory.wallMinHealth == undefined) {
 	Memory.wallMinHealth = 3000000;
     }
-    var validSources = [];
+    validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
 	let sourcesA = Game.rooms[room].find(FIND_SOURCES);
