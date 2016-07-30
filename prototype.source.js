@@ -2,7 +2,6 @@ module.exports = function() {
     // create a new function for StructureSpawn
    	Source.prototype.isFree =
         function() {
-                2 = 3;
                 var opens = 0;
                 var spawn = this;
                 var offsets =   [[1,1],
@@ -22,8 +21,8 @@ module.exports = function() {
                         if(terrain.length) {
                                 continue;
                         }
-                        opens++;
+                        return true;
                 }
-        return opens;
+        return false;
         }
 };
