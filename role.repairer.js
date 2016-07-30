@@ -20,24 +20,24 @@ module.exports = {
 
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
-	    var structure = null;
+	    var lala = 0;
+	    var structure = undefined;
 	    var structureCandidates = [];
 	    var criticalStructures = creep.room.find(FIND_STRUCTURES, {
 		filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hitsMax / s.hitsMax < 0.05)
 	    });
 	    for(let tmpStructure of criticalStructures) {
+		if(lala == 0) console.log("We're in criticalStructures Loop");
+		lala = 1;
 		if(tmpStructure.hits == 1) {
 			structureCandidates.push(tmpStructure);
 			structure = tmpStructure;
 			break;
 		}
-		if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
-			structureCandidates.push(tmpStructure);
-			continue;
-		}
 			
 	    }
 	    if(structureCandidates.length == 0) {
+		console.log("We're in normal candidate list");
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
                  filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
                                                                          });
