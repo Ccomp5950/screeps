@@ -8,7 +8,7 @@ module.exports = function() {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  || s.ticksToRegneration == undefined
 				});
-			if(source) {
+			if(source != undefined) {
 				creep.memory.source = source.id;
 			} else {
 				creep.memory.source = null;
@@ -21,7 +21,7 @@ module.exports = function() {
 		    });
 	    }
 	    if(source != undefined) {
-			if(source.energy < 2 && (source.ticksToRegeneration != undefined || source.ticksToRegneration > 30)) {
+			if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
 				creep.memory.source = null;
 				return;
 			}
