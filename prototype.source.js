@@ -28,7 +28,7 @@ module.exports = function() {
 				continue;
                         }
 			terrain = checkpos.lookFor(LOOK_TERRAIN);
-			if(terrain.length) {
+			if(terrain.length && terrain != "plain" && terrain != "swamp") {
                                 console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
                                 continue;
                         }
