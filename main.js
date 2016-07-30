@@ -27,7 +27,7 @@ module.exports.loop = function () {
 	for (let enemy_creep of meanies) {
 		if(enemy_creep.body != undefined) {
 			var creepThreat = enemy_creep.getthreat();
-			if(biggestthreatrating < creepthreat) {
+			if(biggestThreatRating < creepThreat) {
 				biggestThreat = enemy_creep;
 				biggestThreatRating = creepThreat;
 			}
