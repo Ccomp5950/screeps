@@ -19,12 +19,13 @@ module.exports = function() {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] > 1
 		    });
+		if(source != undefined) {
+				creep.memory.source = source.id;
+			} else {
+				creep.memory.source = null;
+		}
 	    }
 	    if(source != undefined) {
-			if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
-				creep.memory.source = null;
-				return;
-			}
 		    if(source.structureType == STRUCTURE_STORAGE) {
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
@@ -35,6 +36,11 @@ module.exports = function() {
 		    }
 			//TODO: FIX THIS SHIT
 		    else if(source.structureType != undefined) {
+	                        if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
+	                                creep.memory.source = null;
+	                                return;
+	                        }
+
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source) == ERR_NO_PATH) {
 					creep.memory.source = null;
