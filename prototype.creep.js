@@ -18,7 +18,8 @@ module.exports = function() {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] > 1
-	    });
+		    });
+	    }
 	    if(source != undefined) {
 			if(source.energy < 2 && (source.ticksToRegeneration != undefined || source.ticksToRegneration > 30)) {
 				creep.memory.source = null;
