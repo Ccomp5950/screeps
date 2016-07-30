@@ -44,7 +44,7 @@ module.exports = function() {
 			//TODO: FIX THIS SHIT
 		    else {
 							        
-	                        if(source.energy < 2 && source.hasSpace()) {
+	                        if(source.energy < 2 && source.isFree(creep)) {
 	                                creep.memory.source = null;
 	                                return;
 	                        }

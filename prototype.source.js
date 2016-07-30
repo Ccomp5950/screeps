@@ -4,7 +4,8 @@ module.exports = function() {
         function(creep) {
                 var opens = 0;
                 var spawn = this;
-		if(creep.pos.getRangeTo(spawn) <= 1) {
+		
+		if(creep != undefined && creep.pos.getRangeTo(spawn) <= 1) {
 			return true;
 		}
                 var offsets =   [[1,1],
