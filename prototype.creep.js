@@ -46,7 +46,12 @@ module.exports = function() {
 							        
 	                        if(source.energy < 2 && source.isFree(creep)) {
 	                                creep.memory.source = null;
-	                                return;
+		                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
+		                        if(source != undefined) {
+		                                creep.memory.source = source.id;
+		                        } else {
+						return;
+		                        }
 	                        }
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source) == ERR_NO_PATH) {
