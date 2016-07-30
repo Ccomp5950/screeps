@@ -147,12 +147,13 @@ module.exports.loop = function () {
     // _.sum will count the number of properties in Game.creeps filtered by the
     //  arrow function, which checks for the creep being a harvester
     var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
-    var myEnergy = Math.Max(1000, Game.spawns.Spawn1.room.energyAvailable);
+    var energyMax = 1000;
+    var myEnergy = Math.Max(energyMax, Game.spawns.Spawn1.room.energyAvailable);
     var name = undefined;
     var job = null;
     var readyToSpawn = false;
 
-    if(myEnergy >= 1000 || Math.floor(energy / 200) == Math.floor(myEnergy/200)) {
+    if(myEnergy == energyMax || Math.floor(energy / 200) == Math.floor(myEnergy/200)) {
 	readyToSpawn = true;
     }
 
