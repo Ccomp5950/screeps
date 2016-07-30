@@ -66,8 +66,8 @@ module.exports = function() {
 
             // create creep with the created body and the given role
             return this.createCreep(body, name, { role: roleName, working: false, source: null });
-        }
-    RoomObject.prototype.hasSpace =
+        };
+    RoomPosition.prototype.hasSpace =
         function() {
 		var opens = 0;
 		var spawn = this;
