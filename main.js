@@ -113,7 +113,7 @@ module.exports.loop = function () {
 	        filter: (s) => s.structureType == STRUCTURE_TOWER
 	    });
 
-	    for (let tower of towers) {
+	    for (let tower in towers) {
 		tower.attack(biggestThreat);	
 	    }
 	    return;
