@@ -4,11 +4,6 @@ module.exports = function() {
         function() {
 	    var creep = this;
             var source = Game.getObjectById(creep.memory.source);
-	    if(source == undefined) {
-		console.log("[" + creep.name +"] memory source = null");
-	    } else {
-		console.log("[" + creep.name +"] memory source = "+ source.id);
-            } 
 
             if(source == undefined) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
@@ -33,6 +28,7 @@ module.exports = function() {
 	    }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_STORAGE) {
+			     console.log("[" + creep.name +"] memory type = storage ");
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
                                         creep.memory.source = null;
@@ -42,16 +38,19 @@ module.exports = function() {
 		    }
 			//TODO: FIX THIS SHIT
 		    else if(source.structureType != undefined) {
+				console.log("[" + creep.name +"] memory type = source ");
 	                        if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
 	                                creep.memory.source = null;
+					console.log("[" + creep.name +"] memory type = source and we nulled this shit ");
 	                                return;
 	                        }
-
+				console.log("[" + creep.name +"] memory type = storage and we're moving");
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source) == ERR_NO_PATH) {
 					creep.memory.source = null;
 				}
 			    }
+			
 		    }
             }
         };
