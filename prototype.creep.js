@@ -17,7 +17,7 @@ module.exports = function() {
             }
 	    if(source == undefined && creep.memory.role != "harvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > 1
 		    });
 		if(source != undefined) {
@@ -28,7 +28,7 @@ module.exports = function() {
 	    }
 	    if(source != undefined) {
 			console.log("[" + creep.name +"] in do it section");
-		    if(source.structureType == STRUCTURE_STORAGE) {
+		    if(source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_CONTAINER) {
 			     console.log("[" + creep.name +"] memory type = storage ");
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
