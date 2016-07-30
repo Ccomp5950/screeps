@@ -27,11 +27,11 @@ module.exports.loop = function () {
     underAttack[room] = false;
     biggestThreat[room] = null;
     biggestThreatRating[room] = -2;
-    if(meanies[room].length > 0) {
+    if(meaniesA[room].length > 0) {
 
 	underAttack[room] = true;
 	var meaniename = "";
-	for (let enemy_creep of meanies[room]) {
+	for (let enemy_creep of meaniesA[room]) {
 		
 		if(enemy_creep.body != undefined) {
 			var creepThreat = enemy_creep.getthreat();
@@ -48,7 +48,7 @@ module.exports.loop = function () {
 		meaniename = "from " + enemy_creep.owner.username;
 		}
 	}
-	console.log("[" + room + "]OH FUCK " + meanies[room].length + meaniename + "Biggest Threat: " + biggestThreatRating[room]);
+	console.log("[" + room + "]OH FUCK " + meaniesA[room].length + meaniename + "Biggest Threat: " + biggestThreatRating[room]);
 	}
     }
 
