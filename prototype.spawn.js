@@ -67,4 +67,29 @@ module.exports = function() {
             // create creep with the created body and the given role
             return this.createCreep(body, name, { role: roleName, working: false, source: null });
         };
+    StructureSpawn.prototype.has_space =
+        function() {
+		var opens = 0;
+		var spawn = this;
+		var offsets = 	[[1,1],
+				 [1,0],
+				 [0,1],
+				 [-1,1],
+				 [1,-1],
+				 [-1,0],
+				 [-1,-1],
+				 [0,-1]
+				];
+		for(let offset of offsets) {
+			let x = spawn.pos + offset[0];
+			let y = spawn.pos + offset[1];
+			let checkpos = new RoomPosition(x, y, spawn.room);
+			let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
+			if(terrain.length) {
+				continue;
+			}
+			opens++;
+		}
+				
+	}
 };
