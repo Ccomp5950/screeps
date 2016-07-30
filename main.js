@@ -148,7 +148,7 @@ module.exports.loop = function () {
     //  arrow function, which checks for the creep being a harvester
     var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
     var energyMax = 1000;
-    var myEnergy = Math.Max(energyMax, Game.spawns.Spawn1.room.energyAvailable);
+    var myEnergy = Math.max(energyMax, Game.spawns.Spawn1.room.energyAvailable);
     var name = undefined;
     var job = null;
     var readyToSpawn = false;
