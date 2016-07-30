@@ -25,11 +25,17 @@ module.exports.loop = function () {
 	underAttack = true;
 	var meaniename = "";
 	for (let enemy_creep in meanies) {
-		var creepThreat = enemy_creep.getthreat();
-		if(biggestthreatrating < creepthreat) {
+		if(enemy_creep.body != undefined) {
+			var creepThreat = enemy_creep.getthreat();
+			if(biggestthreatrating < creepthreat) {
+				biggestThreat = enemy_creep;
+				biggestThreatRating = creepThreat;
+			}
+		} else {
 			biggestThreat = enemy_creep;
-			biggestThreatRating = creepThreat;
+			biggestThreatRating = 1;
 		}
+		
 		if(enemy_creep.owner != undefined) {
 		meaniename = "from " + enemy_creep.owner.username;
 		}
