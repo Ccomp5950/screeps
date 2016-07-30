@@ -23,7 +23,7 @@ module.exports.loop = function () {
 	validSources[room] = [];
 	for(let source of sources) {
 		console.log("Source report: "+ source.id + " has " + source.hasRoom());
-		if(source.energy > 2 && source.hasRoom() {
+		if(source.energy > 2 && source.hasRoom()) {
 			validSources[room].push(source);
 		}
 	}
