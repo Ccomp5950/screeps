@@ -3,6 +3,10 @@ module.exports = function() {
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
+	    var resource = creep.pos.lookFor(LOOK_ENERGY;
+	    if(resource.len) {
+		creep.pickup(resource[0]);
+	    }
             var source = Game.getObjectById(creep.memory.source);
 
             if(source == null && creep.memory.role != "harvester") {
