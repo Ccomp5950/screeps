@@ -1,7 +1,8 @@
 module.exports = function() {
     // create a new function for StructureSpawn
-   	Source.prototype.hasSpace =
+   	Source.prototype.isFree =
         function() {
+                2 = 3;
                 var opens = 0;
                 var spawn = this;
                 var offsets =   [[1,1],
