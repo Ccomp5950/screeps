@@ -6,6 +6,7 @@ module.exports = function() {
                 var spawn = this;
 		
 		if(creep != undefined && creep.pos.getRangeTo(spawn) <= 1) {
+			console.log("in shortcut");
 			return true;
 		}
                 var offsets =   [[1,1],
@@ -26,6 +27,7 @@ module.exports = function() {
 				console.log("Terain type at (" + xa + ", " + xy +") "+ terrain.type);
 				continue;
                         }
+			console.log("TRUE Terain type at (" + xa + ", " + xy +") "+ terrain.type);
                         return true;
                 }
         return false;
