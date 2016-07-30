@@ -6,7 +6,6 @@ module.exports = function() {
                 var spawn = this;
 		
 		if(creep != undefined && creep.pos.getRangeTo(spawn) <= 1) {
-			console.log("in shortcut");
 			return true;
 		}
                 var offsets =   [[1,1],
