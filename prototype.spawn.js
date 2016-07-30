@@ -3,7 +3,7 @@ module.exports = function() {
     StructureSpawn.prototype.createCustomCreep =
         function(energy, roleName) {
             // create a balanced body as big as possible with the given energy
-	    var nameNumber = 0;
+	    var nameNumber = 1;
 	    var name=roleName + nameNumber.toString();
 	    while(Game.creeps[name] != undefined) {
 		console.log("Trying "+name);
