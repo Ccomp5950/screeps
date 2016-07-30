@@ -5,10 +5,13 @@ module.exports = function() {
             // create a balanced body as big as possible with the given energy
 	    var nameNumber = 0;
 	    var name=roleName + nameNumber.toString();
-	    while(Game.creeps[name] == undefined) {
+	    while(Game.creeps[name] != undefined) {
 		console.log("Trying "+name);
 		nameNumber++;
 		name=roleName + nameNumber.toString();
+		if(nameNumber > 15) {
+			break;
+		}
 	    }
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
