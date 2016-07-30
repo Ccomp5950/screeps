@@ -174,15 +174,24 @@ module.exports.loop = function () {
 	readyToSpawn = true;
     }
 
-
+    if(Game.spawns.Spawn1.spawning) {
+	readyToSpawn = false;
+    }
     // if not enough harvesters
     if (numberOfHarvesters < minimumNumberOfHarvesters) {
 	job = "Harvester";
         // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'harvester');
+        if(readyToSpawn) {
+		name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'harvester');
+		if(name != ERR_NOT_ENOUGH_ENERGY) {
+			numberOfHarvesters++;
+		}
+	
+		
+	}
 
         // if spawning failed and we have no harvesters left
-        if (name == ERR_NOT_ENOUGH_ENERGY && numberOfHarvesters == 0) {
+        if (numberOfHarvesters == 0) {
             // spawn one with what is available
             name = Game.spawns.Spawn1.createCustomCreep(
                 myEnergy, 'harvester');
