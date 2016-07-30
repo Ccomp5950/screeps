@@ -24,17 +24,14 @@ module.exports = function() {
                         let checkpos = new RoomPosition(xa, ya, spawn.room.name);
                         let terrain = checkpos.lookFor(LOOK_CREEPS);
                         if(terrain.length) {
-				console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
 				continue;
                         }
 			terrain = checkpos.lookFor(LOOK_TERRAIN);
 			if(terrain.length && terrain != "plain" && terrain != "swamp") {
-                                console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
                                 continue;
                         }
 
 			
-			console.log("TRUE Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
                         return true;
                 }
         return false;
