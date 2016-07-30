@@ -22,7 +22,7 @@ module.exports = function() {
             }
             if(source == null) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  
+				filter: (s) => (s.energy > 2 || s.ticksToRegeneration < 30) && s.hasSpace()
 				});
 			if(source != undefined) {
 				creep.memory.source = source.id;
@@ -46,7 +46,7 @@ module.exports = function() {
 			//TODO: FIX THIS SHIT
 		    else {
 							        
-	                        if(source.energy < 2) {
+	                        if(source.energy < 2 && source.hasSpace()) {
 	                                creep.memory.source = null;
 	                                return;
 	                        }
