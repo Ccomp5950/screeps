@@ -17,7 +17,7 @@ module.exports.loop = function () {
     }
     var meaniesA = [];
     for(let room of Memory.myrooms) {
-        neabuesA[room] = [];
+        meaniesA[room] = [];
 	meaniesA[room] = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     }
     var underAttack = [];;
