@@ -38,7 +38,7 @@ module.exports = function() {
 
 		    }
 			//TODO: FIX THIS SHIT
-		    else if(source.structureType != undefined) {
+		    else {
 				console.log("[" + creep.name +"] memory type = source ");
 	                        if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
 	                                creep.memory.source = null;
