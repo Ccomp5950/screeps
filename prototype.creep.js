@@ -5,7 +5,7 @@ module.exports = function() {
 	    var creep = this;
             var source = Game.getObjectById(creep.memory.source);
 
-            if(source == undefined && creep.memory.role != "harvester") {
+            if(source == null && creep.memory.role != "harvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > 1
@@ -16,7 +16,7 @@ module.exports = function() {
                                 creep.memory.source = null;
                 }
             }
-            if(source == undefined) {
+            if(source == null) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  
 				});
