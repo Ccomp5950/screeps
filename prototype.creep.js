@@ -26,4 +26,24 @@ module.exports = function() {
 		    }
             }
         }
+	Creep.prototype.getthreat =
+	function(creep) {
+		var threat = 0;
+		for(let body in creep.body) {
+			if(body.type == "attack") {
+				threat += 2;
+			}
+			else if(body.type == "ranged_attack") {
+				threat += 3;
+			}
+			else if (body.type == "heal") {
+				threat += 10;
+			}
+			else if (body.type == "tough") {
+				threat += 1;
+			}
+		}
+		return threat;
+	}
+
 };
