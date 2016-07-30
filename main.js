@@ -24,7 +24,7 @@ module.exports.loop = function () {
     if(meanies.length > 0) {
 	underAttack = true;
 	var meaniename = "";
-	for (let enemy_creep in meanies) {
+	for (let enemy_creep of meanies) {
 		if(enemy_creep.body != undefined) {
 			var creepThreat = enemy_creep.getthreat();
 			if(biggestthreatrating < creepthreat) {
@@ -113,7 +113,7 @@ module.exports.loop = function () {
 	        filter: (s) => s.structureType == STRUCTURE_TOWER
 	    });
 
-	    for (let tower in towers) {
+	    for (let tower of towers) {
 		tower.attack(biggestThreat);	
 	    }
 	    return;
