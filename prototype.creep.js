@@ -4,6 +4,12 @@ module.exports = function() {
         function() {
 	    var creep = this;
             var source = Game.getObjectById(creep.memory.source);
+	    if(source == undefined) {
+		console.log("[" + creep.name +"] memory source = null");
+	    } else {
+		console.log("[" + creep.name +"] memory source = "+ source.id);
+            } 
+
             if(source == undefined) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  || s.ticksToRegneration == undefined
