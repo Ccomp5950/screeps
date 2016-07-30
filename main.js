@@ -22,10 +22,9 @@ module.exports.loop = function () {
     for(let room of Memory.myrooms) {
 	let sourcesA = Game.rooms[room].find(FIND_SOURCES);
 	validSources[room] = [];
-	console.log("sourcesA length is"+ sourcesA.length);
 	for(let sourceM of sourcesA) {
-		if(source.energy > 2 && source.isFree()) {
-			validSources[room].push(source);
+		if(sourceM.energy > 2 && sourceM.isFree()) {
+			validSources[room].push(sourceM);
 		}
 	}
         meaniesA[room] = [];
