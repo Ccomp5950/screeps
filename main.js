@@ -73,6 +73,7 @@ module.exports.loop = function () {
     var numberOfTowerTenders = 0;
     var numberOfScouts = 0;
     var numberOfAttackers = 0;
+    var numberOfDefenders = 0;
 
     for (let name in Game.creeps) {
         // get the creep object
