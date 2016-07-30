@@ -81,9 +81,9 @@ module.exports = function() {
 				 [0,-1]
 				];
 		for(let offset of offsets) {
-			let x = spawn.pos + offset[0];
-			let y = spawn.pos + offset[1];
-			let checkpos = new RoomPosition(x, y, spawn.room);
+			let xa = spawn.pos + offset[0];
+			let ya = spawn.pos + offset[1];
+			let checkpos = new RoomPosition(xa, ya, spawn.room);
 			let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
 			if(terrain.length) {
 				continue;
