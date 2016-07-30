@@ -5,6 +5,17 @@ module.exports = function() {
 	    var creep = this;
             var source = Game.getObjectById(creep.memory.source);
 
+            if(source == undefined && creep.memory.role != "harvester") {
+                source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
+                             && s.store[RESOURCE_ENERGY] > 1
+                    });
+                if(source != undefined) {
+                                creep.memory.source = source.id;
+                        } else {
+                                creep.memory.source = null;
+                }
+            }
             if(source == undefined) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  
@@ -15,17 +26,6 @@ module.exports = function() {
 				creep.memory.source = null;
 			}
             }
-	    if(source == undefined && creep.memory.role != "harvester") {
-                source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
-                             && s.store[RESOURCE_ENERGY] > 1
-		    });
-		if(source != undefined) {
-				creep.memory.source = source.id;
-			} else {
-				creep.memory.source = null;
-		}
-	    }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_CONTAINER) {
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
