@@ -26,12 +26,12 @@ module.exports = {
 	    });
 	    for(let tmpStructure of criticalStructures) {
 		if(tmpStructure.hits == 1) {
-			structureCandidates[] = tmpStructure;
+			structureCandidates.push(tmpStructure);
 			structure = tmpStructure;
 			break;
 		}
 		if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
-			structureCandidates[] = tmpStructure;
+			structureCandidates.push(tmpStructure);
 			continue;
 		}
 			
@@ -42,10 +42,10 @@ module.exports = {
                                                                          });
 		for(let tmpStructure of criticalStructures) {
 	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
-	                        structureCandidates[] = tmpStructure;
+	                        structureCandidates.push(tmpStructure);
 	                        continue;
 	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
-				structureCandidates[] = tmpStructure;
+				structureCandidates.push(tmpStructure);
 			}
 		}
 	    }
