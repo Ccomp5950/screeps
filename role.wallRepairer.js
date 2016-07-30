@@ -38,7 +38,7 @@ module.exports = {
 			}
 		    } else {
 			creep.memory.repair = null;
-			}
+		    }
 
 	            // loop with increasing percentages
 		    if(target == undefined) {
@@ -72,6 +72,7 @@ module.exports = {
 				}
         	    	  }
   		   }
+	    }
 
             // if we find a wall that has to be repaired
             if (target != undefined) {
