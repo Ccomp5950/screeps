@@ -20,20 +20,37 @@ module.exports = {
 
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
-            // find closest structure with less than max hits
-            // Exclude walls because they have way too many max hits and would keep
-            // our repairers busy forever. We have to find a solution for that later.
-            var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                // the second argument for findClosestByPath is an object which takes
-                // a property called filter which can be a function
-                // we use the arrow operator to define it
-                filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hitsMax / s.hitsMax < 0.05)
-            });
-	    if (structure == undefined) {
-		 structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+	    var structureCandidates = [];
+	    var criticalStructures = creep.room.find(FIND_STRUCTURES, {
+		filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hitsMax / s.hitsMax < 0.05)
+	    });
+	    for(let tmpStructure of criticalStructures) {
+		if(tmpStructure.hits == 1) {
+			structureCandidates[] = tmpStructure;
+			structure = tmpStructure;
+			break;
+		}
+		if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
+			structureCandidates[] = tmpStructure;
+			continue;
+		}
+			
+	    }
+	    if(structureCandidates.length == 0) {
+		var structureCandidates = creep.room.find(FIND_STRUCTURES, {
                  filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
                                                                          });
-                //                                                             
+		for(let tmpStructure of criticalStructures) {
+	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
+	                        structureCandidates[] = tmpStructure;
+	                        continue;
+	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
+				structureCandidates[] = tmpStructure;
+			}
+		}
+	    }
+	    if (structure == undefined && structureCandidates.length > 0) {
+		 structure = creep.pos.findClosestByPath(structureCandidates);
 	    }
             // if we find one
             if (structure != undefined) {
