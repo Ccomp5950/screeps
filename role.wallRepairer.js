@@ -10,6 +10,7 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
+	    creep.memory.repair = null;
         }
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
@@ -24,37 +25,53 @@ module.exports = {
             var walls = creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_WALL
             });
-            var target = undefined;
+	    if(walls.length) {
+		    var maxPercentage = Memory.wallMinHealth / walls[0].hitsMax;
+	            var target = undefined;
+		    var potentialTarget = creep.memory.repair;
 
-            // loop with increasing percentages
-            for (let percentage = 0.0001; percentage <= 1; percentage = percentage + 0.0001){
-                // find a wall with less than percentage hits
+		    if(var tmpTarget = Game.getObjectById(creep.memory.repair)) {
+			if(tmpTarget.hits > wallMinHealth) {
+	       			target = tmpTarget;
+			} else {
+				creep.memory.repair = null;
+			}
+		    } else {
+			creep.memory.repair = null;
+			}
 
-                // for some reason this doesn't work
-                // target = creep.pos.findClosestByPath(walls, {
-                //     filter: (s) => s.hits / s.hitsMax < percentage
-                // });
+	            // loop with increasing percentages
+		    if(target == undefined) {
+		            for (let percentage = 0.0001; percentage <= maxPercentage; percentage += percentage + 0.0001){
+		                // find a wall with less than percentage hits
 
-                // so we have to use this
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (s) => s.structureType == STRUCTURE_WALL &&
-                                   s.hits / s.hitsMax < percentage
-                });
-		//if (Memory.wallsMinHealth / .hitsMax < percentage){
-		//	break;
-		//}
-                // if there is one
-                if (target != undefined) {
-                    // break the loop
-                    break;
-                }
-		if (percentage >= 0.01) {
-			percentage += 0.0099;
-		}
-		else if (percentage >= 0.001) {
-			percentage += 0.0009;
-		}
-            }
+		                // for some reason this doesn't work
+		                // target = creep.pos.findClosestByPath(walls, {
+		                //     filter: (s) => s.hits / s.hitsMax < percentage
+		                // });
+
+		                // so we have to use this
+		                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+		                    filter: (s) => s.structureType == STRUCTURE_WALL &&
+		                                   s.hits / s.hitsMax < percentage
+		                });
+				//if (Memory.wallsMinHealth / .hitsMax < percentage){
+				//	break;
+				//}
+		                // if there is one
+		                if (target != undefined) {
+				    creep.memory.repair = target.id;
+		                    // break the loop
+		                    break;
+		                }
+				if (percentage >= 0.01) {
+					percentage += 0.0099;
+				}
+				else if (percentage >= 0.001) {
+					percentage += 0.0009;
+				}
+        	    	  }
+  		   }
 
             // if we find a wall that has to be repaired
             if (target != undefined) {
