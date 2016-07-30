@@ -24,7 +24,6 @@ module.exports = {
             var walls = creep.room.find(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_WALL
             });
-
             var target = undefined;
 
             // loop with increasing percentages
@@ -41,7 +40,9 @@ module.exports = {
                     filter: (s) => s.structureType == STRUCTURE_WALL &&
                                    s.hits / s.hitsMax < percentage
                 });
-
+		if (Memory.wallsMinHealth / s.hitsMax < percentage){
+			break;
+		}
                 // if there is one
                 if (target != undefined) {
                     // break the loop

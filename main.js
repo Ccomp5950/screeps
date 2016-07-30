@@ -12,6 +12,9 @@ var roleAttacker = require('role.attacker');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
+    if(Memory.wallMinHealth == undefined) {
+	Memory.wallMinHealth = 3000000;
+    }
     Memory.myrooms = ["E48S31"];
     PathFinder.use(true);
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
