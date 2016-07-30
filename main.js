@@ -1,6 +1,7 @@
 // import modules
 require('prototype.spawn')();
 require('prototype.creep')();
+require('prototype.source')();
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
