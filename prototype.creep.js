@@ -34,7 +34,7 @@ module.exports = function() {
 
 		    }
 			//TODO: FIX THIS SHIT
-		    else if(source.structureType == != undefined) {
+		    else if(source.structureType != undefined) {
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source) == ERR_NO_PATH) {
 					creep.memory.source = null;
