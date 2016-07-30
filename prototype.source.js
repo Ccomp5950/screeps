@@ -22,11 +22,18 @@ module.exports = function() {
                         let xa = spawn.pos.x + offset[0];
                         let ya = spawn.pos.y + offset[1];
                         let checkpos = new RoomPosition(xa, ya, spawn.room.name);
-                        let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
+                        let terrain = checkpos.lookFor(LOOK_CREEPS);
                         if(terrain.length) {
 				console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
 				continue;
                         }
+			terrain = checkpos.lookFor(LOOK_TERRAIN);
+			if(terrain.length) {
+                                console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
+                                continue;
+                        }
+
+			
 			console.log("TRUE Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
                         return true;
                 }
