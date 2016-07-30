@@ -31,6 +31,7 @@ module.exports = function() {
 	function() {
 		var creep = this;
 		var threat = 0;
+		var log = 1;
 		for(let body in creep.body) {
 			if(body.type == "attack" && body.hits > 0) {
 				threat += 2;
@@ -44,6 +45,9 @@ module.exports = function() {
 			else if (body.type == "tough" && body.hits > 0) {
 				threat += 1;
 			}
+                        if(Memory.debug) {
+                                console.log("Checking Body Part: Type="+body.type+" hits="body.hits" current_threat="+threat);
+                        }
 		}
 		return threat;
 	}
