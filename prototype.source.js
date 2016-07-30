@@ -27,7 +27,7 @@ module.exports = function() {
 				console.log("Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
 				continue;
                         }
-			console.log("TRUE Terain type at (" + xa + ", " + ya +") "+ terrain);
+			console.log("TRUE Terain type at (" + xa + ", " + ya +" / "+ spawn.room.name +") "+ terrain);
                         return true;
                 }
         return false;
