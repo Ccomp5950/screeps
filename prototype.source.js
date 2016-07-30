@@ -24,10 +24,10 @@ module.exports = function() {
                         let checkpos = new RoomPosition(xa, ya, spawn.room.name);
                         let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
                         if(terrain.length) {
-				console.log("Terain type at (" + xa + ", " + xy +") "+ terrain.type);
+				console.log("Terain type at (" + xa + ", " + ya +") "+ terrain.type);
 				continue;
                         }
-			console.log("TRUE Terain type at (" + xa + ", " + xy +") "+ terrain.type);
+			console.log("TRUE Terain type at (" + xa + ", " + ya +") "+ terrain.type);
                         return true;
                 }
         return false;
