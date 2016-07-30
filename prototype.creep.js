@@ -27,9 +27,7 @@ module.exports = function() {
 		}
 	    }
 	    if(source != undefined) {
-			console.log("[" + creep.name +"] in do it section");
 		    if(source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_CONTAINER) {
-			     console.log("[" + creep.name +"] memory type = storage ");
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
                                         creep.memory.source = null;
@@ -39,13 +37,10 @@ module.exports = function() {
 		    }
 			//TODO: FIX THIS SHIT
 		    else {
-				console.log("[" + creep.name +"] memory type = source ");
 	                        if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
 	                                creep.memory.source = null;
-					console.log("[" + creep.name +"] memory type = source and we nulled this shit ");
 	                                return;
 	                        }
-				console.log("[" + creep.name +"] memory type = storage and we're moving");
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source) == ERR_NO_PATH) {
 					creep.memory.source = null;
