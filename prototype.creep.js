@@ -6,7 +6,7 @@ module.exports = function() {
             var source = null;
             if(!creep.memory.source) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30 
+				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  || s.ticksToRegneration == undefined
 				});
 			if(source) {
 				creep.memory.source = source.id;
@@ -16,7 +16,7 @@ module.exports = function() {
             }
 	    if(creep.memory.source) {
 		    source = Game.getObjectById(creep.memory.source);
-			if(source.energy < 2 && source.ticksToRegneration > 30) {
+			if(source.energy < 2 && (ticksToRegeneration == undefined || source.ticksToRegneration > 30) {
 				creep.memory.source = null;
 				return;
 			}
