@@ -21,9 +21,7 @@ module.exports = function() {
                 }
             }
             if(source == null) {
-                        source = creep.pos.findClosestByPath(FIND_SOURCES, {
-				filter: (s) => (s.energy > 2 || s.ticksToRegeneration < 30) && s.hasSpace()
-				});
+                        source = creep.pos.findClosestByPath(validSources[creep.room.name]); 
 			if(source != undefined) {
 				creep.memory.source = source.id;
 			} else {
