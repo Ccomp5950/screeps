@@ -25,10 +25,20 @@ module.exports = function() {
 				creep.memory.source = null;
 				return;
 			}
-	            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-	                if(creep.moveTo(source) == ERR_NO_PATH) {
-				creep.memory.source = null;
-			}
+		    if(source.structureType == STRUCTURE_STORAGE) {
+                            if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                if(creep.moveTo(source) == ERR_NO_PATH) {
+                                        creep.memory.source = null;
+                                }
+                            }
+
+		    }
+		    else if(source.structureType == STRUCTURE_SOURCE) {
+		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+		                if(creep.moveTo(source) == ERR_NO_PATH) {
+					creep.memory.source = null;
+				}
+			    }
 		    }
             }
         };
