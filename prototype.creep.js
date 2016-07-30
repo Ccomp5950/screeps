@@ -3,7 +3,7 @@ module.exports = function() {
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
-	    var resource = creep.pos.lookFor(LOOK_ENERGY;
+	    var resource = creep.pos.lookFor(LOOK_ENERGY);
 	    if(resource.len) {
 		creep.pickup(resource[0]);
 	    }
