@@ -28,6 +28,10 @@ module.exports = function() {
             }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_CONTAINER) {
+				if(source.store[RESOURCE_ENERGY] < 2) {
+					creep.memory.source = null;
+					return;
+				}
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
                                         creep.memory.source = null;
