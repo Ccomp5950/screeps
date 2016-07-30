@@ -37,7 +37,8 @@ module.exports = function() {
 		    }
 			//TODO: FIX THIS SHIT
 		    else {
-	                        if(source.energy < 2 && (source.ticksToRegeneration != undefined && source.ticksToRegneration > 30)) {
+							        
+	                        if(source.energy < 2 && source.ticksToRegneration > 30) {
 	                                creep.memory.source = null;
 	                                return;
 	                        }
