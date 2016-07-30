@@ -25,7 +25,7 @@ module.exports = function() {
 			}
 		    }
             }
-        }
+        };
 	Creep.prototype.getthreat =
 	function(creep) {
 		var threat = 0;
