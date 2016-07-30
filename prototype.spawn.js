@@ -6,6 +6,7 @@ module.exports = function() {
 	    var nameNumber = 0;
 	    var name=roleName + nameNumber.toString();
 	    while(Game.creeps[name] == undefined) {
+		console.log("Trying "+name");
 		nameNumber++;
 		name=roleName + nameNumber.toString();
 	    }
