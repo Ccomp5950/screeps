@@ -46,7 +46,7 @@ module.exports = function() {
 			//TODO: FIX THIS SHIT
 		    else {
 							        
-	                        if(source.energy <) {
+	                        if(source.energy < 2) {
 	                                creep.memory.source = null;
 	                                return;
 	                        }
