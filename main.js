@@ -16,15 +16,22 @@ module.exports.loop = function () {
     PathFinder.use(true);
     var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
     var underAttack = false;
+    var biggestThreat = null;
+    var biggestThreatRating = 0;
     if(meanies.length > 0) {
 	underAttack = true;
 	var meaniename = "";
 	for (let enemy_creep in meanies) {
+		var creepThreat = enemy_creep.getthreat(enemy_creep);
+		if(biggestthreatrating < creepthreat) {
+			biggestThreat = enemy_creep;
+			biggestThreatRating = creepThreat;
+		}
 		if(enemy_creep.owner != undefined) {
 		meaniename = "from " + enemy_creep.owner.username;
 		}
 	}
-	console.log("OH FUCK " + meanies.length + meaniename);
+	console.log("OH FUCK " + meanies.length + meaniename + "Biggest Threat: " + biggestThreatRating);
 }
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
@@ -92,17 +99,14 @@ module.exports.loop = function () {
 
     }
 
-    var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
-        filter: (s) => s.structureType == STRUCTURE_TOWER
-    });
-    for (let tower of towers) {
-        var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if (target != undefined) {
-            tower.attack(target);
-        }
-    }
+    if(underattack) {
+	    var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
+	        filter: (s) => s.structureType == STRUCTURE_TOWER
+	    });
 
-    if(underAttack) {
+	    for (let tower of towers) {
+		tower.attack(biggestThreat);	
+	    }
 	    return;
     }
     

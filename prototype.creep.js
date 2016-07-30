@@ -1,7 +1,8 @@
 module.exports = function() {
     // create a new function for StructureSpawn
     Creep.prototype.customharvest =
-        function(creep) {
+        function() {
+	    var creep = this;
             var source = null;
             if(!creep.memory.source) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
@@ -27,19 +28,20 @@ module.exports = function() {
             }
         };
 	Creep.prototype.getthreat =
-	function(creep) {
+	function() {
+		var creep = this;
 		var threat = 0;
 		for(let body in creep.body) {
-			if(body.type == "attack") {
+			if(body.type == "attack" body.hits > 0) {
 				threat += 2;
 			}
-			else if(body.type == "ranged_attack") {
+			else if(body.type == "ranged_attack" body.hits > 0) {
 				threat += 3;
 			}
-			else if (body.type == "heal") {
+			else if (body.type == "heal" body.hits > 0) {
 				threat += 10;
 			}
-			else if (body.type == "tough") {
+			else if (body.type == "tough" body.hits > 0) {
 				threat += 1;
 			}
 		}

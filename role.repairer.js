@@ -47,7 +47,7 @@ module.exports = {
             }
         }
         else {
-		creep.customharvest(creep);
+		creep.customharvest();
         }
 
     }
