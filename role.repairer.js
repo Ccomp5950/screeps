@@ -24,7 +24,7 @@ module.exports = {
 	    var structure = undefined;
 	    var structureCandidates = [];
 	    var criticalStructures = creep.room.find(FIND_STRUCTURES, {
-		filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hitsMax / s.hitsMax < 0.05)
+		filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hits / s.hitsMax < 0.05)
 	    });
 	    for(let tmpStructure of criticalStructures) {
 		if(lala == 0) console.log("We're in criticalStructures Loop");
