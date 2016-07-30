@@ -21,7 +21,7 @@ module.exports = function() {
                 for(let offset of offsets) {
                         let xa = spawn.pos.x + offset[0];
                         let ya = spawn.pos.y + offset[1];
-                        let checkpos = new RoomPosition(xa, ya, spawn.room.name);
+                        let checkpos = new RoomPosition(xa, ya, spawn.room);
                         let terrain = checkpos.lookFor(OBSTACLE_OBJECT_TYPES);
                         if(terrain.length) {
 				console.log("Terain type at (" + xa + ", " + ya +") "+ terrain);
