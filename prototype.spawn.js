@@ -1,6 +1,6 @@
 module.exports = function() {
     // create a new function for StructureSpawn
-    RoomPosition.prototype.hasSpace =
+   	Source.prototype.hasSpace =
         function() {
                 var opens = 0;
                 var spawn = this;
