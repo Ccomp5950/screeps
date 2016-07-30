@@ -15,33 +15,44 @@ module.exports.loop = function () {
     if(Memory.wallMinHealth == undefined) {
 	Memory.wallMinHealth = 3000000;
     }
-    Memory.myrooms = ["E48S31"];
-    PathFinder.use(true);
-    var meanies = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
-    var underAttack = false;
-    var biggestThreat = null;
-    var biggestThreatRating = -2;
-    if(meanies.length > 0) {
-	underAttack = true;
+    var meaniesA = [];
+    for(let room of Memory.myrooms) {
+        neabuesA[room] = [];
+	meaniesA[room] = Game.rooms.E48S31.find(FIND_HOSTILE_CREEPS);
+    }
+    var underAttack = [];;
+    var biggestThreat = [];
+    var biggestThreatRating = [];
+    for(let room of Memory.myrooms) {
+    underAttack[room] = false;
+    biggestThreat[room] = null;
+    biggestThreatRating[room] = -2;
+    if(meanies[room].length > 0) {
+
+	underAttack[room] = true;
 	var meaniename = "";
-	for (let enemy_creep of meanies) {
+	for (let enemy_creep of meanies[room]) {
+		
 		if(enemy_creep.body != undefined) {
 			var creepThreat = enemy_creep.getthreat();
-			if(biggestThreatRating < creepThreat) {
-				biggestThreat = enemy_creep;
-				biggestThreatRating = creepThreat;
+			if(biggestThreatRating[room] < creepThreat) {
+				biggestThreat[room] = enemy_creep;
+				biggestThreatRating[room] = creepThreat;
 			}
 		} else {
-			biggestThreat = enemy_creep;
-			biggestThreatRating = 1;
+			biggestThreat[room] = enemy_creep;
+			biggestThreatRating[room] = 1;
 		}
 		
 		if(enemy_creep.owner != undefined) {
 		meaniename = "from " + enemy_creep.owner.username;
 		}
 	}
-	console.log("OH FUCK " + meanies.length + meaniename + "Biggest Threat: " + biggestThreatRating);
+	console.log("[" + room + "]OH FUCK " + meanies[room].length + meaniename + "Biggest Threat: " + biggestThreatRating[room]);
 	}
+    }
+
+
     for (let name in Memory.creeps) {
         // and checking if the creep is still alive
         if (Game.creeps[name] == undefined) {
@@ -66,7 +77,7 @@ module.exports.loop = function () {
         // get the creep object
         var creep = Game.creeps[name];
 
-	if(underAttack || creep.memory.role == 'towertender') {
+	if(underAttack[creep.room.name] || creep.memory.role == 'towertender') {
 		numberOfTowerTenders++;
 		roleTowerTender.run(creep);
 	}
@@ -108,17 +119,18 @@ module.exports.loop = function () {
 
     }
 
-    if(underAttack) {
-	    var towers = Game.rooms.E48S31.find(FIND_STRUCTURES, {
-	        filter: (s) => s.structureType == STRUCTURE_TOWER
-	    });
+    for(let room of Memory.myrooms) {
+	    if(underAttack[room]) {
+		    var towers = Game.rooms[room].find(FIND_STRUCTURES, {
+		        filter: (s) => s.structureType == STRUCTURE_TOWER
+		    });
 
-	    for (let tower of towers) {
-		tower.attack(biggestThreat);	
-	    }
+		    for (let tower of towers) {
+			tower.attack(biggestThreat[room]);	
+			    }
 	    return;
-    }
-    
+	    }
+    }    
 
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
