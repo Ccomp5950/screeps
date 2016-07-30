@@ -3,8 +3,8 @@ module.exports = function() {
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
-            var source = null;
-            if(!creep.memory.source) {
+            var source = Game.getObjectById(creep.memory.source);
+            if(source == undefined) {
                         source = creep.pos.findClosestByPath(FIND_SOURCES, {
 				filter: (s) => s.energy > 2 || s.ticksToRegeneration < 30  || s.ticksToRegneration == undefined
 				});
@@ -14,9 +14,8 @@ module.exports = function() {
 				creep.memory.source = null;
 			}
             }
-	    if(creep.memory.source) {
-		    source = Game.getObjectById(creep.memory.source);
-			if(source.energy < 2 && (source.ticksToRegeneration == undefined || source.ticksToRegneration > 30)) {
+	    if(source != undefined) {
+			if(source.energy < 2 && (source.ticksToRegeneration != undefined || source.ticksToRegneration > 30)) {
 				creep.memory.source = null;
 				return;
 			}
