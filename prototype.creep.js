@@ -32,16 +32,16 @@ module.exports = function() {
 		var creep = this;
 		var threat = 0;
 		for(let body in creep.body) {
-			if(body.type == "attack" body.hits > 0) {
+			if(body.type == "attack" && body.hits > 0) {
 				threat += 2;
 			}
-			else if(body.type == "ranged_attack" body.hits > 0) {
+			else if(body.type == "ranged_attack" && body.hits > 0) {
 				threat += 3;
 			}
-			else if (body.type == "heal" body.hits > 0) {
+			else if (body.type == "heal" && body.hits > 0) {
 				threat += 10;
 			}
-			else if (body.type == "tough" body.hits > 0) {
+			else if (body.type == "tough" && body.hits > 0) {
 				threat += 1;
 			}
 		}
