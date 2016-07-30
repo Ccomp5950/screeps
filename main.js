@@ -19,12 +19,12 @@ module.exports.loop = function () {
     var validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
-	var sources = Game.rooms[room].find(FIND_SOURCES);
+	let sourcesA = Game.rooms[room].find(FIND_SOURCES);
 	validSources[room] = [];
-	for(let source of sources) {
-		console.log("Source has room is "+ source.energy);
-		if(source.energy > 2 && source.hasRoom()) {
-			validSources[room].push(source);
+	for(let sourceM of sourcesA) {
+		console.log("Source has room is "+ sourceM.energy);
+		if(sourceM.energy > 2 && sourceM.hasRoom()) {
+			validSources[room].push(sourceM);
 		}
 	}
         meaniesA[room] = [];
