@@ -6,10 +6,9 @@ module.exports = function() {
 	    var nameNumber = 1;
 	    var name=roleName + nameNumber.toString();
 	    while(Game.creeps[name] != undefined) {
-		console.log("Trying "+name);
 		nameNumber++;
 		name=roleName + nameNumber.toString();
-		if(nameNumber > 15) {
+		if(nameNumber > 20) {
 			break;
 		}
 	    }
