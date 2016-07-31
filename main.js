@@ -135,18 +135,28 @@ module.exports.loop = function () {
 
     }
 
-    for(let room of Memory.myrooms) {
-	    if(underAttack[room]) {
-		    var towers = Game.rooms[room].find(FIND_STRUCTURES, {
-		        filter: (s) => s.structureType == STRUCTURE_TOWER
-		    });
+	for(let room of Memory.myrooms) {
+		var towers = Game.rooms[room].find(FIND_STRUCTURES, {
+                                               filter: (s) => s.structureType == STRUCTURE_TOWER
+                                               });
+		if(underAttack[room]) {
+			for (let tower of towers) {
+				tower.attack(biggestThreat[room]);	
+			}
+		} else {
+			let structure = Game.rooms[room].findClosestByRange(FIND_STRUCTURES, {
+									filter: (s) => s.hits < 101)
+                        });
+			if(structure != undefined) {
+				for (let tower of towers) {
+					tower.repair(structure);
+				}
+			}
+		}
+		
+	}
 
-		    for (let tower of towers) {
-			tower.attack(biggestThreat[room]);	
-			    }
-	    return;
-	    }
-    }    
+   
 
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
