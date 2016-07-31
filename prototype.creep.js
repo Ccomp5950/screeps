@@ -11,7 +11,7 @@ module.exports = function() {
             if(source == null && creep.memory.role != "remoteharvester") {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
-                             && s.store[RESOURCE_ENERGY] > 20
+                             && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
                 if(source != undefined) {
                                 creep.memory.source = source.id;
@@ -29,7 +29,7 @@ module.exports = function() {
             }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_CONTAINER || (creep.memory != "harvester" && source.structureType == STRUCTURE_STORAGE)) {
-				if(source.store[RESOURCE_ENERGY] < 20) {
+				if(source.store[RESOURCE_ENERGY] < creep.carryCapacity) {
 					creep.memory.source = null;
 					return;
 				}
@@ -42,7 +42,7 @@ module.exports = function() {
 		    }
 		    else {
 							        
-	                        if(source.energy < 20) {
+	                        if(source.energy < creep.carryCapacity) {
 	                                creep.memory.source = null;
 		                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
 		                        if(source != undefined) {
