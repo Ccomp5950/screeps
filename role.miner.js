@@ -25,6 +25,7 @@ module.exports = {
 		}
 
 		if (structure != undefined) {
+			console.log("YESH");
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 			if(creep.carry > 0) {
