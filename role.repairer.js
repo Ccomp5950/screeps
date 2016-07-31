@@ -10,12 +10,14 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
+	    creep.memory.repairing = null;
         }
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
             creep.memory.source = null;
+	    creep.memory.repairing = null;
         }
 
         // if creep is supposed to repair something
@@ -33,6 +35,15 @@ module.exports = {
 		}
 			
 	    }
+	    let alreadygotit = [];
+	    for (let name in Memory.creeps) {
+		if(name != creep.name) {
+			if(Game.creeps[name].memory.repairing != null) {
+				alreadygotit.push(Game.creeps[name].memory.repairing);
+			}
+		}
+	    }
+            for(let othercreeps of Game.creeps)
 	    var rampartCandidates = [];	    
 	    if(structureCandidates.length == 0) {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
@@ -43,7 +54,9 @@ module.exports = {
 	                        rampartCandidates.push(tmpStructure);
 	                        continue;
 	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
-				structureCandidates.push(tmpStructure);
+				if(alreadygotit.indexOf(tmpStructure.id) == -1) {
+					structureCandidates.push(tmpStructure);
+				}
 			}
 		}
 		if(structureCandidates.length == 0 && rampartCandidates.length > 0) {
@@ -56,6 +69,7 @@ module.exports = {
 	    }
             // if we find one
             if (structure != undefined) {
+		creep.memory.repairing = structure.id;
                 // try to repair it, if it is out of range
                 if (creep.repair(structure) == ERR_NOT_IN_RANGE) {
                     // move towards it
