@@ -96,9 +96,9 @@ module.exports = function() {
 		if(creep.pos.getRangeTo(Game.spawns.Spawn1) > 1) {
 			creep.moveTo(Game.spawns.Spawn1);
 		}
-		if(Game.spawns.Spawn1.spawning == null) {
-			let i = Game.spawns.Spawn1.renewCreep(creep);
-			console.log("renew gave error: " + i);
+		if(Game.spawns.Spawn1.spawning == null)
+			while(Game.spawns.Spawn1.renewCreep(creep) == OK) {
+			}
 			creep.memory.restoring = false;
 		} 
 			
