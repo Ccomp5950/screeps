@@ -37,6 +37,7 @@ module.exports = function() {
         }
 	else if (roleName == "harvester") {
 		body = [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+		bodyset = true;
 	}
 
 
