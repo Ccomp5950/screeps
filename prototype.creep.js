@@ -119,4 +119,5 @@ module.exports = function() {
 			creep.harvest(source);
 		}
 	    }
+	}
 };
