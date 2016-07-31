@@ -94,10 +94,6 @@ module.exports = function() {
 	Creep.prototype.getrestored =
 	function() {
 		let creep = this;
-		if(creep.memory.restoring == null) {
-			creep.memory.restoring = false;
-			return;
-		}
 		if(creep.pos.getRangeTo(Game.spawns.Spawn1) > 1) {
 			creep.moveTo(Game.spawns.Spawn1);
 		}
