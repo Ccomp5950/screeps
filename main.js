@@ -40,7 +40,7 @@ module.exports.loop = function () {
     underAttack[room] = false;
     biggestThreat[room] = null;
     biggestThreatRating[room] = -2;
-    if(meaniesA[room].length > 0) {
+    if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
 
 	underAttack[room] = true;
 	var meaniename = "";
