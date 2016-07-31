@@ -145,7 +145,7 @@ module.exports.loop = function () {
 			}
 		} else {
 			let structure = Game.rooms[room].findClosestByRange(FIND_STRUCTURES, {
-									filter: (s) => s.hits < 101)
+									filter: (s) => s.hits < 101
                         });
 			if(structure != undefined) {
 				for (let tower of towers) {
