@@ -30,7 +30,7 @@ module.exports = {
                              && s.energy < s.energyCapacity
             });
             if (structure == undefined) {
-             	structure = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+             	structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] < s.storeCapacity
             });
