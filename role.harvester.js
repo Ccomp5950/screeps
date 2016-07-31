@@ -26,13 +26,14 @@ module.exports = {
                 // a property called filter which can be a function
                 // we use the arrow operator to define it
                 filter: (s) => (s.structureType == STRUCTURE_EXTENSION
+			     || s.structureType == STRUCTURE_SPAWN
                              || s.structureType == STRUCTURE_TOWER)
                              && s.energy < s.energyCapacity
             });
             if (structure == null) {
              	structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
-                             && s.store[RESOURCE_ENERGY] < s.storeCapacity
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
+                             && s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom
             });
 	    }
 
