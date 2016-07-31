@@ -28,7 +28,7 @@ module.exports = function() {
 			}
             }
 	    if(source != undefined) {
-		    if(source.structureType == STRUCTURE_CONTAINER) {
+		    if(source.structureType == STRUCTURE_CONTAINER || (creep.memory != "harvester" && source.structureType == STRUCTURE_STORAGE)) {
 				if(source.store[RESOURCE_ENERGY] < 20) {
 					creep.memory.source = null;
 					return;
