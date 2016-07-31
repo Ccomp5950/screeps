@@ -42,7 +42,7 @@ module.exports = function() {
 		    }
 		    else {
 							        
-	                        if(source.energy < 2 && source.isFree(creep)) {
+	                        if(source.energy < 20) {
 	                                creep.memory.source = null;
 		                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
 		                        if(source != undefined) {
