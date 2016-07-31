@@ -144,20 +144,22 @@ module.exports.loop = function () {
     }
 
 	for(let room of Memory.myrooms) {
-		var towers = Game.rooms[room].find(FIND_STRUCTURES, {
-                                               filter: (s) => s.structureType == STRUCTURE_TOWER
-                                               });
-		if(underAttack[room]) {
-			for (let tower of towers) {
-				tower.attack(biggestThreat[room]);	
-			}
-		} else {
-			for (let tower of towers) {
-	                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-                                                                        filter: (s) => s.hits < 101
-	                        });
-				if(structure != undefined) {
-					tower.repair(structure);
+		if(Game.rooms[room] != undefined) {
+			var towers = Game.rooms[room].find(FIND_STRUCTURES, {
+	                                               filter: (s) => s.structureType == STRUCTURE_TOWER
+	                                               });
+			if(underAttack[room]) {
+				for (let tower of towers) {
+					tower.attack(biggestThreat[room]);	
+				}
+			} else {
+				for (let tower of towers) {
+		                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+	                                                                        filter: (s) => s.hits < 101
+		                        });
+					if(structure != undefined) {
+						tower.repair(structure);
+					}
 				}
 			}
 		}
