@@ -80,9 +80,9 @@ module.exports = function() {
 			else if (body.type == "tough" && body.hits > 0) {
 				threat += 1;
 			}
-                        if(Memory.debug) {
-                                console.log("Checking Body Part: Type=" + body.type + " hits=" + body.hits + " current_threat=" + threat);
-                        }
+			else if (body.type == "build" && body.hits > 0) {
+				threat += 1;
+			}
 		}
 		return threat;
 	}
