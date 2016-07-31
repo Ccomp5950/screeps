@@ -10,12 +10,12 @@ module.exports = function() {
 
 		if(source == null) {
 			source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-			filter: (s) => (s.structureType == STRUCTURE_CONTAINER) && s.store[RESOURCE_ENERGY] == 2000
+			filter: (s) => (s.structureType == STRUCTURE_CONTAINER) && (s.store[RESOURCE_ENERGY] == 2000 || creep.memory.role == "harvester" && s.store[RESOURCE_ENERGY] > creep.carryCapacity)
 		});
 
 		if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
 		}
