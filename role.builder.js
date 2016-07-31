@@ -1,4 +1,4 @@
-var roleUpgrader = require('role.upgrader');
+var roleAlt = require('role.repairer');
 
 module.exports = {
     // a function to run the logic for this role
@@ -45,7 +45,7 @@ module.exports = {
             else {
 		creep.memory.build = null;
                 // go upgrading the controller
-                roleUpgrader.run(creep);
+                roleAlt.run(creep);
             }
         }
         // if creep is supposed to harvest energy from source

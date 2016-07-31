@@ -1,4 +1,4 @@
-var roleBuilder = require('role.builder');
+var roleAlt = require('role.upgrader');
 
 module.exports = {
     // a function to run the logic for this role
@@ -65,7 +65,7 @@ module.exports = {
             // if we can't fine one
             else {
                 // look for construction sites
-                roleBuilder.run(creep);
+                roleAlt.run(creep);
             }
         }
         else {
