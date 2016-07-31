@@ -15,7 +15,7 @@ module.exports = {
 				}
 			return;
 		}
-		if(creep.memory.restroring == undefined) {
+		if(creep.memory.restroring == null) {
 			creep.memory.restoring = false;
 		}
 		if(creep.ticksToLive < 400 || creep.memory.restoring == true) {
