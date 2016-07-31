@@ -22,8 +22,9 @@ module.exports = {
 	    
                 if(Game.flags["Home"] != undefined) {
                         var range = creep.pos.getRangeTo(Game.flags.Home);
-                        if(range > 999) {
+                        if(range > 9) {
                                 creep.moveTo(Game.flags.Home);
+				return;
                         }
                 }
 
