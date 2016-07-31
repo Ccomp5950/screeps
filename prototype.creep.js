@@ -39,10 +39,10 @@ module.exports = function() {
 					creep.memory.source = null;
 					return;
 				}
+				creep.memory.pulledfrom = source.id
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
                                         creep.memory.source = null;
-					creep.memory.pulledfrom = source.id;
                                 }
                             }
 
