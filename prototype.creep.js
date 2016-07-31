@@ -8,7 +8,7 @@ module.exports = function() {
 	    }
             var source = Game.getObjectById(creep.memory.source);
 
-		if(source == null && creep.memory.role != "harvester") {
+		if(source == null) {
 			source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 			filter: (s) => (s.structureType == STRUCTURE_CONTAINER) && s.store[RESOURCE_ENERGY] == 2000
 		});
@@ -94,7 +94,7 @@ module.exports = function() {
 	Creep.prototype.getrestored =
 	function() {
 		let creep = this;
-		if(creep.memory.restoring == undefined) {
+		if(creep.memory.restoring == null) {
 			creep.memory.restoring = false;
 			return;
 		}
