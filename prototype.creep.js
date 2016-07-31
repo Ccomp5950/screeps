@@ -98,7 +98,7 @@ module.exports = function() {
 		}
 		if(Game.spawns.Spawn1.spawning == null) {
 			let resultA = Game.spawns.Spawn1.renewCreep(creep);
-			if(resultA == ERR_FULL || result == ERR_NOT_ENOUGH_ENERGY) {
+			if(resultA == ERR_FULL || resultA == ERR_NOT_ENOUGH_ENERGY) {
 				creep.memory.restoring = false;
 			}
 		} 
