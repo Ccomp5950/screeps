@@ -97,9 +97,10 @@ module.exports = function() {
 			creep.moveTo(Game.spawns.Spawn1);
 		}
 		if(Game.spawns.Spawn1.spawning == null)
-			while(Game.spawns.Spawn1.renewCreep(creep) == OK) {
+			let result = Game.spawns.Spawn1.renewCreep(creep);
+			if(result == ERR_FULL || result == ERR_NOT_ENOUGH_ENERGY) {
+				creep.memory.restoring = false;
 			}
-			creep.memory.restoring = false;
 		} 
 			
 	}
