@@ -16,7 +16,7 @@ module.exports = {
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
-	          	structure = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
+	          	structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
 			console.log("Structure = " + structure);
