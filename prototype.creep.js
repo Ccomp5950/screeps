@@ -9,8 +9,8 @@ module.exports = function() {
             var source = Game.getObjectById(creep.memory.source);
 
             if(source == null && creep.memory.role != "remoteharvester") {
-                source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
+                source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
                 if(source != undefined) {
