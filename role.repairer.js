@@ -43,7 +43,6 @@ module.exports = {
 			}
 		}
 	    }
-            for(let othercreeps of Game.creeps)
 	    var rampartCandidates = [];	    
 	    if(structureCandidates.length == 0) {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
