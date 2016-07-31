@@ -8,7 +8,13 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
+	    if(creep.ticksToLive < 400) {
+	        creep.memory.restoring = true;
+		creep.getRestored();
+		return;
+	    }
         }
+	
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
@@ -45,6 +51,10 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
+		if(creep.memory.restoring == true) {
+			creep.getRestored();
+			return;
+		}
                 if(Game.flags[creep.name] != undefined) {
                         var range = creep.pos.getRangeTo(Game.flags[creep.name]);
                         if(range > 2) {
