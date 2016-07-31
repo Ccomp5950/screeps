@@ -32,7 +32,7 @@ module.exports = {
             });
             if (structure == null) {
              	structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom
             });
 	    }
