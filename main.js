@@ -11,6 +11,7 @@ var roleTowerTender = require('role.towertender');
 var roleScout = require('role.scout');
 var roleAttacker = require('role.attacker');
 var roleDefender = require('role.defender');
+var roleRemoteHarvester = require('role.remoteharvester');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -30,7 +31,7 @@ module.exports.loop = function () {
         meaniesA[room] = [];
 	meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
     }
-    var underAttack = [];;
+    var underAttack = [];
     var biggestThreat = [];
     var biggestThreatRating = [];
     for(let room of Memory.myrooms) {
@@ -83,6 +84,7 @@ module.exports.loop = function () {
     var numberOfScouts = 0;
     var numberOfAttackers = 0;
     var numberOfDefenders = 0;
+    var numberofRemoteHarvesters = 0;
 
     for (let name in Game.creeps) {
         // get the creep object
@@ -132,6 +134,10 @@ module.exports.loop = function () {
             numberOfAttackers++;
             roleAttacker.run(creep);
         }
+        else if (creep.memory.role == 'remoteharvester') {
+            numberOfRemoteHarvesters++;
+            roleRemoteHarvester.run(creep);
+        }
 
     }
 
@@ -169,6 +175,7 @@ module.exports.loop = function () {
     var minimumNumberOfScouts = 0;
     var minimumNumberOfAttackers = 0;
     var minimumNumberOfDefenders = 1;
+    var minimumNumberOfRemoteHarvesters = 2;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
@@ -210,27 +217,24 @@ module.exports.loop = function () {
     // if not enough upgraders
     else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
 	job = "Upgrader";
-        // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'upgrader');
     }
-    // if not enough repairers
     else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
 	job = "Repairer";
-        // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
     }
     else if (myEnergy >= 800 && numberOfDefenders < minimumNumberOfDefenders) {
         job = "Defender";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
     }
-
-    // if not enough builders
+    else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
+        job = "Remote Harvester";
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'remoteharvester');
+        }
     else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
 	job = "Builder";
-        // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
     }
-    // if not enough wallRepairers
     else if (readyToSpawn && numberOfWallRepairers < minimumNumberOfWallRepairers) {
 	job = "Wall Repairer";
         // try to spawn one
