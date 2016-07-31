@@ -28,7 +28,7 @@ module.exports = {
 			creep.mine();
 		}
 
-		if (structure != undefined) {
+		if (structure != null) {
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 			if(creep.carry > 0) {
