@@ -9,7 +9,7 @@ module.exports = function() {
 	    }
             var source = Game.getObjectById(creep.memory.source);
 
-            if(source == null && creep.memory.role != "harvester") {
+            if(source == null && creep.memory.role != "harvester" && creep.memory.role != "remoteharvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > 1
@@ -85,6 +85,21 @@ module.exports = function() {
 			}
 		}
 		return threat;
+	};
+	Creep.prototype.getrestored =
+	function() {
+		let creep = this;
+		if(creep.memory.restoring == undefined) {
+			creep.memory.restoring = false;
+			return;
+		}
+		if(creep.pos.getRangeTo(Game.spawns.Spawn1) > 1) {
+			creep.moveTo(Game.spawns.Spawn1);
+		}
+		else if(Game.spawns.Spawn1.spawning = null && Game.spawns.Spawn1.renewCreep(creep) == ERR_FULL) {
+			creep.memory.restoring = false;
+		} 
+			
 	}
 
 };

@@ -15,6 +15,14 @@ module.exports = {
 				}
 			return;
 		}
+		if(creep.memory.restroring == undefined) {
+			creep.memory.restoring = false;
+		}
+		if(creep.ticksToLive < 400 || creep.memory.restoring == true) {
+			creep.memory.restoring = true;
+			creep.getrestored();
+		}
+
                 if(Game.flags["Defender"] != undefined) {
                         var range = creep.pos.getRangeTo(Game.flags.Defender);
                         if(range > 0) {
