@@ -20,7 +20,9 @@ module.exports = {
 			structure = Game.getObjectById(creep.memory.container)
 		}
 	    
-		creep.mine();
+		if(creep.carry < 50) {
+			creep.mine();
+		}
 
 		if (structure != undefined) {
 			creep.memory.container = structure.id;
