@@ -102,7 +102,7 @@ module.exports = function() {
 		} 
 			
 	};
-	creep.prototype.mine =
+	Creep.prototype.mine =
         function() {
             var creep = this;
             var source = Game.getObjectById(creep.memory.source);
