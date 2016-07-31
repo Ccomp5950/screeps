@@ -1,5 +1,4 @@
 module.exports = function() {
-    // create a new function for StructureSpawn
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
@@ -9,7 +8,7 @@ module.exports = function() {
 	    }
             var source = Game.getObjectById(creep.memory.source);
 
-            if(source == null && creep.memory.role != "harvester" && creep.memory.role != "remoteharvester") {
+            if(source == null && creep.memory.role != "remoteharvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > 1
@@ -41,7 +40,6 @@ module.exports = function() {
                             }
 
 		    }
-			//TODO: FIX THIS SHIT
 		    else {
 							        
 	                        if(source.energy < 2 && source.isFree(creep)) {
@@ -103,6 +101,22 @@ module.exports = function() {
 			}
 		} 
 			
-	}
-
+	};
+	creep.prototype.mine =
+        function() {
+            var creep = this;
+            var source = Game.getObjectById(creep.memory.source);
+            if(source == null) {
+                        source = creep.pos.findClosestByRange(FIND_SOURCES);
+                        if(source != undefined) {
+                                creep.memory.source = source.id;
+                        } else {
+                                creep.memory.source = null;
+                        }
+            }
+            if(source != undefined) {
+		if(source.energy > 0) {
+			creep.harvest(source);
+		}
+	    }
 };

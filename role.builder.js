@@ -23,7 +23,7 @@ module.exports = {
         if (creep.memory.working == true) {
             // find closest constructionSite
             var constructionSite = null;
-	    if(creep.memory.build == undefined || Game.getObjectById(creep.memory.build) == undefined) {
+	    if(creep.memory.build == null || Game.getObjectById(creep.memory.build) == undefined) {
 		creep.memory.build = null;
 		constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 		if(constructionSite) {

@@ -27,10 +27,17 @@ module.exports = function() {
 		body = [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,HEAL,MOVE,MOVE,MOVE,MOVE,MOVE];
 		bodyset = true;
 	}
+	else if (roleName == "miner") {
+		body = [WORK,WORK,WORK,WORK,WORK,CARRY,MOVE];
+		bodyset = true;
+	}
         else if (roleName == "remoteharvester") {
                 body = [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
                 bodyset = true;
         }
+	else if (roleName == "harvester") {
+		body = [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+	}
 
 
 

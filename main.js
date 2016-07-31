@@ -12,6 +12,7 @@ var roleScout = require('role.scout');
 var roleAttacker = require('role.attacker');
 var roleDefender = require('role.defender');
 var roleRemoteHarvester = require('role.remoteharvester');
+var roleMiner = require('role.miner');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -78,6 +79,7 @@ module.exports.loop = function () {
     // for every creep name in Game.creeps
 
     var numberOfHarvesters = 0;
+    var numberOfMiners = 0;
     var numberOfUpgraders = 0;
     var numberOfBuilders = 0;
     var numberOfRepairers = 0;
@@ -103,6 +105,11 @@ module.exports.loop = function () {
 	    numberOfHarvesters++;
             roleHarvester.run(creep);
         }
+        else if (creep.memory.role == 'miner') {
+            numberOfMiners++;
+            roleMiner.run(creep);
+        }
+
         else if (creep.memory.role == 'defender') {
             numberOfDefenders++;
             roleDefender.run(creep);
@@ -155,7 +162,7 @@ module.exports.loop = function () {
 			} else {
 				for (let tower of towers) {
 		                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-	                                                                        filter: (s) => s.hits < 401
+	                                                                        filter: (s) => s.hits < 1001
 		                        });
 					if(structure != undefined) {
 						tower.repair(structure);
@@ -171,6 +178,7 @@ module.exports.loop = function () {
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
     var minimumNumberOfHarvesters = 3;
+    var minimumNumberOfMiners = 2;
     var minimumNumberOfUpgraders = 1;
     var minimumNumberOfBuilders = 1;
     var minimumNumberOfRepairers = 1;
@@ -207,8 +215,6 @@ module.exports.loop = function () {
 		if(name != ERR_NOT_ENOUGH_ENERGY) {
 			numberOfHarvesters++;
 		}
-	
-		
 	}
 
         // if spawning failed and we have no harvesters left
@@ -217,6 +223,10 @@ module.exports.loop = function () {
             name = Game.spawns.Spawn1.createCustomCreep(
                 myEnergy, 'harvester');
         }
+    }
+    else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
+	job = "Miner";
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'miner');	
     }
     // if not enough upgraders
     else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
