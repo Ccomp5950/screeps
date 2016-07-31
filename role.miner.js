@@ -23,7 +23,7 @@ module.exports = {
 			structure = Game.getObjectById(creep.memory.container)
 		}
 	    
-		if(creep.carry < 50) {
+		if(creep.carry[RESOURCE_ENERGY] < 50) {
 			console.log("HRM");
 			creep.mine();
 		}
