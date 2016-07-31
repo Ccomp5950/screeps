@@ -92,7 +92,7 @@ module.exports = function() {
 		}
 		return threat;
 	};
-	Creep.prototype.getrestored =
+	Creep.prototype.getRestored =
 	function() {
 		let creep = this;
 		if(creep.pos.getRangeTo(Game.spawns.Spawn1) > 1) {

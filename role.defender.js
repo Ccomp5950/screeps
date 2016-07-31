@@ -17,7 +17,7 @@ module.exports = {
 		}
 		if(creep.ticksToLive < 400 || creep.memory.restoring == true) {
 			creep.memory.restoring = true;
-			creep.getrestored();
+			creep.getRestored();
 			return;
 		}
 
