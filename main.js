@@ -144,11 +144,11 @@ module.exports.loop = function () {
 				tower.attack(biggestThreat[room]);	
 			}
 		} else {
-			let structure = Game.rooms[room].findClosestByRange(FIND_STRUCTURES, {
-									filter: (s) => s.hits < 101
-                        });
-			if(structure != undefined) {
-				for (let tower of towers) {
+			for (let tower of towers) {
+	                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+                                                                        filter: (s) => s.hits < 101
+	                        });
+				if(structure != undefined) {
 					tower.repair(structure);
 				}
 			}
