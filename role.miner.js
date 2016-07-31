@@ -24,7 +24,6 @@ module.exports = {
 		}
 	    
 		if(creep.carry[RESOURCE_ENERGY] < 50) {
-			console.log("HRM");
 			creep.mine();
 		}
 
