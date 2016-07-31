@@ -10,7 +10,7 @@ module.exports = function() {
 
             if(source == null && creep.memory.role != "remoteharvester") {
                 source = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE)
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
                 if(source != undefined) {
