@@ -8,11 +8,17 @@ module.exports = function() {
 	    }
             var source = Game.getObjectById(creep.memory.source);
 
-            if(source == null && creep.memory.role != "remoteharvester") {
+		if(source == null && creep.memory.role != "harvester") {
+			source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+			filter: (s) => (s.structureType == STRUCTURE_CONTAINER) && s.store[RESOURCE_ENERGY] == 2000
+		});
+
+		if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER)
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
+		}
                 if(source != undefined) {
                                 creep.memory.source = source.id;
                         } else {
