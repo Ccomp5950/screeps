@@ -16,6 +16,7 @@ module.exports = {
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
+			console.log("YESH");
 	          	structure = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
@@ -28,7 +29,6 @@ module.exports = {
 		}
 
 		if (structure != undefined) {
-			console.log("YESH");
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 			if(creep.carry > 0) {
