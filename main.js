@@ -135,7 +135,7 @@ module.exports.loop = function () {
             roleAttacker.run(creep);
         }
         else if (creep.memory.role == 'remoteharvester') {
-            numberOfRemoteHarvesters++;
+	    numberofRemoteHarvesters++;
             roleRemoteHarvester.run(creep);
         }
 
@@ -227,7 +227,7 @@ module.exports.loop = function () {
         job = "Defender";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
     }
-    else if (readyToSpawn && numberOfRemoteHarvesters < minimumNumberOfRemoteHarvesters) {
+    else if (readyToSpawn && numberofRemoteHarvesters < minimumNumberOfRemoteHarvesters) {
         job = "Remote Harvester";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'remoteharvester');
         }
