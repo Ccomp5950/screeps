@@ -96,9 +96,9 @@ module.exports = function() {
 		if(creep.pos.getRangeTo(Game.spawns.Spawn1) > 1) {
 			creep.moveTo(Game.spawns.Spawn1);
 		}
-		if(Game.spawns.Spawn1.spawning == null)
-			let result = Game.spawns.Spawn1.renewCreep(creep);
-			if(result == ERR_FULL || result == ERR_NOT_ENOUGH_ENERGY) {
+		if(Game.spawns.Spawn1.spawning == null) {
+			let resultA = Game.spawns.Spawn1.renewCreep(creep);
+			if(resultA == ERR_FULL || result == ERR_NOT_ENOUGH_ENERGY) {
 				creep.memory.restoring = false;
 			}
 		} 
