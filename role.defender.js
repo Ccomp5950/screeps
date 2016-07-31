@@ -23,7 +23,7 @@ module.exports = {
 			creep.getrestored();
 		}
 
-                if(Game.flags["Defender"] != undefined) {
+                if(Game.flags["Defender"] != undefined && creep.memory.restoring == false) {
                         var range = creep.pos.getRangeTo(Game.flags.Defender);
                         if(range > 0) {
                                 creep.moveTo(Game.flags.Defender);
