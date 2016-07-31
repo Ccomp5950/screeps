@@ -20,11 +20,11 @@ module.exports = {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
 		} else {
-			console.log("structure is set");
 			structure = Game.getObjectById(creep.memory.container)
 		}
 	    
 		if(creep.carry < 50) {
+			console.log("HRM");
 			creep.mine();
 		}
 
