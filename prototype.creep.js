@@ -28,7 +28,7 @@ module.exports = function() {
 			}
             }
 	    if(source != undefined) {
-		    if(source.structureType == STRUCTURE_CONTAINER || (creep.memory != "harvester" && source.structureType == STRUCTURE_STORAGE)) {
+		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE) {
 				if(source.store[RESOURCE_ENERGY] < creep.carryCapacity) {
 					creep.memory.source = null;
 					return;
@@ -36,6 +36,7 @@ module.exports = function() {
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(source) == ERR_NO_PATH) {
                                         creep.memory.source = null;
+					creep.memory.pulledfrom = source.id;
                                 }
                             }
 
