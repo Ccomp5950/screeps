@@ -21,15 +21,17 @@ module.exports.loop = function () {
     validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
-	let sourcesA = Game.rooms[room].find(FIND_SOURCES);
-	validSources[room] = [];
-	for(let sourceM of sourcesA) {
-		if(sourceM.energy > 2 && sourceM.isFree()) {
-			validSources[room].push(sourceM);
+	if(Game.rooms[room] != undefined) {
+		let sourcesA = Game.rooms[room].find(FIND_SOURCES);
+		validSources[room] = [];
+		for(let sourceM of sourcesA) {
+			if(sourceM.energy > 2 && sourceM.isFree()) {
+				validSources[room].push(sourceM);
+			}
 		}
+	        meaniesA[room] = [];
+		meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
 	}
-        meaniesA[room] = [];
-	meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
     }
     var underAttack = [];
     var biggestThreat = [];
