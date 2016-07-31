@@ -16,6 +16,11 @@ module.exports = {
             // switch state
             creep.memory.working = true;
             creep.memory.source = null;
+            if(creep.ticksToLive < 200) {
+                creep.memory.restoring = true;
+                creep.getRestored();
+                return;
+            }
         }
 
         // if creep is supposed to transfer energy to a structure
@@ -50,6 +55,11 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
+                if(creep.memory.restoring == true) {
+                        creep.getRestored();
+                        return;
+                }
+
 		creep.customharvest();
         }
     }
