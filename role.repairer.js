@@ -33,18 +33,23 @@ module.exports = {
 		}
 			
 	    }
+	    var rampartCandidates = [];	    
 	    if(structureCandidates.length == 0) {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
                  filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
                                                                          });
 		for(let tmpStructure of nextCandidates) {
 	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
-	                        structureCandidates.push(tmpStructure);
+	                        rampartCandidates.push(tmpStructure);
 	                        continue;
 	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
 				structureCandidates.push(tmpStructure);
 			}
 		}
+		if(structureCandidates.length == 0 && rampartCandidates.length > 0) {
+			structureCandidates = rampartCandidates;
+		}
+
 	    }
 	    if (structure == undefined && structureCandidates.length > 0) {
 		 structure = creep.pos.findClosestByPath(structureCandidates);
