@@ -227,7 +227,7 @@ module.exports.loop = function () {
         job = "Defender";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
     }
-    else if (readyToSpawn && numberOfRemoteHarveters < minimumNumberOfRemoteHarvesters) {
+    else if (readyToSpawn && numberOfRemoteHarvesters < minimumNumberOfRemoteHarvesters) {
         job = "Remote Harvester";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'remoteharvester');
         }
