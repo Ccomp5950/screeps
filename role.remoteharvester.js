@@ -48,6 +48,7 @@ module.exports = {
                         var range = creep.pos.getRangeTo(Game.flags[creep.name]);
                         if(range > 999) {
                                 creep.moveTo(Game.flags[creep.name]);
+				return;
                         }
                 }
 		creep.customharvest();
