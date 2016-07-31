@@ -114,7 +114,7 @@ module.exports = function() {
                                 creep.memory.source = null;
                         }
             }
-            if(source != undefined) {
+            if(source != null) {
 		if(source.energy > 0) {
 			creep.harvest(source);
 		}
