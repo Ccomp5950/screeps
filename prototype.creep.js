@@ -115,7 +115,6 @@ module.exports = function() {
                         }
             }
             if(source != null) {
-		console.log("HRM2");
 		if(source.energy > 0) {
 			creep.harvest(source);
 		}
