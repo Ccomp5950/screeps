@@ -111,9 +111,9 @@ module.exports.loop = function () {
         else if (creep.memory.role == 'miner') {
 	    let adjustment = 0;
 	    if(creep.nameIsEven == true) {
-		adjustment -= 15;
+		adjustment -= 35;
             } else {
-		adjustment += 20;		
+		adjustment += 45;		
 	    }
 	    if(creep.ticksToLive > Memory.lifeTimeOfMiners + adjustment) {
 	            numberOfMiners++;
