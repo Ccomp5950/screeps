@@ -20,9 +20,9 @@ module.exports = {
 		}
 		let flag = Game.flags[creep.name];
 		if(creep.memory.switchOnce == true) {
-			console.log("SHIT");
 			container = null;
 			let num = parseInt(creep.name.substr(creep.name.length));
+			console.log("num is: " + num);
 			if(num  % 2 == 0) {
 				flag = Game.flags["fetcher1"];
 			} else {
