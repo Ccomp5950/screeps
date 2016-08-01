@@ -229,7 +229,7 @@ module.exports.loop = function () {
     else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'miner');	
     }
-    else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
+    else if (myEnergy >= 800 && numberOfFetchers < minimumNumberOfFetchers) {
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'fetcher');
     }
     // if not enough upgraders

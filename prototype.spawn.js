@@ -39,6 +39,10 @@ module.exports = function() {
 		body = [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
 		bodyset = true;
 	}
+	else if (roleName == "fetcher") {
+		body = [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+		bodyset = true;
+        }
 
 
 
