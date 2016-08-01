@@ -21,7 +21,7 @@ module.exports = {
 		let flag = Game.flags[creep.name];
 		if(creep.memory.switchOnce == true) {
 			container = null;
-			let num = creep.name.substr(creep.name.length).toInt()
+			let num = parseInt(creep.name.substr(creep.name.length));
 			if(num  % 2 == 0) {
 				flag = Game.flags["fetcher1"];
 			} else {
