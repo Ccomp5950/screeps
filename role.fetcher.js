@@ -6,17 +6,31 @@ module.exports = {
                 }
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage;
-	        if(creep.ticksToLive < 200) {
+		if(container.store[RESOURCE_ENERGY] < 50) {
+			creep.memory.switchOnce = true;
+		}
+		
+	        if(creep.ticksToLive < 100) {
 	                creep.memory.restoring = true;
 	                creep.getRestored();
                 return;
 		}
+		let flag = Game.flags[creep.name];
+		if(creep.memory.switchOnce == true) {
+			container = null;
+			let num = creep.name.substr(creep.name.length).toInt()
+			if(num  % 2 == 0) {
+				flag = Game.flags["fetcher1"];
+			} else {
+				flag = Game.flags["fetcher2"];
+			}
+		}
 
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
-	                if(Game.flags[creep.name] != undefined) {
-	                        var range = creep.pos.getRangeTo(Game.flags[creep.name]);
+	                if(flag != undefined) {
+	                        var range = creep.pos.getRangeTo(flag);
 	                        if(range > 0) {
-	                                creep.moveTo(Game.flags[creep.name]);
+	                                creep.moveTo(flag);
 	                                return;
 	                        }
 	                }
@@ -24,7 +38,7 @@ module.exports = {
 			if(creep.memory.container == null) {
 				creep.memory.container = null;
 			}
-			if(creep.memory.container == null || container == null) {
+			if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {
 		          	container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 					});
@@ -42,6 +56,7 @@ module.exports = {
 				return;
 			} else {
 				creep.transfer(storage, RESOURCE_ENERGY);
+				creep.memory.switchOnce = false;
 			}
 			
 
