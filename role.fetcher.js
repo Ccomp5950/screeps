@@ -32,7 +32,7 @@ module.exports = {
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
 	                if(flag != undefined) {
 	                        var range = creep.pos.getRangeTo(flag);
-	                        if(range > 0) {
+	                        if(range > 1) {
 	                                creep.moveTo(flag);
 	                                return;
 	                        }
