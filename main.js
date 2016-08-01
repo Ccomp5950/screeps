@@ -203,7 +203,7 @@ module.exports.loop = function () {
     var minimumNumberOfWallRepairers = 1;
     var minimumNumberOfTowerTenders = 0;
     var minimumNumberOfScouts = 0;
-    var minimumNumberOfAttackers = 0;
+    var minimumNumberOfAttackers = 1;
     var minimumNumberOfDefenders = 1;
     var minimumNumberOfRemoteHarvesters = 6;
 
