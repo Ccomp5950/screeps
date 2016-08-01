@@ -8,12 +8,16 @@ module.exports = {
 			creep.heal(creep);
 		}
 
-	        var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
-	        if (target != undefined) {
-	                    if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-	                        creep.moveTo(target);
+		for(room in Memory.myrooms) {
+			if(Game.rooms[room] != null) {
+			        var target = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
+			        if (target != undefined) {	
+			                    if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+			                        creep.moveTo(target);
+						}
+					return;
 				}
-			return;
+			}
 		}
 		if(creep.ticksToLive < 400 || creep.memory.restoring == true) {
 			creep.memory.restoring = true;
