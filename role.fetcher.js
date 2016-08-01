@@ -7,7 +7,7 @@ module.exports = {
 		
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage;
-		if(container != null && container.store[RESOURCE_ENERGY] < 50) {
+		if(container != null && container.store[RESOURCE_ENERGY] < creep.carryCapacity) {
 			creep.memory.switchOnce = true;
 		} else {
 			
