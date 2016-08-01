@@ -18,9 +18,10 @@ var roleFetcher = require('role.fetcher');
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
-    
+ 
     validSources = [];
     var meaniesA = [];
+
     for(let room of Memory.myrooms) {
 	if(Game.rooms[room] != undefined) {
 		let sourcesA = Game.rooms[room].find(FIND_SOURCES);
@@ -34,6 +35,7 @@ module.exports.loop = function () {
 		meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
 	}
     }
+    var dontBuild = false;
     var underAttack = [];
     var biggestThreat = [];
     var biggestThreatRating = [];
@@ -42,7 +44,7 @@ module.exports.loop = function () {
     biggestThreat[room] = null;
     biggestThreatRating[room] = -2;
     if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
-
+	dontBuild = true;
 	underAttack[room] = true;
 	var meaniename = "";
 	for (let enemy_creep of meaniesA[room]) {
@@ -180,7 +182,9 @@ module.exports.loop = function () {
 		
 	}
 
-   
+	if(dontBuild == true) {
+		return;
+	}   
 
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
