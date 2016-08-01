@@ -16,9 +16,6 @@ var roleMiner = require('role.miner');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
-    if(Memory.wallMinHealth == undefined) {
-	Memory.wallMinHealth = 3000000;
-    }
     validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
@@ -80,6 +77,7 @@ module.exports.loop = function () {
 
     var numberOfHarvesters = 0;
     var numberOfMiners = 0;
+    var numberOfFetchers = 0;
     var numberOfUpgraders = 0;
     var numberOfBuilders = 0;
     var numberOfRepairers = 0;
@@ -108,6 +106,10 @@ module.exports.loop = function () {
         else if (creep.memory.role == 'miner') {
             numberOfMiners++;
             roleMiner.run(creep);
+        }
+        else if (creep.memory.role == 'fetcher') {
+            numberOfFetchers++;
+            roleFetcher.run(creep);
         }
 
         else if (creep.memory.role == 'defender') {
@@ -177,8 +179,9 @@ module.exports.loop = function () {
 
     // setup some minimum numbers for different roles
     var spawnInfinite = false;
-    var minimumNumberOfHarvesters = 2;
+    var minimumNumberOfHarvesters = 0;
     var minimumNumberOfMiners = 2;
+    var minimumNumberOfFetchers = 2;
     var minimumNumberOfUpgraders = 1;
     var minimumNumberOfBuilders = 1;
     var minimumNumberOfRepairers = 1;
@@ -208,7 +211,6 @@ module.exports.loop = function () {
     }
     // if not enough harvesters
     if (numberOfHarvesters < minimumNumberOfHarvesters) {
-	job = "Harvester";
         // try to spawn one
         if(readyToSpawn) {
 		name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'harvester');
@@ -225,56 +227,48 @@ module.exports.loop = function () {
         }
     }
     else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
-	job = "Miner";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'miner');	
+    }
+    else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
+        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'fetcher');
     }
     // if not enough upgraders
     else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
-	job = "Upgrader";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'upgrader');
     }
     else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
-	job = "Repairer";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
     }
     else if (myEnergy >= 800 && numberOfDefenders < minimumNumberOfDefenders) {
-        job = "Defender";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
     }
     else if (readyToSpawn && numberofRemoteHarvesters < minimumNumberOfRemoteHarvesters) {
-        job = "Remote Harvester";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'remoteharvester');
         }
     else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
-	job = "Builder";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
     }
     else if (readyToSpawn && numberOfWallRepairers < minimumNumberOfWallRepairers) {
-	job = "Wall Repairer";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'wallRepairer');
     }
     else if (readyToSpawn && numberOfTowerTenders < minimumNumberOfTowerTenders) {
-        job = "Tower Tender";
         // try to spawn one
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'towertender');
     }
     else if (myEnergy >= 200 && numberOfScouts < minimumNumberOfScouts) {
-	job = "Scout";
 	name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'scout');
     }
     else if (myEnergy >= 800 && numberOfAttackers < minimumNumberOfAttackers) {
-        job = "Attacker";
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'attacker');
     }
     else if (readyToSpawn && spawnInfinite) {
-	job = "Builder";
         // else try to spawn a builder
         name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
     }
     // print name to console if spawning was a success
     // name > 0 would not work since string > 0 returns false
     if (!(name < 0) && name != undefined) {
-        console.log("Spawned new creep: " + name + " the " + job);
+        console.log("Spawned new creep: " + name );
     }
 };
