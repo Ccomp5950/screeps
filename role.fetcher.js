@@ -6,6 +6,12 @@ module.exports = {
                 }
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage;
+	        if(creep.ticksToLive < 200) {
+	                creep.memory.restoring = true;
+	                creep.getRestored();
+                return;
+		}
+
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
 	                if(Game.flags[creep.name] != undefined) {
 	                        var range = creep.pos.getRangeTo(Game.flags[creep.name]);
