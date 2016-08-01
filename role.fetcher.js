@@ -13,10 +13,10 @@ module.exports = {
 			
 		}
 		
-	        if(creep.ticksToLive < 100) {
+	        if(creep.ticksToLive < 100 || creep.memory.restoring == true;) {
 	                creep.memory.restoring = true;
 	                creep.getRestored();
-                return;
+	                return;
 		}
 		let flag = Game.flags[creep.name];
 		if(creep.memory.switchOnce == true) {
