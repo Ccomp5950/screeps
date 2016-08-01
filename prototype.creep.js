@@ -1,4 +1,15 @@
 module.exports = function() {
+	Creep.prototype.nameIsEven =
+	function() {
+		var creep = this;
+		let num = parseInt(creep.name.substr(creep.name.length - 1));
+		if(num  % 2 == 0) {
+			return true;;
+		} else {
+			return false;
+		}
+
+	};
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
