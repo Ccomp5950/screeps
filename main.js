@@ -13,9 +13,12 @@ var roleAttacker = require('role.attacker');
 var roleDefender = require('role.defender');
 var roleRemoteHarvester = require('role.remoteharvester');
 var roleMiner = require('role.miner');
+var roleFetcher = require('role.fetcher');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
+
+    
     validSources = [];
     var meaniesA = [];
     for(let room of Memory.myrooms) {
