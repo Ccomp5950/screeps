@@ -107,7 +107,9 @@ module.exports.loop = function () {
             roleHarvester.run(creep);
         }
         else if (creep.memory.role == 'miner') {
-            numberOfMiners++;
+	    if(creep.ticksToLive > Memory.lifeTimeOfMiners) {
+	            numberOfMiners++;
+	    }
             roleMiner.run(creep);
         }
         else if (creep.memory.role == 'fetcher') {
