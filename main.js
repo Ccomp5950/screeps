@@ -95,7 +95,7 @@ module.exports.loop = function () {
         // get the creep object
         var creep = Game.creeps[name];
 
-	if((underAttack[creep.room.name] && creep.memory.role != "defender") || creep.memory.role == 'towertender') {
+	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner") || creep.memory.role == 'towertender') {
 		numberOfTowerTenders++;
 		roleTowerTender.run(creep);
 	}
