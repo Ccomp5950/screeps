@@ -46,7 +46,7 @@ module.exports = {
 	    var rampartCandidates = [];	    
 	    if(structureCandidates.length == 0) {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
-                 filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL
+                 filter: (s) => (s.hits /  s.hitsMax < 0.90)  && s.structureType != STRUCTURE_WALL
                                                                          });
 		for(let tmpStructure of nextCandidates) {
 	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
