@@ -105,7 +105,7 @@ module.exports = function() {
 		}
 		if(Game.spawns.Spawn1.spawning == null) {
 			let resultA = Game.spawns.Spawn1.renewCreep(creep);
-			if(resultA == ERR_FULL || creep.ticksToLive > 1400) {
+			if(resultA == ERR_FULL || (resultA == ERR_NOT_ENOUGH_ENERGY && creep.memory.role == "harvester") || creep.ticksToLive > 1400) {
 				creep.memory.restoring = false;
 			}
 		} 
