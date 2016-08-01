@@ -32,10 +32,10 @@ module.exports = {
 
 		}else {
 			if(creep.pos.getRangeTo(storage) > 1) {
-				creep.MoveTo(storage);
+				creep.moveTo(storage);
 				return;
 			} else {
-				creep.Transfer(storage, RESOURCE_ENERGY);
+				creep.transfer(storage, RESOURCE_ENERGY);
 			}
 			
 
