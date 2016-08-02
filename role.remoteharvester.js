@@ -27,7 +27,7 @@ module.exports = {
             // find closest spawn, extension or tower which is not full
 		let constructionSite = null;
 		let constructionSites = creep.pos.findInRange(FIND_CONSTRUCTION_SITES,3);
-		let roads = creep.pos.findInRange(FIND_STUCTURES, 3, { filter: (s) => s.structureType == STRUCTURE_ROAD });
+		let roads = creep.pos.findInRange(FIND_STRUCTURES, 3, { filter: (s) => s.structureType == STRUCTURE_ROAD });
 		let road = null;
 		let lowestHits = 99999;
 		let hasRoad = false;
