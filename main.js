@@ -6,19 +6,19 @@ require('prototype.source')();
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
-var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          run: require('role.harvester')},
-                        miner:          {namer:"miner",                  minimum:2,      requirement:900,        run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        run: require('role.fetcher')},
-                        upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          run: require('role.upgrader')},
-                        builder:        {namer:"builder",                minimum:1,      requirement:0,          run: require('role.builder')},
-                        repairer:       {namer:"repairer",               minimum:1,      requirement:0,          run: require('role.repairer')},
-                        wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          run: require('role.wallRepairer')},
-                        towertender:    {namer:"towertender",            minimum:0,      requirement:0,          run: require('role.towertender')},
-                        scout:          {namer:"scout",                  minimum:0,      requirement:200,        run: require('role.scout')},
-                        attacker:       {namer:"attacker",               minimum:1,      requirement:800,        run: require('role.attacker')},
-                        defender:       {namer:"defender",               minimum:1,      requirement:800,        run: require('role.defender')},
-                        raider:         {namer:"raider",                 minimum:0,      requirement:800,        run: require('role.raider')},
-                        remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       run: require('role.remoteharvester')}
+var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          buildRestriction = false,	run: require('role.harvester')},
+                        miner:          {namer:"miner",                  minimum:2,      requirement:900,        buildRestriction = true,	run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        buildRestriction = true,	run: require('role.fetcher')},
+                        upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          buildRestriction = true,	run: require('role.upgrader')},
+                        builder:        {namer:"builder",                minimum:1,      requirement:0,          buildRestriction = true,	run: require('role.builder')},
+                        repairer:       {namer:"repairer",               minimum:1,      requirement:0,          buildRestriction = true,	run: require('role.repairer')},
+                        wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          buildRestriction = true,	run: require('role.wallRepairer')},
+                        towertender:    {namer:"towertender",            minimum:0,      requirement:0,          buildRestriction = false,	run: require('role.towertender')},
+                        scout:          {namer:"scout",                  minimum:0,      requirement:200,        buildRestriction = true,	run: require('role.scout')},
+                        attacker:       {namer:"attacker",               minimum:1,      requirement:800,        buildRestriction = false,	run: require('role.attacker')},
+                        defender:       {namer:"defender",               minimum:1,      requirement:800,        buildRestriction = false,	run: require('role.defender')},
+                        raider:         {namer:"raider",                 minimum:0,      requirement:800,        buildRestriction = false,	run: require('role.raider')},
+                        remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       buildRestriction = true,	run: require('role.remoteharvester')}
                         };
 
 
@@ -153,10 +153,6 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 		
 	}
 
-	if(dontBuild == true) {
-		return;
-	}   
-
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
     //  arrow function, which checks for the creep being a harvester
@@ -187,6 +183,9 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
 	for(let role in roles) {
 		if(roles[role].minimum > roles[role].current) {
+			if(roles[role].buildRestrictions == true && dontBuild == true) {
+				break;
+			}
 			if(roles[role].requirement > 0 && myActualEnergy > roles[role].requirement) {
 				name = mySpawn.createCustomCreep(myActualEnergy, roles[role].namer);
 			}
