@@ -93,7 +93,7 @@ module.exports.loop = function () {
         var creep = Game.creeps[name];
 
 	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner" && creep.memory.role != "attacker") || creep.memory.role == 'towertender') {
-		roles["towertender"].current]++;
+		roles["towertender"].current++;
 		roles["towertender"].run(creep);
 	}
         else if (creep.memory.role == 'miner') {
