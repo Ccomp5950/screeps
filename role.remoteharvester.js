@@ -48,13 +48,13 @@ module.exports = {
 				constructionSite = constructionSites[c];
 		}
 
+		if(road != null) {
+			creep.repair(road);
+                } else if(constructionSite != null && noMoreConstruction == false) {
+                        creep.build(constructionSite);
+
 		if(hasRoad == false && hasConstruction == false) {
 			creep.room.createConstructionSite(creep.pos, STRUCTURE_ROAD)
-		} else if(constructionSite != null && noMoreConstruction == false) {
-			creep.build(constructionSite);
-		
-		} else if(road != null) {
-			creep.repair(road);
 		}
 	    
                 if(Game.flags["Home"] != undefined) {
