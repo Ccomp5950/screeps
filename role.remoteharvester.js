@@ -42,10 +42,10 @@ module.exports = {
 			}
 		}
 		for(let c in constructionSites) {
-			if(creep.pos.x == c.pos.x && creep.pos.y == c.pos.y) {
+			if(creep.pos.x == constructionSites[c].pos.x && creep.pos.y == constructionSites[c].pos.y) {
 				hasConstruction = true;
 			}
-				constructionSite = c;
+				constructionSite = constructionSites[c];
 		}
 
 		if(hasRoad == false && hasConstruction == false) {
