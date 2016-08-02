@@ -15,7 +15,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
                         wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          run: require('role.wallRepairer')},
                         towertender:    {namer:"towertender",            minimum:0,      requirement:0,          run: require('role.towertender')},
                         scout:          {namer:"scout",                  minimum:0,      requirement:200,        run: require('role.scout')},
-                        attacker:       {namer:"attacker",               minimum:0,      requirement:800,        run: require('role.attacker')},
+                        attacker:       {namer:"attacker",               minimum:1,      requirement:800,        run: require('role.attacker')},
                         defender:       {namer:"defender",               minimum:1,      requirement:800,        run: require('role.defender')},
                         raider:         {namer:"raider",                 minimum:0,      requirement:800,        run: require('role.raider')},
                         remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       run: require('role.remoteharvester')}
@@ -51,10 +51,14 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     var biggestThreat = [];
     var biggestThreatRating = [];
     for(let room of Memory.myrooms) {
+    redAlert = false;
     underAttack[room] = false;
+    worstThreat = null;
+    worstThreatRating = -2;
     biggestThreat[room] = null;
     biggestThreatRating[room] = -2;
     if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
+	redAlert = true;
 	dontBuild = true;
 	underAttack[room] = true;
 	var meaniename = "";
@@ -78,6 +82,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	console.log("[" + room + "]OH FUCK " + meaniesA[room].length + meaniename + "Biggest Threat: " + biggestThreatRating[room]);
 	}
     }
+    
 
 
     for (let name in Memory.creeps) {
@@ -111,7 +116,10 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 		roles["miner"].current++;
 	    }
 	    roles["miner"].run.run(creep);
-        }
+        } 
+	else if(redAlert){
+		
+	}
         else {
 		if(roles[creep.memory.role] == null) {
 			console.log("Warning: " + name + " has a bad role: " + creep.memory.role);
