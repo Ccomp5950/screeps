@@ -179,12 +179,12 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	} else {
 
 	for(let role in roles) {
-		if(role.minimum > role.current) {
-			if(role.requirement > 0 && myActualEnergy > role.requirement) {
-				name = mySpawn.Spawn1.createCustomCreep(myActualEnergy, role.namer);
+		if(roles[role].minimum > roles[role].current) {
+			if(roles[role].requirement > 0 && myActualEnergy > roles[role.]requirement) {
+				name = mySpawn.Spawn1.createCustomCreep(myActualEnergy, roles[role.]namer);
 			}
 			else if(readyToSpawn) {
-				name = mySpawn.Spawn1.createCustomCreep(myEnergy, role.namer);
+				name = mySpawn.Spawn1.createCustomCreep(myEnergy, roles[role].namer);
 			}
 		}
 		if(!(name < 0) && name != undefined) {
