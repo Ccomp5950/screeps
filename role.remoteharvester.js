@@ -25,6 +25,37 @@ module.exports = {
         // if creep is supposed to transfer energy to a structure
         if (creep.memory.working == true) {
             // find closest spawn, extension or tower which is not full
+		let constructionSite = null;
+		let constructionSites = creep.pos.findInRange(FIND_CONSTRUCTION_SITE,3);
+		let roads = creep.pos.findInRange(FIND_STUCTURES, 3, { filter: (s) => s.structureType == STRUCTURE_ROAD });
+		let road = null;
+		let lowestHits = 99999;
+		let hasRoad = false;
+		let hasConstruction = false;
+
+		for(let r in roads) {
+			if(creep.pos.x == r.pos.x && creep.pos.y == r.pos.y) {
+				hasRoad = true;
+			}
+			if((r.hits < r.hitsMax - 500) && lowestHits < r.hits) {
+				road = r;
+			}
+		}
+		for(let c in constructionSites) {
+			if(creep.pos.x == c.pos.x && creep.pos.y == c.pos.y) {
+				hasConstruction = true;
+			}
+				constructionSite = c;
+		}
+
+		if(hasRoad == false && hasConstruction == false) {
+			creep.room.createConstructionSite(creep.pos, STRUCTURE_ROAD)
+		} else if(constructionSite != null) {
+			creep.build(constructionSite);
+		
+		} else if(road != null) {
+			creep.repair(road);
+		}
 	    
                 if(Game.flags["Home"] != undefined) {
                         var range = creep.pos.getRangeTo(Game.flags.Home);
