@@ -113,20 +113,20 @@ module.exports = function() {
 		var threat = 0;
 		var log = 1;
 		for(let i = 0; i < creep.body.length; i++) {
-			
-			if(body[0].type == "attack" && body[0].hits > 0) {
+			let part = creep.body[i];	
+			if(part.type == "attack" && part.hits > 0) {
 				threat += 2;
 			}
-			else if(body[0].type == "ranged_attack" && body[0].hits > 0) {
+			else if(part.type == "ranged_attack" && part.hits > 0) {
 				threat += 3;
 			}
-			else if (body[0].type == "heal" && body[0].hits > 0) {
+			else if (part.type == "heal" && part.hits > 0) {
 				threat += 10;
 			}
-			else if (body[0].type == "tough" && body[0].hits > 0) {
+			else if (part.type == "tough" && part.hits > 0) {
 				threat += 1;
 			}
-			else if (body[0].type == "build" && body[0].hits > 0) {
+			else if (part.type == "build" && part.hits > 0) {
 				threat += 1;
 			}
 		}
