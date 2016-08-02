@@ -6,7 +6,7 @@ require('prototype.source')();
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
-var roles =            [harvester:      {namer:"harvester",              minimum:2,      requirement:0,          run: require('role.harvester')},
+var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          run: require('role.harvester')},
                         miner:          {namer:"miner",                  minimum:2,      requirement:900,        run: require('role.miner')},
                         fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        run: require('role.fetcher')},
                         upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          run: require('role.upgrader')},
@@ -19,7 +19,7 @@ var roles =            [harvester:      {namer:"harvester",              minimum
                         defender:       {namer:"defender",               minimum:1,      requirement:800,        run: require('role.defender')},
                         raider:         {namer:"raider",                 minimum:0,      requirement:800,        run: require('role.raider')},
                         remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       run: require('role.remoteharvester')}
-                        ];
+                        };
 
 
 
