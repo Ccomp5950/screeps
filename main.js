@@ -2,19 +2,19 @@
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
-var roles =            {harvester:	{name:"harvester",		minimum:2,	requirement:0,		require('role.harvester')},
-                        miner:		{name:"miner",			minimum:2,	requirement:900,	require('role.miner')},
-                        fetcher: 	{name:"fetcher",		minimum:2,	requirement:850,	require('role.fetcher')},
-                        upgrader: 	{name:"upgrader",		minimum:1,	requirement:0,		require('role.upgrader')},
-                        builder:	{name:"builder",		minimum:1,	requirement:0,		require('role.builder')},
-                        repairer:	{name:"repairer",		minimum:1,	requirement:0,		require('role.repairer')},
-                        wallrepairer:	{name:"wallrepairer",		minimum:1,	requirement:0,		require('role.wallRepairer')},
-                        towertender:	{name:"towertender",		minimum:0,	requirement:0,		require('role.towertender')},
-                        scout:		{name:"scout",			minimum:0,	requirement:200,	require('role.scout')},
-                        attacker:	{name:"attacker",		minimum:0,	requirement:800,	require('role.attacker')},
-                        defender:	{name:"defender",		minimum:1,	requirement:800,	require('role.defender')},
-                        raider:		{name:"raider",			minimum:0,	requirement:800,	require('role.raider')},
-                        remoteharvester:{name:"remoteharvester",	minimum:6,	requirement:1000,	require('role.remoteharvester')}
+var roles =            {harvester:	{name:"harvester",		minimum:2,	requirement:0,		run: require('role.harvester')},
+                        miner:		{name:"miner",			minimum:2,	requirement:900,	run: require('role.miner')},
+                        fetcher: 	{name:"fetcher",		minimum:2,	requirement:850,	run:require('role.fetcher')},
+                        upgrader: 	{name:"upgrader",		minimum:1,	requirement:0,		run:require('role.upgrader')},
+                        builder:	{name:"builder",		minimum:1,	requirement:0,		run:require('role.builder')},
+                        repairer:	{name:"repairer",		minimum:1,	requirement:0,		run:equire('role.repairer')},
+                        wallrepairer:	{name:"wallrepairer",		minimum:1,	requirement:0,		run:require('role.wallRepairer')},
+                        towertender:	{name:"towertender",		minimum:0,	requirement:0,		run:require('role.towertender')},
+                        scout:		{name:"scout",			minimum:0,	requirement:200,	run:require('role.scout')},
+                        attacker:	{name:"attacker",		minimum:0,	requirement:800,	run:require('role.attacker')},
+                        defender:	{name:"defender",		minimum:1,	requirement:800,	run:require('role.defender')},
+                        raider:		{name:"raider",			minimum:0,	requirement:800,	run:require('role.raider')},
+                        remoteharvester:{name:"remoteharvester",	minimum:6,	requirement:1000,	run:require('role.remoteharvester')}
                         };
 
 module.exports.loop = function () {
