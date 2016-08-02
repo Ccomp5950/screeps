@@ -26,6 +26,7 @@ var roles =            {harvester:      {name:"harvester",              minimum:
 
 
     for(let role in roles) {
+	console.log("lala " + role.name);
 	role.current = 0;
     } 
     validSources = [];
