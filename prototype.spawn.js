@@ -10,7 +10,7 @@ module.exports = function() {
 				}
 			}
 		}
-	result.push(MOVE);
+	result.push("move");
 	return result;
 	};
 		
