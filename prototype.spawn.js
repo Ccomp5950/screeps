@@ -30,72 +30,48 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
+	if(roleName == "towerdrainer") {
+		body = this.buildBody({tough:5,move:9,heal:4});
+		bodyset = true;
+	}
 	if(roleName == "scout") {
 		body = this.buildBody({move:3,carry:1});
 		bodyset = true;
 	}
 	else if(roleName == "attacker") {
-		body = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+		body = this.buildBody({attack:5,move:6});
 		bodyset = true;
 	}
 	else if (roleName == "defender") {
-		body = [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,HEAL,MOVE,MOVE,MOVE,MOVE,MOVE];
+		body = this.buildBody({tough:6,attack:3,move:5,heal:1});
 		bodyset = true;
 	}
 	else if (roleName == "miner") {
-		body = [WORK,WORK,WORK,WORK,WORK,CARRY,MOVE];
+		body = this.buildBody({work:5,carry:1,move:2});
 		bodyset = true;
 	}
         else if (roleName == "remoteharvester") {
-                body = [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;
         }
-	else if (roleName == "harvester") {
-		body = [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+	else if (roleName == "harvester" && energy > 850) {
+		body = this.buildBody({work:1,carry:7,move:8});
 		bodyset = true;
 	}
 	else if (roleName == "fetcher") {
-		body = [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+		body = this.buildBody({carry:8,move:9,work:1});
 		bodyset = true;
         }
 
 
 
 	if(!bodyset) {
-	    switch(numberOfParts) {
-            case 1:
-	    	body = [WORK, CARRY, CARRY, MOVE];
-		bodyset = true;
-		break;
-	    case 2:
-		body = [WORK,WORK,CARRY,CARRY,CARRY,MOVE];
-		bodyset = true;
-		break;
-	    case 3:
-		body = [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE];
-		bodyset = true;
-		break;
-            case 4:
-		body = [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
-		bodyset = true;
-		break;
-	    }
-		
-
-
-	}
-	if(!bodyset) {
             for (let i = 0; i < numberOfParts; i++) {
                 body.push(WORK);
+		body.push(CARRY);
+		body.push(MOVE);
             }
-            for (let i = 0; i < numberOfParts; i++) {
-                body.push(CARRY);
-            }
-            for (let i = 0; i < numberOfParts; i++) {
-                body.push(MOVE);
-            }	
 	}
-
             // create creep with the created body and the given role
             return this.createCreep(body, name, { role: roleName, working: false, source: null });
         };

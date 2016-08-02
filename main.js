@@ -2,23 +2,27 @@
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var roleRepairer = require('role.repairer');
-var roleWallRepairer = require('role.wallRepairer');
-var roleTowerTender = require('role.towertender');
-var roleScout = require('role.scout');
-var roleAttacker = require('role.attacker');
-var roleDefender = require('role.defender');
-var roleRemoteHarvester = require('role.remoteharvester');
-var roleMiner = require('role.miner');
-var roleFetcher = require('role.fetcher');
+var roles =            {harvester:	{name:"harvester"		minimum:2,	requirement:0,		require('role.harvester')},
+                        miner:		{name:"miner",			minimum:2,	requirement:900,	require('role.miner')},
+                        fetcher: 	{name:"fetcher",		minimum:2,	requirement:850,	require('role.fetcher')},
+                        upgrader: 	{name:"upgrader",		minimum:1,	requirement:0,		require('role.upgrader')},
+                        builder:	{name:"builder",		minimum:1,	requirement:0,		require('role.builder')},
+                        repairer:	{name:"repairer",		minimum:1,	requirement:0,		require('role.repairer')},
+                        wallrepairer:	{name:"wallrepairer",		minimum:1,	requirement:0,		require('role.wallRepairer')},
+                        towertender:	{name:"towertender",		minimum:0,	requirement:0,		require('role.towertender')},
+                        scout:		{name:"scout",			minimum:0,	requirement:200,	require('role.scout')},
+                        attacker:	{name:"attacker",		minimum:0,	requirement:800,	require('role.attacker')},
+                        defender:	{name:"defender",		minimum:1,	requirement:800,	require('role.defender')},
+                        raider:		{name:"raider",			minimum:0,	requirement:800,	require('role.raider')},
+                        remoteharvester:{name:"remoteharvester",	minimum:6,	requirement:1000,	require('role.remoteharvester')}
+                        };
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
- 
+    for(let role in roles) {
+	role.current = 0;
+    } 
     validSources = [];
     var meaniesA = [];
 
@@ -38,19 +42,6 @@ module.exports.loop = function () {
 
     
     var spawnInfinite = false;
-    var minimumNumberOfHarvesters = 2;
-    var minimumNumberOfMiners = 2;
-    var minimumNumberOfFetchers = 2;
-    var minimumNumberOfUpgraders = 1;
-    var minimumNumberOfBuilders = 1;
-    var minimumNumberOfRepairers = 1;
-    var minimumNumberOfWallRepairers = 1;
-    var minimumNumberOfTowerTenders = 0;
-    var minimumNumberOfScouts = 0;
-    var minimumNumberOfAttackers = 0;
-    var minimumNumberOfDefenders = 1;
-    var minimumNumberOfRemoteHarvesters = 6;
-
     var dontBuild = false;
     var underAttack = [];
     var biggestThreat = [];
@@ -96,34 +87,15 @@ module.exports.loop = function () {
 
     // for every creep name in Game.creeps
 
-    var numberOfHarvesters = 0;
-    var numberOfMiners = 0;
-    var numberOfFetchers = 0;
-    var numberOfUpgraders = 0;
-    var numberOfBuilders = 0;
-    var numberOfRepairers = 0;
-    var numberOfWallRepairers = 0;
-    var numberOfTowerTenders = 0;
-    var numberOfScouts = 0;
-    var numberOfAttackers = 0;
-    var numberOfDefenders = 0;
-    var numberofRemoteHarvesters = 0;
-
+	
     for (let name in Game.creeps) {
         // get the creep object
         var creep = Game.creeps[name];
 
 	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner" && creep.memory.role != "attacker") || creep.memory.role == 'towertender') {
-		numberOfTowerTenders++;
-		roleTowerTender.run(creep);
+		roles["towertender"].current]++;
+		roles["towertender"].run(creep);
 	}
-	
-
-        // if creep is harvester, call harvester script
-        else if (creep.memory.role == 'harvester') {
-	    numberOfHarvesters++;
-            roleHarvester.run(creep);
-        }
         else if (creep.memory.role == 'miner') {
 	    let adjustment = 0;
 	    if(creep.nameIsEven == true) {
@@ -132,53 +104,14 @@ module.exports.loop = function () {
 		adjustment += 45;		
 	    }
 	    if(creep.ticksToLive > Memory.lifeTimeOfMiners + adjustment) {
-	            numberOfMiners++;
+		roles["miner"].current++;
 	    }
-            roleMiner.run(creep);
+	    roles["miner"].run(creep);
         }
-        else if (creep.memory.role == 'fetcher') {
-            numberOfFetchers++;
-            roleFetcher.run(creep);
-        }
-
-        else if (creep.memory.role == 'defender') {
-            numberOfDefenders++;
-            roleDefender.run(creep);
-        }
-
-        // if creep is upgrader, call upgrader script
-        else if (creep.memory.role == 'upgrader') {
-            numberOfUpgraders++;
-            roleUpgrader.run(creep);
-        }
-        // if creep is builder, call builder script
-        else if (creep.memory.role == 'builder') {
-            numberOfBuilders++;
-            roleBuilder.run(creep);
-        }
-        // if creep is repairer, call repairer script
-        else if (creep.memory.role == 'repairer') {
-            numberOfRepairers++;
-            roleRepairer.run(creep);
-        }
-        // if creep is wallRepairer, call wallRepairer script
-        else if (creep.memory.role == 'wallRepairer') {
-            numberOfWallRepairers++
-            roleWallRepairer.run(creep);
-        }
-	else if (creep.memory.role == 'scout') {
-	    numberOfScouts++;
-            roleScout.run(creep);
+        else {
+		roles[creep.memory.role].current++;
+		roles[creep.memory.role].run(creep);
 	}
-        else if (creep.memory.role == 'attacker') {
-            numberOfAttackers++;
-            roleAttacker.run(creep, minimumNumberOfAttackers);
-        }
-        else if (creep.memory.role == 'remoteharvester') {
-	    numberofRemoteHarvesters++;
-            roleRemoteHarvester.run(creep);
-        }
-
     }
 
 	for(let room of Memory.myrooms) {
@@ -211,9 +144,11 @@ module.exports.loop = function () {
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
     //  arrow function, which checks for the creep being a harvester
-    var energy = Game.spawns.Spawn1.room.energyCapacityAvailable;
+    var mySpawn = Game.spawns.Spawn1;
+    var myActualEnergy = mySpawn.room.energyAvailable;
+    var energy = mySpawn.room.energyCapacityAvailable;
     var energyMax = 1000;
-    var myEnergy = Math.min(energyMax, Game.spawns.Spawn1.room.energyAvailable);
+    var myEnergy = Math.min(energyMax, myActualEnergy);
     var name = undefined;
     var job = null;
     var readyToSpawn = false;
@@ -222,68 +157,37 @@ module.exports.loop = function () {
 	readyToSpawn = true;
     }
 
-    if(Game.spawns.Spawn1.spawning) {
+    if(mySpawn.spawning) {
 	readyToSpawn = false;
     }
-    // if not enough harvesters
-    if (numberOfHarvesters < minimumNumberOfHarvesters) {
-        // try to spawn one
-        if(readyToSpawn) {
-		name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'harvester');
-		if(name != ERR_NOT_ENOUGH_ENERGY) {
-			numberOfHarvesters++;
+
+
+
+
+
+	if(Game.creeps.length == 0) {
+		name = mySpawn.createCustomCreep(myEnergy, 'harvester');
+	} else {
+
+	for(let role in roles) {
+		if(role.minimum > role.current) {
+			if(role.requirement > 0 && myActualEnergy > role.requirement) {
+				name = mySpawn.Spawn1.createCustomCreep(myActualEnergy, role.name);
+			}
+			else if(readyToSpawn) {
+				name = mySpawn.Spawn1.createCustomCreep(myEnergy, role.name);
+			}
+		}
+		if(!(name < 0) && name != undefined) {
+			break;
 		}
 	}
 
-        // if spawning failed and we have no harvesters left
-        if (numberOfHarvesters == 0) {
-            // spawn one with what is available
-            name = Game.spawns.Spawn1.createCustomCreep(
-                myEnergy, 'harvester');
-        }
-    }
-    else if (myEnergy >= 900 && numberOfMiners < minimumNumberOfMiners) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'miner');	
-    }
-    else if (myEnergy >= 800 && numberOfFetchers < minimumNumberOfFetchers) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'fetcher');
-    }
-    // if not enough upgraders
-    else if (readyToSpawn && numberOfUpgraders < minimumNumberOfUpgraders) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'upgrader');
-    }
-    else if (readyToSpawn && numberOfRepairers < minimumNumberOfRepairers) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'repairer');
-    }
-    else if (myEnergy >= 800 && numberOfDefenders < minimumNumberOfDefenders) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'defender');
-    }
-    else if (readyToSpawn && numberofRemoteHarvesters < minimumNumberOfRemoteHarvesters) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'remoteharvester');
-        }
-    else if (readyToSpawn && numberOfBuilders < minimumNumberOfBuilders) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
-    }
-    else if (readyToSpawn && numberOfWallRepairers < minimumNumberOfWallRepairers) {
-        // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'wallRepairer');
-    }
-    else if (readyToSpawn && numberOfTowerTenders < minimumNumberOfTowerTenders) {
-        // try to spawn one
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'towertender');
-    }
-    else if (myEnergy >= 200 && numberOfScouts < minimumNumberOfScouts) {
-	name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'scout');
-    }
-    else if (myEnergy >= 800 && numberOfAttackers < minimumNumberOfAttackers) {
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'attacker');
-    }
-    else if (readyToSpawn && spawnInfinite) {
-        // else try to spawn a builder
-        name = Game.spawns.Spawn1.createCustomCreep(myEnergy, 'builder');
-    }
-    // print name to console if spawning was a success
-    // name > 0 would not work since string > 0 returns false
+
+	}
+	
+
+
     if (!(name < 0) && name != undefined) {
         console.log("Spawned new creep: " + name );
     }
