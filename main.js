@@ -174,7 +174,9 @@ module.exports.loop = function () {
 	} else {
 
 	for(let role in roles) {
+		console.log("In Role loop: " + role.name);
 		if(role.minimum > role.current) {
+			console.log("Need to spawn");
 			if(role.requirement > 0 && myActualEnergy > role.requirement) {
 				name = mySpawn.Spawn1.createCustomCreep(myActualEnergy, role.name);
 			}
