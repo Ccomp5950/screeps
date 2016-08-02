@@ -4,6 +4,7 @@ module.exports = {
 		if(creep.spawning) {
 			return;
 		}
+		console.log("RedAlert is: " + redAlert);
 		if(creep.hits > creep.hitsMax) {
 			creep.heal(creep);
 		}
