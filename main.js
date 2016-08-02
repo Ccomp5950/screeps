@@ -51,7 +51,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     var biggestThreat = [];
     var biggestThreatRating = [];
     for(let room of Memory.myrooms) {
-    redAlert = true;
+    redAlert = false;
     underAttack[room] = false;
     worstThreat = null;
     worstThreatRating = -2;
