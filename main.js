@@ -110,7 +110,7 @@ module.exports.loop = function () {
         }
         else {
 		roles[creep.memory.role].current++;
-		roles[creep.memory.role]..run.run(creep);
+		roles[creep.memory.role].run.run(creep);
 	}
     }
 
