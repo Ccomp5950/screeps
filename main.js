@@ -6,28 +6,29 @@ require('prototype.source')();
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
-var roles =            [{harvester:      {namer:"harvester",              minimum:2,      requirement:0,          run: require('role.harvester')}},
-                        {miner:          {namer:"miner",                  minimum:2,      requirement:900,        run: require('role.miner')}},
-                        {fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        run: require('role.fetcher')}},
-                        {upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          run: require('role.upgrader')}},
-                        {builder:        {namer:"builder",                minimum:1,      requirement:0,          run: require('role.builder')}},
-                        {repairer:       {namer:"repairer",               minimum:1,      requirement:0,          run: require('role.repairer')}},
-                        {wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          run: require('role.wallRepairer')}},
-                        {towertender:    {namer:"towertender",            minimum:0,      requirement:0,          run: require('role.towertender')}},
-                        {scout:          {namer:"scout",                  minimum:0,      requirement:200,        run: require('role.scout')}},
-                        {attacker:       {namer:"attacker",               minimum:0,      requirement:800,        run: require('role.attacker')}},
-                        {defender:       {namer:"defender",               minimum:1,      requirement:800,        run: require('role.defender')}},
-                        {raider:         {namer:"raider",                 minimum:0,      requirement:800,        run: require('role.raider')}},
-                        {remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       run: require('role.remoteharvester')}}
+var roles =            [harvester:      {namer:"harvester",              minimum:2,      requirement:0,          run: require('role.harvester')},
+                        miner:          {namer:"miner",                  minimum:2,      requirement:900,        run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        run: require('role.fetcher')},
+                        upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          run: require('role.upgrader')},
+                        builder:        {namer:"builder",                minimum:1,      requirement:0,          run: require('role.builder')},
+                        repairer:       {namer:"repairer",               minimum:1,      requirement:0,          run: require('role.repairer')},
+                        wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          run: require('role.wallRepairer')},
+                        towertender:    {namer:"towertender",            minimum:0,      requirement:0,          run: require('role.towertender')},
+                        scout:          {namer:"scout",                  minimum:0,      requirement:200,        run: require('role.scout')},
+                        attacker:       {namer:"attacker",               minimum:0,      requirement:800,        run: require('role.attacker')},
+                        defender:       {namer:"defender",               minimum:1,      requirement:800,        run: require('role.defender')},
+                        raider:         {namer:"raider",                 minimum:0,      requirement:800,        run: require('role.raider')},
+                        remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       run: require('role.remoteharvester')}
                         ];
 
 
 
+	for(let i = 0; i < bodyO[part]; i++) {
 
 
     for(let role in roles) {
-	console.log("lala " + role.namer);
-	role.current = 0;
+	console.log("lala " + roles[role].namer);
+	roles[role].current = 0;
     } 
 
     validSources = [];
