@@ -79,7 +79,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 		meaniename = "from " + enemy_creep.owner.username;
 		}
 	}
-	console.log("[" + room + "]OH FUCK " + meaniesA[room].length + meaniename + "Biggest Threat: " + biggestThreatRating[room]);
+	console.log("[" + room + "]OH FUCK " + meaniesA[room].length + " creeps from an asshole named " + meaniename + " Biggest Threat: " + biggestThreatRating[room]);
 	}
     }
     
