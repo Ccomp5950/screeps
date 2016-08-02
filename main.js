@@ -24,7 +24,6 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
 
     for(let role in roles) {
-	console.log("lala " + roles[role].namer);
 	roles[role].current = 0;
     } 
 
