@@ -36,7 +36,7 @@ module.exports = function() {
 			case "claim":
 				value += 600;
 				break;
-			case: "tough":
+			case "tough":
 				value += 10;
 			}
 		}
