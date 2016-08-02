@@ -1,5 +1,19 @@
 module.exports = function() {
     // create a new function for StructureSpawn
+    StructureSpawn.prototype.buildBody =
+	function(bodyO) {
+		result = [];
+		for(var part in bodyO) {
+			for(let i = 0; i < BodyO[part]; i++ {
+				if(part == "move" && i != bodyO[part] - 1)
+					result.push(part);
+			}
+		}
+	result.push(MOVE);
+	return result;
+	};
+		
+
     StructureSpawn.prototype.createCustomCreep =
         function(energy, roleName) {
             // create a balanced body as big as possible with the given energy
@@ -16,7 +30,7 @@ module.exports = function() {
             var body = [];
 	    var bodyset = false;
 	if(roleName == "scout") {
-		body = [MOVE, MOVE, MOVE, MOVE];
+		body = this.buildBody({MOVE:3,CARRY:2});
 		bodyset = true;
 	}
 	else if(roleName == "attacker") {
