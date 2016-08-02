@@ -2,7 +2,7 @@
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
-var roles =            {harvester:	{name:"harvester"		minimum:2,	requirement:0,		require('role.harvester')},
+var roles =            {harvester:	{name:"harvester",		minimum:2,	requirement:0,		require('role.harvester')},
                         miner:		{name:"miner",			minimum:2,	requirement:900,	require('role.miner')},
                         fetcher: 	{name:"fetcher",		minimum:2,	requirement:850,	require('role.fetcher')},
                         upgrader: 	{name:"upgrader",		minimum:1,	requirement:0,		require('role.upgrader')},
