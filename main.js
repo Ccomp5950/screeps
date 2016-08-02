@@ -94,7 +94,7 @@ module.exports.loop = function () {
 
 	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner" && creep.memory.role != "attacker") || creep.memory.role == 'towertender') {
 		roles["towertender"].current++;
-		roles["towertender"].run(creep);
+		roles["towertender"].run.run(creep);
 	}
         else if (creep.memory.role == 'miner') {
 	    let adjustment = 0;
@@ -106,11 +106,11 @@ module.exports.loop = function () {
 	    if(creep.ticksToLive > Memory.lifeTimeOfMiners + adjustment) {
 		roles["miner"].current++;
 	    }
-	    roles["miner"].run(creep);
+	    roles["miner"].run.run(creep);
         }
         else {
 		roles[creep.memory.role].current++;
-		roles[creep.memory.role].run(creep);
+		roles[creep.memory.role]..run.run(creep);
 	}
     }
 
