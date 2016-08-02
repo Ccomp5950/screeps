@@ -35,6 +35,22 @@ module.exports.loop = function () {
 		meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
 	}
     }
+
+    
+    var spawnInfinite = false;
+    var minimumNumberOfHarvesters = 2;
+    var minimumNumberOfMiners = 2;
+    var minimumNumberOfFetchers = 2;
+    var minimumNumberOfUpgraders = 1;
+    var minimumNumberOfBuilders = 1;
+    var minimumNumberOfRepairers = 1;
+    var minimumNumberOfWallRepairers = 1;
+    var minimumNumberOfTowerTenders = 0;
+    var minimumNumberOfScouts = 0;
+    var minimumNumberOfAttackers = 2;
+    var minimumNumberOfDefenders = 1;
+    var minimumNumberOfRemoteHarvesters = 6;
+
     var dontBuild = false;
     var underAttack = [];
     var biggestThreat = [];
@@ -50,7 +66,7 @@ module.exports.loop = function () {
 	for (let enemy_creep of meaniesA[room]) {
 		
 		if(enemy_creep.body != undefined) {
-			var creepThreat = enemy_creep.getthreat();
+			var creepThreat = enemy_creep.getThreat();
 			if(biggestThreatRating[room] < creepThreat) {
 				biggestThreat[room] = enemy_creep;
 				biggestThreatRating[room] = creepThreat;
@@ -156,7 +172,7 @@ module.exports.loop = function () {
 	}
         else if (creep.memory.role == 'attacker') {
             numberOfAttackers++;
-            roleAttacker.run(creep);
+            roleAttacker.run(creep, minimumNumberOfAttackers);
         }
         else if (creep.memory.role == 'remoteharvester') {
 	    numberofRemoteHarvesters++;
@@ -191,21 +207,6 @@ module.exports.loop = function () {
 	if(dontBuild == true) {
 		return;
 	}   
-
-    // setup some minimum numbers for different roles
-    var spawnInfinite = false;
-    var minimumNumberOfHarvesters = 2;
-    var minimumNumberOfMiners = 2;
-    var minimumNumberOfFetchers = 2;
-    var minimumNumberOfUpgraders = 1;
-    var minimumNumberOfBuilders = 1;
-    var minimumNumberOfRepairers = 1;
-    var minimumNumberOfWallRepairers = 1;
-    var minimumNumberOfTowerTenders = 0;
-    var minimumNumberOfScouts = 0;
-    var minimumNumberOfAttackers = 0;
-    var minimumNumberOfDefenders = 1;
-    var minimumNumberOfRemoteHarvesters = 6;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the

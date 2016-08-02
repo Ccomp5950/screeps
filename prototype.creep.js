@@ -107,7 +107,7 @@ module.exports = function() {
 		    }
             }
         };
-	Creep.prototype.getthreat =
+	Creep.prototype.getThreat =
 	function() {
 		var creep = this;
 		var threat = 0;
