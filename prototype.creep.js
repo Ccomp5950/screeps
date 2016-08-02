@@ -40,6 +40,7 @@ module.exports = function() {
 				value += 10;
 			}
 		}
+		return value;
 	};
 	
 
