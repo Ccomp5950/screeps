@@ -4,7 +4,7 @@ module.exports = function() {
 	function(bodyO) {
 		result = [];
 		for(var part in bodyO) {
-			for(let i = 0; i < BodyO[part]; i++ {
+			for(let i = 0; i < BodyO[part]; i++) {
 				if(part == "move" && i != bodyO[part] - 1)
 					result.push(part);
 			}
