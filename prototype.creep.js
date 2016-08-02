@@ -10,6 +10,39 @@ module.exports = function() {
 		}
 
 	};
+	Creep.prototype.calculateBodyCost =
+	function () {
+		var creep = this;
+		let value = 0;
+		for(let i = 0; i < creep.body.length; i++) {
+			let part = creep.body[i];
+			switch(creep.body[i].type) {
+			case "work":
+				value+= 100;
+				break;
+			case "move":
+			case "carry":
+				value += 50;
+				break;
+			case "attack":
+				value += 80;
+				break;
+			case "ranged_attack":
+				value += 150;
+				break;
+			case "heal":
+				value += 250;
+				break;
+			case "claim":
+				value += 600;
+				break;
+			case: "tough":
+				value += 10;
+			}
+		}
+	};
+	
+
     Creep.prototype.customharvest =
         function() {
 	    var creep = this;
@@ -78,20 +111,21 @@ module.exports = function() {
 		var creep = this;
 		var threat = 0;
 		var log = 1;
-		for(let body in creep.body) {
-			if(body.type == "attack" && body.hits > 0) {
+		for(let i = 0; i < creep.body.length; i++) {
+			
+			if(body[0].type == "attack" && body[0].hits > 0) {
 				threat += 2;
 			}
-			else if(body.type == "ranged_attack" && body.hits > 0) {
+			else if(body[0].type == "ranged_attack" && body[0].hits > 0) {
 				threat += 3;
 			}
-			else if (body.type == "heal" && body.hits > 0) {
+			else if (body[0].type == "heal" && body[0].hits > 0) {
 				threat += 10;
 			}
-			else if (body.type == "tough" && body.hits > 0) {
+			else if (body[0].type == "tough" && body[0].hits > 0) {
 				threat += 1;
 			}
-			else if (body.type == "build" && body.hits > 0) {
+			else if (body[0].type == "build" && body[0].hits > 0) {
 				threat += 1;
 			}
 		}
