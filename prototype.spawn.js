@@ -5,7 +5,7 @@ module.exports = function() {
 		result = [];
 		for(var part in bodyO) {
 			for(let i = 0; i < bodyO[part]; i++) {
-				if(part != "MOVE" || (i+1 != bodyO[part])) {
+				if((part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
 					result.push(part);
 				}
 			}
@@ -31,7 +31,7 @@ module.exports = function() {
             var body = [];
 	    var bodyset = false;
 	if(roleName == "scout") {
-		body = this.buildBody({MOVE:3,CARRY:2});
+		body = this.buildBody({move:3,carry:1});
 		bodyset = true;
 	}
 	else if(roleName == "attacker") {
