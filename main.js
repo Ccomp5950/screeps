@@ -109,7 +109,7 @@ module.exports.loop = function () {
 	    roles["miner"].run.run(creep);
         }
         else {
-		if(roles[creep.memory.role)] == null) {
+		if(roles[creep.memory.role] == null) {
 			console.log("Warning: name has a bad role: " + "creep.memory.role");
 		} else {
 			roles[creep.memory.role].current++;
