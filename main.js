@@ -28,8 +28,13 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     } 
 
     noMoreConstruction = false;
-  
-    if(Game.time % 30 == 0 && Game.constructionSites != null) {
+
+    let timeout = 500;
+    if(Memory.constructionSpam != null) {
+	timeout = Memory.constructionSpam;
+    }
+ 
+    if(Game.time % timeout  == 0 && Game.constructionSites != null) {
 	let total = 0;
 	for(let i in Game.constructionSites) {
 		total++;
