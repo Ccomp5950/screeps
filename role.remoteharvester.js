@@ -52,6 +52,7 @@ module.exports = {
 			creep.repair(road);
                 } else if(constructionSite != null && noMoreConstruction == false) {
                         creep.build(constructionSite);
+		}
 
 		if(hasRoad == false && hasConstruction == false) {
 			creep.room.createConstructionSite(creep.pos, STRUCTURE_ROAD)
