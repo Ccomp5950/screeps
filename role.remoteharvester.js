@@ -34,11 +34,11 @@ module.exports = {
 		let hasConstruction = false;
 
 		for(let r in roads) {
-			if(creep.pos.x == r.pos.x && creep.pos.y == r.pos.y) {
+			if(creep.pos.x == roads[r].pos.x && creep.pos.y == roads[r].pos.y) {
 				hasRoad = true;
 			}
-			if((r.hits < r.hitsMax - 500) && lowestHits < r.hits) {
-				road = r;
+			if((roads[r].hits < roads[r].hitsMax - 500) && lowestHits < roads[r].hits) {
+				road = roads[r];
 			}
 		}
 		for(let c in constructionSites) {
