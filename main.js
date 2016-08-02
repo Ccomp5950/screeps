@@ -37,7 +37,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	if(total > 99) {
 		noMoreConstruction = true;
 	}
-	console.log("Current ConstructionSite Count: " + total
+	console.log("Current ConstructionSite Count: " + total);
     }
 
     validSources = [];
