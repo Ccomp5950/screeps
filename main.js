@@ -51,7 +51,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     var biggestThreat = [];
     var biggestThreatRating = [];
     for(let room of Memory.myrooms) {
-    redAlert = false;
+    redAlert = true;
     underAttack[room] = false;
     worstThreat = null;
     worstThreatRating = -2;
@@ -117,9 +117,6 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	    }
 	    roles["miner"].run.run(creep);
         } 
-	else if(redAlert){
-		
-	}
         else {
 		if(roles[creep.memory.role] == null) {
 			console.log("Warning: " + name + " has a bad role: " + creep.memory.role);
