@@ -27,8 +27,17 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	roles[role].current = 0;
     } 
 
-    if(Game.time % 10 == 0 && Game.constructionSites != null) {
-	console.log("Current ConstructionSite Count: " + Game.constructionSite.length);
+    noMoreConstruction = false;
+  
+    if(Game.time % 30 == 0 && Game.constructionSites != null) {
+	let total = 0;
+	for(let i in Game.constructionSites) {
+		total++;
+	}
+	if(total > 99) {
+		noMoreConstruction = true;
+	}
+	console.log("Current ConstructionSite Count: " + total
     }
 
     validSources = [];
