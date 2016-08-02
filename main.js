@@ -180,7 +180,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
 	for(let role in roles) {
 		if(roles[role].minimum > roles[role].current) {
-			if(roles[role].requirement > 0 && myActualEnergy > roles[role.]requirement) {
+			if(roles[role].requirement > 0 && myActualEnergy > roles[role].requirement) {
 				name = mySpawn.Spawn1.createCustomCreep(myActualEnergy, roles[role.]namer);
 			}
 			else if(readyToSpawn) {
