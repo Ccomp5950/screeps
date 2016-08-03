@@ -24,6 +24,7 @@
 		for(roleM in rolecount) {
 			console.log("You have " + rolecount[roleM] + " " + roleM +"'s creeps");
 		}
+	return null;
 	}
 
 	
