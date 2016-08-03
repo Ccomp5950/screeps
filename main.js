@@ -4,25 +4,23 @@ require('prototype.creep')();
 require('prototype.source')();
 require('prototype.flag')();
 
-module.exports.loop = function () {
-    // check for memory entries of died creeps by iterating over Memory.creeps
-
-var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,	run: require('role.harvester')},
-                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,	run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",               minimum:4,      requirement:-1,		buildRestriction : true,	run: require('role.fetcher')},
-                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,	run: require('role.upgrader')},
-                        builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,	run: require('role.builder')},
-                        repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,	run: require('role.repairer')},
-                        wallrepairer:   {namer:"wallrepairer",          minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.wallRepairer')},
-                        towertender:    {namer:"towertender",           minimum:0,      requirement:0,          buildRestriction : false,	run: require('role.towertender')},
-                        scout:          {namer:"scout",                 minimum:0,      requirement:200,        buildRestriction : true,	run: require('role.scout')},
-                        attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,	run: require('role.attacker')},
-                        defender:       {namer:"defender",              minimum:1,      requirement:800,        buildRestriction : false,	run: require('role.defender')},
-                        raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,	run: require('role.raider')},
-			claimer:	{namer:"claimer",		minimum:1,	requirement:1400,	buildRestriction : true,	run: require('role.claimer')}
+var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
+                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",               minimum:4,      requirement:-1,         buildRestriction : true,        run: require('role.fetcher')},
+                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
+                        builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
+                        repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
+                        wallrepairer:   {namer:"wallrepairer",          minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
+                        towertender:    {namer:"towertender",           minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.towertender')},
+                        scout:          {namer:"scout",                 minimum:0,      requirement:200,        buildRestriction : true,        run: require('role.scout')},
+                        attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
+                        defender:       {namer:"defender",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.defender')},
+                        raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
+                        claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
                         };
 
-
+module.exports.loop = function () {
+    // check for memory entries of died creeps by iterating over Memory.creeps
 
     for(let role in roles) {
 	roles[role].current = 0;
