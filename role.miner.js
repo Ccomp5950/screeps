@@ -5,16 +5,32 @@ module.exports = {
 			if(creep.memory.spawnTime == null) {
 				creep.memory.spawnTime = Game.time;
 			}
+			if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
+				creep.memory.myFlag = creep.findMiningFlag();
+				creep.claimMiningFlag();
+			}
                         return;
                 }
-                if(Game.flags[creep.name] != undefined) {
-                        var range = creep.pos.getRangeTo(Game.flags[creep.name]);
+		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
+			creep.memory.myFlag = creep.findMiningFlag();
+			if(creep.memory.myFlag == -1) {
+				console.log("Miner can't find a flag		
+				return;
+			}
+			
+		}
+		let flag = Game.getObjectById(creep.memory.myFlag);
+		creep.claimMiningFlag();
+                if(flag != undefined) {
+                        var range = creep.pos.getRangeTo(flag);
                         if(range > 0) {
 				creep.memory.setupTime = Game.time - creep.memory.spawnTime;
-                                creep.moveTo(Game.flags[creep.name]);
+                                creep.moveTo(flag);
 				return;
                         }
-                }
+                } else {
+			console.log("Miner cannot find a flag: " + creep.name);
+		}
 		var structure = null;
 		if(creep.memory.container == null) {
 			creep.memory.container = null;

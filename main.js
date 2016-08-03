@@ -2,6 +2,7 @@
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
+require('prototype.flag')();
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -18,7 +19,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
                         attacker:       {namer:"attacker",               minimum:1,      requirement:800,        buildRestriction : false,	run: require('role.attacker')},
                         defender:       {namer:"defender",               minimum:1,      requirement:800,        buildRestriction : false,	run: require('role.defender')},
                         raider:         {namer:"raider",                 minimum:0,      requirement:800,        buildRestriction : false,	run: require('role.raider')},
-                        remoteharvester:{namer:"remoteharvester",        minimum:6,      requirement:1000,       buildRestriction : true,	run: require('role.remoteharvester')}
+                        remoteharvester:{namer:"remoteharvester",        minimum:0,      requirement:1000,       buildRestriction : true,	run: require('role.remoteharvester')}
                         };
 
 
@@ -126,16 +127,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 		roles["towertender"].run.run(creep);
 	}
         else if (creep.memory.role == 'miner') {
-	    let adjustment = 0;
-		if(creep.memory.setupTime != null) {
-			adjustment = creep.memory.setupTime;
-		}
-	    if(adjustment == 0 && creep.nameIsEven == true) {
-		adjustment -= 35;
-            } else {
-		adjustment += 45;		
-	    }
-	    if(creep.ticksToLive - adjustment >= 0) {
+	    if(creep.checkTimeToReplace() == false) {
 		roles["miner"].current++;
 	    }
 	    roles["miner"].run.run(creep);

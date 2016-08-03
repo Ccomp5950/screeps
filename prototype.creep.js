@@ -163,5 +163,69 @@ module.exports = function() {
 			creep.harvest(source);
 		}
 	    }
-	}
+	};
+	Creep.prototype.checkTimeToReplace =
+	function() {
+		let creep = this;
+		if(creep.memory.setupTime != null) {
+			if(creep.ticksToLive - creep.memory.setupTime <= 0) {
+				creep.memory.replaceMe = true
+				return true;
+			}
+		}
+
+	return false;
+	};
+	Creep.prototype.findMiningFlag =
+	function() {
+		let creep = this;
+		for(let i = 0; i < Memory.miningSpots; i++) {
+			flagName = "miningSpot" + i.toString();
+			if(Game.flags[flagName] != null) {
+				let flag = Game.flags[flagName];
+				residentCreep = null;
+				residentCreep = Game.getObjectById(flag.memory.Miner);
+				if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+					return flag.id
+				}
+			}
+		}
+	return -1;
+	};
+
+	Creep.prototype.claimMiningFlag =
+	function() {
+		let creep = this;
+		let flag = Game.getObjectById(creep.memory.myFlag)
+		if(flag != null) {
+			flag.memory.Miner = creep.id;
+		}
+	};
+        Creep.prototype.findMiningFlag =
+        function() {
+                let creep = this;
+                for(let i = 0; i < Memory.miningSpots; i++) {
+                        flagName = "miningSpot" + i.toString();
+                        if(Game.flags[flagName] != null) {
+                                let flag = Game.flags[flagName];
+                                residentCreep = null;
+                                residentCreep = Game.getObjectById(flag.memory.Fetcher);
+                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+                                        return flag.id
+                                }
+                        }
+                }
+        return -1;
+        };
+
+        Creep.prototype.claimMiningFlag =
+        function() {
+                let creep = this;
+                let flag = Game.getObjectById(creep.memory.myFlag)
+                if(flag != null) {
+                        flag.memory.Fetcher = creep.id;
+                }
+        }
+	
+	
 };
