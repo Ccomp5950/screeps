@@ -2,7 +2,9 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
-			creep.memory.spawnTime = Game.time;
+			if(creep.memory.spawnTime == null) {
+				creep.memory.spawnTime = Game.time;
+			}
                         return;
                 }
                 if(Game.flags[creep.name] != undefined) {
