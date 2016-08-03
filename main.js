@@ -228,7 +228,7 @@ module.exports.loop = function () {
 				name = mySpawn.createCustomCreep(myEnergy, role.namer);
 			}
 			else if(role.namer == "miner") {
-				console.log("Unable to spawn miner :(     " + role.current + " of " role.minimum");
+				console.log("Unable to spawn miner :(     " + role.current + " of " + role.minimum);
 			}
 		}
 		if(!(name < 0) && name != undefined) {
