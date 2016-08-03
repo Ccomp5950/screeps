@@ -106,7 +106,11 @@ module.exports.loop = function () {
 
     for (let name in Memory.creeps) {
         if (Game.creeps[name] == undefined) {
-		console.log("RIP: " + name + " the " +Memory.creeps[name].role);
+		let flag = ""
+		if(Memory.creeps[name].myFlag != null) {
+			flag = "(" +memory.creeps[name].myFlag + ")";
+		}
+		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " " + flag);
             delete Memory.creeps[name];
         }
     }
@@ -178,7 +182,7 @@ module.exports.loop = function () {
     var mySpawn = Game.spawns.Spawn1;
     var myActualEnergy = mySpawn.room.energyAvailable;
     var energyCap = mySpawn.room.energyCapacityAvailable;
-    var energyMax = 1000;
+    var energyMax = 1200;
     var myEnergy = Math.min(energyMax, myActualEnergy);
     var name = undefined;
     var job = null;
