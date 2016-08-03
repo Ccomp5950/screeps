@@ -215,7 +215,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 				continue;
 			}
 			if(role.requirement > 0 && myActualEnergy > role.requirement) {
-				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
+				name = mySpawn.createCustomCreep(role.requirement, role.namer);
 			}
 			else if(role.requirement == -1 && readyToMaxSpawn) {
 				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
