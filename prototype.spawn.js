@@ -57,8 +57,8 @@ module.exports = function() {
 		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;
         }
-	else if (roleName == "harvester" && energy > 850) {
-		body = this.buildBody({work:1,carry:7,move:8});
+	else if (roleName == "harvester" && energy >= 1000) {
+		body = this.buildBody({work:1,carry:10,move:8});
 		bodyset = true;
 	}
 	else if (roleName == "fetcher") {
