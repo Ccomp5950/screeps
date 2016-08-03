@@ -221,7 +221,7 @@ module.exports = function() {
         Creep.prototype.claimFetchingFlag =
         function() {
                 let creep = this;
-                let flag = Game.getObjectById(creep.memory.myFlag)
+                let flag = Game.flags[creep.memory.myFlag];
                 if(flag != null) {
                         flag.memory.Fetcher = creep.id;
                 }
