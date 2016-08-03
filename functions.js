@@ -17,7 +17,7 @@
 		for(creepM in Game.creeps) {
 			let creep = Game.creeps[creepM];
 			if(rolecount[creep.memory.role] == null) {
-				rolecount[creep.memory.role].role = 0;
+				rolecount[creep.memory.role] = 0;
 			}
 			rolecount[creep.memory.role]++;
 		}
