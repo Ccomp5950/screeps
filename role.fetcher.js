@@ -7,11 +7,6 @@ module.exports = {
 		
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage;
-		if(container != null && container.store[RESOURCE_ENERGY] < creep.carryCapacity) {
-			creep.memory.switchOnce = true;
-		} else {
-			
-		}
 		
 	        if(creep.ticksToLive < 100 || creep.memory.restoring == true) {
 	                creep.memory.restoring = true;
@@ -19,14 +14,6 @@ module.exports = {
 	                return;
 		}
 		let flag = Game.flags[creep.name];
-		if(creep.memory.switchOnce == true) {
-			container = null;
-			if(creep.nameIsEven() == true) {
-				flag = Game.flags["fetcher1"];
-			} else {
-				flag = Game.flags["fetcher2"];
-			}
-		}
 
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
 	                if(flag != undefined) {
