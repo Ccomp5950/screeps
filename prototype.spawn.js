@@ -47,7 +47,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "miner") {
-		body = this.buildBody({work:5,carry:1,move:2});
+		body = this.buildBody({carry:1,move:2,work:5});
 		bodyset = true;
 	}
 	else if (roleName == "claimer") {
