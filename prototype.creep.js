@@ -191,7 +191,6 @@ module.exports = function() {
 				}
 			} else {
 				console.log("yeah somethings up with "+ flagName);
-				}
 					
 			}
 		}
