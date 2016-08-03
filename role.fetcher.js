@@ -80,6 +80,7 @@ module.exports = {
 			}
 
 		}else {
+			creep.memory.getToFlag = true;
 			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
 				creep.moveTo(Game.flags["home"]);
 				return;
