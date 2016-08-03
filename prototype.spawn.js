@@ -59,7 +59,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher") {
-		for(let i = 0; i < (numberOfParts * 2(; i++) {
+		for(let i = 0; i < (numberOfParts * 2); i++) {
 			body.push(CARRY);
 			body.push(MOVE);
 		}
