@@ -196,7 +196,7 @@ module.exports = function() {
 	Creep.prototype.claimMiningFlag =
 	function() {
 		let creep = this;
-		let flag = Game.getObjectById(creep.memory.myFlag)
+		let flag = Game.flag[creep.memory.myFlag];
 		if(flag != null) {
 			flag.memory.Miner = creep.id;
 		}
