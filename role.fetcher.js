@@ -63,7 +63,8 @@ module.exports = {
 	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURECE_ENERGY] > 10)
 					});
 			}
-			if(container != null) {
+			if(container != null && creep.pos.getRangeTo(container) < 999) {
+
 				if(creep.memory.container == null) {
 					creep.memory.container = container.id
 				}
@@ -71,6 +72,7 @@ module.exports = {
 					creep.moveTo(container);
 				};
 			} else {
+				creep.memory.container = null;
 				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
 				if(target) {
 					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
