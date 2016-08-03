@@ -45,7 +45,10 @@ module.exports = {
 					}
 		                } 
 				else {
-					console.log("Fetcher can't find their flag: " + creep.name);
+					if(creep.memory.spammed == null) {
+						console.log("Fetcher can't find their flag: " + creep.name);
+						creep.memory.spammed = true;
+					}
 					return;
 				}
 			}
