@@ -199,6 +199,7 @@ module.exports = function() {
 		let flag = Game.flags[creep.memory.myFlag];
 		if(flag != null) {
 			flag.memory.Miner = creep.id;
+			flag.memory.MinerName = creep.name;
 		}
 	};
         Creep.prototype.findFetchingFlag =
@@ -224,6 +225,7 @@ module.exports = function() {
                 let flag = Game.flags[creep.memory.myFlag];
                 if(flag != null) {
                         flag.memory.Fetcher = creep.id;
+			flag.memory.FetcherName = creep.name;
                 }
         };
 
@@ -250,6 +252,7 @@ module.exports = function() {
                 let flag = Game.flags[creep.memory.myFlag];
                 if(flag != null) {
                         flag.memory.Claimer = creep.id;
+			flag.memory.ClaimerName = creep.name;
                 }
         }
 	
