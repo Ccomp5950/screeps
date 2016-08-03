@@ -228,6 +228,8 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 		}
 		if(!(name < 0) && name != undefined) {
 			break;
+		} else if(name < 0) { 
+			console.log("Tried to spawn a " + role.namer + " but got error " + name);
 		}
 	}
 
