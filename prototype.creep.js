@@ -182,6 +182,7 @@ module.exports = function() {
 		for(let i = 0; i < Memory.miningSpots; i++) {
 			flagName = "miningSpot" + i.toString();
 			if(Game.flags[flagName] != null) {
+				console.log("Checking " + flagName + " it has " + flag.memory.Miner + " for a miner");
 				let flag = Game.flags[flagName];
 				residentCreep = null;
 				residentCreep = Game.getObjectById(flag.memory.Miner);
