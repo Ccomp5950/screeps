@@ -107,13 +107,18 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
 
     for (let name in Memory.creeps) {
-        // and checking if the creep is still alive
         if (Game.creeps[name] == undefined) {
-            // if not, delete the memory entry
 		console.log("RIP: " + name + " the " +Memory.creeps[name].role);
             delete Memory.creeps[name];
         }
     }
+    for (let name in Memory.flags) {
+        if (Game.flags[name] == undefined) {
+                console.log("Removed " + name+ " from flag list");
+            delete Memory.creeps[name];
+        }
+    }
+
     for (let name in Game.flags) {
 		if(Game.flags[name].memory == null)
 			Memory.flags[name].lala = -1;
