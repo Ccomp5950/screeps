@@ -8,8 +8,8 @@ module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
 
 var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          buildRestriction : false,	run: require('role.harvester')},
-                        miner:          {namer:"miner",                  minimum:3,      requirement:900,        buildRestriction : true,	run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",                minimum:3,      requirement:850,        buildRestriction : true,	run: require('role.fetcher')},
+                        miner:          {namer:"miner",                  minimum:4,      requirement:900,        buildRestriction : true,	run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",                minimum:4,      requirement:850,        buildRestriction : true,	run: require('role.fetcher')},
                         upgrader:       {namer:"upgrader",               minimum:2,      requirement:-1,         buildRestriction : true,	run: require('role.upgrader')},
                         builder:        {namer:"builder",                minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.builder')},
                         repairer:       {namer:"repairer",               minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.repairer')},
