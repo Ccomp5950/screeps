@@ -20,7 +20,6 @@ module.exports = {
 			
 		}
 		let flag = Game.flags[creep.memory.myFlag];
-		creep.claimMiningFlag();
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > 0) {

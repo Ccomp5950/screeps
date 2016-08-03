@@ -19,8 +19,6 @@ module.exports = {
 			}
                 }
                 let flag = Game.flags[creep.memory.myFlag];
-                creep.claimFetchingFlag();
-
 		
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = Game.getObjectById(Memory.storageid);

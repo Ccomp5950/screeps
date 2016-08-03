@@ -28,6 +28,20 @@ module.exports = function() {
                 }
 	return true;
         };
+        Flag.prototype.hasClaimer =
+        function() {
+                let flag = this;
+                if(flag.memory.Claimer == null) {
+                        return false;
+                } else {
+                        var creep = null;
+                        creep = Game.getObjectById(flag.memory.Claimer);
+                        if(creep == null) {
+                                return false;
+                        }
+                }
+        return true;
+        };
 
 
 

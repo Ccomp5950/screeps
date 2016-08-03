@@ -225,6 +225,32 @@ module.exports = function() {
                 if(flag != null) {
                         flag.memory.Fetcher = creep.id;
                 }
+        };
+
+        Creep.prototype.findClaimingFlag =
+        function() {
+                let creep = this;
+                for(let i = 0; i < Memory.claimingSpots; i++) {
+                        flagName = "claim" + i.toString();
+                        if(Game.flags[flagName] != null) {
+                                let flag = Game.flags[flagName];
+                                residentCreep = null;
+                                residentCreep = Game.getObjectById(flag.memory.Claimer);
+                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+                                        return flagName;
+                                }
+                        }
+                }
+        return -1;
+        };
+
+        Creep.prototype.claimClaimingFlag =
+        function() {
+                let creep = this;
+                let flag = Game.flags[creep.memory.myFlag];
+                if(flag != null) {
+                        flag.memory.Claimer = creep.id;
+                }
         }
 	
 	
