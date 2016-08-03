@@ -26,9 +26,6 @@ module.exports = {
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = Game.getObjectById(Memory.storageid);
 
-			var found = Game.flags.Flag1.pos.lookFor(LOOK_CREEPS);
-				if(found.length && found[0].getActiveBodyparts(ATTACK) == 0) {
-				    creep.moveTo(found[0]);
 		let energy = creep.pos.lookFor(LOOK_ENERGY);
 			if(energy.length) {
 				creep.pickup(energy[0])
