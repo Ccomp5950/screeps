@@ -14,7 +14,7 @@ module.exports = {
 		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
 			creep.memory.myFlag = creep.findMiningFlag();
 			if(creep.memory.myFlag == -1) {
-				console.log("Miner can't find a flag + " creep.name);	
+				console.log("Miner can't find a flag " + creep.name);	
 				return;
 			}
 			
