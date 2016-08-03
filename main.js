@@ -1,5 +1,4 @@
 // import modules
-require('functions');
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
@@ -21,6 +20,8 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         };
 
 module.exports.loop = function () {
+require('functions');
+
     // check for memory entries of died creeps by iterating over Memory.creeps
 
     for(let role in roles) {
