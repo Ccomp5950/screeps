@@ -217,7 +217,7 @@ module.exports.loop = function () {
 	for(let roleM in roles) {
 		let role = roles[roleM];
 		if(role.minimum > role.current) {
-			if(role.buildRestrictions == true && dontBuild == true) {
+			if(role.buildRestriction == true && dontBuild == true) {
 				continue;
 			}
 			if(role.requirement > 0 && myActualEnergy >= role.requirement && mySpawn.spawning == null) {
