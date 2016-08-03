@@ -189,6 +189,8 @@ module.exports = function() {
 				if(residentCreep == null || residentCreep.checkTimeToReplace()) {
 					return flag.name;
 				}
+			} else {
+				console.log(flagName +" is null");
 			}
 		}
 	return -1;
