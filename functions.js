@@ -15,7 +15,7 @@
 	function() {
 		var rolecount = new Object();
 		for(creepM in Game.creeps) {
-			if(rolecount[Game.creeps[creepM].role == null) {
+			if(rolecount[Game.creeps[creepM]].role == null) {
 				rolecount[Game.creeps[creepM].role = 0;
 			}
 			rolecount[Game.creeps[creepM].role]++;
