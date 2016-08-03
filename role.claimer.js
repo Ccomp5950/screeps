@@ -40,7 +40,7 @@ module.exports = {
                 }
 
                 let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-			filter: (s) => s.structureType == STRUCTURE_CONTROLER
+			filter: (s) => s.structureType == STRUCTURE_CONTROLLER
 		});
                 if (target != undefined) {
                             if (creep.reserveController(target) == ERR_NOT_IN_RANGE) {
