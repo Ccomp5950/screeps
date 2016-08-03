@@ -115,7 +115,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     for (let name in Memory.flags) {
         if (Game.flags[name] == undefined) {
                 console.log("Removed " + name+ " from flag list");
-            delete Memory.creeps[name];
+            delete Memory.flags[name];
         }
     }
 
