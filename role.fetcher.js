@@ -60,7 +60,7 @@ module.exports = {
 
 			if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {
 		          	container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
+	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURECE_ENERGY] > 10)
 					});
 			}
 			if(container != null) {
