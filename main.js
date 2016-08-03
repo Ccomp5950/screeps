@@ -66,7 +66,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
     
     var spawnInfinite = false;
-    var dontBuild = true;;
+    var dontBuild = false;
     var underAttack = [];
     var biggestThreat = [];
     var biggestThreatRating = [];
