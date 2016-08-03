@@ -25,13 +25,6 @@ module.exports = {
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = Game.getObjectById(Memory.storageid);
 		
-	        if(creep.ticksToLive < 100 || creep.memory.restoring == true) {
-	                creep.memory.restoring = true;
-	                creep.getRestored();
-	                return;
-		}
-		let flag = Game.flags[creep.name];
-
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
 	                if(flag != undefined) {
 	                        var range = creep.pos.getRangeTo(flag);
@@ -68,10 +61,13 @@ module.exports = {
 					        creep.moveTo(target);
 					}
 				}
-				return;
 			}
 
 		}else {
+			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
+				creep.moveTo(Game.flags["home"]);
+				return;
+			}
 			if(creep.pos.getRangeTo(storage) > 1) {
 				creep.moveTo(storage);
 				return;
