@@ -2,6 +2,9 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
 		if(creep.spawning) {
+                        if(creep.memory.spawnTime == null) {
+                                creep.memory.spawnTime = Game.time;
+                        }
 			return;
 		}
 		if(creep.hits > creep.hitsMax) {
@@ -39,17 +42,17 @@ module.exports = {
 				}
 			}
 		}
-		if(creep.ticksToLive < 400 || creep.memory.restoring == true) {
-			creep.memory.restoring = true;
-			creep.getRestored();
-			return;
-		}
-
-                if(Game.flags["Defender"] != undefined) {
-                        var range = creep.pos.getRangeTo(Game.flags.Defender);
+		let flag = Game.flags[creep.name];
+                if(flag != undefined) {
+                        var range = creep.pos.getRangeTo(flag);
                         if(range > 0) {
-                                creep.moveTo(Game.flags.Defender);
-                        }
+                                creep.moveTo(flag);
+                        } 
+			else {
+				if(creep.memory.setupTime == null) {
+					creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+				}
+			}
                 }
 
         }
