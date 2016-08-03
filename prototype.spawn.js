@@ -83,7 +83,7 @@ module.exports = function() {
 	    let checkResult = this.canCreateCreep(body, name);
 	    
 	    if(checkResult == 0) {
-	            return this.createCreep(body, name, { role: roleName, working: false, source: null });
+	            return this.createCreep(body, name, { role: roleName, working: false, source: null, spawnerRoom: this.room.name });
 	    } else {
 		message = "tried to spawn " + name + " but received error: ";
 		let err = "";
