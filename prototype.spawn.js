@@ -79,6 +79,9 @@ module.exports = function() {
             }
 	}
             // create creep with the created body and the given role
-            return this.createCreep(body, name, { role: roleName, working: false, source: null });
+	    let checkResult = this.canCreateCreep(body, name);
+	    if(checkResult == 0) {
+	            return this.createCreep(body, name, { role: roleName, working: false, source: null });
+	    }
         };
 };
