@@ -9,7 +9,7 @@ module.exports.loop = function () {
 var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          buildRestriction : false,	run: require('role.harvester')},
                         miner:          {namer:"miner",                  minimum:2,      requirement:900,        buildRestriction : true,	run: require('role.miner')},
                         fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        buildRestriction : true,	run: require('role.fetcher')},
-                        upgrader:       {namer:"upgrader",               minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.upgrader')},
+                        upgrader:       {namer:"upgrader",               minimum:2,      requirement:-1,          buildRestriction : true,	run: require('role.upgrader')},
                         builder:        {namer:"builder",                minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.builder')},
                         repairer:       {namer:"repairer",               minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.repairer')},
                         wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.wallRepairer')},
@@ -198,16 +198,20 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 		name = mySpawn.createCustomCreep(myEnergy, 'harvester');
 	} else {
 
-	for(let role in roles) {
-		if(roles[role].minimum > roles[role].current) {
-			if(roles[role].buildRestrictions == true && dontBuild == true) {
+	for(let roleM in roles) {
+		let role = roles[roleM];
+		if(role.minimum > role.current) {
+			if(role.buildRestrictions == true && dontBuild == true) {
 				continue;
 			}
-			if(roles[role].requirement > 0 && myActualEnergy > roles[role].requirement) {
-				name = mySpawn.createCustomCreep(myActualEnergy, roles[role].namer);
+			if(role.requirement > 0 && myActualEnergy > role.requirement) {
+				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
+			}
+			else if(role.requirement == -1 && myActualEnergy == mySpawn.room.energyCapacityAvailable) {
+				name = mySpawn.createCustomCreep(myActualEnergy, role);
 			}
 			else if(readyToSpawn) {
-				name = mySpawn.createCustomCreep(myEnergy, roles[role].namer);
+				name = mySpawn.createCustomCreep(myEnergy, role.namer);
 			}
 		}
 		if(!(name < 0) && name != undefined) {
