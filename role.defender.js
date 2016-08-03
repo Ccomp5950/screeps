@@ -20,6 +20,9 @@ module.exports = {
 				return;
 			} 
 		}
+                if(creep.hits < creep.hitsMax) {
+                        creep.heal(creep);
+                }
 		let flag = Game.flags[creep.name];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
