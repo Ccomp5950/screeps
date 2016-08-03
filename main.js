@@ -9,7 +9,7 @@ module.exports.loop = function () {
 var roles =            {harvester:      {namer:"harvester",              minimum:2,      requirement:0,          buildRestriction : false,	run: require('role.harvester')},
                         miner:          {namer:"miner",                  minimum:2,      requirement:900,        buildRestriction : true,	run: require('role.miner')},
                         fetcher:        {namer:"fetcher",                minimum:2,      requirement:850,        buildRestriction : true,	run: require('role.fetcher')},
-                        upgrader:       {namer:"upgrader",               minimum:2,      requirement:-1,          buildRestriction : true,	run: require('role.upgrader')},
+                        upgrader:       {namer:"upgrader",               minimum:2,      requirement:-1,         buildRestriction : true,	run: require('role.upgrader')},
                         builder:        {namer:"builder",                minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.builder')},
                         repairer:       {namer:"repairer",               minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.repairer')},
                         wallrepairer:   {namer:"wallrepairer",           minimum:1,      requirement:0,          buildRestriction : true,	run: require('role.wallRepairer')},
@@ -175,19 +175,26 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     //  arrow function, which checks for the creep being a harvester
     var mySpawn = Game.spawns.Spawn1;
     var myActualEnergy = mySpawn.room.energyAvailable;
-    var energy = mySpawn.room.energyCapacityAvailable;
+    var energyCap = mySpawn.room.energyCapacityAvailable;
     var energyMax = 1000;
     var myEnergy = Math.min(energyMax, myActualEnergy);
     var name = undefined;
     var job = null;
     var readyToSpawn = false;
+    var readyToMaxSpawn = false;
 
-    if(myEnergy == energyMax || Math.floor(energy / 200) == Math.floor(myEnergy/200)) {
+   
+    if(myActualEnergy == energyCap || Math.floor(energyCap / 200 == Math.floor(myActualEnergy / 200)) {
+	readyToMaxSpawn = true;
+    }
+
+    if(myEnergy == energyMax || Math.floor(energyCap / 200) == Math.floor(myEnergy/200)) {
 	readyToSpawn = true;
     }
 
     if(mySpawn.spawning) {
 	readyToSpawn = false;
+	readyToMaxSpawn = false;
     }
 
 
@@ -207,10 +214,10 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 			if(role.requirement > 0 && myActualEnergy > role.requirement) {
 				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
 			}
-			else if(role.requirement == -1 && myActualEnergy == mySpawn.room.energyCapacityAvailable) {
+			else if(role.requirement == -1 && readyToMaxSpawn) {
 				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
 			}
-			else if(readyToSpawn) {
+			else if(role.requirement == 0 && readyToSpawn) {
 				name = mySpawn.createCustomCreep(myEnergy, role.namer);
 			}
 		}
