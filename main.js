@@ -114,6 +114,10 @@ var roles =            {harvester:      {namer:"harvester",              minimum
             delete Memory.creeps[name];
         }
     }
+    for (let name in Game.flags) {
+		if(Game.flags[name].memory == null)
+			Memory.flags[name].lala = -1;
+	}
 
     // for every creep name in Game.creeps
 
