@@ -3,7 +3,7 @@ require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
 require('prototype.flag')();
-require('functions')();
+require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
                         miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
                         fetcher:        {namer:"fetcher",               minimum:4,      requirement:-1,         buildRestriction : true,        run: require('role.fetcher')},
