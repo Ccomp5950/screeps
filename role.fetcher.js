@@ -32,7 +32,13 @@ module.exports = {
 	                                creep.moveTo(flag);
 	                                return;
 	                        }
-	                } else {
+				else {
+					if(creep.memory.setupTime == null) {
+						creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+					}
+				}
+	                } 
+			else {
 				console.log("Fetcher can't find their flag: " + creep.name);
 				return;
 			}
