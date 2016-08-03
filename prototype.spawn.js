@@ -50,6 +50,9 @@ module.exports = function() {
 		body = this.buildBody({work:5,carry:1,move:2});
 		bodyset = true;
 	}
+	else if (roleName == "claimer") {
+		body = this.buildBody({claim:2,move:2});
+	}
         else if (roleName == "remoteharvester") {
 		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;
