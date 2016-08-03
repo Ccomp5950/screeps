@@ -183,15 +183,11 @@ module.exports = function() {
 			flagName = "miningSpot" + i.toString();
 			if(Game.flags[flagName] != null) {
 				let flag = Game.flags[flagName];
-				console.log("Checking " + flagName + " it has " + flag.memory.Miner + " for a miner");
 				residentCreep = null;
 				residentCreep = Game.getObjectById(flag.memory.Miner);
 				if(residentCreep == null || residentCreep.checkTimeToReplace()) {
 					return flag.name;
 				}
-			} else {
-				console.log("yeah somethings up with "+ flagName);
-					
 			}
 		}
 	return -1;
