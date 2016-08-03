@@ -7,11 +7,12 @@ module.exports = function() {
 			return false;
 		} else {
 			var creep = null;
-			creep = Game.getObjectById(flag.memory.fetcher);
+			creep = Game.getObjectById(flag.memory.Fetcher);
 			if(creep == null) {
 				return false;
 			}
 		}
+	return true;
 	}
    	Flag.prototype.hasMiner =
         function() {
@@ -20,11 +21,12 @@ module.exports = function() {
                         return false;
                 } else {
                         var creep = null;
-                        creep = Game.getObjectById(flag.memory.miner);
+                        creep = Game.getObjectById(flag.memory.Miner);
                         if(creep == null) {
                                 return false;
                         }
                 }
+	return true;
         };
 
 
