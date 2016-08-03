@@ -17,8 +17,14 @@ module.exports = {
 		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
 			creep.memory.myFlag = creep.findMiningFlag();
 			if(creep.memory.myFlag == -1) {
-				console.log("Miner can't find a flag " + creep.name);	
+				if(creep.memory.spammed == null) {				
+					console.log("Miner can't find a flag " + creep.name);	
+					creep.memory.spammed = true;
+				}
 				return;
+			} 
+			else {
+				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 			}
 			
 		}
