@@ -1,4 +1,3 @@
-module.exports = function() {
 	function checkRoles(role) {
 		let count = 0;
 		for(creepM in Game.creeps) {
@@ -10,4 +9,3 @@ module.exports = function() {
 		}
 		return count;
 	}
-}
