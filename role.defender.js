@@ -8,7 +8,7 @@ module.exports = {
 			return;
 		}
 		var target = null;
-		target = creep.room.findClosestByRange(FIND_HOSTILE_CREEPS);
+		target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 		if (target != undefined) {
 			if (creep.attack(target) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(target);
