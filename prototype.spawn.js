@@ -80,8 +80,36 @@ module.exports = function() {
 	}
             // create creep with the created body and the given role
 	    let checkResult = this.canCreateCreep(body, name);
+	    
 	    if(checkResult == 0) {
 	            return this.createCreep(body, name, { role: roleName, working: false, source: null });
+	    } else {
+		message = "tried to spawn " + name + "but received error: ";
+		let err = "";
+		switch(checkResult {
+			case 0:
+				err = "OK!";	
+				break;
+			case -1:
+				err = "You do not own this spawn";
+				break;
+			case -3:
+				err = "The name already exists";
+				break;
+			case -4:
+				err = "Spawn is busy";
+				break;
+			case -6:
+				err = "Not enough energy (" + energy + ")";
+				break;
+			case -10:
+				err = "Invalid arguments";
+				break;
+			case -14:
+				err = "Not high enough RCL";
+				break;
+		}
+		console.log(message + err);
 	    }
         };
 };
