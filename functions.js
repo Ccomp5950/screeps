@@ -15,10 +15,11 @@
 	function() {
 		var rolecount = new Object();
 		for(creepM in Game.creeps) {
-			if(rolecount[Game.creeps[creepM]] == null) {
-				rolecount[Game.creeps[creepM]].role = 0;
+			let creep = Game.creeps[creepM];
+			if(rolecount[creep.memory.role] == null) {
+				rolecount[creep.memory.role].role = 0;
 			}
-			rolecount[Game.creeps[creepM].role]++;
+			rolecount[creep.memory.role]++;
 		}
 		for(roleM in rolecount) {
 			console.log("You have " + rolecount[roleM] + " " + roleM +"'s creeps");
