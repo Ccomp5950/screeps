@@ -8,7 +8,7 @@ module.exports = {
 			if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
 				creep.memory.myFlag = creep.findMiningFlag();
 				if(creep.memory.myFlag != -1) {
-					console.log("I'm grabbing the position at: " + creep.memory.myFlag);
+					console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 					creep.claimMiningFlag();
 				}
 			}

@@ -7,7 +7,10 @@ module.exports = {
                         }
                         if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
                                 creep.memory.myFlag = creep.findFetchingFlag();
-                                creep.claimFetchingFlag();
+				if(creep.memory.myFlag != -1) {
+					console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
+	                                creep.claimFetchingFlag();
+				}
                         }
 
                         return;
