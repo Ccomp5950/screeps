@@ -179,6 +179,7 @@ module.exports = function() {
 	Creep.prototype.findMiningFlag =
 	function() {
 		let creep = this;
+		console.log("Mining Spots is
 		for(let i = 0; i < Memory.miningSpots; i++) {
 			flagName = "miningSpot" + i.toString();
 			if(Game.flags[flagName] != null) {
@@ -186,7 +187,7 @@ module.exports = function() {
 				residentCreep = null;
 				residentCreep = Game.getObjectById(flag.memory.Miner);
 				if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-					return flag.id
+					return flag.name;
 				}
 			}
 		}
@@ -211,7 +212,7 @@ module.exports = function() {
                                 residentCreep = null;
                                 residentCreep = Game.getObjectById(flag.memory.Fetcher);
                                 if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-                                        return flag.id
+                                        return flagName;
                                 }
                         }
                 }
