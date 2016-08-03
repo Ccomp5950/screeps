@@ -79,7 +79,7 @@ module.exports.loop = function () {
     biggestThreatRating[room] = -2;
     if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
 	redAlert = true;
-	//dontBuild = true;
+	dontBuild = true;
 	underAttack[room] = true;
 	var meaniename = "";
 	for (let enemy_creep of meaniesA[room]) {
