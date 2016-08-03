@@ -51,6 +51,8 @@ module.exports = {
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
+		} else {
+			creep.drop(RESOURCE_ENERGY);
 		}
     }
 };
