@@ -20,7 +20,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         defender:       {namer:"defender",              minimum:1,      requirement:800,        buildRestriction : false,	run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,	run: require('role.raider')},
                         remoteharvester:{namer:"remoteharvester",       minimum:0,      requirement:1000,       buildRestriction : true,	run: require('role.remoteharvester')},
-			claimer:	{namer:"claimer",		minimum:0,	requirement:9999,	buildRestriction : true,	run: require('role.claimer')}
+			claimer:	{namer:"claimer",		minimum:0,	requirement:1300,	buildRestriction : true,	run: require('role.claimer')}
                         };
 
 
