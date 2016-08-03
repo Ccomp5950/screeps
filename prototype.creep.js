@@ -190,9 +190,7 @@ module.exports = function() {
 					return flag.name;
 				}
 			} else {
-				if(Game.flags[flagName].name == null) {
-					console.log("yeah somethings up with "+ flagName);
-					return flagName
+				console.log("yeah somethings up with "+ flagName);
 				}
 					
 			}
