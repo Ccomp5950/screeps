@@ -1,5 +1,5 @@
 // import modules
-require('functions')();
+require('functions');
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
