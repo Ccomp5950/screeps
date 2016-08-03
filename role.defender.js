@@ -7,9 +7,6 @@ module.exports = {
                         }
 			return;
 		}
-		if(creep.hits < creep.hitsMax) {
-			creep.heal(creep);
-		}
 		var target = null;
 		if(redAlert) {
 			target = creep.room.find(FIND_HOSTILE_CREEPS);
