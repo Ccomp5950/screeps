@@ -86,7 +86,7 @@ module.exports = function() {
 	    } else {
 		message = "tried to spawn " + name + "but received error: ";
 		let err = "";
-		switch(checkResult {
+		switch(checkResult) {
 			case 0:
 				err = "OK!";	
 				break;
