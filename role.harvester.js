@@ -16,7 +16,6 @@ module.exports = {
             // switch state
             creep.memory.working = true;
             creep.memory.source = null;
-            }
         }
 
         // if creep is supposed to transfer energy to a structure
