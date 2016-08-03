@@ -34,7 +34,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	
 	timeout = Memory.constructionSpam;
     }
- 
+ 	/*
     if(Game.constructionSites != null) {
 	let total = 0;
 	for(let i in Game.constructionSites) {
@@ -46,7 +46,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	}
 	console.log("Current ConstructionSite Count: " + total);
     }
-
+	*/
     validSources = [];
     var meaniesA = [];
 
