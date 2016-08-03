@@ -52,6 +52,7 @@ module.exports = function() {
 	}
 	else if (roleName == "claimer") {
 		body = this.buildBody({claim:2,move:2});
+		bodyset = true;
 	}
         else if (roleName == "remoteharvester") {
 		body = this.buildBody({work:2,carry:9,move:11});
@@ -84,7 +85,7 @@ module.exports = function() {
 	    if(checkResult == 0) {
 	            return this.createCreep(body, name, { role: roleName, working: false, source: null });
 	    } else {
-		message = "tried to spawn " + name + "but received error: ";
+		message = "tried to spawn " + name + " but received error: ";
 		let err = "";
 		switch(checkResult) {
 			case 0:
