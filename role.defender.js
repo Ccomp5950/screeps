@@ -20,13 +20,6 @@ module.exports = {
 				return;
 			} 
 		}
-			target = Game.rooms[room].find(FIND_HOSTILE_CREEPS);
-			if (target != undefined) {	
-				if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
-				}
-					return;
-				}
 		let flag = Game.flags[creep.name];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
