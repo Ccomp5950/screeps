@@ -184,7 +184,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
     var readyToMaxSpawn = false;
 
    
-    if(myActualEnergy == energyCap || Math.floor(energyCap / 200 == Math.floor(myActualEnergy / 200)) {
+    if(myActualEnergy == energyCap || Math.floor(energyCap / 200) == Math.floor(myActualEnergy / 200)) {
 	readyToMaxSpawn = true;
     }
 
