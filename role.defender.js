@@ -8,15 +8,13 @@ module.exports = {
 			return;
 		}
 		var target = null;
-		if(redAlert) {
-			target = creep.room.find(FIND_HOSTILE_CREEPS);
-			if (target != undefined) {
-				if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
-				}
+		target = creep.room.find(FIND_HOSTILE_CREEPS);
+		if (target != undefined) {
+			if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(target);
+			}
 				return;
-			} 
-		}
+		} 
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
