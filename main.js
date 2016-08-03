@@ -127,7 +127,10 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 	}
         else if (creep.memory.role == 'miner') {
 	    let adjustment = 0;
-	    if(creep.nameIsEven == true) {
+		if(creep.memory.setupTime != null) {
+			adjustment = 0 - creep.memory.setupTime;
+		}
+	    if(adjustment == 0 && creep.nameIsEven == true) {
 		adjustment -= 35;
             } else {
 		adjustment += 45;		
