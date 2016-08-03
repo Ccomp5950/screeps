@@ -31,12 +31,14 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 
     let timeout = 500;
     if(Memory.constructionSpam != null) {
+	
 	timeout = Memory.constructionSpam;
     }
  
-    if(Game.time % timeout  == 0 && Game.constructionSites != null) {
+    if(Game.constructionSites != null) {
 	let total = 0;
 	for(let i in Game.constructionSites) {
+		Game.constructionSites[i].remove();
 		total++;
 	}
 	if(total > 99) {
