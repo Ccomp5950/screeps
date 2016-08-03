@@ -208,7 +208,7 @@ var roles =            {harvester:      {namer:"harvester",              minimum
 				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
 			}
 			else if(role.requirement == -1 && myActualEnergy == mySpawn.room.energyCapacityAvailable) {
-				name = mySpawn.createCustomCreep(myActualEnergy, role);
+				name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
 			}
 			else if(readyToSpawn) {
 				name = mySpawn.createCustomCreep(myEnergy, role.namer);
