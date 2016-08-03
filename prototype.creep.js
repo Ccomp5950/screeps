@@ -182,7 +182,7 @@ module.exports = function() {
 	Creep.prototype.findMiningFlag =
 	function() {
 		let creep = this;
-		for(let i = 0; i < Memory.miningSpots; i++) {
+		for(let i = 0; i <= Memory.miningSpots; i++) {
 			flagName = "miningSpot" + i.toString();
 			if(Game.flags[flagName] != null) {
 				let flag = Game.flags[flagName];
@@ -208,7 +208,7 @@ module.exports = function() {
         Creep.prototype.findFetchingFlag =
         function() {
                 let creep = this;
-                for(let i = 0; i < Memory.miningSpots; i++) {
+                for(let i = 0; i <= Memory.miningSpots; i++) {
                         flagName = "miningSpot" + i.toString();
                         if(Game.flags[flagName] != null) {
                                 let flag = Game.flags[flagName];
@@ -235,7 +235,7 @@ module.exports = function() {
         Creep.prototype.findClaimingFlag =
         function() {
                 let creep = this;
-                for(let i = 0; i < Memory.claimingSpots; i++) {
+                for(let i = 1; i <= Memory.claimingSpots  ; i++) {
                         flagName = "claim" + i.toString();
                         if(Game.flags[flagName] != null) {
                                 let flag = Game.flags[flagName];
