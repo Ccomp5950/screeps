@@ -23,6 +23,7 @@ module.exports = {
 					if(rating < biggestThreat[room]) {
 						destination = Game.rooms[room];
 						creep.moveTo(destination);
+						return;
 					}
 				}
 			}
