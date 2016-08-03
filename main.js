@@ -195,7 +195,7 @@ module.exports.loop = function () {
 	readyToMaxSpawn = true;
     }
 
-    if(myEnergy == energyMax || Math.floor(energyCap / 200) == Math.floor(myEnergy/200)) {
+    if(myEnergy >= energyMax || Math.floor(energyCap / 200) == Math.floor(myEnergy/200)) {
 	readyToSpawn = true;
     }
 
