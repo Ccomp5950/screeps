@@ -5,8 +5,8 @@ require('prototype.source')();
 require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
-                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",               minimum:4,      requirement:-1,         buildRestriction : true,        run: require('role.fetcher')},
+                        miner:          {namer:"miner",                 minimum:5,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",               minimum:5,      requirement:1000,       buildRestriction : true,        run: require('role.fetcher')},
                         upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
