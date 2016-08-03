@@ -179,7 +179,6 @@ module.exports = function() {
 	Creep.prototype.findMiningFlag =
 	function() {
 		let creep = this;
-		console.log("Mining Spots is
 		for(let i = 0; i < Memory.miningSpots; i++) {
 			flagName = "miningSpot" + i.toString();
 			if(Game.flags[flagName] != null) {
