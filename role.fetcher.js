@@ -27,21 +27,27 @@ module.exports = {
 		let storage = Game.getObjectById(Memory.storageid);
 		
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
-	                if(flag != undefined) {
-	                        var range = creep.pos.getRangeTo(flag);
-	                        if(range > 3) {
-	                                creep.moveTo(flag);
-	                                return;
-	                        }
-				else {
-					if(creep.memory.setupTime == null) {
-						creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+		if(creep.memory.getToFlag == null) {
+			creep.memory.getToFlag = true;
+		}
+			if(creep.memory.getToFlag == true) {
+		                if(flag != undefined) {
+		                        var range = creep.pos.getRangeTo(flag);
+		                        if(range > 3) {
+		                                creep.moveTo(flag);
+		                                return;
+		                        }
+					else {
+						creep.memory.getToFlag = false;
+						if(creep.memory.setupTime == null) {
+							creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+						}
 					}
+		                } 
+				else {
+					console.log("Fetcher can't find their flag: " + creep.name);
+					return;
 				}
-	                } 
-			else {
-				console.log("Fetcher can't find their flag: " + creep.name);
-				return;
 			}
 					
 			if(creep.memory.container == null) {
