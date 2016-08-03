@@ -14,14 +14,14 @@
 	global.displayRoles =
 	function() {
 		var rolecount = new Object();
-		for(roleM in roles) {
-			rolecount[roles[roleM].namer] = 0;
-		}
 		for(creepM in Game.creeps) {
+			if(rolecount[Game.creeps[creepM].role == null) {
+				rolecount[Game.creeps[creepM].role = 0;
+			}
 			rolecount[Game.creeps[creepM].role]++;
 		}
-		for(roleM in roles) {
-			console.log("You have " + rolecount[roles[roleM].namer] + " " + roles[roleM].namer +"'s creeps");
+		for(roleM in rolecount) {
+			console.log("You have " + rolecount[roleM] + " " + roleM +"'s creeps");
 		}
 	}
 
