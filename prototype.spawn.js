@@ -73,7 +73,7 @@ module.exports = function() {
                 bodyset = true;
 		creepMem.combat = true;
 	}
-	else if (roleName == "miner" || roleName = "remoteminer") {
+	else if (roleName == "miner" || roleName == "remoteminer") {
 		body = this.buildBody({carry:1,move:2,work:5});
 		bodyset = true;
 	}
