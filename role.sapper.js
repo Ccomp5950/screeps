@@ -31,7 +31,7 @@ module.exports = {
 		if(creep.hits < 1200 || creep.memory.healing == true) {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
-			frange = 0;
+			frange = 1;
 		}
 		if(flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);

@@ -55,9 +55,9 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "sapper") {
-		let base = 420;
+		let base = 670;
 		let calcEnergy = energy - base;
-		let probody = {tough:2,work:0,move:3,heal:1};
+		let probody = {tough:2,work:0,move:3,heal:2};
 		let sapparts = Math.floor(calcEnergy / 250);
                 for(let i = 0; i < sapparts; i++) {
                         probody.work++;
