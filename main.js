@@ -226,8 +226,10 @@ module.exports.loop = function () {
 	if(roles["harvester"].current == 0) {
 		name = mySpawn.createCustomCreep(myEnergy, 'harvester');
 	} else {
+	let totalRoles = 0;
 	Memory.goingToSpawn = [];
 	for(let roleM in roles) {
+		totalRoles ++;
 		let role = roles[roleM];
 		if(role.minimum > role.current && (Memory.bootstraping == false || role.namer == "harvester")) {
 			Memory.goingToSpawn.push(role.namer);
@@ -252,7 +254,7 @@ module.exports.loop = function () {
 			console.log("Tried to spawn a " + role.namer + " but got error " + name);
 		}
 	}
-
+	Memory.totalRoles = totalRoles;
 
 	}
 	
