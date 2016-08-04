@@ -161,7 +161,7 @@ module.exports.loop = function () {
 		if(roles[creep.memory.role] == null) {
 			console.log("Warning: " + name + " has a bad role: " + creep.memory.role);
 		} else {
-			if(creep.ticksToLive == undefined && (creep.ticksToLive - (creep.body.length * 2) - 2) >= 0) {
+			if((creep.ticksToLive - (creep.body.length * 2) - 2) >= 0) {
 				roles[creep.memory.role].current++;
 			}
 			roles[creep.memory.role].run.run(creep);
