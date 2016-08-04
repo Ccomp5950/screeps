@@ -35,7 +35,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	if(roleName == "scout") {
-		body = this.buildBody({move:3,carry:1});
+		body = this.buildBody({move:4});
 		bodyset = true;
 	}
 	else if(roleName == "attacker") {
