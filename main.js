@@ -6,7 +6,7 @@ require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:2,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
-			sapper:         {namer:"sapper",                minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
+			sapper:         {namer:"sapper",                minimum:2,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         towerdrainer:   {namer:"towerdrainer",          minimum:2,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
                         healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
                         miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
