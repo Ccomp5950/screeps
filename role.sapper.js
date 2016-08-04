@@ -57,7 +57,9 @@ module.exports = {
                 }
 
 
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES);
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES {
+							filter: (s) => s.structureType == STRUCTURE_WALL && s.hits < 199000
+		});
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
