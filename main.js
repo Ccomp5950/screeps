@@ -5,8 +5,8 @@ require('prototype.source')();
 require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
-                        miner:          {namer:"miner",                 minimum:2,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",               minimum:2,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
+                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",               minimum:4,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
                         upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
@@ -14,9 +14,9 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         towertender:    {namer:"towertender",           minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.towertender')},
                         scout:          {namer:"scout",                 minimum:0,      requirement:200,        buildRestriction : true,        run: require('role.scout')},
                         attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
-                        defender:       {namer:"defender",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.defender')},
+                        defender:       {namer:"defender",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
-                        claimer:        {namer:"claimer",               minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
+                        claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
                         };
 
 module.exports.loop = function () {
