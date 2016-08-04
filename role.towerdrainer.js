@@ -9,13 +9,14 @@ module.exports = {
 			return;
 		}
 		var flag = Game.flags[creep.name];		
-		var frange = 999;
+		var frange = 0;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
 		if(creep.hits < 800 || creep.memory.healing == true) {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
+			frange = 999;
 		}
 		if(flag != undefined && (creep.memory.healingother != null && creep.memory.healingother == false)) {
 			var range = creep.pos.getRangeTo(flag);
