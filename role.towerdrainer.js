@@ -30,11 +30,13 @@ module.exports = {
 			if(targets.length > 0) {
 				
 				if(creep.pos.getRangeTo(targets[0]) == 1) {
-					creep.memory.healingother = true;
-					creep.heal(targets[0]);
+					if(creep.heal(targets[0]) == 0) {
+						creep.memory.healingother = true;
+					}
 				} else {
-				    creep.rangedHeal(targets[0]);
+				    if(creep.rangedHeal(targets[0]) == 0) {
 					creep.memory.healingother = true;
+				    }
 				}
 			
 			} else {
