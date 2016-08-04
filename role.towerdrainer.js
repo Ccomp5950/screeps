@@ -28,7 +28,7 @@ module.exports = {
 					filter: (c) => c.my == true
 			});
 			if(targets.length > 0) {
-				if(creep.pos.rangeTo(targets[0]) == 1) {
+				if(creep.pos.getRangeTo(targets[0]) == 1) {
 					creep.heal(targets[0]);
 				} else {
 				    creep.rangedHeal(targets[0]);
