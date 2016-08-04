@@ -24,13 +24,14 @@ module.exports = {
 		*/
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
-		var frange = 999;
+		var frange = 1;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
 		if(creep.hits < 1200 || creep.memory.healing == true) {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
+			frange = 0;
 		}
 		if(flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);
@@ -65,6 +66,11 @@ module.exports = {
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (s) => s.structureType == STRUCTURE_WALL && s.hits < 199000
 		});
+		if (target == undefined) {
+	                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                                                      filter: (s) => s.structureType == STRUCTURE_WALL
+	                });
+		}
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
