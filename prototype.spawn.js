@@ -144,6 +144,8 @@ module.exports = function() {
 				break;
 		console.log(message + err);
 		}
+	
 	    }
+	return checkResult;
         };
 };
