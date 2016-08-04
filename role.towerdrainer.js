@@ -28,11 +28,13 @@ module.exports = {
 					filter: (c) => c.my == true
 			});
 			if(targets.length > 0) {
-				creep.memory.healingother = true;
+				
 				if(creep.pos.getRangeTo(targets[0]) == 1) {
+					creep.memory.healingother = true;
 					creep.heal(targets[0]);
 				} else {
 				    creep.rangedHeal(targets[0]);
+					creep.memory.healingother = true;
 				}
 			
 			} else {
