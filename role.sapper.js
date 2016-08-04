@@ -24,12 +24,14 @@ module.exports = {
 		*/
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
+		var frange = 999;
 		if(creep.hits < 1200) {
 			flag = Game.flags.sapperSafe;
+			frange = 0;
 		}
 		if(flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);
-			if(range > 999) {
+			if(range > frange) {
 				creep.moveTo(flag);
 				return;
 			}
