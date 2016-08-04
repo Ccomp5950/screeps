@@ -229,7 +229,7 @@ module.exports.loop = function () {
 
 	for(let roleM in roles) {
 		let role = roles[roleM];
-		if(role.minimum > role.current && (Memory.bootstraping == false || role.namer == "harvester") {
+		if(role.minimum > role.current && (Memory.bootstraping == false || role.namer == "harvester")) {
 			if(role.buildRestriction == true && dontBuild == true || role.minimum == 0) {
 				continue;
 			}
