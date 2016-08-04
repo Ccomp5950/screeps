@@ -5,12 +5,13 @@ module.exports = {
 			creep.memory.healingother = false;
 			return;
 		}
-
+		/*
 		if(creep.getAwayFromEdge()) {
 			return;
 		}
+		*/
 		var flag = Game.flags[creep.name];		
-		var frange = 0;
+		var frange = 999;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		} else {
@@ -22,6 +23,7 @@ module.exports = {
 			creep.memory.healingothers = false;
 			flagName = creep.name + "safe";
 			flag = Game.flags[flagName];
+			frange = 0;
 		}
 		if(flag != undefined && creep.memory.healingother == false) {
 			var range = creep.pos.getRangeTo(flag);
