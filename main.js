@@ -5,6 +5,7 @@ require('prototype.source')();
 require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
+			attacker:       {namer:"attacker",              minimum:2,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
 			sapper:         {namer:"sapper",                minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         towerdrainer:   {namer:"towerdrainer",          minimum:2,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
                         healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
@@ -18,7 +19,6 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			remoteminer:	{namer:"remoteminer",		minimum:0,	requirement:900,	buildRestriction : true,	run: require('role.miner')},
 			remotefetcher:	{namer:"remotefetcher",         minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
                         scout:          {namer:"scout",                 minimum:0,      requirement:200,        buildRestriction : true,        run: require('role.scout')},
-                        attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
                         defender:       {namer:"defender",              minimum:1,      requirement:-1,		buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
