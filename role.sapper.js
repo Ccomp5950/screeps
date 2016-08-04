@@ -22,6 +22,10 @@ module.exports = {
 		}
 		if(creep.memory.ready == true) {
 		*/
+                if(creep.hits < creep.hitsMax) {
+                        creep.heal(creep);
+			return;
+                }
 		var flag = Game.flags.sapper;		
 		if(flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);
