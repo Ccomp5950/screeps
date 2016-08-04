@@ -25,7 +25,7 @@ module.exports = {
 			}
 		}
 		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
-			var targets = creep.pos.findInRange(FIND__CREEPS, 3 {
+			var targets = creep.pos.findInRange(FIND_CREEPS, 3 {
 					filter: (c) => c.my == true
 			});
 			if(targets.length > 0) {
