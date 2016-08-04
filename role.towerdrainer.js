@@ -24,7 +24,20 @@ module.exports = {
 				return;
 			}
 		}
-                if(creep.memory.healing) {
+		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
+			var targets = creep.pos.findInRange(FIND__CREEPS, 3 {
+					filter: (c) => c.my == true
+			});
+			if(targets.length > 0) {
+				if(creep.pos.rangeTo(targets[0]) == 1) {
+					creep.heal(targets[0]);
+				} else {
+				    creep.rangedHeal(targets[0]);
+				}
+			}
+                return
+		}
+                else if(creep.memory.healing || creep.hits != creep.hitsMax) {
                         if(creep.heal(creep) == 0) {
                                 return;
                         }
