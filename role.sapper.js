@@ -34,6 +34,30 @@ module.exports = {
 				return;
 			}
 		}
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_SPAWNS);
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                                }
+                return;
+                }
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_CONSTRUCTION_SITES);
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                               }
+                return;
+                }
+
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                                }
+                return;
+                }
+
+
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES);
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
