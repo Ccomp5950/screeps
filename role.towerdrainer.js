@@ -11,7 +11,7 @@ module.exports = {
 		}
 		*/
 		var flag = Game.flags[creep.name];		
-		var frange = 999;
+		var frange = 0;
 		var taunt = true;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
