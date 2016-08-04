@@ -47,6 +47,7 @@ module.exports = {
 		}
                 else if(creep.memory.healing || creep.hits != creep.hitsMax) {
                         if(creep.heal(creep) == 0) {
+				creep.memory.healingothers = false;
                                 return;
                         }
                 }
