@@ -24,7 +24,7 @@ module.exports = {
 		*/
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
-		if(creep.hits < 400) {
+		if(creep.hits < 1200) {
 			flag = Game.flags.sapperSafe;
 		}
 		if(flag != undefined) {
