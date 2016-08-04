@@ -30,7 +30,7 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
-	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name };
+	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
 	if(roleName == "towerdrainer") {
 		body = this.buildBody({tough:36,move:10,heal:4});
 		bodyset = true;
