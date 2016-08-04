@@ -266,9 +266,10 @@ module.exports = function() {
                 } else if(creep.pos.x == 49){
 			creep.move(LEFT);
                 } else if(creep.pos.y == 0) {
-			creep.move(DOWN);
+			creep.move(BOTTOM);
 		} else if(creep.pos.y == 49) {
-			creep.move(UP);
+			creep.move(TOP);
+
 		}
 
 

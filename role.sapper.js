@@ -46,7 +46,7 @@ module.exports = {
                                 }
                 return;
                 }
-                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES { 
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, { 
 							filter: (s) => s.structureType != STRUCTURE_WALL
 		});
                 if (target != undefined) {
@@ -57,7 +57,7 @@ module.exports = {
                 }
 
 
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES {
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (s) => s.structureType == STRUCTURE_WALL && s.hits < 199000
 		});
                 if (target != undefined) {
