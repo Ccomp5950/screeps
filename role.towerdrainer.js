@@ -2,6 +2,7 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep, squadsize) {
 		if(creep.spawning) {
+			creep.memory.healingother = false;
 			return;
 		}
 
@@ -12,13 +13,16 @@ module.exports = {
 		var frange = 0;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
+		} else {
+			creep.memory.healingothers = false;
 		}
+
 		if(creep.hits < 1200 || creep.memory.healing == true) {
 			creep.memory.healing = true;
 			flagName = creep.name + "safe";
 			flag = Game.flags[flagName];
 		}
-		if(flag != undefined && (creep.memory.healingother != null && creep.memory.healingother == false)) {
+		if(flag != undefined && creep.memory.healingother == false) {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
 				creep.moveTo(flag);
