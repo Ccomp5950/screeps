@@ -257,7 +257,21 @@ module.exports = function() {
                         flag.memory.Claimer = creep.id;
 			flag.memory.ClaimerName = creep.name;
                 }
-        }
-	
+        };
+	Creep.prototype.getAwayFromEdge =
+	function() {
+		let creep = this;
+                if(creep.pos.x == 0) {
+                        creep.move(RIGHT);
+                } else if(creep.pos.x == 49){
+			creep.move(LEFT);
+                } else if(creep.pos.y == 0) {
+			creep.move(DOWN);
+		} else if(creep.pos.y == 49) {
+			creep.move(UP);
+		}
+
+
+	}
 	
 };

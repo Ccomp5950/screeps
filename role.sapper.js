@@ -22,12 +22,11 @@ module.exports = {
 		}
 		if(creep.memory.ready == true) {
 		*/
-                if(creep.hits < creep.hitsMax) {
-                        if(creep.heal(creep) == 0) {
-				return;
-			}
-                }
+		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
+		if(creep.hits < 400) {
+			flag = Game.flags.sapperSafe;
+		}
 		if(flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > 999) {
@@ -35,6 +34,11 @@ module.exports = {
 				return;
 			}
 		}
+                if(creep.hits < creep.hitsMax) {
+                        if(creep.heal(creep) == 0) {
+                                return;
+                        }
+                }
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_SPAWNS);
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
