@@ -134,6 +134,7 @@ module.exports.loop = function () {
 
 	
     for (let name in Game.creeps) {
+	creep.memory.ticksToLive = creep.ticksToLive;
         // get the creep object
         var creep = Game.creeps[name];
 
