@@ -23,6 +23,7 @@ module.exports = {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > 999) {
                                 creep.moveTo(flag);
+				return;
                         }
                 }
                 target = creep.pos.findClosestByRange(FIND_CREEPS, {
