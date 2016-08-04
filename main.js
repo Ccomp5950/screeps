@@ -114,7 +114,7 @@ module.exports.loop = function () {
 		if(Memory.creeps[name].myFlag != null) {
 			flag = "(" + Memory.creeps[name].myFlag + ")";
 		}
-		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " " + flag);
+		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + "HPs and "+ Memory.creeps[name].ticksToLive + "Ticks Left " + flag);
             delete Memory.creeps[name];
         }
     }
@@ -138,6 +138,8 @@ module.exports.loop = function () {
         var creep = Game.creeps[name];
 	creep.memory.ticksToLive = creep.ticksToLive;
 	creep.memory.currentRoom = creep.room.name;
+	creep.memory.currentHits = creep.hits;
+	creep.memory.currentMaxHits = creep.hitsMax;
 	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner" && creep.memory.role != "attacker") || creep.memory.role == 'towertender') {
 		roles["towertender"].current++;
 		roles["towertender"].run.run(creep);
