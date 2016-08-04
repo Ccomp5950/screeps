@@ -58,9 +58,10 @@ module.exports = function() {
 		let base = 420;
 		let calcEnergy = energy - base;
 		let probody = {tough:2,work:0,move:3,heal:1};
-		let sapparts = Math.floor(calcEnergy / 150);
+		let sapparts = Math.floor(calcEnergy / 250);
                 for(let i = 0; i < sapparts; i++) {
                         probody.work++;
+			probody.work++;
                         probody.move++;
                 }
                 body = this.buildBody(probody);
