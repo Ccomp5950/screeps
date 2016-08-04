@@ -18,6 +18,22 @@ module.exports = {
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
+                targets = creep.pos.findClosestByRange(FIND_CREEPS, {
+                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
+                        });
+                if (target != undefined) {
+                        if (creep.heal(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target);
+                        }
+                                return;
+                }
+
+                if (target != undefined) {
+                        if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target);
+                        }
+                                return;
+                }
 		let flag = Game.flags[creep.name];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
