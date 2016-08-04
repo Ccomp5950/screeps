@@ -109,7 +109,7 @@ module.exports.loop = function () {
     }
     
 
-
+    var numberOfCreeps = 0;
     for (let name in Memory.creeps) {
         if (Game.creeps[name] == undefined) {
 		let flag = ""
@@ -118,7 +118,9 @@ module.exports.loop = function () {
 		}
 		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + "HPs and "+ Memory.creeps[name].ticksToLive + "Ticks Left " + flag);
             delete Memory.creeps[name];
-        }
+        } else {
+		numberOfCreeps++;
+	}
     }
     for (let name in Memory.flags) {
         if (Game.flags[name] == undefined) {
@@ -215,7 +217,10 @@ module.exports.loop = function () {
     }
 
 
-
+	if(numberOfCreeps == 0) {
+		Memory.bootstraping = true;
+	}
+	
 
 
 	if(roles["harvester"].current == 0) {
@@ -224,7 +229,7 @@ module.exports.loop = function () {
 
 	for(let roleM in roles) {
 		let role = roles[roleM];
-		if(role.minimum > role.current) {
+		if(role.minimum > role.current && (Memory.bootstraping == false || role.namer == "harvester") {
 			if(role.buildRestriction == true && dontBuild == true || role.minimum == 0) {
 				continue;
 			}
@@ -237,6 +242,8 @@ module.exports.loop = function () {
 			else if(role.requirement == 0 && readyToSpawn) {
 				name = mySpawn.createCustomCreep(myEnergy, role.namer);
 			}
+		} else if (role.namer == "harvester") {
+			Memory.bootstraping = false;
 		}
 		if(!(name < 0) && name != undefined) {
 			break;
