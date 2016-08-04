@@ -71,6 +71,9 @@ module.exports = function() {
 		body = this.buildBody({carry:1,move:2,work:5});
 		bodyset = true;
 	}
+	else if (roleName == "healer") {
+		body = this.buildBody({move:5,heal:5});
+	}
 	else if (roleName == "claimer") {
 		body = this.buildBody({claim:2,move:2});
 		bodyset = true;
