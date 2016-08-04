@@ -27,11 +27,14 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 module.exports.loop = function () {
 
     // check for memory entries of died creeps by iterating over Memory.creeps
-
+    let totalRoles = 0;
     for(let role in roles) {
+	totalRoles++;
 	roles[role].current = 0;
     } 
-
+    if(Memory.totalRoles != totalRoles) {
+	Memory.totalRoles = totalRoles;
+    }
     noMoreConstruction = false;
 
     let timeout = 500;
@@ -229,7 +232,6 @@ module.exports.loop = function () {
 	let totalRoles = 0;
 	Memory.goingToSpawn = [];
 	for(let roleM in roles) {
-		totalRoles ++;
 		let role = roles[roleM];
 		if(role.minimum > role.current && (Memory.bootstraping == false || role.namer == "harvester")) {
 			Memory.goingToSpawn.push(role.namer);
@@ -254,7 +256,6 @@ module.exports.loop = function () {
 			console.log("Tried to spawn a " + role.namer + " but got error " + name);
 		}
 	}
-	Memory.totalRoles = totalRoles;
 
 	}
 	
