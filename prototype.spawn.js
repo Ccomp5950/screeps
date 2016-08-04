@@ -31,7 +31,7 @@ module.exports = function() {
             var body = [];
 	    var bodyset = false;
 	if(roleName == "towerdrainer") {
-		body = this.buildBody({tough:5,move:9,heal:4});
+		body = this.buildBody({tough:41,move:5,heal:4});
 		bodyset = true;
 	}
 	if(roleName == "scout") {
