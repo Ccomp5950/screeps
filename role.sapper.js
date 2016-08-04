@@ -25,7 +25,11 @@ module.exports = {
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
-		if(creep.hits < 1200) {
+		if(creep.hits == creep.hitsMax) {
+			creep.memory.healing = false;
+		}
+		if(creep.hits < 1200 || creep.memory.healing == true) {
+			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
 			frange = 0;
 		}
