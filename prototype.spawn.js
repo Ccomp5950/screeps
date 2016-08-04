@@ -30,7 +30,7 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
-	    var creepMem = { role: roleName, combat: false, source:null};
+	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name };
 	if(roleName == "towerdrainer") {
 		body = this.buildBody({tough:36,move:10,heal:4});
 		bodyset = true;
@@ -115,7 +115,7 @@ module.exports = function() {
 	    let checkResult = this.canCreateCreep(body, name);
 	    
 	    if(checkResult == 0) {
-	            return this.createCreep(body, name, { role: roleName, working: false, source: null, spawnerRoom: this.room.name });
+	            return this.createCreep(body, name, creepMem);
 	    } else {
 		message = "tried to spawn " + name + " but received error: ";
 		let err = "";
