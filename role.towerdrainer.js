@@ -33,7 +33,7 @@ module.exports = {
 				creep.moveTo(flag);
 				return;
 			} else if(taunt) {
-				creep.say("Ha missed!";				
+				creep.say("Ha missed!", TRUE);				
 			}
 		}
 		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
