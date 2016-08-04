@@ -21,7 +21,6 @@ module.exports = {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
 				creep.moveTo(flag);
-				return;
 			}
 		}
 		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
