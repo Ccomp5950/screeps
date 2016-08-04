@@ -32,7 +32,7 @@ module.exports = function() {
 	    var bodyset = false;
 	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
 	if(roleName == "towerdrainer") {
-		body = this.buildBody({tough:36,move:10,heal:4});
+		body = this.buildBody({tough:30,move:10,heal:6});
 		bodyset = true;
 		creepMem.combat = true;
 	}
