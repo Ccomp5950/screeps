@@ -28,7 +28,7 @@ module.exports = {
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
-		if(creep.hits < 1200 || creep.memory.healing == true) {
+		if(creep.hits < 1800 || creep.memory.healing == true) {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
 			frange = 0;
