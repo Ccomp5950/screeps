@@ -62,7 +62,7 @@ module.exports = {
                 return;
                 }
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
-                                                        filter: (s) => s.structureType != STRUCTURE_WALL
+                                                        filter: (s) => s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_ROAD
                 });
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
