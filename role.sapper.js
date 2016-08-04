@@ -23,8 +23,9 @@ module.exports = {
 		if(creep.memory.ready == true) {
 		*/
                 if(creep.hits < creep.hitsMax) {
-                        creep.heal(creep);
-			return;
+                        if(creep.heal(creep) == 0) {
+				return;
+			}
                 }
 		var flag = Game.flags.sapper;		
 		if(flag != undefined) {
@@ -41,14 +42,6 @@ module.exports = {
                                 }
                 return;
                 }
-                target = creep.pos.findClosestByPath(FIND_HOSTILE_CONSTRUCTION_SITES);
-                if (target != undefined) {
-                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target, {maxRooms:1});
-                               }
-                return;
-                }
-
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
@@ -63,6 +56,14 @@ module.exports = {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
                                 }
+                return;
+                }
+
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_CONSTRUCTION_SITES);
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                               }
                 return;
                 }
 
