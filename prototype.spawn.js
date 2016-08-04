@@ -30,17 +30,21 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
+	    var creepMem = { role: roleName, combat: false, source:null};
 	if(roleName == "towerdrainer") {
 		body = this.buildBody({tough:36,move:10,heal:4});
 		bodyset = true;
+		creepMem.combat = true;
 	}
 	if(roleName == "scout") {
 		body = this.buildBody({move:4});
 		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if(roleName == "attacker") {
 		body = this.buildBody({attack:5,move:6});
 		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "defender") {
 		let base = 420;
@@ -53,6 +57,7 @@ module.exports = function() {
 		}
 		body = this.buildBody(probody);
 		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "sapper") {
 		let base = 670;
@@ -66,6 +71,7 @@ module.exports = function() {
                 }
                 body = this.buildBody(probody);
                 bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "miner") {
 		body = this.buildBody({carry:1,move:2,work:5});
@@ -73,6 +79,8 @@ module.exports = function() {
 	}
 	else if (roleName == "healer") {
 		body = this.buildBody({move:5,heal:5});
+		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "claimer") {
 		body = this.buildBody({claim:2,move:2});
