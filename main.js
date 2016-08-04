@@ -9,19 +9,19 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			sapper:         {namer:"sapper",                minimum:2,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         towerdrainer:   {namer:"towerdrainer",          minimum:0,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
                         healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
-                        miner:          {namer:"miner",                 minimum:2,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
-                        fetcher:        {namer:"fetcher",               minimum:2,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
-                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
+                        miner:          {namer:"miner",                 minimum:0,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
+                        fetcher:        {namer:"fetcher",               minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
+                        upgrader:       {namer:"upgrader",              minimum:0,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
-                        repairer:       {namer:"repairer",              minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
-                        wallrepairer:   {namer:"wallrepairer",          minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
+                        repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
+                        wallrepairer:   {namer:"wallrepairer",          minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
                         towertender:    {namer:"towertender",           minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.towertender')},
 			remoteminer:	{namer:"remoteminer",		minimum:0,	requirement:900,	buildRestriction : true,	run: require('role.miner')},
 			remotefetcher:	{namer:"remotefetcher",         minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
                         scout:          {namer:"scout",                 minimum:0,      requirement:200,        buildRestriction : true,        run: require('role.scout')},
-                        defender:       {namer:"defender",              minimum:1,      requirement:-1,		buildRestriction : false,       run: require('role.defender')},
+                        defender:       {namer:"defender",              minimum:0,      requirement:-1,		buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
-                        claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
+                        claimer:        {namer:"claimer",               minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
                         };
 
 module.exports.loop = function () {
