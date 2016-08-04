@@ -40,6 +40,7 @@ module.exports = {
 					}
 				} else {
 				    if(creep.rangedHeal(targets[0]) == 0) {
+					creep.moveTo(targets[0];
 					creep.memory.healingother = true;
 				    }
 				}
