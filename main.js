@@ -5,6 +5,7 @@ require('prototype.source')();
 require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
+			sapper:         {namer:"sapper",                minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
                         fetcher:        {namer:"fetcher",               minimum:4,      requirement:1400,       buildRestriction : true,        run: require('role.fetcher')},
                         upgrader:       {namer:"upgrader",              minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.upgrader')},
@@ -19,7 +20,6 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         defender:       {namer:"defender",              minimum:1,      requirement:-1,		buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
-			sapper:		{namer:"sapper",		minimum:1,      requirement:-1,		buildRestriction : true,        run: require('role.sapper')},
 			towerdrainer:	{namer:"towerdrainer",		minimum:0,	requirement:2300,	buildRestriction : true,	run: require('role.towerdrainer')},
 			healer:         {namer:"healer",                minimum:0,      requirement:1500,	buildRestriction : true,        run: require('role.healer')}
                         };
