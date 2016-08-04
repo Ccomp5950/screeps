@@ -16,7 +16,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
                         defender:       {namer:"defender",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
-                        claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
+                        claimer:        {namer:"claimer",               minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')}
                         };
 
 module.exports.loop = function () {
