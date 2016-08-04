@@ -214,7 +214,7 @@ module.exports.loop = function () {
 
 
 
-	if(Game.creeps.length == 0 || Game.creeps.length == undefined) {
+	if(roles["harvester"].current == 0) {
 		name = mySpawn.createCustomCreep(myEnergy, 'harvester');
 	} else {
 
