@@ -115,8 +115,9 @@ module.exports = function() {
 	    let checkResult = this.canCreateCreep(body, name);
 	    
 	    if(checkResult == 0) {
-	            return this.createCreep(body, name, creepMem);
-	    } else {
+	            checkResult =  this.createCreep(body, name, creepMem);
+	    }
+	    if(checkResult < 0)
 		message = "tried to spawn " + name + " but received error: ";
 		let err = "";
 		switch(checkResult) {
@@ -141,8 +142,8 @@ module.exports = function() {
 			case -14:
 				err = "Not high enough RCL";
 				break;
-		}
 		console.log(message + err);
+		}
 	    }
         };
 };
