@@ -117,7 +117,7 @@ module.exports = function() {
 	    if(checkResult == 0) {
 	            checkResult =  this.createCreep(body, name, creepMem);
 	    }
-	    if(checkResult < 0)
+	    if(checkResult < 0) {
 		message = "tried to spawn " + name + " but received error: ";
 		let err = "";
 		switch(checkResult) {
