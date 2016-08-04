@@ -235,7 +235,7 @@ module.exports.loop = function () {
 		let role = roles[roleM];
 		if(role.minimum > role.current) {
 			Memory.goingToSpawn.push(role.namer);
-			if((role.buildRestriction == true && dontBuild == true) || (Memory.bootstraping == true || role.namer != "harvester")) {
+			if((role.buildRestriction == true && dontBuild == true) || (Memory.bootstraping == true && role.namer != "harvester")) {
 				continue;
 			}
 			if(role.requirement > 0 && myActualEnergy >= role.requirement && mySpawn.spawning == null) {
