@@ -17,7 +17,7 @@ module.exports = {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
 		}
-		if(flag != undefined && (creep.memory.healingother == null || creep.memory.healingother == false)) {
+		if(flag != undefined && (creep.memory.healingother != null && creep.memory.healingother == false)) {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
 				creep.moveTo(flag);
