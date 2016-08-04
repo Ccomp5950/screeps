@@ -34,8 +34,6 @@ module.exports = {
                         }
                                 return;
                 }
-
-		let flag = Game.flags[creep.name];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > 0) {
