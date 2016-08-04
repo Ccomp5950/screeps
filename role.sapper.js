@@ -46,7 +46,7 @@ module.exports = {
                         }
                 }
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, { 
-							filter: (s) => s.structureType == STRUCTURE_TOWER
+							filter: (s) => s.structureType == STRUCTURE_SPAWN
 		});
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
