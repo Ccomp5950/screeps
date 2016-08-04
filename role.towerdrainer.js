@@ -12,6 +12,7 @@ module.exports = {
 		*/
 		var flag = Game.flags[creep.name];		
 		var frange = 999;
+		var taunt = true;
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		} else {
@@ -19,6 +20,7 @@ module.exports = {
 		}
 
 		if(creep.hits < 1200 || creep.memory.healing == true) {
+			taunt = false;
 			creep.memory.healing = true;
 			creep.memory.healingothers = false;
 			flagName = creep.name + "safe";
@@ -30,6 +32,8 @@ module.exports = {
 			if(range > frange) {
 				creep.moveTo(flag);
 				return;
+			} else if(taunt) {
+				creep.say("Ha missed!";				
 			}
 		}
 		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
