@@ -33,7 +33,7 @@
 		let ydiff = yb - ya;
 		let xsqr = Math.pow(xdiff, 2);
 		let ysqr = Math.pow(ydiff, 2);
-		return Math.sqrt(ysqr + xsqur);
+		return Math.sqrt(ysqr + xsqr);
 	}
 
 	
