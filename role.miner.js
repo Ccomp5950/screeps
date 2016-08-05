@@ -44,7 +44,7 @@ module.exports = {
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
-	          	structure = creep.pos.findInRange(FIND_STRUCTURES,2, {
+	          	structure = creep.pos.findInRange(FIND_STRUCTURES,1, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
 			if(structure.length) {
@@ -59,6 +59,9 @@ module.exports = {
 		}
 
 		if (structure != null) {
+			if(creep.pos.getRangeTo(structure) > 1) {
+				game.memory.container = null;
+			}
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 			if(structure.hits < structure.hitsMax) {
