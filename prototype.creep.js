@@ -331,10 +331,28 @@ module.exports = function() {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
                                 }
+                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                                }
+
 			creep.memory.killThis = target.id;
+
                 return true;
                 }
 	return false;
+	};
+        Creep.prototype.attackSavedTarget =
+        function() {	
+		let target = null;
+		target = Game.getObjectById(creep.memory.killThis);
+		if(target == null || Game.time % 20 == 0) {
+			return false;
+		}
+		if(creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+			creep.moveTo(target, {maxRooms:1});
+		}
+		if(creep.attack(target) == ERR_NOT_IN_RANGE) {
+			creep.moveTo(target, {maxRooms:1});
+		}
 	}
-	
 };
