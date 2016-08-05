@@ -289,11 +289,11 @@ module.exports = function() {
 
 	};
 	Creep.prototype.attackHostileStructure =
-	function(structureType) {
+	function(structure) {
 		let creep = this;
 		let target = null;
 		console.log("lalalala");
-		switch(structureType) {
+		switch(structure) {
 
 			case "ANYTHING":
 				 console.log("ANYTHING");
@@ -319,7 +319,9 @@ module.exports = function() {
 				break;
 			default:
 				console.log("DEFAULT "+ structureType);
-				target = creep.pos.findClosestByPath(structureType);
+				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+						filter: (s) => s.structureType == structure
+				});
 				break;
 		}
                 if (target != undefined) {
