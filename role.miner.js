@@ -61,7 +61,7 @@ module.exports = {
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
 		} else {
 			structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
-			if(structure != null {
+			if(structure != null) {
 				if(creep.build(structure) == OK) {
 					return;
 				}
