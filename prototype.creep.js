@@ -298,7 +298,7 @@ module.exports = function() {
 				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
 				break;
 			case STRUCTURE_WALL:
-				for(let range = 2; range < 10; range++) {
+				for(let range = 2; range < 25; range++) {
 					let targets = creep.pos.findInRange(FIND_STRUCTURES,range, {
 								filter: (s) => s.structureType == STRUCTURE_WALL
 					});
@@ -316,7 +316,9 @@ module.exports = function() {
 					}
 				}
 				if(target == null) {
-					target = creep.pos.findClosestByPath(FIND_STRUCTURES);
+					target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+										filter: (s) => s.structureType == STRUCTURE_WALL
+					});
 				}
 				break;
 			default:
