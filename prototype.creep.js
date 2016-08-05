@@ -343,6 +343,7 @@ module.exports = function() {
 	};
         Creep.prototype.attackSavedTarget =
         function() {	
+		let creep = this;
 		let target = null;
 		target = Game.getObjectById(creep.memory.killThis);
 		if(target == null || Game.time % 20 == 0) {
