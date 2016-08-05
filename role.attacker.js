@@ -53,7 +53,6 @@ module.exports = {
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_CONSTRUCTION_SITES);
                 if (target != undefined) {
 				creep.moveTo(target, {maxRooms:1});
-                               }
                 return;
             	}
 
