@@ -306,7 +306,7 @@ module.exports = function() {
 					let weakestHits = 999999999;
 					if(targets.length) {
 						for(let i = 0; i < targets.length; i++) {
-							if(targets[i].hits < weakestHits) {
+							if(targets[i].hits < weakestHits && creep.pos.findPathTo(targets[i]) {
 								weakest = targets[i];
 								weakestHits = targets[i].hits;
 							}
