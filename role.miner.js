@@ -58,6 +58,10 @@ module.exports = {
 		if (structure != null) {
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
+			if(structure.hits < structure.hitsMax) {
+				creep.repair(structure);
+				return;
+			}
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
 		} else {
 			structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
