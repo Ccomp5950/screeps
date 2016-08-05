@@ -294,7 +294,7 @@ module.exports = function() {
 		let target = null;
 		switch(structureType) {
 
-			case "anything":
+			case "ANYTHING":
 				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
 				break;
 			case STRUCTURE_WALL:
