@@ -292,15 +292,12 @@ module.exports = function() {
 	function(structure) {
 		let creep = this;
 		let target = null;
-		console.log("lalalala");
 		switch(structure) {
 
 			case "ANYTHING":
-				 console.log("ANYTHING");
 				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
 				break;
 			case STRUCTURE_WALL:
-				console.log("WALLS");
 				for(let range = 2; range < 10; range++) {
 					let targets = creep.pos.findInRange(STRUCTURE_WALL, range);
 					let weakest = null;
@@ -318,14 +315,12 @@ module.exports = function() {
 				}
 				break;
 			default:
-				console.log("DEFAULT "+ structureType);
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 						filter: (s) => s.structureType == structure
 				});
 				break;
 		}
                 if (target != undefined) {
-				console.log("ACTION");
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
                                 }
