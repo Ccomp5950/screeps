@@ -22,6 +22,10 @@ module.exports = {
 		}
 		if(creep.memory.ready == true) {
 		*/
+                if(creep.getAwayFromEdge()) {
+                        return;
+                }
+
 			if(Game.flags["attack"] != undefined) {
 				var range = creep.pos.getRangeTo(Game.flags.attack);
 				if(range > 999) {
