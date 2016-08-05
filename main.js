@@ -67,7 +67,7 @@ module.exports.loop = function () {
 		}
 	        meaniesA[room] = [];
 		meaniesA[room] = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
-			filter: (c) => c.checkIfAlly() == false
+	//			filter: (c) => c.checkIfAlly() == false
 		});
 	}
     }
