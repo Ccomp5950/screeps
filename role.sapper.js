@@ -45,6 +45,7 @@ module.exports = {
                                 return;
                         }
                 }
+		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
