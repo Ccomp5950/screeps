@@ -25,6 +25,11 @@
 			console.log("You have " + rolecount[roleM] + " " + roleM +"'s creeps");
 		}
 	return null;
+	};
+	
+	global.calculateDistance =
+	function(xa,ya,xb,yb) {
+		return Math.ceil(Math.sqrt(((xb - xa) ^2) + ((yb - ya) ^2)));
 	}
 
 	
