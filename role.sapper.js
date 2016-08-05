@@ -55,7 +55,10 @@ module.exports = {
                 return;
                 }
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
-                                                        filter: (s) => s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_ROAD && s.structureType != STRUCTURE_RAMPART
+                                                        filter: (s) => s.structureType != STRUCTURE_WALL 
+								    && s.structureType != STRUCTURE_ROAD 
+								    && s.structureType != STRUCTURE_RAMPART 
+								    && s.structureType != STRUCTURE_CONTROLLER
                 });
                 if (target != undefined) {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
@@ -63,8 +66,18 @@ module.exports = {
                                 }
                 return;
                 }
-
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, {
+                                                        filter: (s) => s.structureType != STRUCTURE_WALL
+                                                                    && s.structureType != STRUCTURE_ROAD
+                                                                    && s.structureType != STRUCTURE_CONTROLLER
+                });
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                                }
+                return;
+                }
+               target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (s) => s.structureType == STRUCTURE_WALL && s.hits < 199000
 		});
 		if (target == undefined) {
