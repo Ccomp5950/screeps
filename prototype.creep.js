@@ -316,7 +316,7 @@ module.exports = function() {
 				break;
 			default:
 				target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-						filter: (s) => s.structureType == structure
+						filter: (s) => s.structureType == structure && (s.my == undefined || s.my)
 				});
 				break;
 		}
