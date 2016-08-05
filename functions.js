@@ -29,7 +29,7 @@
 	
 	global.calculateDistance =
 	function(xa,ya,xb,yb) {
-		return Math.ceil(Math.sqrt(((xb - xa) ^2) + ((yb - ya) ^2)));
+		return Math.ceil(Math.sqrt((Math.pow(xb - xa),2) + (Math.pow(yb - ya),2)));
 	}
 
 	
