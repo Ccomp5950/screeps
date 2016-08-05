@@ -292,6 +292,7 @@ module.exports = function() {
 	function(structureType) {
 		let creep = this;
 		let target = null;
+		console.log("lalalala");
 		switch(structureType) {
 
 			case "ANYTHING":
