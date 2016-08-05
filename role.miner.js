@@ -44,9 +44,12 @@ module.exports = {
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
-	          	structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+	          	structure = creep.pos.findInRange(FIND_STRUCTURES,2, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
+			if(structure.length) {
+				structure = structure[0]
+			}
 		} else {
 			structure = Game.getObjectById(creep.memory.container)
 		}
