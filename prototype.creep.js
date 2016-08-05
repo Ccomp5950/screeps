@@ -287,6 +287,44 @@ module.exports = function() {
 		}
 	return moved;
 
+	};
+	Creep.prototype.attackHostileStructure =
+	function(structureType) {
+		let creep = this;
+		let target = null;
+		switch(structureType) {
+
+			case "anything":
+				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+				break;
+			case STRUCTURE_WALL:
+				for(let range = 2; range < 10; range++) {
+					let targets = creep.pos.findInRange(STRUCTURE_WALL, range);
+					let weakest = null;
+					let weakestHits = 999999999;
+					if(targets.length) {
+						for(let i = 0; i < targets.length; i++) {
+							if(targets[i].hits < weakestHits) {
+								weakest = targets[i];
+								weakestHits = targets[i].hits;
+							}
+						}
+					target = weakest
+					break;;
+					}
+				}
+				break;
+			default:
+				target = creep.pos.findClosestByPath(structureType);
+				break;
+		}
+                if (target != undefined) {
+                            if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(target, {maxRooms:1});
+                                }
+                return true;
+                }
+	return false;
 	}
 	
 };
