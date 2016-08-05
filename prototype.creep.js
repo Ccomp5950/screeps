@@ -331,6 +331,7 @@ module.exports = function() {
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
                                 }
+			creep.memory.killThis = target;
                 return true;
                 }
 	return false;
