@@ -288,6 +288,14 @@ module.exports = function() {
 	return moved;
 
 	};
+	Creep.prototype.checkIfAlly =
+	function(name) {
+		if(Memory.allies.indexOf(name) != -1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	Creep.prototype.attackHostileStructure =
 	function(structure) {
 		let creep = this;
