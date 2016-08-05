@@ -299,7 +299,9 @@ module.exports = function() {
 				break;
 			case STRUCTURE_WALL:
 				for(let range = 2; range < 10; range++) {
-					let targets = creep.pos.findInRange(STRUCTURE_WALL, range);
+					let targets = creep.pos.findInRange(FIND_STRUCTURES,range, {
+								filter: (s) => s.structureType == STRUCTURE_WALL
+					});
 					let weakest = null;
 					let weakestHits = 999999999;
 					if(targets.length) {
@@ -312,6 +314,9 @@ module.exports = function() {
 					target = weakest
 					break;;
 					}
+				}
+				if(target == null) {
+					target = creep.pos.findClosestByPath(FIND_STRUCTURES);
 				}
 				break;
 			default:
