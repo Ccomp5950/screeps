@@ -60,6 +60,13 @@ module.exports = {
 	                // try to transfer energy, if it is not in range
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
 		} else {
+			structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
+			if(structure != null {
+				if(creep.build(structure) == OK) {
+					return;
+				}
+				
+			}
 			creep.drop(RESOURCE_ENERGY);
 		}
     }
