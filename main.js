@@ -147,7 +147,7 @@ module.exports.loop = function () {
 	creep.memory.currentRoom = creep.room.name;
 	creep.memory.currentHits = creep.hits;
 	creep.memory.currentMaxHits = creep.hitsMax;
-	if((underAttack[creep.room.name] && creep.memory.role != "defender" && creep.memory.role != "miner" && creep.memory.role != "attacker") || creep.memory.role == 'towertender') {
+	if((underAttack[creep.room.name] && !creep.memory.combat) || creep.memory.role == 'towertender') {
 		roles["towertender"].current++;
 		roles["towertender"].run.run(creep);
 	}
