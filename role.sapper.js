@@ -53,7 +53,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		if(creep.attackHostileStructure("ANYTHING")) return;
-                }
+                
 
         }
     
