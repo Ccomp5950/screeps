@@ -299,7 +299,7 @@ module.exports = function() {
 				break;
 			case FIND_CONSTRUCTION_SITES:
 				target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES, {
-							filter: (s) => s.my != true && creep.room.findPath(creep.pos, s.pos)
+							filter: (s) => s.my != true
 				});
 				break;
 			case STRUCTURE_WALL:
