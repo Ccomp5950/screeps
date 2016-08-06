@@ -2,7 +2,7 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
-			creep.setupFlag();
+			creep.setupSpawn();
                         return;
                 }
 	creep.setupFlag();
@@ -40,14 +40,14 @@ module.exports = {
 					filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 10)
 				});
 		}
-		if(container != null && creep.pos.getRangeTo(container) < 2) {
 
+		if(container != null && creep.pos.getRangeTo(container) < 2 && container.store[RESOURCE_ENERGY] > 10) {
 			if(creep.memory.container == null) {
 				creep.memory.container = container.id
 			}
-			if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+			creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE); 
 			
-			};
+			
 		} else {
 			creep.memory.container = null;
 		}
