@@ -4,7 +4,7 @@ module.exports = function() {
         function(creep) {
 		let s = this;
 		if(Memory.structure == undefined) {
-			Memory.structure == {};
+			Memory.structure = {};
 		}
 		if(Memory.structure[s.id] == undefined) {
 			Memory.structure[s.id] = {};
