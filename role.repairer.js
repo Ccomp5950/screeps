@@ -43,9 +43,7 @@ module.exports = {
 	                        rampartCandidates.push(tmpStructure);
 	                        continue;
 	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
-				if(alreadygotit.indexOf(tmpStructure.id) == -1) {
 					structureCandidates.push(tmpStructure);
-				}
 			}
 		}
 		if(structureCandidates.length == 0 && rampartCandidates.length > 0) {
