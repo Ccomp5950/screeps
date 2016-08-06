@@ -53,7 +53,7 @@ module.exports = function() {
 	else if (roleName == "defender") {
 		let base = 420;
 		let calcEnergy = energy - base;
-		let probody = {tough:2,attack:0,move:3,heal:1}; // 420 cost body
+		let probody = {tough:2,move:3,attack:0,heal:1}; // 420 cost body
 		let defparts = Math.floor(calcEnergy / 130);
 		for(let i = 0; i < defparts; i++) {
 			probody.attack++;
