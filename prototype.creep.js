@@ -315,13 +315,10 @@ module.exports = function() {
 		if(creep.memory.MyFlag != -1) {
 			return;
 		}
-		if(creep.memory.spawnTime == null) {
-			creep.memory.spawnTime = Game.time;
-		}
-		if(creep.memory.myFlag == null || creep.memory.MyFlag == -1) {
+		if(creep.memory.MyFlag == -1) {
 			creep.findFlag();
 			if(creep.memory.MyFlag != -1) {
-				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
+				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.MyFlag);
 				creep.grabFlag();
 				return;
 			} else {
