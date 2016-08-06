@@ -315,7 +315,7 @@ module.exports = function() {
 				if(PathTo.length > 0 && pathLast.x == enemy_creep.pos.x && pathLast.y == enemy_creep.pos.y) {
 					hasPath = true;
 				}
-	                        if(yugestThreat < creepThreat && hasPath)) {
+	                        if(yugestThreat < creepThreat && hasPath) {
 	                                yugeThreat = enemy_creep;
         	                        yugestThreat = creepThreat;
 	                        }
