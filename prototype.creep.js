@@ -310,7 +310,7 @@ module.exports = function() {
 				if(pathTo == null || pathTo.length == 0) {
 					continue;
 				}
-				var pathLast = path[path.length -1];
+				var pathLast = pathTo[pathTo.length -1];
 				var hasPath = false;
 				if(PathTo.length > 0 && pathLast.x == enemy_creep.pos.x && pathLast.y == enemy_creep.pos.y) {
 					hasPath = true;
