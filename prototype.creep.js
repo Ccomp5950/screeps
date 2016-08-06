@@ -366,7 +366,7 @@ module.exports = function() {
 	Creep.prototype.setRespawnTime =
 	function() {
 		if(this.memory.setupTime == null) {
-			creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+			this.memory.setupTime = Game.time - this.memory.spawnTime;
 		}
 	};
 
