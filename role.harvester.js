@@ -1,5 +1,3 @@
-var roleBuilder = require('role.builder');
-
 module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
@@ -36,12 +34,9 @@ module.exports = {
             });
 	    if (structure == null) {
 		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURES, {
-			filter:(s) => s.structureType == STRUCTURE_CONTAINER
+			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000
 			
-		 }) 
-		if(structure.store[RESOURCE_ENERGY] == structure.storeCapacity) {
-			structure = null;
-		}
+		 }); 
 	    }	
 		
 		
@@ -62,8 +57,6 @@ module.exports = {
                     // move towards it
                     creep.moveTo(structure);
                 }
-            } else {
-                roleBuilder.run(creep);
             }
         }
         // if creep is supposed to harvest energy from source
