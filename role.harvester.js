@@ -36,7 +36,7 @@ module.exports = {
             });
 	    if (structure == null) {
 		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURE, {
-			filter:(s) = > s.structureType == STRUCTURE_CONTAINER
+			filter:(s) => s.structureType == STRUCTURE_CONTAINER
 			
 		 }) 
 		if(structure.store[RESOURCE_ENERGY == s.storeCapacity) {
