@@ -2,8 +2,10 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
+			creep.setupFlag();
                         return;
                 }
+	creep.setupFlag();
         // if creep is bringing energy to the controller but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -22,15 +24,30 @@ module.exports = {
             // if (creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 
             // try to upgrade the controller
-            if (creep.upgradeController(Game.rooms.E48S31.controller) == ERR_NOT_IN_RANGE) {
+            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 // if not in range, move towards the controller
-                creep.moveTo(Game.rooms.E48S31.controller);
+                creep.moveTo(creep.room.controller);
             }
         }
         // if creep is supposed to harvest energy from source
         else {
-		creep.customharvest();
-        }
+		if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {
+				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+					filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 10)
+				});
+		}
+		if(container != null && creep.pos.getRangeTo(container) < 2) {
+
+			if(creep.memory.container == null) {
+				creep.memory.container = container.id
+			}
+			if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(container);
+			};
+		} else {
+			creep.memory.container = null;
+		}
+	}
 
     }
 };

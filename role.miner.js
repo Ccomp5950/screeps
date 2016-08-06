@@ -2,43 +2,16 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
-			if(creep.memory.spawnTime == null) {
-				creep.memory.spawnTime = Game.time;
-			}
-			if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
-				creep.memory.myFlag = creep.findMiningFlag();
-				if(creep.memory.myFlag != -1) {
-					console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
-					creep.claimMiningFlag();
-				}
-			}
+			creep.setupSpawn()
+			creep.setupFlag();
                         return;
                 }
-		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
-			creep.memory.myFlag = creep.findMiningFlag();
-			if(creep.memory.myFlag == -1) {
-				if(creep.memory.spammed == null) {				
-					console.log("Miner can't find a flag " + creep.name);	
-					creep.memory.spammed = true;
-				}
-				return;
-			} 
-			else {
-				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
-			}
-			
+
+		creep.setupFlag();
+		if(creep.approachAssignedFlag() == false) {
+			return;
 		}
-		let flag = Game.flags[creep.memory.myFlag];
-                if(flag != undefined) {
-                        var range = creep.pos.getRangeTo(flag);
-                        if(range > 0) {
-				creep.memory.setupTime = Game.time - creep.memory.spawnTime;
-                                creep.moveTo(flag);
-				return;
-                        }
-                } else {
-			console.log("Miner cannot find a flag: " + creep.name);
-		}
+
 		var structure = null;
 		if(creep.memory.container == null) {
 			creep.memory.container = null;

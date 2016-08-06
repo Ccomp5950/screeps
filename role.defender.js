@@ -2,11 +2,11 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
 		if(creep.spawning) {
-                        if(creep.memory.spawnTime == null) {
-                                creep.memory.spawnTime = Game.time;
-                        }
-			return;
+			creep.setupSpawn();
 		}
+		creep.setupFlag();
+
+		let flag = Game.flags[creep.memory.MyFlag;
 		var target = null;
 		target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 		if (target != undefined) {
@@ -18,7 +18,6 @@ module.exports = {
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
-                let flag = Game.flags[creep.name];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > 999) {
@@ -35,17 +34,7 @@ module.exports = {
                         }
                                 return;
                 }
-                if(flag != undefined) {
-                        var range = creep.pos.getRangeTo(flag);
-                        if(range > 0) {
-                                creep.moveTo(flag);
-                        } 
-			else {
-				if(creep.memory.setupTime == null) {
-					creep.memory.setupTime = Game.time - creep.memory.spawnTime;
-				}
-			}
-                }
+		creep.approachAssignedFlag(0);
 
         }
         

@@ -2,25 +2,14 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
-                        if(creep.memory.spawnTime == null) {
-                                creep.memory.spawnTime = Game.time;
-                        }
-                        if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
-                                creep.memory.myFlag = creep.findFetchingFlag();
-				if(creep.memory.myFlag != -1) {
-					console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
-	                                creep.claimFetchingFlag();
-				}
-                        }
-
+			creep.setupSpawn();
+			creep.setupFlag();
                         return;
                 }
-                if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
-                        creep.memory.myFlag = creep.findFetchingFlag();
-			if(creep.memory.myFlag == -1) {
-				return;
-			}
-                }
+		creep.setupFlag();
+		if(creep.memory.myFlag == -1) {
+			return;
+		}
                 let flag = Game.flags[creep.memory.myFlag];
 		
 		let container = Game.getObjectById(creep.memory.container);
@@ -31,37 +20,22 @@ module.exports = {
 				creep.pickup(energy[0])
 			}
 
-		
 		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
-		if(creep.memory.getToFlag == null) {
-			creep.memory.getToFlag = true;
-		}
-			if(creep.memory.getToFlag == true) {
-		                if(flag != undefined) {
-		                        var range = creep.pos.getRangeTo(flag);
-		                        if(range > 3) {
-		                                creep.moveTo(flag);
-		                                return;
-		                        }
-					else {
-						creep.memory.getToFlag = false;
-						if(creep.memory.setupTime == null) {
-							creep.memory.setupTime = Game.time - creep.memory.spawnTime;
-						}
-					}
-		                } 
-				else {
-					if(creep.memory.spammed == null) {
-						console.log("Fetcher can't find their flag: " + creep.name);
-						creep.memory.spammed = true;
-					}
-					return;
-				}
+			if(creep.memory.getToFlag == null) {
+				creep.memory.getToFlag = true;
 			}
+
+			if(creep.memory.getToFlag == true && creep.approachAssignedFlag(3) == true) { 
+				creep.memory.getToFlag = false;
+			} else {
+				// LOOK AT THIS REAL HARD, POSSIBLE LOGIC FUCK UP.
+				return;
+			}
+
+
 					
 			if(creep.memory.container == null) {
 				creep.memory.container = null;
-			} else {
 			}
 
 			if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {

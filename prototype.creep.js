@@ -179,85 +179,7 @@ module.exports = function() {
 
 	return false;
 	};
-	Creep.prototype.findMiningFlag =
-	function() {
-		let creep = this;
-		for(let i = 0; i <= Memory.miningSpots; i++) {
-			flagName = "miningSpot" + i.toString();
-			if(Game.flags[flagName] != null) {
-				let flag = Game.flags[flagName];
-				residentCreep = null;
-				residentCreep = Game.getObjectById(flag.memory.Miner);
-				if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-					return flag.name;
-				}
-			}
-		}
-	return -1;
-	};
 
-	Creep.prototype.claimMiningFlag =
-	function() {
-		let creep = this;
-		let flag = Game.flags[creep.memory.myFlag];
-		if(flag != null) {
-			flag.memory.Miner = creep.id;
-			flag.memory.MinerName = creep.name;
-		}
-	};
-        Creep.prototype.findFetchingFlag =
-        function() {
-                let creep = this;
-                for(let i = 0; i <= Memory.miningSpots; i++) {
-                        flagName = "miningSpot" + i.toString();
-                        if(Game.flags[flagName] != null) {
-                                let flag = Game.flags[flagName];
-                                residentCreep = null;
-                                residentCreep = Game.getObjectById(flag.memory.Fetcher);
-                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-                                        return flagName;
-                                }
-                        }
-                }
-        return -1;
-        };
-
-        Creep.prototype.claimFetchingFlag =
-        function() {
-                let creep = this;
-                let flag = Game.flags[creep.memory.myFlag];
-                if(flag != null) {
-                        flag.memory.Fetcher = creep.id;
-			flag.memory.FetcherName = creep.name;
-                }
-        };
-
-        Creep.prototype.findClaimingFlag =
-        function() {
-                let creep = this;
-                for(let i = 1; i <= Memory.claimingSpots  ; i++) {
-                        flagName = "claim" + i.toString();
-                        if(Game.flags[flagName] != null) {
-                                let flag = Game.flags[flagName];
-                                residentCreep = null;
-                                residentCreep = Game.getObjectById(flag.memory.Claimer);
-                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-                                        return flagName;
-                                }
-                        }
-                }
-        return -1;
-        };
-
-        Creep.prototype.claimClaimingFlag =
-        function() {
-                let creep = this;
-                let flag = Game.flags[creep.memory.myFlag];
-                if(flag != null) {
-                        flag.memory.Claimer = creep.id;
-			flag.memory.ClaimerName = creep.name;
-                }
-        };
 	Creep.prototype.getAwayFromEdge =
 	function() {
 		let creep = this;
@@ -372,4 +294,98 @@ module.exports = function() {
 
 		}
 	}
+	Creep.prototype.attackHostileCreep =
+	function() {
+		let creep = this;
+		let target = Game.ObjectById(creep.memory.killThis);
+		if(target == null || Game.time % 10 == 0) {
+			
+		}
+		
+	};
+
+	Creep.prototype.setupFlag =
+	function() {
+		let creep = this;
+		if(creep.memory.MyFlag != 1) {
+			return;
+		}
+		if(creep.memory.spawnTime == null) {
+			creep.memory.spawnTime = Game.time;
+		}
+		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
+			creep.memory.myFlag = creep.findFlag();
+			if(creep.memory.myFlag != -1) {
+				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
+				creep.grabFlag();
+			} else {
+				console.log("[" + creep.name + "] I can't find a flag.  :(");
+				creep.say(":(");
+			}
+		}
+	}
+
+	Creep.prototype.grabFlag =
+	function() {
+		let creep = this;
+                let flag = Game.flags[creep.memory.myFlag];
+                if(flag != null) {
+                        flag.memory[flag] = creep.id;
+			let fs = flag + "Name";
+			flag.memory[fs] = creep.name;
+                }
+        };
+
+		switch(flag)
+	};
+
+        Creep.prototype.findFlag =
+        function(flag) {
+                let creep = this;
+		let role = creep.memory.role;
+                for(let i = 1; i <= 50  ; i++) {
+                        flagName = role + i.toString();
+                        if(Game.flags[flagName] != null) {
+                                let flag = Game.flags[flagName];
+                                residentCreep = null;
+                                residentCreep = Game.getObjectById(flag.memory[flag]);
+                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+                                        return flagName;
+                                }
+                        } else {
+				return -1;
+			}
+                }
+        return -1;
+        };
+	Creep.prototype.setupSpawn =
+	function() {
+	if(this.memory.spawnTime == null) {
+		this.memory.spawnTime = Game.time;
+	};
+
+	Creep.prototype.setRespawnTime =
+	function() {
+	if(this.memory.setupTime == null) {
+		creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+	};
+
+	Creep.prototype.approachAssignedFlag =
+	function(fRange) {
+		let creep = this;
+                let flag = Game.flags[creep.memory.myFlag];
+                if(flag != undefined) {
+                        var range = creep.pos.getRangeTo(flag);
+                        if(range > Frange) {
+                                creep.moveTo(flag);
+				return false;
+                        } else {
+				creep.setRespawnTime();
+			}
+                } else {
+                        console.log("[" + creep.name + "] I can't find a flag :(");
+			creep.say(":( :( :(");
+                }
+	}
+
 };
