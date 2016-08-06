@@ -36,6 +36,7 @@ module.exports = {
 				creep.moveTo(flag);
 				return;
 			} else if(taunt) {
+				creep.setRespawnTime();
 				creep.say("Ha missed!", true);				
 			}
 		}
