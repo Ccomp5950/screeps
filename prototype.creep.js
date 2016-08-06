@@ -319,7 +319,10 @@ module.exports = function() {
 				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 				creep.grabFlag();
 			} else {
-				console.log("[" + creep.name + "] I can't find a flag.  :(");
+				if(creep.memory.spamedError != true && false = true) {
+					creep.memory.spamedError = true;
+					console.log("[" + creep.name + "] I can't find a flag.  :(");
+				}
 				creep.say(":(");
 			}
 		}
@@ -348,13 +351,15 @@ module.exports = function() {
                                 residentCreep = null;
                                 residentCreep = Game.getObjectById(flag.memory[role]);
                                 if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-                                        return flagName;
+					creep.memory.myFlag = flagName;	
+                                        return
                                 }
                         } else {
-				return -1;
+				creep.memory.myFlag = -1;
+				return;
 			}
                 }
-        return -1;
+        return;
         };
 
 	Creep.prototype.setupSpawn =
