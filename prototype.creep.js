@@ -319,10 +319,11 @@ module.exports = function() {
 			creep.memory.spawnTime = Game.time;
 		}
 		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
-			creep.memory.myFlag = creep.findFlag();
+			creep.findFlag();
 			if(creep.memory.myFlag != -1) {
 				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 				creep.grabFlag();
+				return;
 			} else {
 				if(creep.memory.spamedError != true) {
 					creep.memory.spamedError = true;
