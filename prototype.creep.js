@@ -323,7 +323,7 @@ module.exports = function() {
 				creep.say(":(");
 			}
 		}
-	}
+	};
 
 	Creep.prototype.grabFlag =
 	function() {
@@ -355,16 +355,19 @@ module.exports = function() {
                 }
         return -1;
         };
+
 	Creep.prototype.setupSpawn =
 	function() {
-	if(this.memory.spawnTime == null) {
-		this.memory.spawnTime = Game.time;
+		if(this.memory.spawnTime == null) {
+			this.memory.spawnTime = Game.time;
+		}
 	};
 
 	Creep.prototype.setRespawnTime =
 	function() {
-	if(this.memory.setupTime == null) {
-		creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+		if(this.memory.setupTime == null) {
+			creep.memory.setupTime = Game.time - creep.memory.spawnTime;
+		}
 	};
 
 	Creep.prototype.approachAssignedFlag =
@@ -378,11 +381,13 @@ module.exports = function() {
 				return false;
                         } else {
 				creep.setRespawnTime();
+				return true;
 			}
                 } else {
                         console.log("[" + creep.name + "] I can't find a flag :(");
 			creep.say(":( :( :(");
+			return false;
                 }
-	}
+	};
 
 };
