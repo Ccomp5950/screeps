@@ -299,6 +299,34 @@ module.exports = function() {
 		let creep = this;
 		let target = Game.ObjectById(creep.memory.killThis);
 		if(target == null || Game.time % 10 == 0) {
+			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
+                                filter: (c) => c.checkIfAlly() == false
+	                });
+			let yugeThreat = null;
+			let yugestThreat = -1;
+			for (let enemy_creep of targets) {
+	                        var creepThreat = enemy_creep.getThreat();
+				var pathTo = creep.pos.findPathTo(enemy_creep);
+				if(pathLast.length == 0) {
+					continue;
+				}
+				var pathLast = path[path.length -1];
+				var hasPath = false;
+				if(PathTo.length > 0 && pathLast.x == enemy_creep.pos.x && pathLast.y == enemy_creep.pos.y) {
+					hasPath = true;
+				}
+	                        if(yugestThreat < creepThreat && hasPath)) {
+	                                yugeThreat = enemy_creep;
+        	                        yugestThreat = creepThreat;
+	                        }
+			}
+			target = yugeThreat;
+                }
+                if (target != undefined) {
+				creep.memory.killThis = target.id;
+                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+                	                creep.moveTo(target, {maxRooms:1});
+			}
 			
 		}
 		

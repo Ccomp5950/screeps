@@ -8,13 +8,9 @@ module.exports = {
 
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
-		target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-		if (target != undefined) {
-			if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(target);
-			}
-				return;
-		} 
+		if(creep.attackHostileCreep() == false) {
+			return;
+		}
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
