@@ -1,4 +1,4 @@
-var roleAlt = require('role.upgrader');
+var roleAlt = require('role.harvester');
 
 module.exports = {
     // a function to run the logic for this role
