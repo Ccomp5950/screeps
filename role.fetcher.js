@@ -25,7 +25,7 @@ module.exports = {
 				creep.memory.getToFlag = true;
 			}
 
-			if(creep.memory.getToFlag == true && creep.approachAssignedFlag(3) == true) { 
+			if(creep.memory.getToFlag == true && creep.approachAssignedFlag(0) == true) { 
 				creep.memory.getToFlag = false;
 			} else {
 				// LOOK AT THIS REAL HARD, POSSIBLE LOGIC FUCK UP.
