@@ -36,11 +36,8 @@ module.exports.loop = function () {
 	if(Memory.roles[roleM] === null) {
 		Memory.roles[roleM] = {minimum: role.minimum, requirement: role.requirement};
 	}
-	role.minimum = Memory.roles[roleM];
-	role.requirement = Memory.roles[roleM];
-	if(role.namer == "harvester") {
-		console.log(role.minimum);
-	}
+	role.minimum = Memory.roles[roleM].minimum;
+	role.requirement = Memory.roles[roleM].requirement;
 	totalRoles++;
 	role.current = 0;
     } 
