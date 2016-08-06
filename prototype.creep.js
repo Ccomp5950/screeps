@@ -315,19 +315,17 @@ module.exports = function() {
 		if(creep.memory.MyFlag != -1) {
 			return;
 		}
-		if(creep.memory.MyFlag == -1) {
-			creep.findFlag();
-			if(creep.memory.MyFlag != -1) {
-				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.MyFlag);
-				creep.grabFlag();
-				return;
-			} else {
-				if(creep.memory.spamedError != true) {
-					creep.memory.spamedError = true;
-					console.log("[" + creep.name + "] I can't find a flag.  :(");
-				}
-				creep.say(":(");
+		creep.findFlag();
+		if(creep.memory.MyFlag != -1) {
+			console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.MyFlag);
+			creep.grabFlag();
+			return;
+		} else {
+			if(creep.memory.spamedError != true) {
+				creep.memory.spamedError = true;
+				console.log("[" + creep.name + "] I can't find a flag.  :(");
 			}
+			creep.say(":(");
 		}
 	};
 
