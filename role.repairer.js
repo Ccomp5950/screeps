@@ -33,14 +33,6 @@ module.exports = {
 		}
 			
 	    }
-	    let alreadygotit = [];
-	    for (let name in Memory.creeps) {
-		if(name != creep.name) {
-			if(Game.creeps[name].memory.repairing != null) {
-				alreadygotit.push(Game.creeps[name].memory.repairing);
-			}
-		}
-	    }
 	    var rampartCandidates = [];	    
 	    if(structureCandidates.length == 0) {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
@@ -62,7 +54,9 @@ module.exports = {
 
 	    }
 	    if (structure == undefined && structureCandidates.length > 0) {
-		 structure = creep.pos.findClosestByPath(structureCandidates);
+		 structure = creep.pos.findClosestByPath(structureCandidates, {
+				filter: (s) => s.isBeingRepaired(creep) == false
+		});
 	    }
             // if we find one
             if (structure != undefined) {
@@ -72,6 +66,7 @@ module.exports = {
                     // move towards it
                     creep.moveTo(structure);
                 }
+		structure.setRepairer(creep);
             }
             // if we can't fine one
             else {
