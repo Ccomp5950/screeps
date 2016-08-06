@@ -6,7 +6,7 @@ module.exports = {
 		}
 		creep.setupFlag();
 
-		let flag = Game.flags[creep.memory.MyFlag;
+		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
 		target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 		if (target != undefined) {
