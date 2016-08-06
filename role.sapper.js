@@ -22,6 +22,11 @@ module.exports = {
 		}
 		if(creep.memory.ready == true) {
 		*/
+                if(creep.memory.healing) {
+                        if(creep.heal(creep) == 0) {
+                                return;
+                        }
+                }
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
@@ -40,11 +45,6 @@ module.exports = {
 				return;
 			}
 		}
-                if(creep.memory.healing) {
-                        if(creep.heal(creep) == 0) {
-                                return;
-                        }
-                }
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
