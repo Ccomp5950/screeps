@@ -39,7 +39,7 @@ module.exports = {
 			filter:(s) => s.structureType == STRUCTURE_CONTAINER
 			
 		 }) 
-		if(structure.store[RESOURCE_ENERGY] == s.storeCapacity) {
+		if(structure.store[RESOURCE_ENERGY] == structure.storeCapacity) {
 			structure = null;
 		}
 	    }	
