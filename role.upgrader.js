@@ -31,7 +31,9 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
-		creep.approachAssignedFlag(0);
+		if(creep.approachAssignedFlag(0) == false) {
+			return;
+		}
 		let container = Game.getObjectById(creep.memory.container);
 		if(container == null ) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -44,7 +46,7 @@ module.exports = {
 				creep.memory.container = container.id
 			}
 			if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(container);
+			
 			};
 		} else {
 			creep.memory.container = null;
