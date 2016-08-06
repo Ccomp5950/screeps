@@ -42,7 +42,7 @@ module.exports = {
 		if(structure.store[RESOURCE_ENERGY] == s.storeCapacity) {
 			structure = null;
 		}
-			
+	    }	
 		
 		
             if (structure == null) {
