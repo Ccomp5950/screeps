@@ -168,8 +168,8 @@ module.exports = function() {
 	function() {
 		let creep = this;
 		if(creep.memory.setupTime != null) {
-			if(creep.memory.setupTime > 200) {
-				creep.memory.setupTime = 200;
+			if(creep.memory.setupTime > 600) {
+				creep.memory.setupTime = 600;
 			}
 			if(creep.ticksToLive - creep.memory.setupTime <= 0) {
 				creep.memory.replaceMe = true
