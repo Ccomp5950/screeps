@@ -97,14 +97,16 @@ module.exports = function() {
 	else if (roleName == "harvester" && energy >= 1000) {
 		let harvbody = {carry:0,move:0};
 		let energyLeft = energy;
+		let i = 1;
 		while(energyLeft > 0) {
-			if(i % 3== 0) {
+			if(i % 3 == 0) {
 				body.move++;
 				energyLeft -= 50;
 			}
 			body.carry++;
 			body.carry++;
 			energyLeft -= 100;
+			i++;
 		}
 
 		body = this.buildBody({carry:12,move:6});
