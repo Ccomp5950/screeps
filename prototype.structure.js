@@ -27,7 +27,7 @@ module.exports = function() {
 		}
 		return true;
         };
-	Structure.prototype.setRepair = 
+	Structure.prototype.setRepairer = 
 	function(creep) {
 		let s = this;
 		let Smem = Memory.structure.Repairer[s.id];
