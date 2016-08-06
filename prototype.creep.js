@@ -336,9 +336,6 @@ module.exports = function() {
                 }
         };
 
-		switch(flag)
-	};
-
         Creep.prototype.findFlag =
         function(flag) {
                 let creep = this;
