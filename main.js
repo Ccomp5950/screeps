@@ -2,6 +2,7 @@
 require('prototype.spawn')();
 require('prototype.creep')();
 require('prototype.source')();
+require('prototype.structure')();
 require('prototype.flag')();
 require('functions');
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
