@@ -10,10 +10,9 @@ module.exports = function() {
 			Memory.structure[s.id] = {};
 		}
 		if(Memory.structure[s.id].Repairer === undefined) {
-			Memory.structure.Repairer = {};
-			Memory.structure.Repairer[s.id] = {repairerid: null, lastRepaired: -1}; 
+			Memory.structure[s.id].Repairer = {repairerid: null, lastRepaired: -1}; 
 		}
-		let Smem = Memory.structure.Repairer[s.id];
+		let Smem = Memory.structure[s.id].Repairer;
 		if(Smem.lastRepared == -1) {
 			return false;
 		}
@@ -30,7 +29,7 @@ module.exports = function() {
 	Structure.prototype.setRepairer = 
 	function(creep) {
 		let s = this;
-		let Smem = Memory.structure.Repairer[s.id];
+		let Smem = Memory.structure[s.id].Repairer;
 		Smem.repairerid = creep.id;
 		Smem.lastRepaired = Game.time();
 		
