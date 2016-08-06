@@ -328,10 +328,11 @@ module.exports = function() {
 	Creep.prototype.grabFlag =
 	function() {
 		let creep = this;
+		let role = creep.memory.role;
                 let flag = Game.flags[creep.memory.myFlag];
                 if(flag != null) {
-                        flag.memory[flag] = creep.id;
-			let fs = flag + "Name";
+                        flag.memory[role] = creep.id;
+			let fs = role + "Name";
 			flag.memory[fs] = creep.name;
                 }
         };
@@ -345,7 +346,7 @@ module.exports = function() {
                         if(Game.flags[flagName] != null) {
                                 let flag = Game.flags[flagName];
                                 residentCreep = null;
-                                residentCreep = Game.getObjectById(flag.memory[flag]);
+                                residentCreep = Game.getObjectById(flag.memory[role]);
                                 if(residentCreep == null || residentCreep.checkTimeToReplace()) {
                                         return flagName;
                                 }
