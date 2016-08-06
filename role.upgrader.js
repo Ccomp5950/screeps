@@ -45,7 +45,7 @@ module.exports = {
 			if(creep.memory.container == null) {
 				creep.memory.container = container.id
 			}
-			creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE); 
+			creep.withdraw(container, RESOURCE_ENERGY); 
 			
 			
 		} else {
