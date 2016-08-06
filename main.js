@@ -5,6 +5,7 @@ require('prototype.source')();
 require('prototype.structure')();
 require('prototype.flag')();
 require('functions');
+									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
 			sapper:         {namer:"sapper",                minimum:1,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
@@ -27,9 +28,18 @@ module.exports.loop = function () {
 
     // check for memory entries of died creeps by iterating over Memory.creeps
     let totalRoles = 0;
-    for(let role in roles) {
+    for(let roleM in roles) {
+	let role = roles[roleM];
+	if(Memory.roles == null) {
+		Memory.roles = {};
+	}
+	if(Memory.roles[roleM] == null) {
+		Memory.roles[roleM] = {minimum: role.minimum, requirement: role.requirement};
+	}
+	role.minimum = Memory.roles[roleM];
+	role.requirement = Memory.roles[roleM];
 	totalRoles++;
-	roles[role].current = 0;
+	role.current = 0;
     } 
     if(Memory.totalRoles != totalRoles) {
 	Memory.totalRoles = totalRoles;
