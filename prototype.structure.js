@@ -3,10 +3,13 @@ module.exports = function() {
    	Structure.prototype.isBeingRepaired =
         function(creep) {
 		let s = this;
-		if(Memory.structure === null) {
+		if(Memory.structure == undefined) {
 			Memory.structure == {};
 		}
-		if(Memory.structure.Repairer === null) {
+		if(Memory.structure[s.id] == undefined) {
+			Memory.structure[s.id] = {};
+		}
+		if(Memory.structure[s.id].Repairer === undefined) {
 			Memory.structure.Repairer = {};
 			Memory.structure.Repairer[s.id] = {repairerid: null, lastRepaired: -1}; 
 		}
