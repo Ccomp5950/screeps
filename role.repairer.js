@@ -1,5 +1,3 @@
-var roleAlt = require('role.harvester');
-
 module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
@@ -77,8 +75,7 @@ module.exports = {
             }
             // if we can't fine one
             else {
-                // look for construction sites
-                roleAlt.run(creep);
+		
             }
         }
         else {
