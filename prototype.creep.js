@@ -307,7 +307,7 @@ module.exports = function() {
 			for (let enemy_creep of targets) {
 	                        var creepThreat = enemy_creep.getThreat();
 				var pathTo = creep.pos.findPathTo(enemy_creep);
-				if(pathLast.length == 0) {
+				if(pathTo == null || pathTo.length == 0) {
 					continue;
 				}
 				var pathLast = path[path.length -1];
