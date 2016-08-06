@@ -37,6 +37,9 @@ module.exports = {
 			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000
 			
 		 }); 
+		if(structure.pos.GetRangeTo(Game.flags["upgraderContainer"].pos) > 2) {
+			structure = null;
+		}
 	    }	
 		
 		
