@@ -8,7 +8,7 @@ module.exports = function() {
 		}
 		if(Memory.structure.Repairer === null) {
 			Memory.structure.Repairer = {};
-			Memory.structure.Repairer[s.id] = {repairerid: null, lastRepaired: -1}: 
+			Memory.structure.Repairer[s.id] = {repairerid: null, lastRepaired: -1}; 
 		}
 		let Smem = Memory.structure.Repairer[s.id];
 		if(Smem.lastRepared == -1) {
