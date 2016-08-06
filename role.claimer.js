@@ -6,7 +6,7 @@ module.exports = {
 		}
 		creep.setupFlag();
 
-		if(creep.approachAssignedFlag() == false) {
+		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
 

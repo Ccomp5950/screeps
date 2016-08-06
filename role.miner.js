@@ -3,12 +3,11 @@ module.exports = {
     run: function(creep) {
                 if(creep.spawning) {
 			creep.setupSpawn()
-			creep.setupFlag();
                         return;
                 }
 
 		creep.setupFlag();
-		if(creep.approachAssignedFlag() == false) {
+		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
 
