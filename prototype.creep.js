@@ -376,7 +376,7 @@ module.exports = function() {
                 let flag = Game.flags[creep.memory.myFlag];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
-                        if(range > Frange) {
+                        if(range > fRange) {
                                 creep.moveTo(flag);
 				return false;
                         } else {
