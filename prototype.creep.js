@@ -385,7 +385,7 @@ module.exports = function() {
 	Creep.prototype.approachAssignedFlag =
 	function(fRange) {
 		let creep = this;
-                let flag = Game.flags[creep.memory.myFlag];
+                let flag = Game.flags[creep.memory.MyFlag];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > fRange) {
