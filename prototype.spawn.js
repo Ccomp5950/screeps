@@ -36,7 +36,11 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
-	if(roleName == "scout") {
+	else if(roleName == "upgrader"){
+		body = this.buildBody({work:10,carry:1,move:1});
+		bodyset = true;
+	}
+	else if(roleName == "scout") {
 		body = this.buildBody({move:4});
 		bodyset = true;
 		creepMem.combat = true;
