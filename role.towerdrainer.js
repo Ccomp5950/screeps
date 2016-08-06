@@ -16,7 +16,7 @@ module.exports = {
 		var flag = Game.flags[creep.memory.MyFlag];
 		var frange = 999;
 		var taunt = true;
-		if(creep.memory.hop) {
+		if(creep.memory.hop == false) {
 			creep.getAwayFromEdge()
 		}
 		if(creep.hits == creep.hitsMax) {
