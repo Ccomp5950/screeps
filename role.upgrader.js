@@ -32,7 +32,8 @@ module.exports = {
         // if creep is supposed to harvest energy from source
         else {
 		creep.approachAssignedFlag(0);
-		if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {
+		let container = Game.getObjectById(creep.memory.container);
+		if(container == null ) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 					filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 10)
 				});
