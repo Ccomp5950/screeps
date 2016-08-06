@@ -328,8 +328,9 @@ module.exports = function() {
                 	                creep.moveTo(target, {maxRooms:1});
 			}
 			
+		return true;
 		}
-		
+		return false;
 	};
 
 	Creep.prototype.setupFlag =
