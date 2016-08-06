@@ -341,7 +341,7 @@ module.exports = function() {
                 let creep = this;
 		let role = creep.memory.role;
                 for(let i = 1; i <= 50  ; i++) {
-                        flagName = role + i.toString();
+                        flagName = role +"Spot" + i.toString();
                         if(Game.flags[flagName] != null) {
                                 let flag = Game.flags[flagName];
                                 residentCreep = null;
