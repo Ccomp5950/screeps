@@ -307,7 +307,12 @@ module.exports = function() {
 	Creep.prototype.setupFlag =
 	function() {
 		let creep = this;
-		if(creep.memory.MyFlag != 1) {
+		if(creep.memory.MyFlag == null)
+		{
+			creep.memory.MyFlag = -1;
+		}
+
+		if(creep.memory.MyFlag != -1) {
 			return;
 		}
 		if(creep.memory.spawnTime == null) {
