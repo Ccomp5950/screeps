@@ -318,9 +318,9 @@ module.exports = function() {
 		if(creep.memory.spawnTime == null) {
 			creep.memory.spawnTime = Game.time;
 		}
-		if(creep.memory.myFlag == null || creep.memory.myFlag == -1) {
+		if(creep.memory.myFlag == null || creep.memory.MyFlag == -1) {
 			creep.findFlag();
-			if(creep.memory.myFlag != -1) {
+			if(creep.memory.MyFlag != -1) {
 				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 				creep.grabFlag();
 				return;
@@ -338,7 +338,7 @@ module.exports = function() {
 	function() {
 		let creep = this;
 		let role = creep.memory.role;
-                let flag = Game.flags[creep.memory.myFlag];
+                let flag = Game.flags[creep.memory.MyFlag];
                 if(flag != null) {
                         flag.memory[role] = creep.id;
 			let fs = role + "Name";
@@ -357,11 +357,11 @@ module.exports = function() {
                                 residentCreep = null;
                                 residentCreep = Game.getObjectById(flag.memory[role]);
                                 if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-					creep.memory.myFlag = flagName;	
+					creep.memory.MyFlag = flagName;	
                                         return
                                 }
                         } else {
-				creep.memory.myFlag = -1;
+				creep.memory.MyFlag = -1;
 				return;
 			}
                 }
