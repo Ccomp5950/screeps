@@ -34,6 +34,17 @@ module.exports = {
 				
                              && s.energy < s.energyCapacity
             });
+	    if (structure == null) {
+		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURE, {
+			filter:(s) = > s.structureType == STRUCTURE_CONTAINER
+			
+		 }) 
+		if(structure.store[RESOURCE_ENERGY == s.storeCapacity) {
+			structure = null;
+		}
+			
+		
+		
             if (structure == null) {
              	structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE
