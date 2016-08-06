@@ -319,7 +319,7 @@ module.exports = function() {
 				console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.myFlag);
 				creep.grabFlag();
 			} else {
-				if(creep.memory.spamedError != true && false = true) {
+				if(creep.memory.spamedError != true) {
 					creep.memory.spamedError = true;
 					console.log("[" + creep.name + "] I can't find a flag.  :(");
 				}
