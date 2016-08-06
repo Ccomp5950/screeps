@@ -95,7 +95,19 @@ module.exports = function() {
                 bodyset = true;
         }
 	else if (roleName == "harvester" && energy >= 1000) {
-		body = this.buildBody({work:1,carry:10,move:8});
+		let harvbody = {carry:0,move:0};
+		let energyLeft = energy;
+		while(energyLeft > 0) {
+			if(i % 3== 0) {
+				body.move++;
+				energyLeft -= 50;
+			}
+			body.carry++;
+			body.carry++;
+			energyLeft -= 100;
+		}
+
+		body = this.buildBody({carry:12,move:6});
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
