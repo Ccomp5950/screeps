@@ -31,7 +31,7 @@ module.exports = function() {
 		let s = this;
 		let Smem = Memory.structure[s.id].Repairer;
 		Smem.repairerid = creep.id;
-		Smem.lastRepaired = Game.time();
+		Smem.lastRepaired = Game.time;
 		
 	}
 };
