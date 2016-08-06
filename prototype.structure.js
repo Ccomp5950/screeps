@@ -13,12 +13,12 @@ module.exports = function() {
 			Memory.structure[s.id].Repairer = {repairerid: null, lastRepaired: -1}; 
 		}
 		let Smem = Memory.structure[s.id].Repairer;
-		if(Smem.lastRepared == -1) {
+		if(Smem.lastRepaired == -1) {
 			return false;
 		}
 		if(Smem.lastRepaired < Game.time - 3) {
 			Smem.repairerid = null;
-			Smem.lastRepared = -1;
+			Smem.lastRepaired = -1;
 			return false;
 		}
 		if(Smem.repairerid == creep.id) {
