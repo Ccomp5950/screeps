@@ -127,8 +127,8 @@ module.exports.loop = function () {
     for (let name in Memory.creeps) {
         if (Game.creeps[name] == undefined) {
 		let flag = ""
-		if(Memory.creeps[name].myFlag != null) {
-			flag = "(" + Memory.creeps[name].myFlag + ")";
+		if(Memory.creeps[name].MyFlag != null) {
+			flag = "(" + Memory.creeps[name].MyFlag + ")";
 		}
 		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + "HPs and "+ Memory.creeps[name].ticksToLive + "Ticks Left " + flag);
             delete Memory.creeps[name];
