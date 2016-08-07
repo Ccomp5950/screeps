@@ -100,14 +100,14 @@ module.exports = function() {
 		let i = 1;
 		while(energyLeft > 0) {
 			energyLeft -= 50;
-			if(energyLeft > 0) break;
+			if(energyLeft < 0) break;
 			harvbody.move++;
 			energyleft -= 50;
-			if(energyLeft > 0) break;
+			if(energyLeft < 0) break;
 			harvbody.carry++;
 			
 			energyLeft -= 50;
-			if(energyLeft > 0) break;
+			if(energyLeft < 0) break;
 			harvbody.carry++;
 			i++;
 		}
