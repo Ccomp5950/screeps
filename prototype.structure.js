@@ -28,7 +28,6 @@ module.exports = function() {
 		}
 		return true;
         };
-	}
 	Structure.prototype.iGotIt =
 	function(creep) {
 		let s = this;
