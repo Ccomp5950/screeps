@@ -10,11 +10,12 @@ module.exports = function() {
 		if(Memory.structure[s.id] == undefined) {
 			Memory.structure[s.id] = {};
 		}
+		let Smem = Memory.structure[s.id];
 		if(Memory.structure[s.id][role] == undefined) {
 			
 			Memory.structure[s.id][role] = {creep: null, lastHandled: -1}; 
 		}
-		let Smem = Memory.structure[s.id][role];
+		Smem = Smem[role];
 		if(Smem.lastHandled == -1) {
 			return false;
 		}
@@ -26,7 +27,6 @@ module.exports = function() {
 		if(Smem.creep == creep.id) {
 			return false;
 		}
-		console.log(this.structureType + " is being handled by " + creep.name);
 		return true;
         };
 	Structure.prototype.iGotIt =
