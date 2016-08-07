@@ -20,6 +20,7 @@ module.exports = {
 	            });
 			if(structure.length) {
 				structure = structure[0];
+				creep.memory.container = structure.id;
 			}
 		} else {
 			structure = Game.getObjectById(creep.memory.container)
@@ -32,7 +33,7 @@ module.exports = {
 			game.memory.container = null;
 			structure = null;
                         }
-		if (structure == null || structure == undefined) {
+		if (creep.memory.container == -1) {
                         structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
                         if(structure != null) {
                                 if(creep.build(structure) == OK) {
