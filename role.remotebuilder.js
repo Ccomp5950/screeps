@@ -21,6 +21,7 @@ module.exports = {
             // switch state
             creep.memory.working = true;
 	    creep.memory.source = null;
+	    creep.memory.container = null;
         }
 
         // if creep is supposed to complete a constructionSite
