@@ -45,6 +45,9 @@ module.exports = {
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
 		} else {
 			structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
+	               if(creep.memory.MyFlag == "minerSpot5") {
+                        console.log("structure is: " + structure);
+        	        }
 			if(structure != null) {
 				if(creep.build(structure) == OK) {
 					return;
