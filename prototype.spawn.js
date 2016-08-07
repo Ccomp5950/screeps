@@ -99,13 +99,16 @@ module.exports = function() {
 		let energyLeft = energy;
 		let i = 1;
 		while(energyLeft > 0) {
-			if(i % 3 == 0) {
-				harvbody.move++;
-				energyLeft -= 50;
-			}
+			energyLeft -= 50;
+			if(energyLeft > 0) break;
+			harvbody.move++;
+			energyleft -= 50;
+			if(energyLeft > 0) break;
 			harvbody.carry++;
+			
+			energyLeft -= 50;
+			if(energyLeft > 0) break;
 			harvbody.carry++;
-			energyLeft -= 100;
 			i++;
 		}
 
