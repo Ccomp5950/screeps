@@ -123,7 +123,7 @@ module.exports = function() {
 			energyLeft -= 50;
 			if(energyLeft == 0) break;
 			fetchbody.carry++;
-			energyleft -= 50;
+			energyLeft -= 50;
 		}
 		body = this.buildBody(fetchbody)
 		bodyset = true;
