@@ -11,8 +11,7 @@ module.exports = {
 			return;
 		}
 		var structure = null;
-		if(creep.memory.container == undefined) {
-			console.log("[" + creep.name + "] defining container ");
+		if(creep.memory.container == undefined || creep.memory.container == null) {
 			creep.memory.container = -1;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
@@ -29,7 +28,7 @@ module.exports = {
 		if(creep.carry[RESOURCE_ENERGY] < 50) {
 			creep.mine();
 		}
-		if (structure != undefined) {
+		if (structure != null) {
 			if(creep.pos.getRangeTo(structure) > 1) {
 				game.memory.container = null;
 				return;
