@@ -109,17 +109,23 @@ module.exports = function() {
 			i++;
 		}
 
-		body = this.buildBody({carry:12,move:6});
+		body = this.buildBody(harvbody);
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		body.push(WORK);
-		body.push(MOVE);
-		body.push(CARRY);
-		for(let i = 0; i < ((numberOfParts -1) * 2) ; i++) {
-			body.push(CARRY);
-			body.push(MOVE);
+		let(fetchbody) = {work:1,move:1,carry:1};
+		let energyLeft = energy - 200;
+		while(energyLeft > 0) {
+			body.carry++;
+			energyLeft -= 50;
+			if(energyLeft == 0) break;
+			body.move++;
+			energyLeft -= 50;
+			if(energyLeft == 0) break;
+			body.carry++;
+			energyleft -= 50;
 		}
+		body = this.buildBody()
 		bodyset = true;
         }
 
