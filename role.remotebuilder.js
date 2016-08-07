@@ -61,7 +61,6 @@ module.exports = {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                                 filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 20) ,maxRooms:1
                                         });
-			creep.memory.container = container.id;
                         }
                         if(container != null && creep.pos.getRangeTo(container) < 999) {
 				creep.memory.container = container.id;
