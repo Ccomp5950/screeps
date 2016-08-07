@@ -35,7 +35,6 @@ module.exports = {
 		if (structure != null) {
 			if(creep.pos.getRangeTo(structure) > 1) {
 				game.memory.container = null;
-				return;
 			}
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
