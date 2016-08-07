@@ -10,12 +10,9 @@ module.exports = {
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
-                       if(creep.memory.MyFlag == "minerSpot5") {
-                        console.log("My name is "+ creep.name);
-                        }
-
 		var structure = null;
 		if(creep.memory.container == undefined) {
+			console.log("[" + creep.name + "] defining container ");
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
