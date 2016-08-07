@@ -22,6 +22,9 @@ module.exports = {
 				structure = structure[0]
 			}
 		} else {
+			if(creep.name == "miner2") {
+			console.log("fdafafa");
+			}
 			structure = Game.getObjectById(creep.memory.container)
 		}
 	    
