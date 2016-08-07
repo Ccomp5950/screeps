@@ -113,19 +113,19 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		let(fetchbody) = {work:1,move:1,carry:1};
+		let fetchbody = {work:1,move:1,carry:1};
 		let energyLeft = energy - 200;
 		while(energyLeft > 0) {
-			body.carry++;
+			fetchbody.carry++;
 			energyLeft -= 50;
 			if(energyLeft == 0) break;
-			body.move++;
+			fetchbody.move++;
 			energyLeft -= 50;
 			if(energyLeft == 0) break;
-			body.carry++;
+			fetchbody.carry++;
 			energyleft -= 50;
 		}
-		body = this.buildBody()
+		body = this.buildBody(fetchbody)
 		bodyset = true;
         }
 
