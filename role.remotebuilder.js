@@ -64,10 +64,8 @@ module.exports = {
 			creep.memory.container = container.id;
                         }
                         if(container != null && creep.pos.getRangeTo(container) < 999) {
-
-                                if(creep.memory.container == null) {
+				creep.memory.container = container.id;
                                         creep.memory.container = container.id
-                                }
                                 if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                         creep.moveTo(container);
                                 };
