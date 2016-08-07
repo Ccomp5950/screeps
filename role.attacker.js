@@ -63,7 +63,7 @@ module.exports = {
                                 }
                 return;
                 }
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES);
+                target = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => s.structureType != STRUCTURE_CONTROLLER});
                 if (target != undefined) {
                             if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target, {maxRooms:1});
