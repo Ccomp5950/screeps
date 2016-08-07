@@ -32,15 +32,13 @@ module.exports = {
 		if (structure != undefined) {
 			if(creep.pos.getRangeTo(structure) > 1) {
 				game.memory.container = null;
+				return;
 			}
 			creep.memory.container = structure.id;
 	                // try to transfer energy, if it is not in range
 			if(structure.hits < structure.hitsMax) {
 				creep.repair(structure);
 				return;
-			}
-			if(creep.name == "miner2") {
-				console.log("[" + creep.name + "] transfering energy to: " + structure);
 			}
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
 		} else {
