@@ -39,7 +39,7 @@ module.exports = {
 				creep.repair(structure);
 				return;
 			}
-			if(creep.name = "miner2") {
+			if(creep.name == "miner2") {
 				console.log("[" + creep.name + "] transfering energy to: " + structure);
 			}
 	               	creep.transfer(structure, RESOURCE_ENERGY); 
