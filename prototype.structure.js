@@ -11,9 +11,9 @@ module.exports = function() {
 			Memory.structure[s.id] = {};
 		}
 		let Smem = Memory.structure[s.id];
-		if(Memory.structure[s.id][role] == undefined) {
+		if(Smem[role] == undefined) {
 			
-			Memory.structure[s.id][role] = {creep: null, lastHandled: -1}; 
+			Smem[role] = {creep: null, lastHandled: -1}; 
 		}
 		Smem = Smem[role];
 		if(Smem.lastHandled == -1) {
