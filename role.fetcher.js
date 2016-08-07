@@ -80,7 +80,7 @@ module.exports = {
 
 			let roads = creep.pos.findByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 500 });
 			if(roads.length) {
-				creep.repair(roads[0];
+				creep.repair(roads[0]);
 			}
 
 			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
