@@ -15,11 +15,11 @@ module.exports = {
 			creep.memory.container = -1;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
-	          	structure = creep.pos.findInRange(FIND_STRUCTURES,1, {
+	          	structure = creep.pos.findInRange(FIND_STRUCTURES,2, {
                         filter: (s) => (s.structureType == STRUCTURE_CONTAINER)
 	            });
 			if(structure.length) {
-				structure = structure[0]
+				structure = structure[0];
 			}
 		} else {
 			if(creep.name == "miner2") {
