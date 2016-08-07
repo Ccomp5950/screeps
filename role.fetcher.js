@@ -78,7 +78,7 @@ module.exports = {
 		}else {
 			creep.memory.getToFlag = true;
 
-			let roads = creep.pos.findByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 500 });
+			let roads = creep.pos.findInRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 500 });
 			if(roads.length) {
 				creep.repair(roads[0]);
 			}
