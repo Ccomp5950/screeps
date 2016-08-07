@@ -28,6 +28,10 @@ module.exports = {
 		if(creep.carry[RESOURCE_ENERGY] < 50) {
 			creep.mine();
 		}
+                if(creep.pos.getRangeTo(structure) > 1) {
+			game.memory.container = null;
+			structure = null;
+                        }
 		if (structure != null) {
 			if(creep.pos.getRangeTo(structure) > 1) {
 				game.memory.container = null;
