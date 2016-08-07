@@ -67,6 +67,7 @@ module.exports = {
                     // move towards it
                     creep.moveTo(structure);
                 }
+		structure.iGotIt(creep);
             }
         }
         // if creep is supposed to harvest energy from source
