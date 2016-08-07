@@ -26,6 +26,7 @@ module.exports = function() {
 		if(Smem.creep == creep.id) {
 			return false;
 		}
+		console.log(this.structureType + " is being handled by " + creep.name);
 		return true;
         };
 	Structure.prototype.iGotIt =
