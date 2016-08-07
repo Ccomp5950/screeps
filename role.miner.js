@@ -22,9 +22,6 @@ module.exports = {
 				structure = structure[0];
 			}
 		} else {
-			if(creep.name == "miner2") {
-			console.log("fdafafa");
-			}
 			structure = Game.getObjectById(creep.memory.container)
 		}
 	    
@@ -35,7 +32,7 @@ module.exports = {
 			game.memory.container = null;
 			structure = null;
                         }
-		if (structure == null) {
+		if (structure == null || structure == undefined) {
                         structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
                         if(structure != null) {
                                 if(creep.build(structure) == OK) {
