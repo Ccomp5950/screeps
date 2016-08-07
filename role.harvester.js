@@ -5,6 +5,10 @@ module.exports = {
                         return;
                 }
         // if creep is bringing energy to a structure but has no energy left
+        let energy = creep.pos.lookFor(LOOK_ENERGY);
+		if(energy.length) {
+			creep.pickup(energy[0])
+                        }
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
