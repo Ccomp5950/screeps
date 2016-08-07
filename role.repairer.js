@@ -4,6 +4,7 @@ module.exports = {
                 if(creep.spawning) {
                         return;
                 }
+	creep.memory.currentRole = "repairer";
         // if creep is trying to repair something but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -64,7 +65,6 @@ module.exports = {
                     // move towards it
                     creep.moveTo(structure);
                 }
-		creep.memory.currentRole = "repairer";
 		structure.iGotIt(creep);
             }
             // if we can't fine one

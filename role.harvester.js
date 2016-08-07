@@ -5,6 +5,7 @@ module.exports = {
                         return;
                 }
         // if creep is bringing energy to a structure but has no energy left
+	creep.memory.currentRole = "harvester";
         let energy = creep.pos.lookFor(LOOK_ENERGY);
 		if(energy.length) {
 			creep.pickup(energy[0])
