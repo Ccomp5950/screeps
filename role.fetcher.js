@@ -20,7 +20,20 @@ module.exports = {
 				creep.pickup(energy[0])
 			}
 
-		if(creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
+        if (creep.memory.working == true && creep.carry.energy == 0) {
+
+            creep.memory.working = false;
+        }
+        else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
+
+            creep.memory.working = true;
+            creep.memory.source = null;
+        }
+
+
+
+
+		if(creep.memory.working == false) {
 			if(creep.memory.getToFlag == null) {
 				creep.memory.getToFlag = true;
 			}
@@ -64,6 +77,12 @@ module.exports = {
 
 		}else {
 			creep.memory.getToFlag = true;
+
+			let roads = creep.pos.findByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 500 });
+			if(roads.length) {
+				creep.repair(roads[0];
+			}
+
 			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
 				creep.moveTo(Game.flags["home"]);
 				return;
