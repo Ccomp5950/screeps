@@ -33,8 +33,10 @@ module.exports = function() {
 	function(creep) {
 		let s = this;
 		let role = creep.memory.currentRole;
-		let Smem = Memory.structure[s.id][role];
-		Smem.creep = creep.id;
-		Smem.lastHandled = Game.time;
+		if(Structure.prototype.isBeingHandled) {
+			let Smem = Memory.structure[s.id][role];
+			Smem.creep = creep.id;
+			Smem.lastHandled = Game.time;
+		}
 	}
 };
