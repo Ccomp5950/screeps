@@ -53,7 +53,7 @@ module.exports = {
         // if creep is supposed to harvest energy from source
         else {
 			var container = Game.getObjectById(creep.memory.container);
-			if(container != null && container.store[RESOURECE_ENERGY] <= 30) {
+			if(container != null && container.store[RESOURCE_ENERGY] <= 30) {
 				container = null;
 				creep.memory.container = null;
 			}
