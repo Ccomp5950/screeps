@@ -40,7 +40,7 @@ module.exports = {
             });
 	    if (structure == null) {
 		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURES, {
-			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000 && // s.isBeingHandled(creep) == false
+			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000 // && s.isBeingHandled(creep) == false
 			
 		 }); 
 		if(structure.pos.getRangeTo(Game.flags["upgraderContainer"].pos) > 2) {
