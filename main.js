@@ -34,7 +34,7 @@ module.exports.loop = function () {
 	if(Memory.roles == null) {
 		Memory.roles = {};
 	}
-	if(Memory.roles[roleM] === null) {
+	if(Memory.roles[roleM] == null) {
 		Memory.roles[roleM] = {minimum: role.minimum, requirement: role.requirement};
 	}
 	role.minimum = Memory.roles[roleM].minimum;
