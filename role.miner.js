@@ -32,26 +32,26 @@ module.exports = {
 			game.memory.container = null;
 			structure = null;
                         }
-		if (structure != null) {
-			if(creep.pos.getRangeTo(structure) > 1) {
-				game.memory.container = null;
-			}
-			creep.memory.container = structure.id;
-	                // try to transfer energy, if it is not in range
-			if(structure.hits < structure.hitsMax) {
-				creep.repair(structure);
-				return;
-			}
-	               	creep.transfer(structure, RESOURCE_ENERGY); 
+		if (structure == null) {
+                        structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
+                        if(structure != null) {
+                                if(creep.build(structure) == OK) {
+                                        return;
+                                }
+
+                        }
+                        creep.drop(RESOURCE_ENERGY);
+
 		} else {
-			structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
-			if(structure != null) {
-				if(creep.build(structure) == OK) {
-					return;
-				}
-				
-			}
-			creep.drop(RESOURCE_ENERGY);
+                        if(creep.pos.getRangeTo(structure) > 1) {
+                                game.memory.container = null;
+                        }
+                        creep.memory.container = structure.id;
+                        if(structure.hits < structure.hitsMax) {
+                                creep.repair(structure);
+                                return;
+                        }
+                        creep.transfer(structure, RESOURCE_ENERGY);
 		}
     }
 };
