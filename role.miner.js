@@ -29,9 +29,6 @@ module.exports = {
 		if(creep.carry[RESOURCE_ENERGY] < 50) {
 			creep.mine();
 		}
-		if(creep.memory.MyFlag == "minerSpot5") {
-			console.log("structure is: " + structure);
-		}
 		if (structure != null) {
 			if(creep.pos.getRangeTo(structure) > 1) {
 				game.memory.container = null;
