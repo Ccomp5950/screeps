@@ -100,11 +100,11 @@ module.exports = function() {
 		let i = 1;
 		while(energyLeft > 0) {
 			if(i % 3 == 0) {
-				body.move++;
+				harvbody.move++;
 				energyLeft -= 50;
 			}
-			body.carry++;
-			body.carry++;
+			harvbody.carry++;
+			harvbody.carry++;
 			energyLeft -= 100;
 			i++;
 		}
