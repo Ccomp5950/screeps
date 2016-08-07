@@ -12,7 +12,7 @@ module.exports = {
 		}
 
 		var structure = null;
-		if(creep.memory.container == null) {
+		if(creep.memory.container == undefined) {
 			creep.memory.container = null;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
