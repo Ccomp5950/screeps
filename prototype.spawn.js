@@ -113,7 +113,10 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		for(let i = 0; i < (numberOfParts * 2); i++) {
+		body.push(WORK);
+		body.push(MOVE);
+		body.push(CARRY);
+		for(let i = 0; i < ((numberOfParts -1) * 2) ; i++) {
 			body.push(CARRY);
 			body.push(MOVE);
 		}
