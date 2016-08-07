@@ -53,7 +53,7 @@ module.exports = {
 	    }
 	    if (structure == undefined && structureCandidates.length > 0) {
 		 structure = creep.pos.findClosestByPath(structureCandidates, {
-				filter: (s) => s.isBeingRepaired(creep) == false
+				filter: (s) => s.isBeingHandled(creep) == false
 		});
 	    }
             // if we find one
@@ -64,7 +64,8 @@ module.exports = {
                     // move towards it
                     creep.moveTo(structure);
                 }
-		structure.setRepairer(creep);
+		creep.memory.currentRole = "repairer";
+		structure.iGotIt(creep);
             }
             // if we can't fine one
             else {
