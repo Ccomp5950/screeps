@@ -36,7 +36,7 @@ module.exports = {
                              || s.structureType == STRUCTURE_TOWER)
 				
                              && s.energy < s.energyCapacity
-			     && s.isBeingHandled(creep) == false
+			     // && s.isBeingHandled(creep) == false
             });
 	    if (structure == null) {
 		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURES, {
@@ -61,7 +61,6 @@ module.exports = {
 
             // if we found one
             if (structure != null) {
-		structure.iGotIt(creep);
                 // try to transfer energy, if it is not in range
                 if (creep.transfer(structure, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     // move towards it
