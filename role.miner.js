@@ -13,7 +13,7 @@ module.exports = {
 		var structure = null;
 		if(creep.memory.container == undefined) {
 			console.log("[" + creep.name + "] defining container ");
-			creep.memory.container = null;
+			creep.memory.container = -1;
 		}
 		if(creep.memory.container == null || Game.getObjectById(creep.memory.container) == null) {
 	          	structure = creep.pos.findInRange(FIND_STRUCTURES,1, {
