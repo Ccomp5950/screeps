@@ -16,12 +16,11 @@ module.exports = function() {
 			Smem[role] = {creep: null, lastHandled: -1}; 
 		}
 		Smem = Smem[role];
-		if(Smem.lastHandled == -1) {
+		if(Smem.creep == null) {
 			return false;
 		}
 		if(Smem.lastHandled < Game.time - 3) {
 			Smem.creep = null;
-			Smem.lastHandled = -1;
 			return false;
 		}
 		if(Smem.creep == creep.id) {
