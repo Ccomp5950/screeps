@@ -32,7 +32,7 @@ module.exports = function() {
 	function(creep) {
 		let s = this;
 		let role = creep.memory.currentRole;
-		if(Structure.prototype.isBeingHandled == false) {
+		if(s.isBeingHandled(creep) == false) {
 			let Smem = Memory.structure[s.id][role];
 			Smem.creep = creep.id;
 			Smem.lastHandled = Game.time;
