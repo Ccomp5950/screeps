@@ -192,10 +192,10 @@ module.exports.loop = function () {
 				}
 			} else {
 				for (let tower of towers) {
-					console.log("lala " + room);
 		                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
 	                                                                        filter: (s) => s.hits < 1001
 		                        });
+					console.log("structure = "+ structure);
 					if(structure != undefined) {
 						tower.repair(structure);
 					}
