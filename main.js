@@ -193,7 +193,7 @@ module.exports.loop = function () {
 			} else {
 				for (let tower of towers) {
 		                        let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-	                                                                        filter: (s) => s.hits != undefined &&s.hits < 1001
+	                                                                        filter: (s) => s.hits != s.hitsMax && s.hits < 1001
 		                        });
 					if(structure != undefined) {
 						console.log("tower healing: " + structure);
