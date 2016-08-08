@@ -42,7 +42,7 @@ module.exports = {
 
 	            // loop with increasing percentages
 		    if(target == undefined) {
-		            for (let percentage = 0.0001; percentage <= maxPercentage; percentage += percentage + 0.0001){
+		            for (let percentage = 0.0001; percentage < maxPercentage; percentage += percentage + 0.0001){
 		                // find a wall with less than percentage hits
 
 		                // for some reason this doesn't work
