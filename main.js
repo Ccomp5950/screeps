@@ -196,6 +196,7 @@ module.exports.loop = function () {
 	                                                                        filter: (s) => s.hits != undefined &&s.hits < 1001
 		                        });
 					if(structure != undefined) {
+						console.log("tower healing: " + structure);
 						tower.repair(structure);
 					}
 				}
