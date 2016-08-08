@@ -55,6 +55,14 @@ module.exports = {
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		if(creep.attackHostileStructure("ANYTHING")) return;
+                if(flag != undefined) {
+                        var range = creep.pos.getRangeTo(flag);
+                        if(range > 0) {
+                                creep.moveTo(flag);
+                                return;
+                        }
+                }
+
                 
 
         }
