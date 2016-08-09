@@ -2,8 +2,12 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
+			creep.setupSpawn();
                         return;
                 }
+	creep.setupSpawn();
+	creep.setupFlag();
+	creep.setRespawnTime();
         // if creep is bringing energy to a structure but has no energy left
 	creep.memory.currentRole = "harvester";
         let energy = creep.pos.lookFor(LOOK_ENERGY);
@@ -57,7 +61,13 @@ module.exports = {
                     creep.moveTo(structure);
                 }
 		structure.iGotIt(creep);
-            }
+            } else {
+		if(creep.carry.energy == creep.carryCapacity) {
+			creep.customharvest();
+		} else {
+			creep.approachAssignedFlag(0);
+		}
+	    }
         }
         // if creep is supposed to harvest energy from source
         else {
