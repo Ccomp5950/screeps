@@ -62,7 +62,7 @@ module.exports = {
                 }
 		structure.iGotIt(creep);
             } else {
-		if(creep.carry.energy == creep.carryCapacity) {
+		if(creep.carry.energy != creep.carryCapacity) {
 			creep.customharvest();
 		} else {
 			creep.approachAssignedFlag(0);
