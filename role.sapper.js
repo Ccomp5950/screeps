@@ -37,41 +37,43 @@ module.exports = {
 			}
 		}
 
+		var towercheck = false;
+		if(towercheck) {
 		// Tower Avoidance
-		let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
+			let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
-		if(towers.length > 0) {
-			for(let towerI in towers) {
-				let tower = towers[towerI];
-				range = Game.flags.sapperSafe.pos.getRangeTo(creep);
-				if(tower.my) {
-					break;
-				}
-				if(tower.energy > 9) {
-					flag = Game.flags.sapperSafe;
-					creep.memory.hide = 4;
-					if(range > 0) {
-						creep.moveTo(flag);
+			if(towers.length > 0) {
+				for(let towerI in towers) {
+					let tower = towers[towerI];
+					range = Game.flags.sapperSafe.pos.getRangeTo(creep);
+					if(tower.my) {
+						break;
 					}
-					return;
-				}
-				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 8, { filter: (c) => c.carry.energy > 0 })
-				if(blah.length > 0) {
-					flag = Game.flags.sapperSafe;
-					creep.memory.hide = 2;
-					if(range > 0) {
-						creep.moveTo(flag);
+					if(tower.energy > 9) {
+						flag = Game.flags.sapperSafe;
+						creep.memory.hide = 4;
+						if(range > 0) {
+							creep.moveTo(flag);
+						}
+						return;
 					}
-					return;
+					let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 8, { filter: (c) => c.carry.energy > 0 })
+					if(blah.length > 0) {
+						flag = Game.flags.sapperSafe;
+						creep.memory.hide = 2;
+						if(range > 0) {
+							creep.moveTo(flag);
+						}
+						return;
+					}
 				}
+			} else if (Game.flags.sapper.room == undefined &&  creep.room.name != Game.flags.sapper.room.name ) {
+				creep.memory.hide = 5;
+				return;
 			}
-		} else if (Game.flags.sapper.room == undefined &&  creep.room.name != Game.flags.sapper.room.name ) {
-			creep.memory.hide = 5;
-			return;
 		}
-
 		// KILL SHIT
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
