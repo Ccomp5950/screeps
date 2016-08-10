@@ -55,7 +55,7 @@ module.exports = {
 		}
 
 		// Tower Avoidance
-		let towers = Game.rooms[room].find(FIND_STRUCTURES, {
+		let towers = creep.room.find(FIND_STRUCTURES, {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
