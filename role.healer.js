@@ -24,8 +24,7 @@ module.exports = {
 			} else if (range > 1 && target.onEdge() == false)
 				creep.moveTo(target);
 				return;
-				}
-                        }
+			}
                 }
 		creep.approachAssignedFlag(0);
 
