@@ -117,7 +117,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		let fetchbody = {work:1,move:6,carry:11};
+		let fetchbody = {work:1,move:8,carry:15};
 		/*
  		let energyLeft = energy - 200;
 		while(energyLeft > 0) {
