@@ -15,7 +15,7 @@ module.exports = {
                         });
                 if (target != undefined) {
                         if (creep.heal(target) == ERR_NOT_IN_RANGE) {
-				if(target.onEdge(){
+				if(target.onEdge()){
 	                                creep.rangedHeal(target);
 				} else {
 					creep.moveTo(target);
