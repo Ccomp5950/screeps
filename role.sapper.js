@@ -25,7 +25,6 @@ module.exports = {
 		*/
                 if(creep.memory.healing) {
                         if(creep.heal(creep) == 0) {
-                                return;
                         }
                 }
 		creep.getAwayFromEdge();
@@ -33,7 +32,7 @@ module.exports = {
 		var frange = 999;
 		var hide = creep.memory.hide;
 		if(hide > 0) {
-			creep.memory.hide--;
+			creep.memory.hide -= 1;
 		}
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
