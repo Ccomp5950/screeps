@@ -15,7 +15,7 @@ module.exports = {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
                 if (target != undefined) {
-			var range = creep.getRangeTo(target);
+			var range = creep.pos.getRangeTo(target);
 			if (range == 1) {
 				creep.heal(target);
 				return;
