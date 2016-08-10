@@ -49,9 +49,6 @@ module.exports = {
 				}
 				if(tower.energy > 9) {
 					flag = Game.flags.sapperSafe;
-					if(hide <= 0) {
-						console.log("Running away, tower has energy")
-					}
 					creep.memory.hide = 4;
 					if(range > 0) {
 						creep.moveTo(flag);
@@ -59,9 +56,6 @@ module.exports = {
 				}
 				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 2, { filter: (c) => c.carry.energy > 0 })
 					flag = Game.flags.sapperSafe;
-                                        if(hide <= 0) {
-                                                console.log("Running away, tower has a refiller nearby.")
-                                        }
 					creep.memory.hide = 4;
 					if(range > 0) {
 						creep.moveTo(flag);
