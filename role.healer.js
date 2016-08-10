@@ -21,7 +21,7 @@ module.exports = {
 				return;
 			} else if( range <=3 ) {
 				creep.rangedHeal(target);
-			} else if (range > 1 && target.onEdge() == false)
+			} else if (range > 1 && target.onEdge() == false) {
 				creep.moveTo(target);
 				return;
 			}
