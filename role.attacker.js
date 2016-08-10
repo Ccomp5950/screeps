@@ -28,7 +28,7 @@ module.exports = {
 
 			if(Game.flags["attack"] != undefined) {
 				var range = creep.pos.getRangeTo(Game.flags.attack);
-				if(range > 10) {
+				if(range > 999) {
 					creep.moveTo(Game.flags.attack);
 					return;
 				}
@@ -68,6 +68,15 @@ module.exports = {
                                 }
                 return;
                 }
+
+                        if(Game.flags["attack"] != undefined) {
+                                var range = creep.pos.getRangeTo(Game.flags.attack);
+                                if(range > 3) {
+                                        creep.moveTo(Game.flags.attack);
+                                        return;
+                                }
+                        }
+
 
         }
     
