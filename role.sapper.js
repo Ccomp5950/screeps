@@ -17,7 +17,7 @@ module.exports = {
 		if(hide > 0) {
 			creep.memory.hide -= 1;
 		}
-		if(Game.time % 50) { 
+		if(Game.time % 50 == 0) { 
 			creep.memory.towercheck = false;
 		}
 		if(creep.hits == creep.hitsMax) {
