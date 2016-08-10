@@ -180,6 +180,15 @@ module.exports = function() {
 	return false;
 	};
 
+	Creep.prototype.onEdge =
+        function() {
+	let c = this;
+	if{c.pos.x == 0 || c.pos.x == 49 || c.pos.y == 0 || c.pos.y == 49) {
+		return true;
+	}
+	return false;
+	};
+
 	Creep.prototype.getAwayFromEdge =
 	function() {
 		let creep = this;
