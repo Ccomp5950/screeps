@@ -15,7 +15,7 @@ module.exports = {
 		*/
 		var flag = Game.flags[creep.memory.MyFlag];
 		var frange = 0;
-		var taunt = true;
+		var taunt = false;
 		if(creep.memory.hop == false) {
 			creep.getAwayFromEdge()
 		}
@@ -23,6 +23,10 @@ module.exports = {
 			creep.memory.healing = false;
 		} else {
 			creep.memory.healingothers = false;
+		}
+		let danger = false;
+		if(creep.room == flag.room) {
+			danger = true;
 		}
 
 		if(creep.hits < 1200 || creep.memory.healing == true) {
@@ -43,7 +47,7 @@ module.exports = {
 				creep.say("Ha missed!", true);				
 			}
 		}
-		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
+		if(!creep.memory.healing && !danger && creep.hits == creep.hitsMax) {
 			var targets = creep.pos.findInRange(FIND_CREEPS, 3 ,{
 					filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
 			});
