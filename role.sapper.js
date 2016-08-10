@@ -45,8 +45,9 @@ module.exports = {
 			flag = Game.flags.sapperSafe;
 			frange = 0;
 		}
+		var range = 0;
 		if(flag != undefined) {
-			var range = creep.pos.getRangeTo(flag);
+			range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
 				creep.moveTo(flag);
 				return;
@@ -54,27 +55,29 @@ module.exports = {
 		}
 
 		// Tower Avoidance
-		let towers = creep.room.find(FIND_STRUCTURES, {
+		let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
-		for(let tower in towers) {
-			console.log("tower is: " + tower);
+		for(let towerI in towers) {
+			let tower = towers[towerI];
 			if(tower.my) {
 				break;
 			}
 			if(tower.energy > 9) {
 				flag = Game.flags.sapperSafe;
-				creep.memory.hide = 20;
-				creep.moveTo(flag);
+				creep.memory.hide = 5;
+				if(range > 0) {
+					creep.moveTo(flag);
 				return;
 			}
-		//	if(tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 }) != undefined) {
-		//		creep.memory.hide = 20;
-		//		flag.Game.flags.sapperSafe;
-		//		creep.moveTo(flag);
-		//		return;
-		//	}
+			let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 })
+				flag.Game.flags.sapperSafe;
+				creep.memory.hide = 5;
+				if(range > 0) {
+					creep.moveTo(flag);
+				}
+			}
 		}
 
 		// KILL SHIT
