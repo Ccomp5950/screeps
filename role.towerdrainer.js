@@ -42,9 +42,8 @@ module.exports = {
 			if(range > frange) {
 				creep.moveTo(flag);
 				return;
-			} else if(taunt) {
+			} else {
 				creep.setRespawnTime();
-				creep.say("Ha missed!", true);				
 			}
 		}
 		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
@@ -59,9 +58,6 @@ module.exports = {
 					}
 				} else {
 				    if(creep.rangedHeal(targets[0]) == 0) {
-					if(!danger) {
-						creep.moveTo(targets[0]);
-					}
 					creep.memory.healingother = true;
 				    }
 				}
