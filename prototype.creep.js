@@ -234,6 +234,7 @@ module.exports = function() {
 	function(structure) {
 		let creep = this;
 		let target = null;
+		let cs = false;
 		switch(structure) {
 			case "FLAG":
 				if(Game.flags.priority.room != undefined && Game.flags.priority.room.name == creep.room.name) {
@@ -245,6 +246,7 @@ module.exports = function() {
 				break;
 			case FIND_CONSTRUCTION_SITES:
 				target = creep.pos.findClosestByRange(FIND_HOSTILE_CONSTRUCTION_SITES);
+				cs = true;
 				break;
 			case STRUCTURE_WALL:
 				for(let range = 10; range < 25; range++) {
@@ -277,6 +279,12 @@ module.exports = function() {
 				break;
 		}
                 if (target != undefined) {
+			    if (cs) {
+                                if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
+                                        return false;
+                                }
+
+				}
                             if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                                 if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
 					return false;
