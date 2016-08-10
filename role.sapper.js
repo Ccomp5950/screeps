@@ -64,9 +64,10 @@ module.exports = {
 					if(range > 0) {
 						creep.moveTo(flag);
 					}
+					return;
 				}
 			}
-		} else if ( creep.room != Game.flags.sapper.room ) {
+		} else if ( creep.room.name != Game.flags.sapper.room.name ) {
 			creep.memory.hide = 5;
 		}
 
