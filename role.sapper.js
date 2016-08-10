@@ -38,7 +38,7 @@ module.exports = {
 			creep.memory.healing = false;
 		}
 		if(creep.hits < creep.hitsMax && hide == 0) {
-			creep.memory.hide = 40;
+			creep.memory.hide = 10;
 		}
 		if(creep.hits < creep.hitsMax || creep.memory.healing == true || hide > 0) {
 			creep.memory.healing = true;
@@ -59,25 +59,34 @@ module.exports = {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
-		for(let towerI in towers) {
-			let tower = towers[towerI];
-			if(tower.my) {
-				break;
-			}
-			if(tower.energy > 9) {
-				flag = Game.flags.sapperSafe;
-				creep.memory.hide = 4;
-				if(range > 0) {
-					creep.moveTo(flag);
-				return;
-			}
-			let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 })
-				flag = Game.flags.sapperSafe;
-				creep.memory.hide = 4;
-				if(range > 0) {
-					creep.moveTo(flag);
+		if(towers.length) {
+			for(let towerI in towers) {
+				let tower = towers[towerI];
+				if(tower.my) {
+					break;
+				}
+				if(tower.energy > 9) {
+					flag = Game.flags.sapperSafe;
+					if(creep.memory.hide < 4) {
+						creep.memory.hide = 4;
+					}
+					creep.memory.hide = 4;
+					if(range > 0) {
+						creep.moveTo(flag);
+					return;
+				}
+				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 })
+					flag = Game.flags.sapperSafe;
+					if(creep.memory.hide < 4) {
+						creep.memory.hide = 4;
+					}
+					if(range > 0) {
+						creep.moveTo(flag);
+					}
 				}
 			}
+		} else if ( creep.room != Game.flags.sapper.room ) {
+			creep.memory.hide = 5;
 		}
 
 		// KILL SHIT
