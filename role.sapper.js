@@ -59,7 +59,7 @@ module.exports = {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
-		for(let tower in towers)
+		for(let tower in towers) {
 			if(tower.my) {
 				break;
 			}
