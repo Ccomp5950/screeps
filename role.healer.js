@@ -20,9 +20,9 @@ module.exports = {
 	                                creep.rangedHeal(target);
 				} else {
 					creep.moveTo(target);
+					return;
 				}
                         }
-		return;
                 }
 		creep.approachAssignedFlag(0);
 
