@@ -231,7 +231,7 @@ module.exports = function() {
 				target = creep.pos.findClosestByRange(FIND_HOSTILE_CONSTRUCTION_SITES);
 				break;
 			case STRUCTURE_WALL:
-				for(let range = 2; range < 25; range++) {
+				for(let range = 10; range < 25; range++) {
 					let targets = creep.pos.findInRange(FIND_STRUCTURES,range, {
 								filter: (s) => s.structureType == STRUCTURE_WALL
 					});
@@ -294,7 +294,7 @@ module.exports = function() {
 
 		}
 	return true;
-	}
+	};
 	Creep.prototype.attackHostileCreep =
 	function() {
 		let creep = this;
