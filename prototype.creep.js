@@ -236,7 +236,7 @@ module.exports = function() {
 		let target = null;
 		switch(structure) {
 			case "FLAG":
-				if(Game.flags.priority.room == creep.room) {
+				if(Game.flags.priority.room.name == creep.room.name) {
 					target = Game.flags.priority.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.pos.getRangeTo(Game.flags.priority) < 2});
 				}
 				break;
