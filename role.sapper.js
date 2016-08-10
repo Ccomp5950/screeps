@@ -2,6 +2,7 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep, squadsize) {
 		if(creep.spawning) {
+			creep.memory.hide = 0;
 			return;
 		}
 		/*
@@ -30,10 +31,17 @@ module.exports = {
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
+		var hide = creep.memory.hide;
+		if(hide > 0) {
+			creep.memory.hide--;
+		}
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
-		if(creep.hits < 1800 || creep.memory.healing == true) {
+		if(creep.hits < creep.hitsMax) {
+			creep.memory.hide = 40;
+		}
+		if(creep.hits < creep.hitsMax || creep.memory.healing == true || hide > 0) {
 			creep.memory.healing = true;
 			flag = Game.flags.sapperSafe;
 			frange = 0;
@@ -45,6 +53,31 @@ module.exports = {
 				return;
 			}
 		}
+
+		// Tower Avoidance
+		let towers = Game.rooms[room].find(FIND_STRUCTURES, {
+                                                       filter: (s) => s.structureType == STRUCTURE_TOWER
+                                                       });
+
+		for(let tower in towers)
+			if(tower.my) {
+				break;
+			}
+			if(tower.energy > 9) {
+				flag = Game.flags.sapperSafe;
+				creep.memory.hide = 20;
+				creep.moveTo(flag);
+				return;
+			}
+			if(tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 }) != undefined) {
+				creep.memory.hide = 20;
+				flag.Game.flags.sapperSafe;
+				creep.moveTo(flag);
+				return;
+			}
+		}
+
+		// KILL SHIT
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
