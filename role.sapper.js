@@ -69,6 +69,7 @@ module.exports = {
 			}
 		} else if ( creep.room.name != Game.flags.sapper.room.name ) {
 			creep.memory.hide = 5;
+			return;
 		}
 
 		// KILL SHIT
