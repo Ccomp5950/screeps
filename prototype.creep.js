@@ -310,6 +310,12 @@ module.exports = function() {
 		if(target == null || Game.time % 20 == 0) {
 			return false;
 		}
+		if(target.progress != undefined) {
+                        if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
+                                creep.memory.killThis = null;
+                                return false;
+                        }
+		}
 		if(creep.dismantle(target) == ERR_NOT_IN_RANGE) {
 			if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
 				creep.memory.killThis = null;
