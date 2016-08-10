@@ -50,11 +50,9 @@ module.exports = {
                                 }
                 return;
                 }
-                target = creep.pos.findClosestByPath(FIND_HOSTILE_CONSTRUCTION_SITES);
-                if (target != undefined) {
-				creep.moveTo(target, {maxRooms:1});
-                return;
-            	}
+                if(creep.attackSavedTarget()) return;
+                if(creep.attackHostileStructure("FLAG")) return;
+                if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 
                 target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, { filter: (s) => s.stuctureType != STRUCTURE_CONTROLLER});
                 if (target != undefined) {
