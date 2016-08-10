@@ -69,11 +69,11 @@ module.exports = {
 				creep.moveTo(flag);
 				return;
 			}
-			if(tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 }) != undefined) {
-				creep.memory.hide = 20;
-				flag.Game.flags.sapperSafe;
-				creep.moveTo(flag);
-				return;
+		//	if(tower.pos.findInRange(FIND_HOSTILE_CREEPS, 5, { filter: (c) => c.carry.energy > 0 }) != undefined) {
+		//		creep.memory.hide = 20;
+		//		flag.Game.flags.sapperSafe;
+		//		creep.moveTo(flag);
+		//		return;
 			}
 		}
 
