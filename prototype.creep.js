@@ -186,6 +186,9 @@ module.exports = function() {
 	if(c.pos.x == 0 || c.pos.x == 49 || c.pos.y == 0 || c.pos.y == 49) {
 		return true;
 	}
+        if(c.pos.x == 1 || c.pos.x == 48 || c.pos.y == 1 || c.pos.y == 48) {
+                return true;
+        }
 	return false;
 	};
 
