@@ -46,6 +46,10 @@ module.exports = {
 			}
 		}
 		if(creep.attackSavedTarget()) return;
+		let continue = false;
+		if(continue == false) {
+			return;
+		}
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
