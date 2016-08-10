@@ -2,6 +2,7 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep, squadsize) {
 		if(creep.spawning) {
+			creep.memory.towercheck = false;
 			creep.memory.hide = 0;
 			return;
 		}
@@ -37,7 +38,7 @@ module.exports = {
 			}
 		}
 
-		var towercheck = true;
+		var towercheck = creep.memory.towercheck;
 		if(towercheck) {
 		// Tower Avoidance
 			let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
