@@ -293,6 +293,7 @@ module.exports = function() {
                         }
 
 		}
+	return true;
 	}
 	Creep.prototype.attackHostileCreep =
 	function() {
