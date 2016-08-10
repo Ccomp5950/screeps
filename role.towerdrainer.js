@@ -47,7 +47,7 @@ module.exports = {
 				creep.say("Ha missed!", true);				
 			}
 		}
-		if(!creep.memory.healing && !danger && creep.hits == creep.hitsMax) {
+		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
 			var targets = creep.pos.findInRange(FIND_CREEPS, 3 ,{
 					filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
 			});
@@ -59,7 +59,9 @@ module.exports = {
 					}
 				} else {
 				    if(creep.rangedHeal(targets[0]) == 0) {
-					creep.moveTo(targets[0]);
+					if(!danger) {
+						creep.moveTo(targets[0]);
+					}
 					creep.memory.healingother = true;
 				    }
 				}
