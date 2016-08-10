@@ -17,10 +17,14 @@ module.exports = {
 		if(hide > 0) {
 			creep.memory.hide -= 1;
 		}
+		if(Game.time % 50) { 
+			creep.memory.towercheck = false;
+		}
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
 		if(creep.hits < creep.hitsMax) {
+			creep.memory.towercheck = true;
 			creep.memory.hide = 5;
 			hide = 5;
 		}
