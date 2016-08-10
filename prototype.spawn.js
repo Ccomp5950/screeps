@@ -117,8 +117,9 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		let fetchbody = {work:1,move:1,carry:1};
-		let energyLeft = energy - 200;
+		let fetchbody = {work:1,move:6,carry:11};
+		/*
+ 		let energyLeft = energy - 200;
 		while(energyLeft > 0) {
 			fetchbody.carry++;
 			energyLeft -= 50;
@@ -129,6 +130,7 @@ module.exports = function() {
 			fetchbody.carry++;
 			energyLeft -= 50;
 		}
+		*/
 		body = this.buildBody(fetchbody)
 		bodyset = true;
         }
