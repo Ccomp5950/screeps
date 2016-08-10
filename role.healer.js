@@ -15,8 +15,13 @@ module.exports = {
                         });
                 if (target != undefined) {
                         if (creep.heal(target) == ERR_NOT_IN_RANGE) {
-                                creep.rangedHeal(target);
+				if(target.onEdge(){
+	                                creep.rangedHeal(target);
+				} else {
+					creep.moveTo(target);
+				}
                         }
+		return;
                 }
 
 		let flag = Game.flags[creep.name];
