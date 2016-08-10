@@ -15,12 +15,15 @@ module.exports = {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
                 if (target != undefined) {
-                        if (creep.heal(target) == ERR_NOT_IN_RANGE) {
-				if(target.onEdge()){
-	                                creep.rangedHeal(target);
-				} else {
-					creep.moveTo(target);
-					return;
+			var range = creep.getRangeTo(target);
+			if (range == 1) {
+				creep.heal(target);
+				return;
+			} else if( range <=3 ) {
+				creep.rangedHeal(target);
+			} else if (range > 1 && target.onEdge() == false)
+				creep.moveTo(target);
+				return;
 				}
                         }
                 }
