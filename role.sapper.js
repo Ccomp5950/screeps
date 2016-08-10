@@ -81,7 +81,6 @@ module.exports = {
                                                 console.log("Running away, tower has a refiller nearby.")
                                         }
 					creep.memory.hide = 4;
-					}
 					if(range > 0) {
 						creep.moveTo(flag);
 					}
