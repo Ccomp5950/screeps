@@ -57,7 +57,7 @@ module.exports = {
 					}
 					return;
 				}
-				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 3, { filter: (c) => c.carry.energy > 0 })
+				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 8, { filter: (c) => c.carry.energy > 0 })
 				if(blah.length > 0) {
 					flag = Game.flags.sapperSafe;
 					creep.memory.hide = 2;
