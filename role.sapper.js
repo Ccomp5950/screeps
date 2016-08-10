@@ -59,6 +59,7 @@ module.exports = {
                                                        });
 
 		for(let tower in towers) {
+			console.log("tower is: " + tower);
 			if(tower.my) {
 				break;
 			}
