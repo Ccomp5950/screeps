@@ -305,11 +305,13 @@ module.exports = function() {
 		if(creep.dismantle(target) == ERR_NOT_IN_RANGE) {
 			if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
 				creep.memory.killThis = null;
+				return false;
 			}
 		}
 		if(creep.attack(target) == ERR_NOT_IN_RANGE) {
                         if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
                                 creep.memory.killThis = null;
+				return false;
                         }
 
 		}
