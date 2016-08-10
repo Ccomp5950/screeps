@@ -45,12 +45,13 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
-	else if(roleName == "attacker") {
+/*	else if(roleName == "attacker") {
 		body = this.buildBody({attack:5,move:6});
 		bodyset = true;
 		creepMem.combat = true;
 	}
-	else if (roleName == "defender") {
+*/
+	else if (roleName == "defender" || roleName == "attacker") {
 		let base = 420;
 		let calcEnergy = energy - base;
 		let probody = {tough:2,move:3,attack:0,heal:1}; // 420 cost body
