@@ -37,7 +37,7 @@ module.exports = {
 			}
 		}
 
-		var towercheck = false;
+		var towercheck = true;
 		if(towercheck) {
 		// Tower Avoidance
 			let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
@@ -59,7 +59,7 @@ module.exports = {
 						}
 						return;
 					}
-					let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 8, { filter: (c) => c.carry.energy > 0 })
+					let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 2, { filter: (c) => c.carry.energy > 0 })
 					if(blah.length > 0) {
 						flag = Game.flags.sapperSafe;
 						creep.memory.hide = 2;
