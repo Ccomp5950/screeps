@@ -5,24 +5,6 @@ module.exports = {
 			creep.memory.hide = 0;
 			return;
 		}
-		/*
-		if(creep.memory.squadsize == null) {
-			creep.memory.raiding = false;
-			creep.memory.ready = false;
-			creep.memory.squadsize = squadsize;
-		}
-	
-		if(creep.memory.ready == false && Game.flags["formup"] != undefined) {
-                        var range = creep.pos.getRangeTo(Game.flags.formup);
-                        if(range > 2) {
-                                creep.moveTo(Game.flags.formup);
-                                return;
-                        } else if(Game.flags.formup.memory.squad.IndexOf(creep.id) == -1) {
-					Game.flags.formup.memory.squad.Push(creep.id)
-			}
-		}
-		if(creep.memory.ready == true) {
-		*/
                 if(creep.memory.healing) {
                         if(creep.heal(creep) == 0) {
                         }
@@ -37,8 +19,8 @@ module.exports = {
 		if(creep.hits == creep.hitsMax) {
 			creep.memory.healing = false;
 		}
-		if(creep.hits < creep.hitsMax && hide == 0) {
-			creep.memory.hide = 10;
+		if(creep.hits < creep.hitsMax) {
+			creep.memory.hide = 5;
 		}
 		if(creep.hits < creep.hitsMax || creep.memory.healing == true || hide > 0) {
 			creep.memory.healing = true;
@@ -59,7 +41,7 @@ module.exports = {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
 
-		if(towers.length) {
+		if(towers.length > 0) {
 			for(let towerI in towers) {
 				let tower = towers[towerI];
 				if(tower.my) {
