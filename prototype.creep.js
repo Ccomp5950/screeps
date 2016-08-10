@@ -223,7 +223,9 @@ module.exports = function() {
 		let creep = this;
 		let target = null;
 		switch(structure) {
-
+			case "FLAG":
+				target = Game.flags.priority.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
+				break;
 			case "ANYTHING":
 				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
 				break;
