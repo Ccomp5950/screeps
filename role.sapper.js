@@ -44,6 +44,7 @@ module.exports = {
 		if(towers.length > 0) {
 			for(let towerI in towers) {
 				let tower = towers[towerI];
+				range = Game.flags.sapperSafe.pos.getRangeTo(creep);
 				if(tower.my) {
 					break;
 				}
@@ -55,6 +56,7 @@ module.exports = {
 					return;
 				}
 				let blah = tower.pos.findInRange(FIND_HOSTILE_CREEPS, 4, { filter: (c) => c.carry.energy > 0 })
+					if(blah.length > 0)
 					flag = Game.flags.sapperSafe;
 					creep.memory.hide = 4;
 					if(range > 0) {
@@ -79,7 +81,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		if(creep.attackHostileStructure("ANYTHING")) return;
                 if(flag != undefined) {
-                        var range = creep.pos.getRangeTo(flag);
+                        range = creep.pos.getRangeTo(flag);
                         if(range > 0) {
                                 creep.moveTo(flag);
                                 return;
