@@ -7,6 +7,7 @@ module.exports = {
                         }
 			return;
 		}
+		creep.setupFlag();
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
@@ -23,19 +24,7 @@ module.exports = {
                         }
 		return;
                 }
-
-		let flag = Game.flags[creep.name];
-                if(flag != undefined) {
-                        var range = creep.pos.getRangeTo(flag);
-                        if(range > 0) {
-                                creep.moveTo(flag);
-                        } 
-			else {
-				if(creep.memory.setupTime == null) {
-					creep.memory.setupTime = Game.time - creep.memory.spawnTime;
-				}
-			}
-                }
+		creep.approachAssignedFlag(0);
 
         }
         
