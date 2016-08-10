@@ -65,9 +65,9 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "sapper") {
-		let base = 300;
+		let base = 0;
 		let calcEnergy = energy - base;
-		let probody = {tough:0,work:0,move:1,heal:1};
+		let probody = {work:0,move:0};
 		let sapparts = Math.floor(calcEnergy / 250);
                 for(let i = 0; i < sapparts; i++) {
                         probody.work++;
