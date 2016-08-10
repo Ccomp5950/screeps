@@ -82,7 +82,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "healer") {
-		body = this.buildBody({move:5,heal:5});
+		body = this.buildBody({move:7,heal:7});
 		bodyset = true;
 		creepMem.combat = true;
 	}
