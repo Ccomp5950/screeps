@@ -12,7 +12,7 @@ module.exports = {
 		creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
-		var hide = 0;
+		var hide = creep.memory.hide;
 		if(hide > 0) {
 			creep.memory.hide -= 1;
 		}
