@@ -14,7 +14,9 @@ module.exports = {
 		if(energy.length) {
 			creep.pickup(energy[0])
                         }
-	creep.approachAssignedFlag(999);
+	if(creep.approachAssignedFlag(999) == false) {
+		return;
+	}
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
