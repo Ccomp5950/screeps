@@ -14,6 +14,7 @@ module.exports = {
 		if(energy.length) {
 			creep.pickup(energy[0])
                         }
+	creep.approachAssignedFlag(999);
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
@@ -30,8 +31,8 @@ module.exports = {
             var structure = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                 filter: (s) => (s.structureType == STRUCTURE_EXTENSION
  			     || s.structureType == STRUCTURE_SPAWN
-                             || s.structureType == STRUCTURE_TOWER)
-                             && s.energy < s.energyCapacity
+                             || (s.structureType == STRUCTURE_TOWER && s.my = true)
+			)    && s.energy < s.energyCapacity
 			     && s.isBeingHandled(creep) == false
             });
 	    if (structure == null) {
