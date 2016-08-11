@@ -14,6 +14,7 @@ module.exports = {
 		var flag = Game.flags.sapper;		
 		var frange = 999;
 		var hide = creep.memory.hide;
+		var towercheck = creep.memory.towercheck;
 		if(hide > 0) {
 			creep.memory.hide -= 1;
 		}
