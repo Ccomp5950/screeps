@@ -111,23 +111,23 @@ module.exports = function() {
 	function() {
 		var creep = this;
 		var threat = 0;
-		var log = 1;
+		var ally = creep.checkIfAlly();
 		for(let i = 0; i < creep.body.length; i++) {
 			let part = creep.body[i];	
-			if(part.type == "attack" && part.hits > 0) {
-				threat += 2;
-			}
-			else if(part.type == "ranged_attack" && part.hits > 0) {
-				threat += 3;
-			}
-			else if (part.type == "heal" && part.hits > 0) {
-				threat += 10;
-			}
-			else if (part.type == "tough" && part.hits > 0) {
-				threat += 1;
-			}
-			else if (part.type == "build" && part.hits > 0) {
-				threat += 1;
+
+			if(part.hits == 0) continue;
+
+			switch(part.type) {
+				case "attack":
+				case "ranged_attack":
+					threat += 10;
+					break;
+				case "heal":
+					if(!ally) threat += 50;
+					break;
+				case "build":
+					if(!ally) threat += 40;
+					break;
 			}
 		}
 		return threat;
