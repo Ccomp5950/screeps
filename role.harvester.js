@@ -30,7 +30,7 @@ module.exports = {
 		if(creep.carry.energy < creep.carryCapacity && creep.pos.getRangeTo(creep.room.storage) < 2) {
 			creep.withdraw(creep.room.storage, RESOURCE_ENERGY)
 		}
-            var structure = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+            var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => (s.structureType == STRUCTURE_EXTENSION
  			     || s.structureType == STRUCTURE_SPAWN
                              || (s.structureType == STRUCTURE_TOWER && s.my == true)
