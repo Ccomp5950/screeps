@@ -42,8 +42,9 @@ module.exports = {
 			}
 		}
 
-		if(towercheck > 0) {
+		if(towercheck > 0 && Game.flags.sapper.room != undefined) {
 		// Tower Avoidance
+		
 			let towers = Game.flags.sapper.room.find(FIND_STRUCTURES, {
                                                        filter: (s) => s.structureType == STRUCTURE_TOWER
                                                        });
