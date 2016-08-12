@@ -52,6 +52,9 @@ module.exports = {
 				console.log("[" + creep.name + "] Cannot locate their storage");
 				return;
 			}
+			for(items in creep.carry) {
+				creep.transfer(storage,items);
+			}
 		}
 	}
 }
