@@ -8,9 +8,6 @@ module.exports = {
                 }
 
 		creep.setupFlag();
-		if(creep.approachAssignedFlag(0) == false) {
-			return;
-		}
 
 		let carry = _.sum(creep.carry);
 		if (creep.memory.working == true && carry == 0) {
