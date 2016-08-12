@@ -6,7 +6,7 @@ require('prototype.structure')();
 require('prototype.flag')();
 require('functions');
 
-var memorymgmt = require('memorymgmt')();
+var memorymgmt = require('memorymgmt');
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
