@@ -26,7 +26,18 @@
 		}
 	return null;
 	};
-	
+
+	global.distCheck =
+	function() {
+	if(Game.flags.check1 != undefined && Game.flags.check2 != undefined) {
+		let x1 =  Game.flags.check1.pos.x;
+		let x2 =  Game.flags.check2.pos.x;
+		let y1 =  Game.flags.check1.pos.y;
+		let y2 =  Game.flags.check2.pos.y;
+		let range = Game.flags.check1.pos.getRangeTo(Game.flags.check2.pos);
+		console.log("Range Check ("+ x1 "/" +y1") / ("+ x2 +"/" + y2 +" ): range");
+	}
+}	
 	global.calculateDistance =
 	function(xa,ya,xb,yb) {
 		let xdiff = xb - xa;

@@ -30,6 +30,8 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 module.exports.loop = function () {
     memorymgmt.master();
     // check for memory entries of died creeps by iterating over Memory.creeps
+    distCheck();
+
 
     let totalRoles = 0;
     for(let roleM in roles) {
