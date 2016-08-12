@@ -5,7 +5,7 @@ module.exports = {
 		this.creeps();
 		if(Game.time % 5 == 0) this.delFlags();
 		this.newflags();
-	};
+	},
 
 	setup: function() {
 		if(Memory.structure == undefined) {
@@ -18,7 +18,7 @@ module.exports = {
 			}
 		Memory.myrooms = myrooms;
 		}
-	};
+	},
 
 	delFlags: function() {
 	    for (let name in Memory.flags) {
@@ -27,13 +27,13 @@ module.exports = {
 	            delete Memory.flags[name];
 	        }
 	    }
-	};
+	},
 
 	newFlags: function() {
 		for (let name in Game.flags) {
 			if(Game.flags[name].memory == null) Memory.flags[name].lala = -1;
 	        }
-	};
+	},
 
 	structures: function() {
 		for(let id in Memory.structure) {
@@ -50,7 +50,7 @@ module.exports = {
 			if(deleteit)
 			delete Memory.structure[id];
 		}
-	};
+	},
 
 	creeps: function() {
 	    for (let name in Memory.creeps) {
@@ -63,5 +63,5 @@ module.exports = {
 	            delete Memory.creeps[name];
 	        }
 	    }
-	};
+	}
 }
