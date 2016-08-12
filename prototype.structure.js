@@ -4,16 +4,12 @@ module.exports = function() {
         function(creep) {
 		let s = this;
 		let role = creep.memory.currentRole;
-		if(Memory.structure == undefined) {
-			Memory.structure = {};
-		}
 		if(Memory.structure[s.id] == undefined) {
-			Memory.structure[s.id] = {};
+			return false;
 		}
 		let Smem = Memory.structure[s.id];
 		if(Smem[role] == undefined) {
-			
-			Smem[role] = {creep: null, lastHandled: -1}; 
+			return false;
 		}
 		Smem = Smem[role];
 		if(Smem.creep == null) {
@@ -32,8 +28,19 @@ module.exports = function() {
 	function(creep) {
 		let s = this;
 		let role = creep.memory.currentRole;
+
+                if(Memory.structure[s.id] == undefined) {
+                        Memory.structure[s.id] = {};
+                }
+
+                let Smem = Memory.structure[s.id];
+
+                if(Smem[role] == undefined) {
+
+                        Smem[role] = {creep: null, lastHandled: -1};
+                }
 		if(s.isBeingHandled(creep) == false) {
-			let Smem = Memory.structure[s.id][role];
+			Smem = Memory.structure[s.id][role];
 			Smem.creep = creep.id;
 			Smem.lastHandled = Game.time;
 		}
