@@ -22,7 +22,7 @@ module.exports = {
 
 
 
-		if(creep.memory.working) {
+		if(!creep.memory.working) {
 	                if(creep.approachAssignedFlag(0) == false) {
 	                        return;
 	                }
