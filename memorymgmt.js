@@ -40,8 +40,8 @@ module.exports = {
 			let deleteit = true;
 			for(role in Memory.structure[id]) {
 				if(Memory.structure[id][role] == undefined) continue;
-				if(Memory.structure[id][role][lastHandled] == undefined) continue;
-				if(Memory.structure[id][role][lastHandled] >= Game.time - 3) {
+				if(Memory.structure[id][role].lastHandled == undefined) continue;
+				if(Memory.structure[id][role].lastHandled >= Game.time - 3) {
 					deleteit = false;
 					break;
 				}
