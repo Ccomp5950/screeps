@@ -6,7 +6,7 @@ require('prototype.structure')();
 require('prototype.flag')();
 require('functions');
 
-
+var memorymgmt = require('memorymgmt')();
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
@@ -28,8 +28,9 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         };
 
 module.exports.loop = function () {
-
+    memorymgmt.master();
     // check for memory entries of died creeps by iterating over Memory.creeps
+
     let totalRoles = 0;
     for(let roleM in roles) {
 	let role = roles[roleM];
@@ -49,24 +50,6 @@ module.exports.loop = function () {
     }
     noMoreConstruction = false;
 
-    let timeout = 500;
-    if(Memory.constructionSpam != null) {
-	
-	timeout = Memory.constructionSpam;
-    }
- 	/*
-    if(Game.constructionSites != null) {
-	let total = 0;
-	for(let i in Game.constructionSites) {
-		Game.constructionSites[i].remove();
-		total++;
-	}
-	if(total > 99) {
-		noMoreConstruction = true;
-	}
-	console.log("Current ConstructionSite Count: " + total);
-    }
-	*/
     validSources = [];
     var meaniesA = [];
 
@@ -126,34 +109,8 @@ module.exports.loop = function () {
     }
     
 
-    var numberOfCreeps = 0;
-    for (let name in Memory.creeps) {
-        if (Game.creeps[name] == undefined) {
-		let flag = ""
-		if(Memory.creeps[name].MyFlag != null) {
-			flag = "(" + Memory.creeps[name].MyFlag + ")";
-		}
-		console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + "HPs and "+ Memory.creeps[name].ticksToLive + "Ticks Left " + flag);
-            delete Memory.creeps[name];
-        } else {
-		numberOfCreeps++;
-	}
-    }
-    for (let name in Memory.flags) {
-        if (Game.flags[name] == undefined) {
-                console.log("Removed " + name+ " from flag list");
-            delete Memory.flags[name];
-        }
-    }
+    var numberOfCreeps = _.size(Memory.creeps);
 
-    for (let name in Game.flags) {
-		if(Game.flags[name].memory == null)
-			Memory.flags[name].lala = -1;
-	}
-
-    // for every creep name in Game.creeps
-
-	
     for (let name in Game.creeps) {
         // get the creep object
         var creep = Game.creeps[name];
