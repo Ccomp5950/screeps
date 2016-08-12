@@ -5,6 +5,8 @@ require('prototype.source')();
 require('prototype.structure')();
 require('prototype.flag')();
 require('functions');
+
+
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
@@ -45,7 +47,7 @@ module.exports.loop = function () {
     if(Memory.totalRoles != totalRoles) {
 	Memory.totalRoles = totalRoles;
     }
-    noMoreConstruction = false;
+    var global.noMoreConstruction = false;
 
     let timeout = 500;
     if(Memory.constructionSpam != null) {
@@ -65,7 +67,7 @@ module.exports.loop = function () {
 	console.log("Current ConstructionSite Count: " + total);
     }
 	*/
-    validSources = [];
+    var global.validSources = [];
     var meaniesA = [];
 
     for(let room of Memory.myrooms) {
