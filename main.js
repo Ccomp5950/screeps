@@ -47,7 +47,7 @@ module.exports.loop = function () {
     if(Memory.totalRoles != totalRoles) {
 	Memory.totalRoles = totalRoles;
     }
-    var global.noMoreConstruction = false;
+    noMoreConstruction = false;
 
     let timeout = 500;
     if(Memory.constructionSpam != null) {
@@ -67,7 +67,7 @@ module.exports.loop = function () {
 	console.log("Current ConstructionSite Count: " + total);
     }
 	*/
-    var global.validSources = [];
+    validSources = [];
     var meaniesA = [];
 
     for(let room of Memory.myrooms) {
