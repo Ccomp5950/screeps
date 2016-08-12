@@ -4,7 +4,7 @@ module.exports = {
 		if(Game.time % 25 == 0) this.structures();
 		this.creeps();
 		if(Game.time % 5 == 0) this.delFlags();
-		this.newflags();
+		this.newFlags();
 	},
 
 	setup: function() {
