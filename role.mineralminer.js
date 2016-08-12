@@ -30,7 +30,7 @@ module.exports = {
 			if(extractor != undefined) {
 				creep.harvest(extractor);
 			} else {
-				extractor = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_EXTRACTOR });
+				extractor = creep.pos.findClosestByRange(FIND_MINERALS);
 				if(extractor != undefined) {
 					creep.harvest(extractor);
 					creep.memory.extractor = extractor.id;
