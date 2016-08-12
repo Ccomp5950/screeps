@@ -1,3 +1,4 @@
+{
 	master: function() {
 		this.setup();
 		if(Game.time % 25 == 0) this.structures();
@@ -63,3 +64,4 @@
 	        }
 	    }
 	}
+}
