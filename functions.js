@@ -35,7 +35,7 @@
 		let y1 =  Game.flags.check1.pos.y;
 		let y2 =  Game.flags.check2.pos.y;
 		let range = Game.flags.check1.pos.getRangeTo(Game.flags.check2.pos);
-		console.log("Range Check ("+ x1 "/" +y1") / ("+ x2 +"/" + y2 +" ): range");
+		console.log("Range Check ("+ x1 + "/" +y1 +") / ("+ x2 +"/" + y2 +" ): range");
 	}
 }	
 	global.calculateDistance =
