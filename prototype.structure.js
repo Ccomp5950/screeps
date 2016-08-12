@@ -4,6 +4,9 @@ module.exports = function() {
         function(creep) {
 		let s = this;
 		let role = creep.memory.currentRole;
+		if(Memory.structure == undefined) {
+			Memory.structure = {};
+		}
 		if(Memory.structure[s.id] == undefined) {
 			return false;
 		}
