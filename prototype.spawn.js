@@ -27,7 +27,8 @@ module.exports = function() {
 			break;
 		}
 	    }
-            var numberOfParts = Math.floor(energy / 200);
+	    var maxParts = 50;
+            var numberOfParts = Math.min (Math.floor(energy / 200),48);
             var body = [];
 	    var bodyset = false;
 	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
@@ -52,11 +53,13 @@ module.exports = function() {
 	}
 */
 	else if (roleName == "defender" || roleName == "attacker") {
+		let Nparts = 6;
 		let base = 420;
 		let calcEnergy = energy - base;
 		let probody = {tough:2,move:3,attack:0,heal:1}; // 420 cost body
 		let defparts = Math.floor(calcEnergy / 130);
-		for(let i = 0; i < defparts; i++) {
+		for(let i = 0; i < defparts && Nparts <= 48; i++) {
+			Nparts += 2;
 			probody.attack++;
 			probody.move++;
 		}
@@ -65,11 +68,13 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "sapper") {
+		let Nparts = 0;
 		let base = 0;
 		let calcEnergy = energy - base;
 		let probody = {work:0,move:0};
 		let sapparts = Math.floor(calcEnergy / 250);
-                for(let i = 0; i < sapparts; i++) {
+                for(let i = 0; i < sapparts && Nparts <= 47; i++) {
+			Nparts += 3;
                         probody.work++;
 			probody.work++;
                         probody.move++;
@@ -99,16 +104,19 @@ module.exports = function() {
 		let harvbody = {carry:0,move:0};
 		let energyLeft = energy;
 		let i = 1;
-		while(energyLeft > 0) {
+		let Nparts = 0;
+		while(energyLeft > 0 Nparts < 50) {
 			energyLeft -= 50;
-			if(energyLeft < 0) break;
+			Nparts++;
+			if(energyLeft < 0 && Nparts >= 50) break;
 			harvbody.move++;
 			energyLeft -= 50;
-			if(energyLeft < 0) break;
+			Nparts++;
+			if(energyLeft < 0 && Nparts >= 50) break;
 			harvbody.carry++;
-			
 			energyLeft -= 50;
-			if(energyLeft < 0) break;
+			Nparts++;
+			if(energyLeft < 0 && Nparts >= 50) break;
 			harvbody.carry++;
 			i++;
 		}
@@ -138,7 +146,9 @@ module.exports = function() {
 
 
 	if(!bodyset) {
-            for (let i = 0; i < numberOfParts; i++) {
+		let Nparts = 0;
+            for (let i = 0; i < numberOfParts && Nparts <=47; i++) {
+		Nparts += 3;
                 body.push(WORK);
 		body.push(CARRY);
 		body.push(MOVE);
