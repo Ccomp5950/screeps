@@ -93,7 +93,7 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "claimer") {
-		body = this.buildBody({claim:2,move:2});
+		body = this.buildBody({claim:4,move:4});
 		bodyset = true;
 	}
         else if (roleName == "remoteharvester") {
