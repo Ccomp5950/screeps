@@ -28,7 +28,7 @@ module.exports = {
 	    if(walls.length) {
 		    var wallMinHealth = Memory.wallMinHealth;
 			if(creep.room.memory != undefined && creep.room.memory.wallMinHealth != undefined) {
-				wallMinHealth = creep.room.memory..wallMinhealth;
+				wallMinHealth = creep.room.memory.wallMinhealth;
 			}
 
 		    var maxPercentage = wallMinHealth / walls[0].hitsMax;
