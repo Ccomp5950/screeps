@@ -31,7 +31,7 @@ module.exports = {
 		    var potentialTarget = creep.memory.repair;
 		    var tmpTarget = Game.getObjectById(creep.memory.repair);
 		    if(tmpTarget != undefined) {
-			if(tmpTarget.hits > Memory.rooms[creep.room]wallMinHealth) {
+			if(tmpTarget.hits > Memory.rooms[creep.room].wallMinHealth) {
 	       			target = tmpTarget;
 			} else {
 				creep.memory.repair = null;
