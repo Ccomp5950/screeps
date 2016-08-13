@@ -39,8 +39,14 @@ module.exports = {
 		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
                  filter: (s) => (s.hits /  s.hitsMax < 0.90)  && s.structureType != STRUCTURE_WALL
                                                                          });
+
+                 var rampartMinHealth = Memory.rampartMinHealth;
+                        if(Memory.rooms[creep.room.name] != undefined && Memory.rooms[creep.room.name].rampartMinHealth != undefined) {
+                                rampartMinHealth = Memory.rooms[creep.room.name].rampartMinhealth;
+                        }
+
 		for(let tmpStructure of nextCandidates) {
-	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < Memory.rampartMinHealth) {
+	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < rampartMinHealth) {
 	                        rampartCandidates.push(tmpStructure);
 	                        continue;
 	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
