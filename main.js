@@ -121,6 +121,11 @@ module.exports.loop = function () {
 	creep.memory.currentRoom = creep.room.name;
 	creep.memory.currentHits = creep.hits;
 	creep.memory.currentMaxHits = creep.hitsMax;
+	if(creep.ticksToLive == undefined) {
+		// Spawning
+		roles[creep.memory.role.current++;
+		continue;
+	}
 	if((underAttack[creep.room.name] && !creep.memory.combat && creep.memory.role != "miner" && creep.memory.role != "upgrader") || creep.memory.role == 'towertender') {
 		roles["towertender"].current++;
 		roles["towertender"].run.run(creep);
