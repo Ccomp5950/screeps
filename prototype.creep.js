@@ -449,6 +449,29 @@ module.exports = function() {
 		}
 	};
 
+	Creep.prototype.gotoWaypoint =
+	function() {
+		let creep = this;
+                if(creep.memory.waypoint == undefined) {
+                        creep.memory.waypoint = 1;
+                }
+                var flag =  Game.flags["waypoint" + creep.memory.waypoint.toString()];
+
+                if(creep.memory.waypoint != -1 &&  flag != undefined) {
+                        var range = creep.pos.getRangeTo(flag);
+                        if(range > 0) {
+                                creep.moveTo(flag);
+                        } else {
+                                creep.memory.waypoint += 1;
+                        }
+			return true;
+                } else {
+                        creep.memory.waypoint = -1;
+                }
+		return false;
+
+	}
+
 	Creep.prototype.approachAssignedFlag =
 	function(fRange) {
 		let creep = this;
