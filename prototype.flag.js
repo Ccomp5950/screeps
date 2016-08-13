@@ -49,7 +49,7 @@ module.exports = function() {
                         if(flag.room.controller.reservation != undefined) {
                                 ticks = flag.room.controller.reservation.ticksToEnd;
                         }
-                        if(flag.memory.active == true && ticks < 4000 && flag.hasClaimer() == false) {
+                        if(flag.memory.active == true && ticks < 2000 && flag.hasClaimer() == false) {
                                 return true;
                         }
 	return false;
