@@ -41,8 +41,8 @@ module.exports = {
                                                                          });
 
                  var rampartMinHealth = Memory.rampartMinHealth;
-                        if(Memory.rooms[creep.room.name] != undefined && Memory.rooms[creep.room.name].rampartMinHealth != undefined) {
-                                rampartMinHealth = Memory.rooms[creep.room.name].rampartMinhealth;
+                        if(creep.room.memory != undefined && creep.room.memory.rampartMinHealth != undefined) {
+                                rampartMinHealth = creep.room.memory.rampartMinHealth;
                         }
 
 		for(let tmpStructure of nextCandidates) {
