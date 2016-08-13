@@ -53,7 +53,12 @@
 		flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot") return true})
 		for(flagM in flags) {
 			let flag = flags[flagM];
-			if(flag.active == true && (flag.room.controller.reservation == undefined || flag.room.controller.reservation.ticksToEnd < 4000)) {
+			var ticks = 0;
+			if(flag.room.controller.reservation != undefined) {
+				ticks = flag.room.controller.reservation.ticksToEnd;
+			}
+			console.log("Checking: " + flag.name + " and  it has " + ticks + " before reservation drops");
+			if(flag.active == true && ticks < 4000)) {
 				needed++;
 			}
 		}
