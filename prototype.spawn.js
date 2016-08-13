@@ -28,7 +28,7 @@ module.exports = function() {
 		}
 	    }
 	    var maxParts = 50;
-            var numberOfParts = Math.min (Math.floor(energy / 200),48);
+            var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
 	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
@@ -190,5 +190,26 @@ module.exports = function() {
 	
 	    }
 	return checkResult;
+        };
+        StructureSpawn.prototype.findFlag =
+        function(role) {
+		let spawn = this;
+                for(let i = 1; i <= 50  ; i++) {
+                        flagName = role +"Spot" + i.toString();
+                        if(Game.flags[flagName] != null) {
+                                let flag = Game.flags[flagName];
+                                let residentCreep = null;
+                                residentCreep = Game.getObjectById(flag.memory[role]);
+				if(flag.memory.room != spawn.room.name) {
+					continue;
+				}
+                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+                                        return flagName
+                                }
+                        } else {
+                                return false;
+                        }
+                }
+        return false;
         };
 };
