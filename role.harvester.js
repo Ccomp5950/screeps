@@ -17,11 +17,12 @@ module.exports = {
 	if(creep.approachAssignedFlag(999) == false) {
 		return;
 	}
-        if (creep.memory.working == true && creep.carry.energy == 0) {
+        let carry = _.sum(creep.carry);
+        if (creep.memory.working == true && carry == 0) {
             // switch state
             creep.memory.working = false;
         }
-        else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
+        else if (creep.memory.working == false && carry == creep.carryCapacity) {
             creep.memory.working = true;
             creep.memory.source = null;
         }
