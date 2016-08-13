@@ -57,7 +57,7 @@
 			if(flag.room.controller.reservation != undefined) {
 				ticks = flag.room.controller.reservation.ticksToEnd;
 			}
-			console.log("Checking: " + flag.name + " and  it has " + ticks + " before reservation drops");
+			console.log("Checking: " + flag.name + " and  it has " + ticks + " before reservation drops (flag active is: "+ flag.active);
 			if(flag.active == true && ticks < 4000) {
 				needed++;
 			}
