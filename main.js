@@ -17,7 +17,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         fetcher:        {namer:"fetcher",               minimum:4,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
 			mineralminer:   {namer:"mineralminer",		minimum:1,	requirement:1000,	buildRestriction : true,	run: require('role.mineralminer')},
 			remotebuilder:	{namer:"remotebuilder",         minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.remotebuilder')},
-                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader')},
+                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader'), spawn: 1},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
                         wallrepairer:   {namer:"wallrepairer",          minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
@@ -218,6 +218,9 @@ module.exports.loop = function () {
 		if(role.minimum > role.current) {
 			Memory.goingToSpawn.push(role.namer);
 			if((role.buildRestriction == true && dontBuild == true) || (Memory.bootstraping == true && role.namer != "harvester")) {
+				continue;
+			}
+			if(role.spawn != undefined && role.namer == "upgrader" && mySpawn.pos.getRangeTo(mySpawn.room.controller) > 10) {
 				continue;
 			}
 			if(role.requirement > 0 && myActualEnergy >= role.requirement && mySpawn.spawning == null) {
