@@ -49,7 +49,7 @@
 
 	global.getClaimersNeeded =
 	function() {
-		let needed = 0;
+		var needed = 0;
 		flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot") return true})
 		for(flagM in flags) {
 			let flag = flags[flagM];
