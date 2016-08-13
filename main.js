@@ -247,6 +247,6 @@ module.exports.loop = function () {
 
 
     if (!(name < 0) && name != undefined) {
-        console.log("[" + mySpawn + "] Spawned new creep: " + name );
+        console.log("[" + mySpawn.name + "] Spawned new creep: " + name );
     }
 };
