@@ -54,7 +54,7 @@
 		for(flagM in flags) {
 			let flag = flags[flagM];
 			var ticks = 0;
-			if(flag.room.controller.reservation != undefined) {
+			if(flag.room != undefined && flag.room.controller.reservation != undefined) {
 				ticks = flag.room.controller.reservation.ticksToEnd;
 			}
 			if(flag.memory.active == true && ticks < 2000) {
