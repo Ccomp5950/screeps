@@ -5,8 +5,12 @@ module.exports = {
 			creep.memory.waypoint = 1;
                         return;
                 }
-		var flag = Game.flags["waypoint" + creep.memory.waypoint.toString()];
-		if(creep.memory.waypoint != -1 && flag != undefined) {
+		if(creep.memory.waypoint == undefined) {
+			creep.memory.waypoint = 1;
+		}
+		var flag =  Game.flags["waypoint" + creep.memory.waypoint.toString()];
+		
+		if(creep.memory.waypoint != -1 &&  flag != undefined) {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > 0) {
 				creep.moveTo(flag);
