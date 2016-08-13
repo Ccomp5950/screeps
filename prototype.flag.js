@@ -54,7 +54,7 @@ module.exports = function() {
                         }
 	return false;
 
-	]
+	};
 
 	Flag.prototype.setRoom =
 	function(roomString, force) {
