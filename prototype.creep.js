@@ -51,7 +51,7 @@ module.exports = function() {
 	    if(resource.len) {
 		creep.pickup(resource[0]);
 	    }
-            var source = Game.getObjectById(creep.memory.source);
+            var source = null; 
 
   	    if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -59,12 +59,12 @@ module.exports = function() {
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
 	    }
-            if(source != undefined) {
-                                creep.memory.source = source.id;
-                        } else {
-                                creep.memory.source = null;
+            if(source == null) {
+                source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (s) => (s.structureType == STRUCTURE_TERMINAL)
+                             && s.store[RESOURCE_ENERGY] > creep.carryCapacity
+                    });
             }
-            
             if(source == null) {
                         source = creep.pos.findClosestByPath(validSources[creep.room.name]); 
 			if(source != undefined) {
@@ -105,7 +105,15 @@ module.exports = function() {
 			    }
 			
 		    }
-            }
+            } else {
+		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
+		if(energy != undefined) {
+			if(creep.pickup(energy) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(energy);
+			}
+		}
+	    }
+		
         };
 	Creep.prototype.getThreat =
 	function() {
