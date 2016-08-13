@@ -45,6 +45,9 @@ module.exports.loop = function () {
 	}
 	role.minimum = Memory.roles[roleM].minimum;
 	role.requirement = Memory.roles[roleM].requirement;
+	if(role.namer == "builder" && _.sum(Game.constructionSites) == 0) {
+		role.requirement = 0;
+	}
 	totalRoles++;
 	role.current = 0;
     } 
