@@ -432,7 +432,7 @@ module.exports = function() {
                                 residentCreep = null;
                                 residentCreep = Game.getObjectById(flag.memory[role]);
                                 if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-					if(role != "claimer" || flag.needsClaimer()) {
+					if(role != "claimer" || flag.needsClaimer() == true) {
 						creep.memory.MyFlag = flagName;	
 					}
                                         return
