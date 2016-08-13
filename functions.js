@@ -57,7 +57,7 @@
 			if(flag.room.controller.reservation != undefined) {
 				ticks = flag.room.controller.reservation.ticksToEnd;
 			}
-			if(flag.memory.active == true && ticks < 4000) {
+			if(flag.memory.active == true && ticks < 2000) {
 				needed++;
 			}
 		}
