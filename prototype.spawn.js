@@ -105,7 +105,7 @@ module.exports = function() {
 		let energyLeft = energy;
 		let i = 1;
 		let Nparts = 0;
-		while(energyLeft > 0 Nparts < 50) {
+		while(energyLeft > 0 && Nparts < 50) {
 			energyLeft -= 50;
 			Nparts++;
 			if(energyLeft < 0 && Nparts >= 50) break;
