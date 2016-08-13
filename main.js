@@ -48,6 +48,9 @@ module.exports.loop = function () {
 	if(role.namer == "builder" && _.size(Game.constructionSites) == 0) {
 		role.minimum = 0;
 	}
+	if(role.namer == "claimer") {
+		role.minimum = getClaimersNeeded();
+	}
 	totalRoles++;
 	role.current = 0;
     } 

@@ -26,12 +26,12 @@ module.exports = {
                 filter: (s) => s.structureType == STRUCTURE_WALL
             });
 	    if(walls.length) {
-		    var maxPercentage = Memory.wallMinHealth / walls[0].hitsMax;
+		    var maxPercentage = Memory.rooms[creep.room].wallMinHealth / walls[0].hitsMax;
 	            var target = undefined;
 		    var potentialTarget = creep.memory.repair;
 		    var tmpTarget = Game.getObjectById(creep.memory.repair);
 		    if(tmpTarget != undefined) {
-			if(tmpTarget.hits > Memory.wallMinHealth) {
+			if(tmpTarget.hits > Memory.rooms[creep.room]wallMinHealth) {
 	       			target = tmpTarget;
 			} else {
 				creep.memory.repair = null;
