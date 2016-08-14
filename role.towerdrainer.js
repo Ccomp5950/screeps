@@ -1,7 +1,7 @@
 module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
-		if(creep.spawning) {
+		if(creep.spawning == true) {
 			creep.memory.hop = true;
 			creep.memory.healingother = false;
 			creep.setupSpawn();
