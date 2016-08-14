@@ -3,7 +3,16 @@ module.exports = function() {
     StructureSpawn.prototype.buildBody =
 	function(bodyO) {
 		result = [];
+		let funky = false;
+		if(_.sum(bodyO) > 50) {
+			console.log("Something funky happened with this body.");
+			funky = true;
+		}
 		for(var part in bodyO) {
+			if(funky) {
+				console.log(part + " is " + bodyO[part]);
+			}
+
 			for(let i = 0; i < bodyO[part]; i++) {
 				if((part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
 					result.push(part);
