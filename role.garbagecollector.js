@@ -60,7 +60,7 @@ module.exports = {
 					        creep.moveTo(target);
 					}
 				}
-			}
+			
 
 		}else {
 			creep.memory.getToFlag = true;
