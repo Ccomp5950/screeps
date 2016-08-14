@@ -48,8 +48,8 @@ module.exports = {
 			}
 			if(storage != null && creep.pos.getRangeTo(storage) < 999) {
 
-				if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(container);
+				if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(storage);
 				};
 			} else {
 				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
