@@ -5,8 +5,15 @@ module.exports = function() {
 		result = [];
 		let funky = false;
 		if(_.sum(bodyO) > 50) {
-			console.log("Something funky happened with this body.");
-			funky = true;
+			if(bodyO.move > 10) {
+				bodyO.move--;
+			} else if(bodyO.carry > 10) {
+				bodyO.carry--;
+			} else if(bodyO.work > 10) {
+				bodyO.work --;
+			}
+			
+
 		}
 		for(var part in bodyO) {
 			if(funky) {
