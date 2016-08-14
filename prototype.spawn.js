@@ -5,11 +5,11 @@ module.exports = function() {
 		result = [];
 		let funky = false;
 		if(_.sum(bodyO) > 50) {
-			if(bodyO.move > 10) {
+			if(bodyO.move != undefined && bodyO.move > 10) {
 				bodyO.move--;
-			} else if(bodyO.carry > 10) {
+			} else if(bodyO.carry != undefined && bodyO.carry > 10) {
 				bodyO.carry--;
-			} else if(bodyO.work > 10) {
+			} else if(bodyO.work != undefined && bodyO.work > 10) {
 				bodyO.work --;
 			}
 			
