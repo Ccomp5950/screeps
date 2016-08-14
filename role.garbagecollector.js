@@ -65,21 +65,16 @@ module.exports = {
 		}else {
 			creep.memory.getToFlag = true;
 
-			let roads = creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax });
-			if(roads.length) {
-				creep.repair(roads[0]);
-			}
-
 			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
 				creep.moveTo(Game.flags["home"]);
 				return;
 			}
-			if(creep.pos.getRangeTo(terminal) > 1) {
-				creep.moveTo(terminal);
+			if(creep.pos.getRangeTo(storage) > 1) {
+				creep.moveTo(storage);
 				return;
 			} else {
 				for(let resource in creep.carry) {
-					creep.transfer(terminal, resource);
+					creep.transfer(storage, resource);
 				}
 			}
 			
