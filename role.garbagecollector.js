@@ -2,10 +2,12 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
-			creep.setupSpawn();
-			creep.memory.myFlag = "gc";
+                        creep.setupSpawn();
                         return;
                 }
+        creep.setupSpawn();
+        creep.setupFlag();
+        creep.setRespawnTime();
 		if(creep.memory.myFlag == -1) {
 			return;
 		}
