@@ -41,7 +41,7 @@ module.exports = {
 		}
 		if(flag != undefined && creep.memory.healingother == false) {
 			var range = creep.pos.getRangeTo(flag);
-			if(range > frange) {
+			if(range >= frange) {
 				creep.moveTo(flag);
 				return;
 			} else {
