@@ -46,13 +46,15 @@ module.exports = {
 					return;
 				}
 			}
-			if(storage != null && creep.pos.getRangeTo(storage) < 999) {
+/*			if(storage != null && creep.pos.getRangeTo(storage) < 999) {
 
 				if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(storage);
 				};
+
 			} else {
-				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
+*/
+				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 25);
 				if(target) {
 					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
 					        creep.moveTo(target);
