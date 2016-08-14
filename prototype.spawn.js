@@ -100,7 +100,7 @@ module.exports = function() {
 		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;
         }
-	else if (roleName == "harvester" && energy >= 1000) {
+	else if ((roleName == "harvester" && energy >= 1000) || roleName == "garbagecollector") {
 		let harvbody = {carry:0,move:0};
 		let energyLeft = energy;
 		let i = 1;
