@@ -124,15 +124,15 @@ module.exports = function() {
 		while(energyLeft > 0 && Nparts < 50) {
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft < 0 && Nparts >= 50) break;
+			if(energyLeft < 0 && Nparts > 50) break;
 			harvbody.move++;
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft < 0 && Nparts >= 50) break;
+			if(energyLeft < 0 && Nparts > 50) break;
 			harvbody.carry++;
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft < 0 && Nparts >= 50) break;
+			if(energyLeft < 0 && Nparts > 50) break;
 			harvbody.carry++;
 			i++;
 		}
