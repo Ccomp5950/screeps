@@ -8,6 +8,8 @@ module.exports = {
 			return;
 		}
 		creep.setupFlag();
+
+		if(creep.gotoWaypoint()) return;
 		/*
 		if(creep.getAwayFromEdge()) {
 			return;

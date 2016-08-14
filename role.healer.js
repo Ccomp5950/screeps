@@ -11,6 +11,7 @@ module.exports = {
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
+		if(creep.gotoWaypoint()) return;
                 target = creep.pos.findClosestByRange(FIND_CREEPS, {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
