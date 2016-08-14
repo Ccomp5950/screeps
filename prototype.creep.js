@@ -74,7 +74,7 @@ module.exports = function() {
 			}
             }
 	    if(source != undefined) {
-		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE) {
+		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
 				if(source.store[RESOURCE_ENERGY] < creep.carryCapacity) {
 					creep.memory.source = null;
 					return;
