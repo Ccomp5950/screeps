@@ -65,7 +65,7 @@ module.exports = {
 			return;
 		}
 		for(var resourceType in creep.carry) {
-			creep.transfer(storage, resourceType);
+			creep.transfer(structure, resourceType);
 		}
 		structure.iGotIt(creep);
             } else {
