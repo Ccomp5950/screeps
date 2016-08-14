@@ -13,7 +13,8 @@ module.exports = {
                 let flag = Game.flags[creep.memory.myFlag];
 		
 		let container = Game.getObjectById(creep.memory.container);
-		let storage = Game.getObjectById(Memory.storageid);
+		let storage = creep.room.storage
+		let terminal = creep.room.terminal
 
 		let energy = creep.pos.lookFor(LOOK_ENERGY);
 			if(energy.length) {
@@ -87,12 +88,23 @@ module.exports = {
 				creep.moveTo(Game.flags["home"]);
 				return;
 			}
-			if(creep.pos.getRangeTo(storage) > 1) {
-				creep.moveTo(storage);
-				return;
-			} else {
-				creep.transfer(storage, RESOURCE_ENERGY);
-				creep.memory.switchOnce = false;
+			if(storage != null) {
+				if(creep.pos.getRangeTo(storage) > 1) {
+					creep.moveTo(storage);
+					return;
+				} else {
+					creep.transfer(storage, RESOURCE_ENERGY);
+					creep.memory.switchOnce = false;
+				}
+			} else if(terminal != null) {
+                                if(creep.pos.getRangeTo(terminal) > 1) {
+                                        creep.moveTo(terminal);
+                                        return;
+                                } else {
+                                        creep.transfer(terminal, RESOURCE_ENERGY);
+                                        creep.memory.switchOnce = false;
+                                }
+
 			}
 			
 
