@@ -449,7 +449,7 @@ module.exports = function() {
 
 	Creep.prototype.setupSpawn =
 	function() {
-		if(this.memory.spawnTime == null) {
+		if(this.memory.spawnTime == undefined) {
 			this.memory.spawnTime = Game.time;
 		}
 	};
