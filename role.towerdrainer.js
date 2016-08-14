@@ -1,6 +1,6 @@
 module.exports = {
     // a function to run the logic for this role
-    run: function(creep, squadsize) {
+    run: function(creep) {
 		if(creep.spawning) {
 			creep.memory.hop = true;
 			creep.memory.healingother = false;
@@ -41,7 +41,7 @@ module.exports = {
 		}
 		if(flag != undefined && creep.memory.healingother == false) {
 			var range = creep.pos.getRangeTo(flag);
-			if(range >= frange) {
+			if(range > frange) {
 				creep.moveTo(flag);
 				return;
 			} else {
