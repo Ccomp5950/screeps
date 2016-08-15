@@ -35,17 +35,6 @@ module.exports = {
 
 
 		if(creep.memory.working == false) {
-			if(creep.memory.getToFlag == null) {
-				creep.memory.getToFlag = true;
-			}
-
-			if(creep.memory.getToFlag == true) {
-				if(creep.approachAssignedFlag(0) == true) { 
-					creep.memory.getToFlag = false;
-				} else {
-					return;
-				}
-			}
 /*			if(storage != null && creep.pos.getRangeTo(storage) < 999) {
 
 				if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
@@ -58,12 +47,13 @@ module.exports = {
 				if(target) {
 					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
 					        creep.moveTo(target);
+				
 					}
+					return;
 				}
 			
 
 		}else {
-			creep.memory.getToFlag = true;
 
 			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
 				creep.moveTo(Game.flags["home"]);
