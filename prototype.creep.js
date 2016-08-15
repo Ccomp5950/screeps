@@ -59,8 +59,6 @@ module.exports = function() {
                              && s.store[RESOURCE_ENERGY] > creep.carryCapacity
                     });
 	    }
-	    if(source == null) {
-
             if(source == null) {
                         source = creep.pos.findClosestByPath(validSources[creep.room.name]); 
 			if(source != undefined) {
