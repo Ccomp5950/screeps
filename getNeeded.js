@@ -1,7 +1,7 @@
 module.exports = {
 	getNeeded: function(role) {
 		if(this[role] != undefined) {
-			return this[role];
+			return this[role]();
 		} else {
 			return Memory.roles[role].minimum;
 		}
