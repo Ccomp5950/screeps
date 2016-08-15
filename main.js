@@ -4,6 +4,7 @@ require('prototype.creep')();
 require('prototype.source')();
 require('prototype.structure')();
 require('prototype.flag')();
+require('prototype.link')();
 require('functions');
 
 var memorymgmt = require('memorymgmt');
