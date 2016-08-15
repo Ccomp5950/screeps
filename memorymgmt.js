@@ -31,7 +31,7 @@ module.exports = {
 
 	newFlags: function() {
 		for (let name in Game.flags) {
-			if(Game.flags[name].memory == null) Memory.flags[name].lala = -1;
+			if(Game.flags[name].memory == null) Memory.flags[name] = {active:false,spawn:""};
 	        }
 	},
 
