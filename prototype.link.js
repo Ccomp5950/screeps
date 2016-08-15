@@ -8,7 +8,7 @@ module.exports = function() {
 		}
 		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
-		if(linkMem = undefined) {
+		if(linkMem == undefined) {
 			linkMem = {id: link.id, priority: 0};
 			link.room.memory.links[linkPos] = linkMem
 		}
