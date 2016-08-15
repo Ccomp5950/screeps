@@ -97,7 +97,6 @@ module.exports = {
 						return;
 					} else {
 						creep.transfer(link, RESOURCE_ENERGY);
-						creep.memory.working = false;
 						return;
 					}
 				}else {
