@@ -49,7 +49,6 @@ module.exports.loop = function () {
 		Memory.roles[roleM] = {minimum: role.minimum, requirement: role.requirement};
 	}
 	role.minimum = needed.getNeeded(role.namer);
-	console.log(role.namer +": " + role.minimum);
 	role.requirement = Memory.roles[roleM].requirement;
 	if(role.namer == "builder" && _.size(Game.constructionSites) == 0) {
 		role.minimum = 0;
