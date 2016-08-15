@@ -1,7 +1,7 @@
 module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
-                if(creep.spawning) {
+                if(creep.spawning == true) {
 			creep.setupSpawn()
 			creep.memory.link = null;
 			creep.memory.terminal = null;
