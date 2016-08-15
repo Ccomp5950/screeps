@@ -62,7 +62,7 @@ module.exports = {
 			                        creep.transfer(terminal, resourceType);
 						return;
 			                }
-				} if else(hasStorage && _.sum(storage.store < storage.storeCapacity)) {
+				} else if(hasStorage && _.sum(storage.store < storage.storeCapacity)) {
                                         for(var resourceType in creep.carry) {
                                                 creep.transfer(storage, resourceType);
 						return;
