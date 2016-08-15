@@ -27,7 +27,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
 			gc:		{namer:"gc",			minimum:0,      requirement:2800,       buildRestriction : true,        run: require('role.garbagecollector')},
-			linktender:	{namer:"linktender",		minimum:0,	requirement:1400,	buildRestriction : false,	run: require('role.linktender')}
+			linktender:	{namer:"linktender",		minimum:0,	requirement:1400,	buildRestriction : false,	run: require('role.linktender'), spawn: "Spawn2"}
                         };
 
 module.exports.loop = function () {
