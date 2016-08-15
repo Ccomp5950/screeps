@@ -159,7 +159,16 @@ module.exports = function() {
 		*/
 		body = this.buildBody(fetchbody)
 		bodyset = true;
-        }
+        } else if (roleName == "linktender") {
+		ltbody = {move:1, carry:0};
+		let energyLeft = energy - 50;
+		let parts = Math.min(Math.floor(energyLeft / 50), 49);
+		for(let i = 0; i < parts; i++) {
+			ltbody.carry++;
+		}
+		body = this.buildBody(ltbody);
+		bodyset = true;
+	}
 
 
 
