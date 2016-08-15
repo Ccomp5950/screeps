@@ -57,12 +57,12 @@ module.exports = {
 					}
 				}
 			} else { // Carrying Resources
-				if(hasTerminal && _.sum(terminal.store < terminalstoreCapacity) {
+				if(hasTerminal && _.sum(terminal.store < terminalstoreCapacity)) {
 			                for(var resourceType in creep.carry) {
 			                        creep.transfer(terminal, resourceType);
 						return;
 			                }
-				} if else(hasStorage && _.sum(storage.store < storage.storeCapacity) {
+				} if else(hasStorage && _.sum(storage.store < storage.storeCapacity)) {
                                         for(var resourceType in creep.carry) {
                                                 creep.transfer(storage, resourceType);
 						return;
