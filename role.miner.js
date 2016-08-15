@@ -15,7 +15,7 @@ module.exports = {
 			creep.memory.container = -1;
 		}
 		if(creep.memory.container == null || creep.memory.container == -1|| Game.getObjectById(creep.memory.container) == null) {
-			structure = creep.pos.findInRange(FIND_STRUCUTRES,1, {
+			structure = creep.pos.findInRange(FIND_STRUCTRES,1, {
 			filter: (s) => (s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity)
 				});
 
