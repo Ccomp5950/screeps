@@ -21,7 +21,7 @@ module.exports = {
 		if (creep.memory.working == true && carry == 0) {
 			creep.memory.working = false;
 		}
-		else if (creep.memory.working == false && carry == creep.carryCapacity) {
+		else if (creep.memory.working == false && carry > 0) {
 			creep.memory.working = true;
 			creep.memory.source = null;
 		}
