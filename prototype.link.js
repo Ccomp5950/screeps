@@ -29,7 +29,7 @@ module.exports = function() {
 				let target = targets[targetM];
 				if(target.energy < target.energyCapacity) {
 					let energyCapacity = target.energyCapacity - target.energy;
-					let transferEnergy = Math.max(link.energy, energyCapacity);
+					let transferEnergy = Math.min(link.energy, energyCapacity);
 					let result = link.transferEnergy(target, transferEnergy);
 					if(result == 0) {
 						target.energy += transferEnergy;
