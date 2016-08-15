@@ -27,12 +27,12 @@ module.exports = function() {
 			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority() == i});
 			for(let targetM in targets) {
 				let target = targets[targetM];
-				if(target.energy < target.energyCapacity) {
+				if(target.energy == 0) {
 					let energyCapacity = target.energyCapacity - target.energy;
 					let transferEnergy = Math.min(link.energy, energyCapacity);
 					let result = link.transferEnergy(target, transferEnergy);
 					if(result == 0) {
-						target.energy += transferEnergy;
+						target.energy = target.energyCapacity;
 						return;
 					} else {
 						console.log("[" + linkPos + "] trying to send to (" + target.pos.x + "/" + target.pos.y + ") got result: " + result);
