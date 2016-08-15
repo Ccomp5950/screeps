@@ -71,7 +71,7 @@ module.exports = {
 			}
 		} else { // grab energy
 			if(hasLink && link.energy > 0) {
-				creep.widthdraw(link, RESOURCE_ENERGY);
+				creep.withdraw(link, RESOURCE_ENERGY);
 				return;
 			}	
 		}
