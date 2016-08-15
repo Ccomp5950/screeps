@@ -66,10 +66,10 @@
 
 	global.handleLinks =
 	function() {
-		for(let roomM in Memory.rooms)
+		for(let roomM in Memory.rooms) {
 			let room = rooms[roomM];
 			if(room.links = undefined && Game.rooms[roomM] != undefined) {
-	                        let targets = Game.rooms[roomM].find(FIND_STRUCTURE, { filter: (s) => s.structureType = STRUCTURE_LINK && s.getPriority == i)
+	                        let targets = Game.rooms[roomM].find(FIND_STRUCTURE, { filter: (s) => s.structureType = STRUCTURE_LINK && s.getPriority == i});
 				if(targets.length) {
 					room.links = {};				
 		                        for(let targetM in targets) {
