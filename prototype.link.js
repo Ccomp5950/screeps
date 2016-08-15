@@ -23,7 +23,7 @@ module.exports = function() {
 		}
 		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
-		console.log("[" + linkPos "] has a priority of " + linkMem.priority);
+		console.log("[" + linkPos + "] has a priority of " + linkMem.priority);
 		for(let i = 0; i < linkMem.priority; i++) {
 			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority == i});
 			for(let targetM in targets) {
