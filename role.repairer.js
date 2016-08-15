@@ -1,3 +1,6 @@
+var roleBuilder = require('role.builder');
+
+
 module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
@@ -75,7 +78,7 @@ module.exports = {
             }
             // if we can't fine one
             else {
-		
+		roleBuilder.run(creep);
             }
         }
         else {

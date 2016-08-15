@@ -45,7 +45,8 @@ module.exports = {
             else {
 		creep.memory.build = null;
                 // go upgrading the controller
-                roleAlt.run(creep);
+                if(creep.memory.role != "repairer") {
+		}
             }
         }
         // if creep is supposed to harvest energy from source
