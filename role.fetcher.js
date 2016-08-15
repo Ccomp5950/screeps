@@ -108,7 +108,7 @@ module.exports = {
 	                                                creep.moveTo(dropOffContainer);
 	                                                return;
 	                                        } else {
-	                                                creep.transfer(dropoffContainer, RESOURCE_ENERGY);
+	                                                creep.transfer(dropOffContainer, RESOURCE_ENERGY);
 	                                                return;
 	                                        }
 
