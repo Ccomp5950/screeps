@@ -29,7 +29,7 @@ module.exports = {
 
 		let storage = creep.room.storage;
 		if(storage != undefined) {
-			haseStorage = true;
+			hasStorage = true;
 		}
 		let link = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK});
 		if(link != undefined) {
