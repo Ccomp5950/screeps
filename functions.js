@@ -74,7 +74,7 @@
 					room.links = {};				
 		                        for(let targetM in targets) {
 						let target = targets[targetM];
-						let linkPos = link.pos.x.toString + "_" + link.pos.y.toString;	
+						let linkPos = target.pos.x.toString + "_" + target.pos.y.toString;	
 						room.links[linkPos].id = target.id;
 						room.links[linkPos].priority = 0;
 					}
