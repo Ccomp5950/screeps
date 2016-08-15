@@ -7,7 +7,7 @@ module.exports = {
 		}
 	},
 
-        claimer =
+        claimer : 
         function() {
                 var needed = 0;
                 flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot") return true})
