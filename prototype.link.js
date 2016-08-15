@@ -12,7 +12,7 @@ module.exports = function() {
 			let linkMem = {id: link.id, priority: 0};
 			link.room.memory.links[linkPos] = linkMem
 		}
-		return priority
+		return linkMem.priority;
 	};
 
 	StructureLink.prototype.transferToLowerPriority =
