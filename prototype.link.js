@@ -30,9 +30,14 @@ module.exports = function() {
 				if(target.energy < target.energyCapacity) {
 					let energyCapacity = target.energyCapacity - target.energy;
 					let transferEnergy = Math.max(link.energy, energyCapacity);
-					if(link.transferEnergy(target, transferEnergy) == OK) {
-						target.energy += transferEnergy;
-						return;
+					let result = link.transferEnergy(target, transferEnergy);
+						if(result == 0) {
+							target.energy += transferEnergy;
+							return;
+						} else {
+							console.log("[" + linkPos + "] trying to send to (" + target.pos.x + "/" + target.pos.y + ") got result: " + result);
+						}
+						
 					}					
 				}
 			}
