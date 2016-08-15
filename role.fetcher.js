@@ -97,6 +97,7 @@ module.exports = {
 						return;
 					} else {
 						creep.transfer(link, RESOURCE_ENERGY);
+						creep.memory.working = false;
 						return;
 					}
 				}
@@ -105,7 +106,7 @@ module.exports = {
 			if(storage != null) {
 				if(creep.pos.getRangeTo(storage) > 1) {
 					creep.moveTo(storage);
-					creep.memory.goingToStroage = true;
+					creep.memory.goingToStorage = true;
 					return;
 				} else {
 					creep.transfer(storage, RESOURCE_ENERGY);
