@@ -88,7 +88,7 @@ module.exports = {
 				creep.moveTo(Game.flags["home"]);
 				return;
 			}
-			if(Game.flags[creep.room.name + "_remoteDropOff"] != undefined) {
+			if(Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false) {
 				let links = Game.flags[creep.room.name + "_remoteDropOff"].pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
 				if(links.length) {
 					let link = links[0];
@@ -105,10 +105,12 @@ module.exports = {
 			if(storage != null) {
 				if(creep.pos.getRangeTo(storage) > 1) {
 					creep.moveTo(storage);
+					creep.memory.goingToStroage = true;
 					return;
 				} else {
 					creep.transfer(storage, RESOURCE_ENERGY);
 					creep.memory.switchOnce = false;
+					creep.memory.goingToStorage = false;
 				}
 			} else if(terminal != null) {
                                 if(creep.pos.getRangeTo(terminal) > 1) {
@@ -117,6 +119,7 @@ module.exports = {
                                 } else {
                                         creep.transfer(terminal, RESOURCE_ENERGY);
                                         creep.memory.switchOnce = false;
+					creep.memory.goingToStorage = false;
                                 }
 
 			}
