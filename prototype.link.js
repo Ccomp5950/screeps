@@ -6,7 +6,7 @@ module.exports = function() {
 		if(link.room.memory.links == undefined) {
 			link.room.memory.links = {};
 		}
-		let linkPos = link.pos.x.toString + "_" + link.pos.y.toString;
+		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
 		if(linkMem = undefined) {
 			let linkMem = {id: link.id, priority = 0};
@@ -18,7 +18,7 @@ module.exports = function() {
 	StructureLink.prototype.transferToLowerPriority =
 	function() {
 		let link = this;
-		let linkPos = link.pos.x.toString + "_" + link.pos.y.toString;
+		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
 		for(let i = 0; i < linkMem.priority; i++) {
 			let targets = link.room.find(FIND_STRUCTURE, { filter: (s) => s.structureType = STRUCTURE_LINK && s.getPriority == i});
