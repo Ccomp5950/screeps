@@ -87,6 +87,7 @@
 				let linkMem = room.links[linkM]
 				let link = Game.getObjectById(linkMem.id);
 					if(link.energy > 0 && linkMem.priority > 0) {
+						console.log("Transfering energy from " + linkM);
 						link.transferToLowerPriority();
 					}
 			}
