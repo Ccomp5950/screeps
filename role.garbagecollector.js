@@ -52,8 +52,8 @@ module.exports = {
 					return;
 				}
 				var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 && _.sum(s.store) > 1800)
-				};
+		                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 && _.sum(s.store) > 1800)
+				});
                                 if(target) {
                                         if(creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                                 creep.moveTo(target);
