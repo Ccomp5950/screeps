@@ -24,7 +24,7 @@ module.exports = function() {
 		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
 		for(let i = 0; i < linkMem.priority; i++) {
-			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority == i});
+			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority() == i});
 			console.log("targets is " + targets.length);
 			for(let targetM in targets) {
 				let target = targets[targetM];
