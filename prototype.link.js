@@ -18,6 +18,9 @@ module.exports = function() {
 	StructureLink.prototype.transferToLowerPriority =
 	function() {
 		let link = this;
+		if(link.cooldown > 0) {
+			return;
+		}
 		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
 		let linkMem = link.room.memory.links[linkPos];
 		for(let i = 0; i < linkMem.priority; i++) {
