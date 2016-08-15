@@ -100,6 +100,21 @@ module.exports = {
 						creep.memory.working = false;
 						return;
 					}
+				}else {
+					let dropOffContainers = Game.flags[creep.room.name + "_remoteDropOff"].pos.findInRange(FIND_STRUCTURES,1, 
+						{ filter: (s) => s.structureType == STRUCTURE_CONTAINER && _.sum(s.store) < s.storeCapacity});
+					if(dropOffContainers.length) {
+						let dropoffCotainer = dropOffContainers[0];
+	                                        if(creep.pos.getRangeTo(dropOffContainer) > 1) {
+	                                                creep.moveTo(dropOffContainer);
+	                                                return;
+	                                        } else {
+	                                                creep.transfer(dropoffContainer, RESOURCE_ENERGY);
+	                                                return;
+	                                        }
+
+					}
+
 				}
 			}
 				
