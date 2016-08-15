@@ -31,7 +31,7 @@ module.exports = function() {
 				if(target.energy < target.energyCapacity) {
 					let energyCapacity = target.energyCapacity - target.energy;
 					let transferEnergy = Math.max(link.energy, energyCapacity);
-					if(link.tranferEnergy(target, transferEnergy) == OK) {
+					if(link.transferEnergy(target, transferEnergy) == OK) {
 						target.energy += transferEnergy;
 						return;
 					}					
