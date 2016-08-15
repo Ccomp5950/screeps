@@ -8,6 +8,7 @@ require('prototype.link')();
 require('functions');
 
 var memorymgmt = require('memorymgmt');
+var needed = require('getNeeded');
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:2,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			attacker:       {namer:"attacker",              minimum:1,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
@@ -47,13 +48,10 @@ module.exports.loop = function () {
 	if(Memory.roles[roleM] == null) {
 		Memory.roles[roleM] = {minimum: role.minimum, requirement: role.requirement};
 	}
-	role.minimum = Memory.roles[roleM].minimum;
+	role.minimum = needed.getNeeded(role.namer);
 	role.requirement = Memory.roles[roleM].requirement;
 	if(role.namer == "builder" && _.size(Game.constructionSites) == 0) {
 		role.minimum = 0;
-	}
-	if(role.namer == "claimer") {
-		role.minimum = getClaimersNeeded();
 	}
 	totalRoles++;
 	role.current = 0;
