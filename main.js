@@ -26,13 +26,15 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         defender:       {namer:"defender",              minimum:1,      requirement:-1,		buildRestriction : false,       run: require('role.defender')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
-			gc:		{namer:"gc",      minimum:0,      requirement:2800,       buildRestriction : true,        run: require('role.garbagecollector')}
+			gc:		{namer:"gc",			minimum:0,      requirement:2800,       buildRestriction : true,        run: require('role.garbagecollector')},
+			linktender:	{namer:"linktender",		minimum:0,	requirement:1400,	buildRestriction : false,	run: require('role.linktender')}
                         };
 
 module.exports.loop = function () {
     memorymgmt.master();
     // check for memory entries of died creeps by iterating over Memory.creeps
     distCheck();
+    handleLinks();
 
 
     let totalRoles = 0;

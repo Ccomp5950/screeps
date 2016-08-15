@@ -64,5 +64,27 @@
 		return needed;
 	}
 
+	global.handleLinks =
+	function() {
+		for(let roomM in Memory.rooms)
+			let room = rooms[roomM];
+			if(room.links = undefined && Game.rooms[roomM] != undefined) {
+	                        let targets = Game.rooms[roomM].find(FIND_STRUCTURE, { filter: (s) => s.structureType = STRUCTURE_LINK && s.getPriority == i)
+				if(targets.length) {
+					room.links = {};				
+		                        for(let targetM in targets) {
+						let target = targets[targetM];
+						let linkPos = link.pos.x.toString + "_" + link.pos.y.toString;	
+						room.links[linkPos].id = target.id;
+						room.links[linkPos].priority = 0;
+					}
+			}
+			for(let linkM in room.links);
+				let linkMem = room.links[linkM]
+				let link = Game.getObjectById(linkMem.id);
+					if(link.energy > 0 and linkMem.priority > 0) {
+						link.transferToLowerPriority();
+					}
+	}
 
 	
