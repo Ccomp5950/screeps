@@ -61,7 +61,7 @@ module.exports = {
                                         }
                                         return;
                                 }
-			
+				if(carry > 0) creep.memory.working=true;	
 
 		}else {
 
