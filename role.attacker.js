@@ -37,20 +37,7 @@ module.exports = {
 		/*
 		}
 		*/
-	        var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
-	        if (target != undefined) {
-	                    if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-	                        creep.moveTo(target, {maxRooms:1});
-				}
-		return;
-		}
-		target = creep.pos.findClosestByPath(FIND_HOSTILE_SPAWNS);
-                if (target != undefined) {
-                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target, {maxRooms:1});
-                                }
-                return;
-                }
+                if(creep.attackHostileCreep()) return;
                 if(creep.attackSavedTarget()) return;
                 if(creep.attackHostileStructure("FLAG")) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
