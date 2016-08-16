@@ -46,9 +46,14 @@ module.exports = function() {
 	function() {
 			let flag = this;
                         var ticks = 0;
-                        if(flag.room != undefined || flag.room.controller.reservation != undefined) {
+                        if(flag.room != undefined && flag.room.controller.reservation != undefined) {
                                 ticks = flag.room.controller.reservation.ticksToEnd;
                         }
+			if(flag.room.controller.reservation == undefined) {
+				ticks = 0;
+				
+			}
+			
                         if(flag.memory.active == true && ticks < 2000 && flag.hasClaimer() == false) {
                                 return true;
                         }
