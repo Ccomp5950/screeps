@@ -54,21 +54,8 @@ module.exports = {
                 if(creep.attackSavedTarget()) return;
                 if(creep.attackHostileStructure("FLAG")) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 
-                target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES, { filter: (s) => s.stuctureType != STRUCTURE_CONTROLLER});
-                if (target != undefined) {
-                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target, {maxRooms:1});
-                                }
-                return;
-                }
-                target = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => s.structureType != STRUCTURE_CONTROLLER});
-                if (target != undefined) {
-                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target, {maxRooms:1});
-                                }
-                return;
-                }
 		target = creep.pos.findClosestByRange(FIND_CREEPS, {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
