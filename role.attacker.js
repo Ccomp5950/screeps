@@ -57,7 +57,7 @@ module.exports = {
 
                         if(Game.flags["attack"] != undefined) {
                                 var range = creep.pos.getRangeTo(Game.flags.attack);
-                                if(range > 3) {
+                                if(range > 0) {
                                         creep.moveTo(Game.flags.attack);
                                         return;
                                 }
