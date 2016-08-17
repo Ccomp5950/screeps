@@ -7,6 +7,9 @@ module.exports = {
                         return;
                 }
         // if creep is trying to repair something but has no energy left
+	if(Game.time % 25 == 0) {
+		creep.memory.repair = null;
+	}
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
@@ -28,7 +31,6 @@ module.exports = {
 	    }
 
             var target = Game.getObjectById(creep.memory.repair);
-	    if(Game.time % 25 == 0) target = undefined;
 	    if(target == undefined) {
 		    target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_WALL && s.hits < wallMinHealth).min(s=>s.hits);
 		    if(target != undefined) {
