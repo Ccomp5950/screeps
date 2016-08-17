@@ -60,6 +60,7 @@ module.exports = {
 					if(terminal.store.energy == undefined || _.sum(terminal.store) < terminal.storeCapacity) {
 						creep.transfer(terminal, RESOURCE_ENERGY);
 						return;
+					}
 				}
 				creep.say(":( :( :(");
 				console.log("[" + creep.name + "] Unable to process energy full up.");
