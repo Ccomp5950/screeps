@@ -36,7 +36,7 @@ module.exports = {
 				creep.moveTo(Game.flags["upgraderContainer"]);
 				return;
 			}
-			var target = _(Game.flags.upgraderContainer.pos.findInRange(FIND_STRUCTURES, 2)).filter((s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1200).sortBy(s=> _.sum(s.store)).first()
+			var target = _(Game.flags.upgraderContainer.pos.findInRange(FIND_STRUCTURES, 2)).filter((s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1200).sortBy(s=> _.sum(s.store)).first();
 			if(target != undefined) {
 				if(creep.pos.getRangeTo(target) > 1) {
 					creep.setRespawnTime();
@@ -47,6 +47,8 @@ module.exports = {
 						creep.transfer(target, resource);
 					}
 				}
+			} else {
+				console.log("FUCK SHIT COCK BALLS");
 			}
 			
 
