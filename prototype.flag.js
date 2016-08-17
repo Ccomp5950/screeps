@@ -53,7 +53,10 @@ module.exports = function() {
 				ticks = 0;
 				
 			}
-			
+
+			if(flag.memory.active == undefined) {
+				flag.memory.active = true;
+			}	
                         if(flag.memory.active == true && ticks < 2000 && flag.hasClaimer() == false) {
                                 return true;
                         }
