@@ -36,9 +36,8 @@ module.exports = {
 				creep.moveTo(Game.flags["upgraderContainer"]);
 				return;
 			}
-			var boxes = flag.pos.findInRange(FIND_STRUCTURES, 2, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000, orderBy: (s) => [_.sum(s.store), 'asc']})
-			if(boxes.length) {
-				var target=boxes[0];
+			var target = _(Game.flags.upgraderContainer.pos.findInRange(FIND_STRUCTURES, 2)).filter((s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1200).sortBy(s=> _.sum(s.store)).first()
+			if(target != undefined) {
 				if(creep.pos.getRangeTo(target) > 1) {
 					creep.setRespawnTime();
 					creep.moveTo(storage);
