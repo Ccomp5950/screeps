@@ -36,7 +36,7 @@ module.exports = {
 				creep.moveTo(Game.flags["upgraderContainer"]);
 				return;
 			}
-			var boxes = flag.pos.findInRange(FIND_STRUCTURE, 2, {filter: (s) => s.store[RESOURCE_ENERGY] < 1000, orderBy: (s) => [_.sum(s.store), 'asc']})
+			var boxes = flag.pos.findInRange(FIND_STRUCTURES, 2, {filter: (s) => s.store[RESOURCE_ENERGY] < 1000, orderBy: (s) => [_.sum(s.store), 'asc']})
 			if(boxes.length) {
 				var target=boxes[0];
 				if(creep.getRangeTo(target) > 1) {
