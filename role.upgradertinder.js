@@ -19,8 +19,14 @@ module.exports = {
             creep.memory.working = true;
             creep.memory.source = null;
         }
-
+		
 		if(creep.memory.working == false) {
+				var strorage = creep.room.storage;
+				if(storage == undefined) {
+					creep.say(":( :( :(");
+					console.log("[" + creep.name + "] can't find storage");
+					return;
+				}
 				if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(storage);
 				};
