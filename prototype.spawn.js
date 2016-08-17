@@ -120,6 +120,7 @@ module.exports = function() {
         }
 	else if ((roleName == "harvester" && energy >= 1000) || roleName == "gc" || roleName == "upgradertinder") {
 		let harvbody = {carry:0,move:0};
+		creepMem.combat = true;
 		let energyLeft = energy;
 		let i = 1;
 		let Nparts = 0;
