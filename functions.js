@@ -97,7 +97,7 @@
 	function() {
 		Memory.test123 = ["lala1", "lala2"];
 
-		let test123 = Memory.test123;
+		var test123 = Memory.test123;
 
 		test123 = ["lala3", "lala4"];
 	return true;
