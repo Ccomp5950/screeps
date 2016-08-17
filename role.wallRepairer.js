@@ -29,11 +29,8 @@ module.exports = {
 
             var target = Game.getObjectById(creep.memory.repair);
 	    if(target == undefined) {
-	            var walls = creep.room.find(FIND_STRUCTURES, {
-	                filter: (s) => s.structureType == STRUCTURE_WALL && s.hits < wallMinHealth, orderBy: ['hits', 'asc']
-	            });
-		    if(walls.length) {
-		            var target = walls[0];
+		    target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_WALL && s.hits < wallMinHealth).min(s=>s.hits);
+		    if(target != undefined) {
    			    creep.memory.repair = target.id;
 		    }
 	   }
