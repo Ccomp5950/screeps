@@ -33,7 +33,7 @@ module.exports = {
 
 		    var maxPercentage = wallMinHealth / walls[0].hitsMax;
 	            var target = undefined;
-		     console.log("Yo, also " + wallMinhealth + " also: " + maxPercentage);
+		     console.log("Yo, also " + wallMinHealth + " also: " + maxPercentage);
 		    var potentialTarget = creep.memory.repair;
 		    var tmpTarget = Game.getObjectById(creep.memory.repair);
 		    if(tmpTarget != undefined) {
