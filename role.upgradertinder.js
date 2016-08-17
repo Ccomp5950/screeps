@@ -47,8 +47,6 @@ module.exports = {
 						creep.transfer(target, resource);
 					}
 				}
-			} else {
-				console.log("FUCK SHIT COCK BALLS");
 			}
 			
 
