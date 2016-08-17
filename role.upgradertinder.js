@@ -21,7 +21,7 @@ module.exports = {
         }
 		
 		if(creep.memory.working == false) {
-				var strorage = creep.room.storage;
+				var storage = creep.room.storage;
 				if(storage == undefined) {
 					creep.say(":( :( :(");
 					console.log("[" + creep.name + "] can't find storage");
