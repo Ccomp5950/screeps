@@ -39,7 +39,7 @@ module.exports = {
 			var boxes = flag.pos.findInRange(FIND_STRUCTURES, 2, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000, orderBy: (s) => [_.sum(s.store), 'asc']})
 			if(boxes.length) {
 				var target=boxes[0];
-				if(creep.getRangeTo(target) > 1) {
+				if(creep.pos.getRangeTo(target) > 1) {
 					creep.setRespawnTime();
 					creep.moveTo(storage);
 					return;
