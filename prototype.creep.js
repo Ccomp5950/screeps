@@ -225,7 +225,9 @@ module.exports = function() {
 
 	};
 	Creep.prototype.checkIfAlly =
-	function(name) {
+	function() {
+		let creep = this;
+		let name = creep.owner.username;
 		if(Memory.allies.indexOf(name) != -1) {
 			return true;
 		} else {
