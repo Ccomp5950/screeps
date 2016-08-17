@@ -26,7 +26,6 @@ module.exports = {
                 filter: (s) => s.structureType == STRUCTURE_WALL
             });
 	    if(walls.length) {
-		    console.log("Yo, also " + wallMinhealth);
 		    var wallMinHealth = Memory.wallMinHealth;
 			if(creep.room.memory != undefined && creep.room.memory.wallMinHealth != undefined) {
 				wallMinHealth = creep.room.memory.wallMinhealth;
