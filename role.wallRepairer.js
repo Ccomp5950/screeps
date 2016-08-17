@@ -26,6 +26,7 @@ module.exports = {
                 filter: (s) => s.structureType == STRUCTURE_WALL
             });
 	    if(walls.length) {
+		    console.log("Yo, also " + wallMinhealth);
 		    var wallMinHealth = Memory.wallMinHealth;
 			if(creep.room.memory != undefined && creep.room.memory.wallMinHealth != undefined) {
 				wallMinHealth = creep.room.memory.wallMinhealth;
@@ -33,10 +34,11 @@ module.exports = {
 
 		    var maxPercentage = wallMinHealth / walls[0].hitsMax;
 	            var target = undefined;
+		     console.log("Yo, also " + wallMinhealth + " also: " + maxPercentage);
 		    var potentialTarget = creep.memory.repair;
 		    var tmpTarget = Game.getObjectById(creep.memory.repair);
 		    if(tmpTarget != undefined) {
-			if(tmpTarget.hits > Memory.rooms[creep.room].wallMinHealth) {
+			if(tmpTarget.hits > wallMinHealth) {
 	       			target = tmpTarget;
 			} else {
 				creep.memory.repair = null;
