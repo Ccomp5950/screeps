@@ -6,7 +6,7 @@ require('prototype.structure')();
 require('prototype.flag')();
 require('prototype.link')();
 require('functions');
-
+//require('role');
 var memorymgmt = require('memorymgmt');
 var needed = require('getNeeded');
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
@@ -31,6 +31,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
 			gc:		{namer:"gc",			minimum:0,      requirement:2800,       buildRestriction : true,        run: require('role.garbagecollector')}
+			actualclaimer:  {namer:"actualclaimer",		minimum:0,      requirement:650,        buildRestriction : true,        run: require('role.actualclaimer')}
                         };
 
 module.exports.loop = function () {
