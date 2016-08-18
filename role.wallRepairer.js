@@ -7,7 +7,7 @@ module.exports = {
                         return;
                 }
         // if creep is trying to repair something but has no energy left
-	if(Game.time % 25 == 0) {
+	if(Game.time % 100 == 0) {
 		creep.memory.repair = null;
 	}
         if (creep.memory.working == true && creep.carry.energy == 0) {
