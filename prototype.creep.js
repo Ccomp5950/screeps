@@ -489,7 +489,7 @@ module.exports = function() {
                         if(range > fRange) {
                                 creep.moveTo(flag);
 				return false;
-			{ else if(range == fRange + 1) {
+			} else if(range == fRange + 1) {
 				creep.setRespawnTime();
 				return false;
                         } else {
