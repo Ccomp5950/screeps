@@ -10,6 +10,7 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
+	    creep.memory.goingToFlag = true;
         }
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
@@ -31,9 +32,11 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
-		if(creep.approachAssignedFlag(0) == false) {
+		
+		if(creep.memory.goingToFlag == true && creep.approachAssignedFlag(0) == false) {
 			return;
 		}
+		creep.memory.goingToFlag = false;
 		let container = Game.getObjectById(creep.memory.container);
 		if(container == null ) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
