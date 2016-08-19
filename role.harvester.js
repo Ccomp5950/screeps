@@ -40,11 +40,14 @@ module.exports = {
 			     && s.isBeingHandled(creep) == false
             });
 	    if (structure == null) {
-		structure = Game.flags["upgraderContainer"].pos.findClosestByRange(FIND_STRUCTURES, {
+		flagname = "upgraderContainer";
+		flags = creep.room.find(FIND_FLAGS, function(o) { if(o.name.substr(0,flagname.length) == flagname) return true})
+		flag = flags[0];
+		structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
 			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000 && s.isBeingHandled(creep) == false
 			
 		 }); 
-		if(structure != null && structure.pos.getRangeTo(Game.flags["upgraderContainer"].pos) > 2) {
+		if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
 			structure = null;
 		}
 	    }	
