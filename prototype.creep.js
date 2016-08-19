@@ -504,7 +504,7 @@ module.exports = function() {
 	};
 	Creep.prototype.saySomething =
 	function() {
-	var creep = this;
+	let creep = this;
 	var say = ["Quit","getting", "mad at", "video","games :)"]
 	var index = Game.time % ( say.length - 1 );
 	creep.say(say[index],true);
