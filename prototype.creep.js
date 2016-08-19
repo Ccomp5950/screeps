@@ -66,6 +66,7 @@ module.exports = function() {
 			} else {
 				creep.memory.source = null;
 			}
+	    }
             if(source == null) {
 		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
 		if(source != undefined) {
