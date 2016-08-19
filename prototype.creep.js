@@ -507,7 +507,7 @@ module.exports = function() {
 	let creep = this;
 	var say = ["Quit","getting", "mad at", "video","games :)",-1];
 	var index = Game.time % ( say.length );
-	if(say[index] = -1) return;
+	if(say[index] == -1) return;
 	creep.say(say[index],true);
 	}
 
