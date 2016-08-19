@@ -119,7 +119,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "remoteupgrader") {
-		body = this.buildBody({work:10,carry:1,move:11}
+		body = this.buildBody({work:10,carry:1,move:10});
 		bodyset = true;
 	}
         else if (roleName == "remoteharvester") {
