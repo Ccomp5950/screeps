@@ -8,6 +8,7 @@ module.exports = {
         creep.setupSpawn();
         creep.setupFlag();
         creep.setRespawnTime();
+	creep.saySomething();
 		if(creep.memory.myFlag == -1) {
 			return;
 		}

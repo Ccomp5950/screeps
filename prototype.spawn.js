@@ -118,6 +118,10 @@ module.exports = function() {
 		body = this.buildBody({claim:1,move:1})
 		bodyset = true;
 	}
+	else if (roleName == "remoteupgrader") {
+		body = this.buildBody({work:10,carry:1,move:11}
+		bodyset = true;
+	}
         else if (roleName == "remoteharvester") {
 		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;

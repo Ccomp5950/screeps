@@ -502,5 +502,11 @@ module.exports = function() {
 			return false;
                 }
 	};
+	Creep.prototype.saySomething =
+	function() {
+	var say = ["Quit","getting", "mad at", "video","games :)"]
+	var index = Game.time % ( say.length - 1 );
+	creep.say(say[index]);
+	}
 
 };
