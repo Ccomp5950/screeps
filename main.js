@@ -160,7 +160,7 @@ module.exports.loop = function () {
 	}
     }
 
-	for(let room of Memory.myrooms) {
+	for(let room of Memory.rooms) {
 		if(Game.rooms[room] != undefined) {
 			var towers = Game.rooms[room].find(FIND_STRUCTURES, {
 	                                               filter: (s) => s.structureType == STRUCTURE_TOWER
