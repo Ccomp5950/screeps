@@ -33,7 +33,7 @@ module.exports = {
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, function(o) { if(o.name.substr(0,flagname.length) == flagname) return true})
                         var flag = flags[0];
-			console.log("flagname is " + flag.name;
+			console.log("flagname is " + flag.name);
 			if(creep.pos.getRangeTo(flag) > 1) {
 				creep.moveTo(flag);
 				return;
