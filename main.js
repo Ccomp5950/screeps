@@ -89,7 +89,7 @@ module.exports.loop = function () {
     var underAttack = [];
     var biggestThreat = [];
     var biggestThreatRating = [];
-    for(let room of Memory.myrooms) {
+    for(let room in Memory.rooms) {
     redAlert = false;
     underAttack[room] = false;
     worstThreat = null;
