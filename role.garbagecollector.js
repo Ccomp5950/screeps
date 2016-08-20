@@ -52,8 +52,12 @@ module.exports = {
 					}
 					return;
 				}
+                        var flagname = "free_energy";
+                        var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
+                        var flag = flags[0];
 				var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-		                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 && _.sum(s.store) > 600)
+		                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && (flag != undefined &&  s.pos.getRangeTo(flag) == 0 && _.sum(s.store) > 600)
+					maxRooms: 1
 				});
                                 if(target) {
                                         if(creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
