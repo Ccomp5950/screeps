@@ -45,15 +45,11 @@ module.exports = {
 	                    creep.moveTo(constructionSite);
 	                }
 	            }
-	    }
-            // if no constructionSite is found
-            else {
+	    } else {
 		creep.approachAssignedFlag(1);
                 return;
-        }
-
-            }
-        }
+		}
+	}
         // if creep is supposed to harvest energy from source
         else {
 			var container = Game.getObjectById(creep.memory.container);
