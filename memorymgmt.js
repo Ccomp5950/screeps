@@ -51,7 +51,8 @@ module.exports = {
 				continue;
 			}
 			if(Game.flags[name].memory.spawn == undefined) {
-				Game.flags[name].memory.spawn = Game.flags[name].pos.room;
+				Game.flags[name].memory.spawn = "";
+				continue;
 			}
 		}
 	},
