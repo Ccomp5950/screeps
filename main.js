@@ -168,6 +168,6 @@ module.exports.loop = function () {
 		}
 	}
 	for(spawn in Game.spawns) {
-		Game.spawns[spawn].handlespawn();
+		Game.spawns[spawn].handlespawn(roles);
 	}
 };
