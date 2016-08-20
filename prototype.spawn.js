@@ -215,8 +215,8 @@ module.exports = function() {
 				break;
 			case -10:
 				err = "Invalid arguments";
-				console.log("Body: " body);
-				console.log("name: " name);
+				console.log("Body: "+ body);
+				console.log("name: "+ name);
 				break;
 			case -14:
 				err = "Not high enough RCL";
