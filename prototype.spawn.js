@@ -61,7 +61,11 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if(roleName == "upgrader"){
+		if(energy >= 1100) {
 		body = this.buildBody({work:10,carry:1,move:1});
+		} else {
+		body = this.buildBody({work:4,carry:1,move:2});
+		}
 		bodyset = true;
 	}
 	else if(roleName == "scout") {
@@ -107,7 +111,11 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "miner" || roleName == "remoteminer") {
+		if(energy >= 800) {
 		body = this.buildBody({carry:1,move:3,work:6});
+		} else {
+		body = this.buildBody({work:5,move:1});
+		}
 		bodyset = true;
 	}
 	else if (roleName == "healer") {
@@ -157,7 +165,13 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher") {
-		let fetchbody = {work:1,move:10,carry:19};
+		let fetchbody = {};
+		if(energy >= 1550) {
+			fetchbody = {work:1,move:10,carry:19};
+		}
+		else {
+			fetchbody = {move:6,carry:12};
+		}
 		/*
  		let energyLeft = energy - 200;
 		while(energyLeft > 0) {
