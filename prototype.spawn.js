@@ -243,4 +243,81 @@ module.exports = function() {
                 }
         return false;
         };
+
+
+	StructureSpawn.prototype.handlespawn =
+	function() {
+		var mySpawn = this;
+		if(mySpawn.spawning != null) {
+			return false;
+		}
+		var myActualEnergy = mySpawn.room.energyAvailable;
+		var energyCap = mySpawn.room.energyCapacityAvailable;
+		var energyMax = Math.min(1600, energyCap);
+		var myEnergy = Math.min(energyMax, myActualEnergy);
+		var name = undefined;
+		var job = null;
+		var readyToSpawn = false;
+		var readyToMaxSpawn = false;
+		var roomroles = Memory.rooms[mySpawn.room.name].role;
+
+		if(myActualEnergy == energyCap || Math.floor(energyCap / 200) == Math.floor(myActualEnergy / 200)) {
+			readyToMaxSpawn = true;
+		}
+
+		if(myEnergy >= energyMax || Math.floor(energyMax / 200) == Math.floor(myEnergy/200)) {
+			readyToSpawn = true;
+		}
+
+		if(mySpawn.spawning != null) {
+			readyToSpawn = false;
+			readyToMaxSpawn = false;
+		}
+
+		if(Memory.rooms[mySpawn.room.name].totalCreeps == 0) {
+			Memory.rooms[mySpawn.room.name].bootstraping = true;
+		}
+
+		if(roomroles["harvester"].current == 0) {
+			name = mySpawn.createCustomCreep(myEnergy, 'harvester');
+		} else {
+			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
+			for(let roleM in roomroles) {
+				let role = roomroles[roleM];
+				if(role.minimum > role.current) {
+					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
+					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms.[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
+						continue;
+					}
+					if(role.spawn != undefined && mySpawn.name != role.spawn) {
+						continue;
+					}
+					if(role.requirement > 0 && myActualEnergy >= role.requirement && mySpawn.spawning == null) {
+						name = mySpawn.createCustomCreep(role.requirement, role.namer);
+					}
+					else if(role.requirement == -1 && readyToMaxSpawn) {
+						name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
+					}
+					else if(role.requirement == 0 && readyToSpawn) {
+						name = mySpawn.createCustomCreep(myEnergy, role.namer);
+					}
+					else if(role.namer == "harvester") {
+						break;
+					}
+				} else if (role.namer == "harvester") {
+					Memory.bootstraping = false;
+				}
+				if(!(name < 0) && name != undefined) {
+					Memory.rooms[mySpawn.room.name].goingToSpawn.pop();
+					Memory.rooms[mySpawn.room.name].role[role.namer].current++;
+					break;
+				} else if(name < 0) { 
+					console.log("Tried to spawn a " + role.namer + " but got error " + name);
+				}
+			}
+		}
+		if (!(name < 0) && name != undefined) {
+			console.log("[" + mySpawn.name + "] Spawned new creep: " + name );
+		}
+	}
 };

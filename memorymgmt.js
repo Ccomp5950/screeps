@@ -10,7 +10,11 @@ module.exports = {
 
 	roles: function() {
 		for(let room in Memory.rooms) {
-			Memory.rooms[room].role = Memory.roles;
+			let roomM = Memory.rooms[room];
+			let Memory.rooms[room].currentCreeps = 0;
+			for(let role in roomM.role) {
+				let Memory.rooms[room].role[role].current = 0;
+			}
 		}
 	},
 

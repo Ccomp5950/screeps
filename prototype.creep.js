@@ -429,26 +429,23 @@ module.exports = function() {
         function(flag) {
                 let creep = this;
 		let role = creep.memory.role;
-                for(let i = 1; i <= 50  ; i++) {
-                        flagName = role +"Spot" + i.toString();
-                        if(Game.flags[flagName] != null) {
-                                let flag = Game.flags[flagName];
-                                residentCreep = null;
-                                residentCreep = Game.getObjectById(flag.memory[role]);
-                                if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-					if(role != "claimer" || flag.needsClaimer() == true) {
-						creep.memory.MyFlag = flagName;	
-					} else {
-						continue;
-					}
-                                        return
-                                }
-                        } else {
-				creep.memory.MyFlag = -1;
-				return;
+		let flagprefix = role + "Spot";
+		let flags =  _(creep.room.find(FIND_FLAGS)).filter((f) => f.memory.spawn != undefined && f.name.substr(0,flagprefix.length) == flagprefix && f.memory.spawn == creep.memory.spawnRoom);
+                for(let flagM in flags) {
+			let flag = flags[flagM];
+			residentCreep = null;
+			residentCreep = Game.getObjectById(flag.memory[role]);
+			if(residentCreep == null || residentCreep.checkTimeToReplace()) {
+				if(role != "claimer" || flag.needsClaimer() == true) {
+					creep.memory.MyFlag = flagName;	
+				} else {
+					continue;
+				}
+				return
 			}
-                }
-        return;
+		}
+		creep.memory.MyFlag = -1;
+		return;
         };
 
 	Creep.prototype.setupSpawn =

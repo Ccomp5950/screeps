@@ -1,16 +1,16 @@
 module.exports = {
-	getNeeded: function(role) {
+	getNeeded: function(role,room) {
 		if(this[role] != undefined) {
-			return this[role]();
+			return this[role](room);
 		} else {
-			return Memory.roles[role].minimum;
+			return Memory.rooms[room].role[role].minimum;
 		}
 	},
 
         claimer : 
-        function() {
+        function(room) {
                 var needed = 0;
-                flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot") return true})
+                flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot", && o.memory.spawn = room) return true})
                 for(flagM in flags) {
                         let flag = flags[flagM];
                         var ticks = 0;
