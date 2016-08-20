@@ -45,7 +45,7 @@ module.exports.loop = function () {
 	validSources = [];
 	var meaniesA = [];
 
-	for(let room of Memory.rooms) {
+	for(let room in Memory.rooms) {
 		if(Game.rooms[room] != undefined) {
 			let sourcesA = Game.rooms[room].find(FIND_SOURCES);
 			validSources[room] = [];
