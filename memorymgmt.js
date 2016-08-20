@@ -5,7 +5,7 @@ module.exports = {
 		this.creeps();
 		if(Game.time % 5 == 0) this.delFlags();
 		this.newFlags();
-
+		this.roles();
 	},
 
 	roles: function() {
