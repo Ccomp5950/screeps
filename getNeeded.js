@@ -10,7 +10,7 @@ module.exports = {
         claimer : 
         function(room) {
                 var needed = 0;
-                flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot" && o.memory.spawn = room) return true})
+                flags = _.filter(Game.flags, function(o) { if(o.name.substr(0,11) == "claimerSpot" && o.memory.spawn == room) return true})
                 for(flagM in flags) {
                         let flag = flags[flagM];
                         var ticks = 0;
