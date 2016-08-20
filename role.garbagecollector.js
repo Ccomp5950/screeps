@@ -70,8 +70,8 @@ module.exports = {
 
 		}else {
 
-			if(creep.pos.getRangeTo(Game.flags["home"]) > 999) {
-				creep.moveTo(Game.flags["home"]);
+			if(creep.pos.getRangeTo(flag) > 999) {
+				creep.moveTo(flag);
 				return;
 			}
 			if(creep.pos.getRangeTo(storage) > 1) {
