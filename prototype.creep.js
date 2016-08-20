@@ -430,22 +430,18 @@ module.exports = function() {
                 let creep = this;
 		let role = creep.memory.role;
 		let flagprefix = role + "Spot";
-		let flags =  _(Game.flags).filter((f) => f.memory.spawn != undefined && f.name.substr(0,flagprefix.length) == flagprefix && f.memory.spawn == creep.memory.spawnRoom);
-                for(let flagM in flags) {
-			let flag = flags[flagM];
-			console.log("[" + creep.name + "] is checking out " + flag.name);
-			let residentCreep = null;
-			if(flag.memory != undefined) {
-				residentCreep = Game.getObjectById(flag.memory[role]);
-			}
-			if(residentCreep == null || residentCreep.checkTimeToReplace()) {
-				if(role != "claimer" || flag.needsClaimer() == true) {
-					creep.memory.MyFlag = flag.name;	
-				} else {
-					continue;
-				}
-				return
-			}
+		let roleName = role + "Name";
+		let flag =  _(Game.flags).filter((f) => f.memory.spawn != undefined 
+						     && f.name.substr(0,flagprefix.length) == flagprefix 
+						     && f.memory.spawn == creep.memory.spawnRoom 
+						     && (Game.creeps[f.memory[roleName]] == undefined 
+						      || Game.creeps[f.memory[rollName]].checkTimeToReplace() == true) 
+						     && (role != "claimer" || flag.needsClaimer() == true)
+		);
+
+		if(flag != undefined) {
+			creep.memory.MyFlag = flag.name;
+			return;
 		}
 		creep.memory.MyFlag = -1;
 		return;
