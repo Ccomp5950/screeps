@@ -116,7 +116,7 @@ module.exports = {
 
 				}
 			}
-			let storage = creep.room.storage);	
+			let storage = creep.room.storage;	
 			if(storage != null) {
 				if(creep.pos.getRangeTo(storage) > 1) {
 					creep.moveTo(storage);
