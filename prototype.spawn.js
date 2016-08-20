@@ -259,7 +259,10 @@ module.exports = function() {
 		}
 		var myActualEnergy = mySpawn.room.energyAvailable;
 		var energyCap = mySpawn.room.energyCapacityAvailable;
-		var energyMax = Math.min(mySpawn.room.memory.maxEnergy, energyCap);
+		var energyMax = energyCap;
+		if(mySpawn.room.memory.maxEnergy != undefined) {
+			energyMax = Math.min(mySpawn.room.memory.maxEnergy, energyCap);
+		}
 		var myEnergy = Math.min(energyMax, myActualEnergy);
 		var name = undefined;
 		var job = null;
