@@ -433,7 +433,8 @@ module.exports = function() {
 		let flags =  _(Game.flags).filter((f) => f.memory.spawn != undefined && f.name.substr(0,flagprefix.length) == flagprefix && f.memory.spawn == creep.memory.spawnRoom);
                 for(let flagM in flags) {
 			let flag = flags[flagM];
-			residentCreep = null;
+			console.log("[" + creep.name + "] is checking out " + flag.name);
+			let residentCreep = null;
 			if(flag.memory != undefined) {
 				residentCreep = Game.getObjectById(flag.memory[role]);
 			}
