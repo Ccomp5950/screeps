@@ -28,6 +28,7 @@ module.exports = {
 			for(let role in roomM.role) {
 				if(role == "[object Object]") {
 					delete Memory.rooms[room].role[role];
+					continue;
 				}
 				Memory.rooms[room].role[role].current = 0;
 			}
