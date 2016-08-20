@@ -135,22 +135,22 @@ module.exports = function() {
 		let harvbody = {carry:0,move:0};
 		creepMem.combat = true;
 		let energyLeft = energy;
-		let i = 1;
 		let Nparts = 0;
 		while(energyLeft > 0 && Nparts < 50) {
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft <= 0 && Nparts > 50) break;
+			if(energyLeft <= 0 || Nparts > 50) break;
 			harvbody.move++;
+
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft <= 0 && Nparts > 50) break;
+			if(energyLeft <= 0 || Nparts > 50) break;
 			harvbody.carry++;
+
 			energyLeft -= 50;
 			Nparts++;
-			if(energyLeft <= 0 && Nparts > 50) break;
+			if(energyLeft <= 0 || Nparts > 50) break;
 			harvbody.carry++;
-			i++;
 		}
 
 		body = this.buildBody(harvbody);
