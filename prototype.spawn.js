@@ -289,15 +289,15 @@ module.exports = function() {
 			for(let roleM in roomroles) {
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
-				console.log("[" + role.namer + "] Minimum: " + roleMem.minimum + " Current: " + roleMem.current);
 				if(roleM = "undefined") continue;
 				if(roleMem.minimum > roleMem.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
+					console.log("[" + role.namer + "] Minimum: " + roleMem.minimum + " Current: " + roleMem.current);
 					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						continue;
 					}
 					if(roleMem.requirement > 0 && myActualEnergy >= roleMem.requirement && mySpawn.spawning == null) {
-						name = mySpawn.createCustomCreep(role.requirement, role.namer);
+						name = mySpawn.createCustomCreep(roleMem.requirement, role.namer);
 					}
 					else if(roleMem.requirement == -1 && readyToMaxSpawn) {
 						name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
