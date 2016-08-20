@@ -434,7 +434,9 @@ module.exports = function() {
                 for(let flagM in flags) {
 			let flag = flags[flagM];
 			residentCreep = null;
-			residentCreep = Game.getObjectById(flag.memory[role]);
+			if(flag.memory != undefined) {
+				residentCreep = Game.getObjectById(flag.memory[role]);
+			}
 			if(residentCreep == null || residentCreep.checkTimeToReplace()) {
 				if(role != "claimer" || flag.needsClaimer() == true) {
 					creep.memory.MyFlag = flagName;	
