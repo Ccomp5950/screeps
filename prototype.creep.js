@@ -68,7 +68,7 @@ module.exports = function() {
 			}
 	    }
             if(source == null) {
-		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
+		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 20 });
 		if(source != undefined) {
 			creep.memory.souce = source.id;
 		} else {
@@ -91,8 +91,9 @@ module.exports = function() {
 		    }
 		    else {
 							        
-	                        if(source.energy < creep.carryCapacity) {
+	                        if(source.energy < 20) {
 	                                creep.memory.source = null;
+					if(creep.
 		                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
 		                        if(source != undefined) {
 		                                creep.memory.source = source.id;
