@@ -93,8 +93,9 @@ module.exports = function() {
 							        
 	                        if(source.energy < 20) {
 	                                creep.memory.source = null;
-					if(creep.
-		                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
+					if(creep.getActiveBodyParts(WORK) > 0) {
+						source = creep.pos.findClosestByPath(validSources[creep.room.name]);
+					}
 		                        if(source != undefined) {
 		                                creep.memory.source = source.id;
 		                        } else {
