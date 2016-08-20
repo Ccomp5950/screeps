@@ -249,7 +249,7 @@ module.exports = function() {
 
 
 	StructureSpawn.prototype.handlespawn =
-	function() {
+	function(roles) {
 		var mySpawn = this;
 		if(mySpawn.spawning != null) {
 			return false;
