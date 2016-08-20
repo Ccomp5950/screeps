@@ -42,16 +42,16 @@ module.exports = {
 
 	newFlags: function() {
 		for (let name in Game.flags) {
-			if(Game.flags[name].memory == undefined) {
+			if(Memory.flags[name] == undefined) {
 				Memory.flags[name] = {}
 				continue;
 		        }
-			if(Game.flags[name].memory.active == undefined) {
-				Game.flags[name].memory.active = false;
+			if(Memory.flags[name].active == undefined) {
+				Memory.flags[name].active = false;
 				continue;
 			}
-			if(Game.flags[name].memory.spawn == undefined) {
-				Game.flags[name].memory.spawn = "";
+			if(Memory.flags[name].spawn == undefined) {
+				Memory.flags[name].spawn = "";
 				continue;
 			}
 		}
