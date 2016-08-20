@@ -55,10 +55,14 @@ module.exports = function() {
 
   	    if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_TERMINAL || (s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 ))
-                             && s.store[RESOURCE_ENERGY] > creep.carryCapacity
-                    
-		, maxRooms:1});
+                        filter: (s) => (s.structureType == STRUCTURE_STORAGE 
+				     || s.structureType == STRUCTURE_TERMINAL 
+				     || (s.structureType == STRUCTURE_CONTAINER 
+					&& (s.pos.room == creep.pos.room && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 )
+					)
+				     )
+				     && s.store[RESOURCE_ENERGY] > creep.carryCapacity
+					, maxRooms:1});
 	    }
             if(source == null && creep.getActiveBodyparts(WORK) > 0) {
                         source = creep.pos.findClosestByPath(validSources[creep.room.name]); 
