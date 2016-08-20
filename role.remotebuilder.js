@@ -48,6 +48,10 @@ module.exports = {
 	    }
             // if no constructionSite is found
             else {
+		creep.approachAssignedFlag(1);
+                return;
+        }
+
             }
         }
         // if creep is supposed to harvest energy from source
