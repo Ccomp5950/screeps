@@ -70,10 +70,10 @@ module.exports = {
 
 		}else {
 
-			if(creep.pos.getRangeTo(flag) > 999) {
-				creep.moveTo(flag);
-				return;
+		        if(creep.approachAssignedFlag(999) == false) {
+		                return;
 			}
+        
 			if(creep.pos.getRangeTo(storage) > 1) {
 				creep.moveTo(storage);
 				return;
