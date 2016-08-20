@@ -289,10 +289,10 @@ module.exports = function() {
 			for(let roleM in roomroles) {
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
-				if(roleM = "undefined") continue;
+				if(roleM == "undefined") continue;
 				if(roleMem.minimum > roleMem.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
-					console.log("[" + role.namer + "] Minimum: " + roleMem.minimum + " Current: " + roleMem.current);
+					//console.log("[" + role.namer + "] Minimum: " + roleMem.minimum + " Current: " + roleMem.current);
 					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						continue;
 					}
