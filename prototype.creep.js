@@ -435,7 +435,7 @@ module.exports = function() {
 						     && f.name.substr(0,flagprefix.length) == flagprefix 
 						     && f.memory.spawn == creep.memory.spawnRoom 
 						     && (Game.creeps[f.memory[roleName]] == undefined 
-						      || Game.creeps[f.memory[rollName]].checkTimeToReplace() == true) 
+						      || Game.creeps[f.memory[roleName]].checkTimeToReplace() == true) 
 						     && (role != "claimer" || flag.needsClaimer() == true)
 		).first();
 		console.log(flag.name);
