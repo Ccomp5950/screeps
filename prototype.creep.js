@@ -53,6 +53,15 @@ module.exports = function() {
 	    }
             var source = null; 
 
+			var flagname = "upgraderContainer";
+                        var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
+                        var flag = flags[0];
+                        var nopullcan = flag.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter:(s) => s.structureType == STRUCTURE_CONTAINER) == false
+
+                        });
+
+
   	    if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE 
@@ -62,7 +71,7 @@ module.exports = function() {
 					, maxRooms:1});
 	    }
             if(source == null) {
-		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
+		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.id != nopullcan.id && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
 		if(source != undefined) {
 			creep.memory.souce = source.id;
 		} else {
