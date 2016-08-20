@@ -69,7 +69,7 @@ module.exports = function() {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE 
 				     || s.structureType == STRUCTURE_TERMINAL 
 					)
-				     && s.store[RESOURCE_ENERGY] > (carryLeft
+				     && s.store[RESOURCE_ENERGY] > carryLeft
 					, maxRooms:1});
 	    }
             if(source == null) {
