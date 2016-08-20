@@ -175,6 +175,18 @@ module.exports = function() {
 		} 
 			
 	};
+
+	Creep.prototype.drivebyRestore =
+	function() {
+		let creep = this;
+		if(creep.ticksToLive < 1000) {		
+	                let spawns = creep.pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_SPAWN && s.spawning == null });
+	                if(spawns.length) {
+				spawns[0].renewCreep(creep);
+			}
+		}
+	}
+
 	Creep.prototype.mine =
         function() {
             var creep = this;

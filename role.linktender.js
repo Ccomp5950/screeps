@@ -17,6 +17,8 @@ module.exports = {
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
+		creep.drivebyRestore();
+
 		let carry = _.sum(creep.carry);
 		if (creep.memory.working == true && carry == 0) {
 			creep.memory.working = false;
