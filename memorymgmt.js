@@ -12,6 +12,9 @@ module.exports = {
 		for(let roleM in roles) {
 			let role = roles[roleM];
 			for(let room in Memory.rooms) {
+				if(Memory.rooms[room].role == undefined) {
+					Memory.rooms[room].role = {};
+				}
 				if(Memory.rooms[room].role[role.namer] == undefined) {
 					console.log("[" + room + "] Adding " + role.namer + " role");
 					Memory.rooms[room].role[role.namer] = {minimum:role.minimum,requirement:role.requirement,current:0};
