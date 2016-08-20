@@ -42,7 +42,7 @@ module.exports = {
 
 	newFlags: function() {
 		for (let name in Game.flags) {
-			if(Game.flags[name].memory == null) {
+			if(Game.flags[name].memory == undefined) {
 				Game.flags[name].memory = {};
 				Game.flags[name].memory.active = false;
 				Game.flags[name].memory.spawn = Game.flags[name].pos.room;
