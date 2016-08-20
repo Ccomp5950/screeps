@@ -180,7 +180,6 @@ module.exports = function() {
 
 
 	if(!bodyset) {
-		console.log("[" + this.name + "]default body with (" + energy + ") energy");
 		let Nparts = 0;
             for (let i = 0; i < numberOfParts && Nparts <=47; i++) {
 		Nparts += 3;
@@ -216,8 +215,6 @@ module.exports = function() {
 				break;
 			case -10:
 				err = "Invalid arguments";
-				console.log("Body: "+ body);
-				console.log("name: "+ name);
 				break;
 			case -14:
 				err = "Not high enough RCL";
@@ -292,7 +289,6 @@ module.exports = function() {
 			if (!(name < 0) && name != undefined) {
 				Memory.rooms[mySpawn.room.name].role["harvester"].current++;
 			}
-			console.log("OH GOD " + Memory.rooms[mySpawn.room.name].role["harvester"].current + " harvesters (" + name + ")");
 		} else {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roomroles) {
@@ -301,7 +297,6 @@ module.exports = function() {
 				if(roleM == "undefined") continue;
 				if(roleMem.minimum > roleMem.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
-					//console.log("[" + role.namer + "] Minimum: " + roleMem.minimum + " Current: " + roleMem.current);
 					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						continue;
 					}
