@@ -51,6 +51,8 @@ module.exports = function() {
 	    if(resource.len) {
 		creep.pickup(resource[0]);
 	    }
+	    var carryLeft = (creep.carryCapacity - _.sum(creep.carry));
+
             var source = null; 
 
 			var flagname = "upgraderContainer";
@@ -61,17 +63,17 @@ module.exports = function() {
 
                         });
 
-
+	  
   	    if(source == null) {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE 
 				     || s.structureType == STRUCTURE_TERMINAL 
 					)
-				     && s.store[RESOURCE_ENERGY] > creep.carryCapacity
+				     && s.store[RESOURCE_ENERGY] > (carryLeft
 					, maxRooms:1});
 	    }
             if(source == null) {
-		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.id != nopullcan.id && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
+		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.id != nopullcan.id && s.store[RESOURCE_ENERGY] > carryLeft });
 		if(source != undefined) {
 			creep.memory.souce = source.id;
 		} else {
@@ -88,7 +90,7 @@ module.exports = function() {
             }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
-				if(source.store[RESOURCE_ENERGY] < creep.carryCapacity) {
+				if(source.store[RESOURCE_ENERGY] < carryLeft) {
 					creep.memory.source = null;
 					return;
 				}
