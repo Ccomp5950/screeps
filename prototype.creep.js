@@ -88,7 +88,7 @@ module.exports = function() {
                                         creep.memory.source = null;
                                 }
                             }
-
+		    return;
 		    }
 		    else {
 							        
@@ -109,6 +109,7 @@ module.exports = function() {
 				}
 			    }
 			
+		    return;
 		    }
             } else {
 		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
