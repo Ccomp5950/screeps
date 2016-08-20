@@ -84,7 +84,7 @@ module.exports = {
 				creep.repair(roads[0]);
 			}
 
-			if(flag.room.storage == undefined && creep.pos.getRangeTo(Game.flags["home"]) > 999) {
+			if((flag == undefined || flag.room == undefined || flag.room.storage == undefined) && creep.pos.getRangeTo(Game.flags["home"]) > 999) {
 				creep.moveTo(Game.flags["home"]);
 				return;
 			}
