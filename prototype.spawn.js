@@ -286,7 +286,7 @@ module.exports = function() {
 			if (!(name < 0) && name != undefined) {
 				Memory.rooms[mySpawn.room.name].role["harvester"].current++;
 			}
-			console.log("OH GOD " + Memory.rooms[mySpawn.room.name].role["harvester"].current + "harvesters");
+			console.log("OH GOD " + Memory.rooms[mySpawn.room.name].role["harvester"].current + " harvesters (" + name + ")");
 		} else {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roomroles) {
