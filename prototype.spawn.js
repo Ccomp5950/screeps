@@ -286,7 +286,7 @@ module.exports = function() {
 				let role = roomroles[roleM];
 				if(role.minimum > role.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
-					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms.[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
+					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						continue;
 					}
 					if(role.spawn != undefined && mySpawn.name != role.spawn) {
@@ -305,7 +305,7 @@ module.exports = function() {
 						break;
 					}
 				} else if (role.namer == "harvester") {
-					Memory.bootstraping = false;
+					Memory.rooms[mySpawn.room.name].bootstraping = false;
 				}
 				if(!(name < 0) && name != undefined) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.pop();
