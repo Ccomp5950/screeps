@@ -1,3 +1,5 @@
+var needed = require('getNeeded');
+
 module.exports = function() {
     // create a new function for StructureSpawn
     StructureSpawn.prototype.buildBody =
@@ -295,7 +297,8 @@ module.exports = function() {
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
 				if(roleM == "undefined") continue;
-				if(roleMem.minimum > roleMem.current) {
+				let minimum = getNeeded(role.namer);
+				if(minimum > roleMem.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
 					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						continue;
