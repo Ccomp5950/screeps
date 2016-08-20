@@ -11,7 +11,7 @@ module.exports = {
 			return;
 		}
                 let flag = Game.flags[creep.memory.myFlag];
-		
+		let home = creep.memory.spawnRoom;	
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage
 		let terminal = creep.room.terminal
@@ -84,8 +84,9 @@ module.exports = {
 				creep.repair(roads[0]);
 			}
 
-			if((flag == undefined || flag.room == undefined || flag.room.storage == undefined) && creep.pos.getRangeTo(Game.flags["home"]) > 999) {
-				creep.moveTo(Game.flags["home"]);
+			let homepos = new RoomPosition(25, 25, home)
+			if(creep.room.name != home) && creep.pos.getRangeTo(homepos) > 999) {
+				creep.moveTo(homepos);
 				return;
 			}
 			if(Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false) {
