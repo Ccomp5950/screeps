@@ -58,6 +58,7 @@ module.exports = function() {
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
+			if(flag != undefined);
                         var nopullcan = flag.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(flag) < 2
 
