@@ -517,6 +517,14 @@ module.exports = function() {
 	var index = Game.time % ( say.length );
 	if(say[index] == -1) return;
 	creep.say(say[index],true);
-	}
+	};
 
+	Creep.prototype.repairOnTheMove =
+	function() {
+			let creep = this;
+                        let targets = creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.hits < s.hitsMax });
+                        if(targets.length) {
+                                creep.repair(targets[0]);
+                        }
+	}
 };

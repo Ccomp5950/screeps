@@ -72,6 +72,7 @@ module.exports = {
                 // try to repair it, if it is out of range
                 if (creep.repair(structure) == ERR_NOT_IN_RANGE) {
                     // move towards it
+		    creep.repairOnTheMove();
                     creep.moveTo(structure);
                 }
 		structure.iGotIt(creep);
