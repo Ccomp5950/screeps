@@ -439,7 +439,7 @@ module.exports = function() {
 			}
 			if(residentCreep == null || residentCreep.checkTimeToReplace()) {
 				if(role != "claimer" || flag.needsClaimer() == true) {
-					creep.memory.MyFlag = flagName;	
+					creep.memory.MyFlag = flag.name;	
 				} else {
 					continue;
 				}
