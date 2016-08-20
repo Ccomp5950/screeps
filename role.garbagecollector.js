@@ -54,7 +54,7 @@ module.exports = {
 				}
                         var feflagname = "free_energy";
                         var feflags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,feflagname.length) == feflagname })
-                        var feflag = flags[0];
+                        var feflag = feflags[0];
 				var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 		                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && (feflag != undefined &&  s.pos.getRangeTo(feflag) == 0) && _.sum(s.store) > 600),
 					maxRooms: 1
