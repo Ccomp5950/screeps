@@ -426,7 +426,7 @@ module.exports = function() {
         };
 
         Creep.prototype.findFlag =
-        function(flag) {
+        function() {
                 let creep = this;
 		let role = creep.memory.role;
 		let flagprefix = role + "Spot";
