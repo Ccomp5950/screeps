@@ -57,8 +57,6 @@ module.exports = function() {
                 source = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE 
 				     || s.structureType == STRUCTURE_TERMINAL 
-				     || (s.structureType == STRUCTURE_CONTAINER 
-					&& (Game.flags["free_energy"].pos.room.name == creep.pos.room.name && s.pos.getRangeTo(Game.flags["free_energy"]) == 0 )
 					)
 				     )
 				     && s.store[RESOURCE_ENERGY] > creep.carryCapacity
