@@ -38,6 +38,7 @@ module.exports = {
                              || (s.structureType == STRUCTURE_TOWER && s.my == true)
 			)    && s.energy < s.energyCapacity
 			     && s.isBeingHandled(creep) == false
+			     && s.id != creep.memory.pulledfrom
             });
 	    if (structure == null) {
                         var flagname = "upgraderContainer";
