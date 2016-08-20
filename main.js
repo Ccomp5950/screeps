@@ -40,6 +40,7 @@ module.exports.loop = function () {
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
 	handleLinks();
+	if(Game.time % 20 == 0) memorymgmt.newRoles(roles);
 
 	noMoreConstruction = false;
 	validSources = [];

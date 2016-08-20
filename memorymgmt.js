@@ -8,6 +8,17 @@ module.exports = {
 		this.roles();
 	},
 
+	newRoles: function(roles) {
+		for(let roleM in roles) {
+			let role = roles[roleM];
+			for(let room in Memory.rooms) {
+				if(Memory.rooms[room].role[role] == undefined) {
+					Memory.rooms[room].role[role] = {minimum:role.minimum,requirement:role.requirement,current:0};
+				}
+			}
+		}
+	},
+
 	roles: function() {
 		for(let room in Memory.rooms) {
 			let roomM = Memory.rooms[room];
