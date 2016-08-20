@@ -9,6 +9,7 @@ module.exports = {
 	},
 
 	newRoles: function(roles) {
+		return;
 		for(let roleM in roles) {
 			let role = roles[roleM];
 			for(let room in Memory.rooms) {
