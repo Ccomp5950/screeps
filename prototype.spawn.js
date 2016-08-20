@@ -283,10 +283,10 @@ module.exports = function() {
 
 		if(roomroles["harvester"].current == 0) {
 			name = mySpawn.createCustomCreep(myEnergy, 'harvester');
-			console.log("OH GOD");
 			if (!(name < 0) && name != undefined) {
 				Memory.rooms[mySpawn.room.name].role["harvester"].current++;
 			}
+			console.log("OH GOD " + Memory.rooms[mySpawn.room.name].role["harvester"].current + "harvesters");
 		} else {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roomroles) {
