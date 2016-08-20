@@ -14,7 +14,7 @@ module.exports = {
 			Memory.rooms[room].currentCreeps = 0;
 			for(let role in roomM.role) {
 				Memory.rooms[room].role[role].current = 0;
-				if(room == "E46S31" && role == "harvester") console.log("YSH");
+				if(room == "E46S31" && role == "harvester") console.log(Memory.rooms[room].role[role].current);
 			}
 		}
 	},
