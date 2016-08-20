@@ -109,8 +109,17 @@ module.exports.loop = function () {
 		creep.memory.currentRoom = creep.room.name;
 		creep.memory.currentHits = creep.hits;
 		creep.memory.currentMaxHits = creep.hitsMax;
+		if(Memory.rooms[creep.memory.spawnRoom].role == undefined) {
+			console.log("[" + creep.name + "] My spawn room has no memory");
+			continue;
+		}
+		if(Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role] == undefined) {
+			console.log("[" + creep.name + "] My role does not exist for my spawnroom's memory");
+			continue;
+		}
 		if(creep.ticksToLive == undefined) {
 			// Spawning
+
 			Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 			roles[creep.memory.role].run.run(creep);
 			continue;
