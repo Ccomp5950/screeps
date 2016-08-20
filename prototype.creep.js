@@ -58,7 +58,6 @@ module.exports = function() {
                         filter: (s) => (s.structureType == STRUCTURE_STORAGE 
 				     || s.structureType == STRUCTURE_TERMINAL 
 					)
-				     )
 				     && s.store[RESOURCE_ENERGY] > creep.carryCapacity
 					, maxRooms:1});
 	    }
