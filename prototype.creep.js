@@ -437,7 +437,7 @@ module.exports = function() {
 						     && (Game.creeps[f.memory[roleName]] == undefined 
 						      || Game.getObjectById(f.memory[role]) == undefined
 						      || Game.getObjectById(f.memory[role]).checkTimeToReplace() == true) 
-						     && (role != "claimer" || flag.needsClaimer() == true)
+						     && (role != "claimer" || f.needsClaimer() == true)
 		).first();
 		if(flag != undefined) {
 			creep.memory.MyFlag = flag.name;
