@@ -287,9 +287,9 @@ module.exports = function() {
 		} else {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roomroles) {
-				console.log(roleM);
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
+				console.log(role.namer);
 				if(roleM = "undefined") continue;
 				if(roleMem.minimum > roleMem.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
