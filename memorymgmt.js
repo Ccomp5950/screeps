@@ -48,6 +48,7 @@ module.exports = {
 		        }
 			if(Game.flags[name].memory.active == undefined) {
 				Game.flags[name].memory.active = false;
+				continue;
 			}
 			if(Game.flags[name].memory.spawn == undefined) {
 				Game.flags[name].memory.spawn = Game.flags[name].pos.room;
