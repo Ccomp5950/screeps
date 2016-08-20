@@ -12,9 +12,9 @@ module.exports = {
 		for(let roleM in roles) {
 			let role = roles[roleM];
 			for(let room in Memory.rooms) {
-				if(Memory.rooms[room].role[role] == undefined) {
-					console.log("[" + room + "] Adding " + role + " role");
-					Memory.rooms[room].role[role] = {minimum:role.minimum,requirement:role.requirement,current:0};
+				if(Memory.rooms[room].role[roleM] == undefined) {
+					console.log("[" + room + "] Adding " + role.namer + " role");
+					Memory.rooms[room].role[roleM] = {minimum:role.minimum,requirement:role.requirement,current:0};
 				}
 			}
 		}
