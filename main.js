@@ -61,7 +61,7 @@ module.exports.loop = function () {
 		}
 		Memory.rooms[room].totalCreeps = 0;
 		if(Game.time % 1 == 0) {
-			if(Game.rooms[room].controller.progress != undefined && Game.rooms[room.controller.level != 8) {
+			if(Game.rooms[room].controller.progress != undefined && Game.rooms[room].controller.level != 8) {
 				let progressleft = Game.rooms[room].controller.progress
 				let level = Game.rooms[room].controller.level + 1;
 				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft);
