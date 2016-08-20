@@ -27,7 +27,7 @@ module.exports = {
 			Memory.rooms[room].currentCreeps = 0;
 			for(let role in roomM.role) {
 				if(role == "[object Object]") {
-					delete Memory.rooms[room].role.[role];
+					delete Memory.rooms[room].role[role];
 				}
 				Memory.rooms[room].role[role].current = 0;
 			}
