@@ -85,7 +85,7 @@ module.exports = {
 			}
 
 			let homepos = new RoomPosition(25, 25, home)
-			if(creep.room.name != home) && creep.pos.getRangeTo(homepos) > 999) {
+			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				creep.moveTo(homepos);
 				return;
 			}
