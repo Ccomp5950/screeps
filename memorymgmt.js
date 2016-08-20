@@ -5,6 +5,13 @@ module.exports = {
 		this.creeps();
 		if(Game.time % 5 == 0) this.delFlags();
 		this.newFlags();
+
+	},
+
+	roles: function() {
+		for(let room in rooms) {
+			Memory.rooms[room].role = Memory.roles;
+		}
 	},
 
 	setup: function() {
