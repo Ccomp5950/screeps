@@ -287,6 +287,7 @@ module.exports = function() {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roomroles) {
 				let role = roomroles[roleM];
+				if(roleM = "undefined") continue;
 				if(role.minimum > role.current) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
 					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
