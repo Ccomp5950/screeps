@@ -219,8 +219,8 @@ module.exports = function() {
 			case -14:
 				err = "Not high enough RCL";
 				break;
-		console.log(message + err);
 		}
+		console.log(message+ err);
 	
 	    }
 	return checkResult;
