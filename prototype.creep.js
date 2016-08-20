@@ -65,7 +65,7 @@ module.exports = function() {
 					, maxRooms:1});
 	    }
             if(source == null) {
-		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 20 });
+		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > creep.carryCapacity });
 		if(source != undefined) {
 			creep.memory.souce = source.id;
 		} else {
@@ -82,7 +82,7 @@ module.exports = function() {
             }
 	    if(source != undefined) {
 		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
-				if(source.store[RESOURCE_ENERGY] < 20) {
+				if(source.store[RESOURCE_ENERGY] < creep.carryCapacity) {
 					creep.memory.source = null;
 					return;
 				}
