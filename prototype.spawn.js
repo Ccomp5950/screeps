@@ -37,6 +37,9 @@ module.exports = function() {
         function(energy, roleName) {
             // create a balanced body as big as possible with the given energy
 	    var nameNumber = 1;
+	    if(roleName == "undefined") {
+		console.log("[" + this.name + "] tried to spawn an undefined");
+	    }
 	    var name=roleName + nameNumber.toString();
 	    while(Game.creeps[name] != undefined) {
 		nameNumber++;
