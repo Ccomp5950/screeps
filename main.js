@@ -111,7 +111,7 @@ module.exports.loop = function () {
 		creep.memory.currentMaxHits = creep.hitsMax;
 		if(creep.ticksToLive == undefined) {
 			// Spawning
-			creep.room.memory.role[creep.memory.role].current++;
+			Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 			roles[creep.memory.role].run.run(creep);
 			continue;
 		}
