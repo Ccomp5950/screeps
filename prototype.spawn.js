@@ -180,6 +180,9 @@ module.exports = function() {
 
 
 	if(!bodyset) {
+	   if(numberOfParts == 0) {
+		console.log("default body with no energy exiting (" + energy + ")");
+	   }
 		let Nparts = 0;
             for (let i = 0; i < numberOfParts && Nparts <=47; i++) {
 		Nparts += 3;
