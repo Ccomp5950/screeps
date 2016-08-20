@@ -116,12 +116,12 @@ module.exports.loop = function () {
 			continue;
 		}
 		if((underAttack[creep.room.name] && !creep.memory.combat && creep.memory.role != "miner" && creep.memory.role != "upgrader") || creep.memory.role == 'towertender') {
-			creep.room.memory.role["towertender"].current++;
+			Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 			roles["towertender"].run.run(creep);
 		}
 		else if (creep.memory.setupTime != null) {
 			if(creep.checkTimeToReplace() == false) {
-				creep.room.memory.role[creep.memory.role].current++;
+				Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 			}
 			roles[creep.memory.role].run.run(creep);
 		} 
@@ -130,7 +130,7 @@ module.exports.loop = function () {
 				console.log("Warning: " + name + " has a bad role: " + creep.memory.role);
 			} else {
 				if((creep.ticksToLive - (creep.body.length * 3)) >= 0) {
-					creep.room.memory.role[creep.memory.role].current++;
+					Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 				}
 				roles[creep.memory.role].run.run(creep);
 			}
