@@ -84,7 +84,7 @@ module.exports = {
 				creep.repair(roads[0]);
 			}
 
-			let homepos = new RoomPosition(25, 25, home)
+			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				creep.moveTo(homepos);
 				return;
