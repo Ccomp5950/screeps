@@ -65,7 +65,7 @@ module.exports.loop = function () {
 			if(Game.rooms[room] != undefined && Game.rooms[room].controller.progress != undefined && Game.rooms[room].controller.level != 8) {
 				let progressleft = Game.rooms[room].controller.progressTotal - Game.rooms[room].controller.progress;
 				let level = Game.rooms[room].controller.level + 1;
-				let percent = Math.floor(Game.rooms[room].controller.progressTotal / Game.rooms[room].controller.progress];
+				let percent = Math.floor(Game.rooms[room].controller.progressTotal / Game.rooms[room].controller.progress]);
 				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft + " / " + percent + "%");
 			}
 		}
