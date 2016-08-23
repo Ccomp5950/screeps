@@ -63,7 +63,11 @@ module.exports.loop = function () {
 		}
 		Memory.rooms[room].totalCreeps = 0;
 		if(Game.time % 100 == 0) {
-			if(Game.rooms[room] != undefined && Game.rooms[room].controller.progress != undefined && Game.rooms[room].controller.level != 8) {
+			if(Game.rooms[room] != undefined 
+			&& Game.rooms[room].controller !+ undefined
+			&& Game.rooms[room].controller.progress != undefined 
+			&& Game.rooms[room].controller.level != 8) 
+			{
 				let progressleft = Game.rooms[room].controller.progressTotal - Game.rooms[room].controller.progress;
 				let level = Game.rooms[room].controller.level + 1;
 				let percent = Math.floor((Game.rooms[room].controller.progress / Game.rooms[room].controller.progressTotal) * 100);
