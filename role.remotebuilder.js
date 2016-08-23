@@ -73,7 +73,7 @@ module.exports = {
                                 var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
                                 if(target) {
                                         if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                                                creep.moveTo(target {maxRooms:1});
+                                                creep.moveTo(target, {maxRooms:1});
                                         }
                                 }
                         }
