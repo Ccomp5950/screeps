@@ -30,7 +30,7 @@ module.exports = {
             var constructionSite = null;
 	    if(creep.memory.build == null || Game.getObjectById(creep.memory.build) == undefined) {
 		creep.memory.build = null;
-		constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+		constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, {maxRooms: 1});
 		if(constructionSite) {
 			creep.memory.build = constructionSite.id
 		}
