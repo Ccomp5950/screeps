@@ -169,8 +169,11 @@ module.exports = function() {
 		if(energy >= 1550) {
 			fetchbody = {work:1,move:10,carry:19};
 		}
-		else {
+		else if(energy >= 900 {
 			fetchbody = {move:6,carry:12};
+		}
+		else if(energy >= 450 {
+			fetchbody = {move:3,carry:6};
 		}
 		/*
  		let energyLeft = energy - 200;
