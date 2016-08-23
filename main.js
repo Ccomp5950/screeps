@@ -64,7 +64,7 @@ module.exports.loop = function () {
 		Memory.rooms[room].totalCreeps = 0;
 		if(Game.time % 100 == 0) {
 			if(Game.rooms[room] != undefined 
-			&& Game.rooms[room].controller !+ undefined
+			&& Game.rooms[room].controller != undefined
 			&& Game.rooms[room].controller.progress != undefined 
 			&& Game.rooms[room].controller.level != 8) 
 			{
