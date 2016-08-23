@@ -42,7 +42,7 @@ module.exports = {
 	                // try to build, if the constructionSite is not in range
 	                if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
 	                    // move towards the constructionSite
-	                    creep.moveTo(constructionSite);
+	                    creep.moveTo(constructionSite, {maxRooms: 1});
 	                }
 	            }
 	    } else {
@@ -66,14 +66,14 @@ module.exports = {
 				creep.memory.container = container.id;
                                         creep.memory.container = container.id
                                 if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                        creep.moveTo(container);
+                                        creep.moveTo(container, {maxRooms:1});
                                 };
                         } else {
                                 creep.memory.container = null;
                                 var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
                                 if(target) {
                                         if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                                                creep.moveTo(target);
+                                                creep.moveTo(target {maxRooms:1});
                                         }
                                 }
                         }
