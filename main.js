@@ -66,7 +66,11 @@ module.exports.loop = function () {
 				let progressleft = Game.rooms[room].controller.progressTotal - Game.rooms[room].controller.progress;
 				let level = Game.rooms[room].controller.level + 1;
 				let percent = Math.floor((Game.rooms[room].controller.progress / Game.rooms[room].controller.progressTotal) * 100);
-				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft + " / " + percent + "%");
+				let storage = "";
+				if(Game.rooms[room].storage != undefined) {
+					storage = "[Storage: " + Game.rooms[room].storage.store.energy + " energy]";
+				}
+				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft + " / " + percent + "%   "+ storage);
 			}
 		}
 	}
