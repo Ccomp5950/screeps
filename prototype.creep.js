@@ -384,7 +384,7 @@ module.exports = function() {
 	function() {
 		let creep = this;
 		let target = Game.getObjectById(creep.memory.killThis);
-		if(target == null || Game.time % 10 == 0) {
+		if(target == undefined || Game.time % 10 == 0) {
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
                                 filter: (c) => c.checkIfAlly() == false
 	                });
