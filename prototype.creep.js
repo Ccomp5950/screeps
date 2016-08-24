@@ -16,29 +16,7 @@ module.exports = function() {
 		let value = 0;
 		for(let i = 0; i < creep.body.length; i++) {
 			let part = creep.body[i];
-			switch(creep.body[i].type) {
-			case "work":
-				value+= 100;
-				break;
-			case "move":
-			case "carry":
-				value += 50;
-				break;
-			case "attack":
-				value += 80;
-				break;
-			case "ranged_attack":
-				value += 150;
-				break;
-			case "heal":
-				value += 250;
-				break;
-			case "claim":
-				value += 600;
-				break;
-			case "tough":
-				value += 10;
-			}
+			value+= BODYPART_COST[creep.body[i].type];
 		}
 		return value;
 	};
