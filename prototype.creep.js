@@ -20,6 +20,11 @@ module.exports = function() {
 		}
 		return value;
 	};
+
+	Creep.prototype.calculateSpawnTicks =
+	function() {
+		return this.body.length * 3;
+	}
 	
 
     Creep.prototype.customharvest =
