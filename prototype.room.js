@@ -7,7 +7,7 @@ module.exports = function() {
 		let creeps = _.filter(Game.creeps, (c) => c.memory.spawnRoom = room.name);
 		for(let creepM in creeps) {
 			let creep = creeps[creepM];
-			value+= creep.calculateSpawnCost();
+			value+= creep.calculateSpawnTicks();
 		}
 	}
 };
