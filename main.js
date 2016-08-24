@@ -163,6 +163,11 @@ module.exports.loop = function () {
 				roles[creep.memory.role].run.run(creep);
 			}
 		}
+		if(creep.ticksToLive == 3) {
+			creep.say("I regret");
+		} else if(creep.ticksToLive == 2) {
+			creep.say("nothing!");
+		}
 	}
 
 	for(let room in Memory.rooms) {
