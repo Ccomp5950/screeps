@@ -44,16 +44,9 @@ module.exports = {
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 
-		target = creep.pos.findClosestByRange(FIND_CREEPS, {
-                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
-                        });
-                if (target != undefined) {
-                        if (creep.heal(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target);
-                        }
-                                return;
+                if(creep.hits != creep.hitsMax) {
+			creep.heal(creep);
                 }
-
 
 
                         if(Game.flags["attack"] != undefined) {
