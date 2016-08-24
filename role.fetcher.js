@@ -32,6 +32,10 @@ module.exports = {
         }
 
 
+                let ignorecreeps = null;
+                if(creep.pos.roomName != creep.memory.spawnRoom) {
+                        ignorecreeps = true;
+                }
 
 
 		if(creep.memory.working == false) {
@@ -40,7 +44,7 @@ module.exports = {
 			}
 
 			if(creep.memory.getToFlag == true) {
-				if(creep.approachAssignedFlag(0,true) == true) { 
+				if(creep.approachAssignedFlag(0,ignorecreeps) == true) { 
 					creep.memory.getToFlag = false;
 				} else {
 					return;
