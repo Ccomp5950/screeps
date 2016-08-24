@@ -16,14 +16,15 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         towerdrainer:   {namer:"towerdrainer",          minimum:0,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
                         healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
 			linktender:     {namer:"linktender",            minimum:0,      requirement:1400,       buildRestriction : false,       run: require('role.linktender')},
-                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner'), spawn: "Spawn1"},
+                        miner:          {namer:"miner",                 minimum:4,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
                         fetcher:        {namer:"fetcher",               minimum:4,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
 			lgfetcher:      {namer:"lgfetcher",             minimum:4,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
 			mineralminer:   {namer:"mineralminer",		minimum:1,	requirement:1000,	buildRestriction : true,	run: require('role.mineralminer')},
 			remotebuilder:	{namer:"remotebuilder",         minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.remotebuilder')},
-                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader'), spawn: "Spawn1"},
+                        upgrader:       {namer:"upgrader",              minimum:1,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader')},
 			upgradertinder:	{namer:"upgradertinder",	minimum:1,	requirement:1800,	buildRestriction : true,        run: require('role.upgradertinder')},
 			remoteupgrader: {namer:"remoteupgrader",	minimum:0,	requirement:1550,	buildRestriction : true,	run: require('role.remoteupgrader')},
+			groundskeeper:	{namer:"groundskeeper",		minimum:0,	requirement:2000,	buildRestriction : true,	run: require('role.groundskeeper')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
                         wallrepairer:   {namer:"wallrepairer",          minimum:1,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
@@ -42,7 +43,7 @@ module.exports.loop = function () {
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
 	handleLinks();
-	if(Game.time % 20 == 0) memorymgmt.newRoles(roles);
+	if(Game.time % 10 == 0) memorymgmt.newRoles(roles);
 
 	noMoreConstruction = false;
 	validSources = [];
@@ -163,13 +164,13 @@ module.exports.loop = function () {
 				roles[creep.memory.role].run.run(creep);
 			}
 		}
-		if(creep.ticksToLive > 3) continue;
+		if(creep.ticksToLive > 4) continue;
 
-		if(creep.ticksToLive == 3) {
+		if(creep.ticksToLive == 4) {
 			creep.say("I regret",true);
-		} else if(creep.ticksToLive == 2) {
+		} else if(creep.ticksToLive == 3) {
 			creep.say("nothing!",true);
-		} else if(creep.ticksToLive == 1) {
+		} else if(creep.ticksToLive == 2) {
 			creep.say("RIP X_X", true);
 		}
 	}

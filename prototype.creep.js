@@ -545,6 +545,47 @@ module.exports = function() {
 			return false;
                 }
 	};
+	Creep.prototype.repairThis =
+	function(target) {
+		let creep = this;
+		if(target == undefined) {
+			return false;
+		}
+		if(target.hits == target.hitsMax) {
+			creep.memory.repair = null;
+			return false;
+		}
+		creep.memory.repair = target.id;
+		if (creep.pos.getRangeTo(target) > 2) {
+			creep.repairOnTheMove();
+			creep.moveTo(target);
+			return true;
+		} else {
+                    creep.repair(target);
+			return true;
+                }
+	};
+
+
+        Creep.prototype.buildThis =
+        function(target) {
+                let creep = this;
+                if(target == undefined) {
+                        return false;
+                }
+                if (creep.pos.getRangeTo(target) > 2) {
+                        creep.repairOnTheMove();
+                        creep.moveTo(target);
+                        return true;
+                } else {
+                    creep.build(target);
+                        return true;
+                }
+        };
+
+
+
+
 	Creep.prototype.saySomething =
 	function() {
 	let creep = this;
@@ -557,7 +598,7 @@ module.exports = function() {
 	Creep.prototype.repairOnTheMove =
 	function() {
 			let creep = this;
-                        let targets = creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.hits < s.hitsMax });
+                        let targets = creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax });
                         if(targets.length) {
                                 creep.repair(targets[0]);
                         }
