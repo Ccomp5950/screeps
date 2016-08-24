@@ -2,9 +2,10 @@ module.exports = {
 	getNeeded: function(role,room) {
 		if(this[role] != undefined) {
 			return this[role](room);
-		} else {
-			return Memory.rooms[room].role[role].minimum;
-		}
+		} else if(Memory.rooms[room].role[role] != undefined) {
+				return Memory.rooms[room].role[role].minimum;
+		} 
+		return 0;
 	},
 
         claimer : 
