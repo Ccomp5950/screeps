@@ -43,7 +43,13 @@ module.exports.loop = function () {
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
 	handleLinks();
-	if(Game.time % 10 == 0) memorymgmt.newRoles(roles);
+	if(Game.time % 10 == 0) { 
+		memorymgmt.newRoles(roles);
+		if(Game.cpu.bucket < 9950) {
+			console.log("[" + Game.tick + "]" +Game.cpu.bucket);
+		}
+	}
+
 
 	noMoreConstruction = false;
 	validSources = [];
