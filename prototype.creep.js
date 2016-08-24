@@ -527,7 +527,7 @@ module.exports = function() {
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > fRange) {
-				if(range - fRange < 3) {
+				if(range - fRange < 5) {
 					option = null;
 				}
                                 creep.moveTo(flag, option);
