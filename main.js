@@ -5,6 +5,7 @@ require('prototype.source')();
 require('prototype.structure')();
 require('prototype.flag')();
 require('prototype.link')();
+require('prototype.room')();
 require('functions');
 //require('role');
 var memorymgmt = require('memorymgmt');
