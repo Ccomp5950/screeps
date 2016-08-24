@@ -523,18 +523,22 @@ module.exports = function() {
 		}
 		let creep = this;
                 let flag = Game.flags[creep.memory.MyFlag];
+		let result = false;
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > fRange) {
+				if(range - fRange < 3) {
+					option = null;
+				}
                                 creep.moveTo(flag, option);
-				return false;
-			} else if(range == fRange + 1) {
+			} 
+			if(range == fRange + 1) {
 				creep.setRespawnTime();
-				return false;
-                        } else {
+                        } if(range <= fRange) {
 				creep.setRespawnTime();
-				return true;
+				result = true;;
 			}
+		return result;
                 } else {
                         console.log("[" + creep.name + "] I can't find a flag :(");
 			creep.say(":( :( :(");
