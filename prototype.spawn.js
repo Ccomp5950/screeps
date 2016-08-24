@@ -170,9 +170,12 @@ module.exports = function() {
 		body = this.buildBody(harvbody);
 		bodyset = true;
 	}
-	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "feeder") {
+	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "feeder" || roleName == "lgfetcher") {
 		let fetchbody = {};
-		if(energy >= 1550) {
+		if(energy >= 2750) {
+			fetchbody = {work:1,move:18,carry:35};
+		}
+		else if(energy >= 1550) {
 			fetchbody = {work:1,move:10,carry:19};
 		}
 		else if(energy >= 950) {
