@@ -33,13 +33,13 @@ module.exports = {
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
-			if(creep.pos.getRangeTo(flag) > 1) {
+			if(creep.pos.getRangeTo(flag) > 0) {
 				creep.moveTo(flag);
 				return;
 			}
 			var target = _(flag.pos.findInRange(FIND_STRUCTURES, 2)).filter((s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1200).sortBy(s=> _.sum(s.store)).first();
 			if(target != undefined) {
-				if(creep.pos.getRangeTo(target) > 0) {
+				if(creep.pos.getRangeTo(target) > 1) {
 					creep.setRespawnTime();
 					creep.moveTo(storage);
 					return;
