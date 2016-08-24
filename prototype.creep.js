@@ -516,13 +516,17 @@ module.exports = function() {
 	}
 
 	Creep.prototype.approachAssignedFlag =
-	function(fRange) {
+	function(fRange, ignoreCreeps) {
+		let option = null;
+		if(ignoreCreeps == true) {
+			option = {ignoreCreeps:true};
+		}
 		let creep = this;
                 let flag = Game.flags[creep.memory.MyFlag];
                 if(flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > fRange) {
-                                creep.moveTo(flag);
+                                creep.moveTo(flag, option);
 				return false;
 			} else if(range == fRange + 1) {
 				creep.setRespawnTime();

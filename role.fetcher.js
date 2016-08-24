@@ -40,7 +40,7 @@ module.exports = {
 			}
 
 			if(creep.memory.getToFlag == true) {
-				if(creep.approachAssignedFlag(0) == true) { 
+				if(creep.approachAssignedFlag(0,true) == true) { 
 					creep.memory.getToFlag = false;
 				} else {
 					return;
@@ -65,7 +65,7 @@ module.exports = {
 					creep.memory.container = container.id
 				}
 				if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(container, {maxRooms:1});
+					creep.moveTo(container, {maxRooms:1, ignoreCreeps:true});
 				};
 			} else {
 				creep.memory.container = null;
@@ -91,7 +91,7 @@ module.exports = {
 
 			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
-				creep.moveTo(homepos);
+				creep.moveTo(homepos, {ignoreCreeps:true});
 				return;
 			}
 			if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(Game.flags[creep.room.name + "_remoteDropOff"]) < storageRange ) {
@@ -99,7 +99,7 @@ module.exports = {
 				if(links.length) {
 					let link = links[0];
 					if(creep.pos.getRangeTo(link) > 1) {
-						creep.moveTo(link);
+						creep.moveTo(link, {ignoreCreeps:true});
 						return;
 					} else {
 						creep.transfer(link, RESOURCE_ENERGY);

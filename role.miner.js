@@ -7,7 +7,7 @@ module.exports = {
                 }
 
 		creep.setupFlag();
-		if(creep.approachAssignedFlag(0) == false) {
+		if(creep.approachAssignedFlag(0,true) == false) {
 			return;
 		}
 		var structure = null;
