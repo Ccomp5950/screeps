@@ -60,6 +60,12 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
+	else if(roleName == "groundskeeper") {
+		if(energy >= 2000) {
+			body = this.buildBody({move:12,work:4,carry:20});
+			bodyset = true;
+		}
+	}
 	else if(roleName == "upgrader"){
 		if(energy >= 1100) {
 		body = this.buildBody({work:10,carry:1,move:1});
