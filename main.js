@@ -163,10 +163,14 @@ module.exports.loop = function () {
 				roles[creep.memory.role].run.run(creep);
 			}
 		}
-		if(creep.ticksToLive == 4) {
-			creep.say("I regret");
+		if(creep.ticksToLive > 3) continue;
+
+		if(creep.ticksToLive == 3) {
+			creep.say("I regret",true);
 		} else if(creep.ticksToLive == 2) {
-			creep.say("nothing!");
+			creep.say("nothing!",true);
+		} else if(creep.ticksToLive == 1) {
+			creep.say("RIP X_X", true);
 		}
 	}
 
