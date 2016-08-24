@@ -583,7 +583,20 @@ module.exports = function() {
                 }
         };
 
-
+	Creep.prototype.moveToRange = 
+	function (target, range) {
+		let creep = this;
+		PathFinder.use(true);
+		let pos = target;
+		if (target.pos) {
+			pos = target.pos;
+		}
+		if(creep.pos.getRangeTo(pos) > range) {
+			creep.moveTo({pos: pos, range: range}, {
+				maxRooms: 1,
+			});
+		}
+	};
 
 
 	Creep.prototype.saySomething =
