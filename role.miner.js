@@ -7,7 +7,11 @@ module.exports = {
                 }
 
 		creep.setupFlag();
-		if(creep.approachAssignedFlag(0,true) == false) {
+		let ignorecreeps = null;
+		if(creep.pos.roomName != creep.memory.spawnRoom) {
+			ignorecreeps = true;
+		}
+		if(creep.approachAssignedFlag(0,ignorecreeps) == false) {
 			return;
 		}
 		var structure = null;
