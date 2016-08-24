@@ -4,6 +4,7 @@ module.exports = {
 		if(creep.spawning) {
 			return;
 		}
+		creep.drivebyRestore();
 		/*
 		if(creep.memory.squadsize == null) {
 			creep.memory.raiding = false;
