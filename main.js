@@ -46,7 +46,7 @@ module.exports.loop = function () {
 	if(Game.time % 10 == 0) { 
 		memorymgmt.newRoles(roles);
 		if(Game.cpu.bucket < 9950) {
-			console.log("[" + Game.tick + "]" +Game.cpu.bucket);
+			console.log("[" + Game.tick + "] <p style='color: red;'>" +Game.cpu.bucket + "</p>");
 		}
 	}
 
