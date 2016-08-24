@@ -172,7 +172,7 @@ module.exports = function() {
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "feeder" || roleName == "lgfetcher") {
 		let fetchbody = {};
-		if(energy >= 2750) {
+		if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
 		}
 		else if(energy >= 1550) {
