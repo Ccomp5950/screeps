@@ -45,14 +45,25 @@ module.exports = {
 	                let target = creep.pos.findClosestByRange(FIND_CREEPS, {
                                         filter: (c) => c.my == true && c.id != creep.id && c.memory.role=="remotebuilder" && _.sum(c.carry) < c.carryCapacity
                         });
-			if(target == undefined) {
-				return;
+			if(target != undefined) {
+				if(creep.pos.getRangeTo(target) > 1) {
+					creep.moveTo(target, {maxRooms:1});
+				} else {
+					creep.transfer(target, RESOURCE_ENERGY);
+				}
+			return;
 			}
-			if(creep.pos.getRangeTo(target) > 1) {
-				creep.moveTo(target, {maxRooms:1});
-			} else {
-				creep.transfer(target, RESOURCE_ENERGY);
-			}
+			let target = creep.room.storage;
+                        if(target != undefined) {
+                                if(creep.pos.getRangeTo(target) > 1) {
+                                        creep.moveTo(target, {maxRooms:1});
+                                } else {
+                                        creep.transfer(target, RESOURCE_ENERGY);
+                                }
+                        return;
+                        }
+
+			
 
 		}else {
 			creep.memory.getToFlag = true;
