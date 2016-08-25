@@ -61,9 +61,13 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if(roleName == "groundskeeper") {
-		if(energy >= 2000) {
+		bodyset = false;
+		if(energy >= 2900) {
+			body = this.buildBody({move:17,work:8,carry:25});	
+		} else if(energy >= 2000) {
 			body = this.buildBody({move:12,work:4,carry:20});
-			bodyset = true;
+		} else {
+			bodyset = false;
 		}
 	}
 	else if(roleName == "upgrader"){
@@ -127,7 +131,15 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if (roleName == "healer") {
-		body = this.buildBody({move:7,heal:7});
+		if(energy >= 4500) {
+			body = this.buildBody({move:15,heal:15});
+		} else if(energy >= 2100) {
+			body = this.buildBody({move:7,heal:7});
+		} else if(energy >= 1200) {
+			body = this.buildBody({move:4,heal:4});
+		} else if(energy >= 600) {
+			body = this.buildBody({move:2,heal:2});
+		}
 		bodyset = true;
 		creepMem.combat = true;
 	}
@@ -178,7 +190,10 @@ module.exports = function() {
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "feeder" || roleName == "lgfetcher") {
 		let fetchbody = {};
-		if(energy >= 2450) {
+		if(roleName == "feeder" && energy >= 2400) {
+			fetchbody = {carry:32,move:16};
+		}
+		else if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
 		}
 		else if(energy >= 1550) {
