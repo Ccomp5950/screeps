@@ -90,9 +90,9 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
 		if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
+		if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
 		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
-		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		//if(creep.attackHostileStructure("ANYTHING")) return;
                 if(flag != undefined) {
                         range = creep.pos.getRangeTo(flag);
