@@ -192,7 +192,7 @@ module.exports = function() {
 	function() {
 		let creep = this;
 		if(creep.memory.setupTime != null) {
-			if(creep.memory.setupTime > 140) {
+			if(creep.memory.setupTime > 140 && creep.room.name == creep.memory.spawnRoom) {
 				creep.memory.setupTime = 140;
 			}
 			if(creep.ticksToLive - creep.memory.setupTime <= 0) {
