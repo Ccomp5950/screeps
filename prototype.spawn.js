@@ -61,7 +61,7 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if(roleName == "groundskeeper") {
-		bodyset = false;
+		bodyset = true;
 		if(energy >= 2900) {
 			body = this.buildBody({move:17,work:8,carry:25});	
 		} else if(energy >= 2000) {
