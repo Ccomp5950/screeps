@@ -40,7 +40,6 @@ module.exports = {
 		//Roads that are down 4000 hits.
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 1000).min(s=>s.hits);
 		creep.memory.lastChecked = "Roads";
-		console.log("Roads Target is: " + target);
 		if(creep.repairThis(target)) return;
 
 		// Build Shit otherwise.
