@@ -39,7 +39,7 @@ module.exports = {
 			taunt = false;
 			creep.memory.healing = true;
 			creep.memory.healingothers = false;
-			flagName = creep.memory.MyFlag + "safe";
+			flagName = "safe";
 			flag = Game.flags[flagName];
 			frange = 0;
 		}
