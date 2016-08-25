@@ -17,7 +17,7 @@ module.exports = {
             creep.memory.source = null;
 	    creep.memory.repair = null;
         }
-
+	creep.memory.lastChecked = null;
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
 
@@ -34,33 +34,43 @@ module.exports = {
 
 		//Saved Target
 		var target = Game.getObjectById(creep.memory.repair);
+		creep.memory.lastChecked = "Saved";
 		if(creep.repairThis(target)) return;
 
 		//Roads that are down 4000 hits.
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 3800).min(s=>s.hits);
+		creep.memory.lastChecked = "Roads";
 		if(creep.repairThis(target)) return;
 
 		// Build Shit otherwise.
 		let constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
+		creep.memory.lastChecked = "Construction";
 		if(constructionSites.length > 0) {
 			target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+
 			if(creep.buildThis(target)) return;
 		}
 
 		// Repair everything else.
+		creep.memory.lastChecked = "Everything but walls and ramparts";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType != STRUCTURE_WALL 
 									&& s.structureType != STRUCTURE_RAMPART 
 									&& s.hits < s.hitsMax).min(s=>s.hits);
 		if(creep.repairThis(target)) return;
 
 		// Ramparts
+		creep.memory.lastChecked = "Ramparts";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_RAMPART
 									&& s.hits < rampartMinHealth).min(s=>s.hits);
+		if(creep.repairThis(target)) return;
 
 		// Walls.
+		creep.memory.lastChecked = "Walls";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_WALL
 									&& s.hits < wallMinHealth).min(s=>s.hits);
                 if(creep.repairThis(target)) return;
+		creep.memory.lastChecked = "Nothing to repair/build";
+
 
         }
         else {
