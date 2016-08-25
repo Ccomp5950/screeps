@@ -16,6 +16,10 @@ module.exports = {
 		}
 		*/
 		var flag = Game.flags[creep.memory.MyFlag];
+		if(flag == undefined) {
+			creep.memory.MyFlag = -1;
+			return;
+		}
 		var frange = 0;
 		var taunt = false;
 		if(creep.memory.hop == false) {
