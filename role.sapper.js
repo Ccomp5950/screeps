@@ -82,6 +82,7 @@ module.exports = {
 				return;
 			}
 		}
+		creep.setRespawnTime();
 		// KILL SHIT
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
