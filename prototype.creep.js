@@ -534,12 +534,12 @@ module.exports = function() {
 		if(target == undefined) {
 			return false;
 		}
-		if(target.hits == target.hitsMax) {
+		if(target.hits >= target.hitsMax - 100) {
 			creep.memory.repair = null;
 			return false;
 		}
 		creep.memory.repair = target.id;
-		if (creep.pos.getRangeTo(target) > 2) {
+		if (creep.pos.getRangeTo(target) > 3){
 			creep.repairOnTheMove();
 			creep.moveToRange(target.pos, 3);
 			return true;
