@@ -53,7 +53,7 @@ module.exports = {
 				}
 			return;
 			}
-			let target = creep.room.storage;
+			target = creep.room.storage;
                         if(target != undefined) {
                                 if(creep.pos.getRangeTo(target) > 1) {
                                         creep.moveTo(target, {maxRooms:1});
