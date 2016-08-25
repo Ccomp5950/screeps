@@ -47,7 +47,7 @@ module.exports = {
 			if(creep.carry.energy > 0) { // Carrying Energy
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || terminal.store.energy < creep.memory.maxTerminalEnergy) {
-						if(resourceType == RESOURCE_ENERGY && creep.carry.energy + terminal.store.energy > creep.memory.maxTerminalEnergy) {
+						if(creep.carry.energy + terminal.store.energy > creep.memory.maxTerminalEnergy) {
 							amount = creep.memory.maxTerminalEnergy - terminal.store.energy;
 						}
 						creep.transfer(terminal, RESOURCE_ENERGY, amount);
