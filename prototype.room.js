@@ -9,5 +9,6 @@ module.exports = function() {
 			let creep = creeps[creepM];
 			value+= creep.calculateSpawnTicks();
 		}
+		return value;
 	}
 };
