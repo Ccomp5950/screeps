@@ -12,7 +12,7 @@ module.exports = {
 		let hasStorage = false;
 		let hasLink = false;
 		let hasTerminal = false;
-
+		creep.memory.setupTime = 1;
 		creep.setupFlag();
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
