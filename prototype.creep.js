@@ -541,7 +541,7 @@ module.exports = function() {
 		creep.memory.repair = target.id;
 		if (creep.pos.getRangeTo(target) > 2) {
 			creep.repairOnTheMove();
-			creep.moveTo(target);
+			creep.moveToRange(target.pos, 3);
 			return true;
 		} else {
                     creep.repair(target);
