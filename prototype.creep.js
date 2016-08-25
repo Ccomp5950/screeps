@@ -531,7 +531,7 @@ module.exports = function() {
 	Creep.prototype.repairThis =
 	function(target) {
 		let creep = this;
-		if(target == undefined) {
+		if(target == undefined || target == Infinity) {
 			return false;
 		}
 		if(target.hits >= target.hitsMax - 100) {
