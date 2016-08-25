@@ -415,13 +415,12 @@ module.exports = function() {
 		}
 		creep.findFlag();
 		if(creep.memory.MyFlag != -1) {
-			console.log("[" + creep.name + "] I'm grabbing the position at: " + creep.memory.MyFlag);
 			creep.grabFlag();
 			return;
 		} else {
 			if(creep.memory.spamedError != true) {
 				creep.memory.spamedError = true;
-				console.log("[" + creep.name + "] I can't find a flag.  :(");
+				console.log("[" + creep.name + " / " + creep.room.name + "] I can't find a flag.  :(");
 			}
 			creep.say(":(");
 		}
@@ -523,7 +522,10 @@ module.exports = function() {
 			}
 		return result;
                 } else {
-                        console.log("[" + creep.name + "] I can't find a flag :(");
+                        if(creep.memory.spamedError != true) {
+				creep.memory.spamedError = true;
+				console.log("[" + creep.name +" / "+ creep.room.name + "] I can't find a flag.  :(");
+			}
 			creep.say(":( :( :(");
 			return false;
                 }
