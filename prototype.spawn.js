@@ -73,12 +73,14 @@ module.exports = function() {
 		}
 	}
 	else if(roleName == "upgrader"){
-		if(energy >= 1100) {
-		body = this.buildBody({work:10,carry:1,move:1});
+		if(energy >= 2200) {
+			body = this.buildBody({work:20,carry:2,move:2});
+		} else if(energy >= 1100) {
+			body = this.buildBody({work:10,carry:1,move:1});
 		} else if(energy >= 550){
-		body = this.buildBody({work:4,carry:1,move:2});
+			body = this.buildBody({work:4,carry:1,move:2});
 		} else if(energy >= 200) {
-		body = this.buildBody({work:1,carry:1,move:1});
+			body = this.buildBody({work:1,carry:1,move:1});
 		}
 		bodyset = true;
 	}
