@@ -42,12 +42,15 @@ module.exports = {
 			hasTerminal = true;
 		}
 
-
+		var amount = null;
 		if(creep.memory.working) {
 			if(creep.carry.energy > 0) { // Carrying Energy
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || terminal.store.energy < creep.memory.maxTerminalEnergy) {
-						creep.transfer(terminal, RESOURCE_ENERGY);
+						if(resourceType == RESOURCE_ENERGY && creep.carry.energy + terminal.store.energy > creep.memory.maxTerminalEnergy) {
+							amount = creep.memory.maxTerminalEnergy - terminal.store.energy;
+						}
+						creep.transfer(terminal, RESOURCE_ENERGY, amount);
 						return;
 					}
 					
@@ -68,7 +71,7 @@ module.exports = {
 				console.log("[" + creep.name + "] Unable to process energy full up.");
 				return;
 			} else { // Carrying Resources
-				if(hasTerminal && _.sum(terminal.store < terminalstoreCapacity)) {
+				if(hasTerminal && _.sum(terminal.store < terminal.storeCapacity)) {
 			                for(var resourceType in creep.carry) {
 			                        creep.transfer(terminal, resourceType);
 						return;
@@ -87,7 +90,11 @@ module.exports = {
 			}
 			else if(hasStorage && hasTerminal && terminal.store.energy < creep.memory.maxTerminalEnergy && storage.store[RESOURCE_ENERGY] > 150000) {
 				creep.withdraw(storage, RESOURCE_ENERGY);
+			} 
+			else if(hasTerminal && terminal.store.energy > creep.memory.maxTerminalEnergy) {
+				creep.withdraw(terminal, RESOURCE_ENERGY);
 			}
+			
 		}
     }
 };
