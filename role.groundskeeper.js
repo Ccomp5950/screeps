@@ -55,7 +55,7 @@ module.exports = {
 		creep.memory.lastChecked = "Everything but walls and ramparts";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType != STRUCTURE_WALL 
 									&& s.structureType != STRUCTURE_RAMPART 
-									&& s.hits < s.hitsMax).min(s=>s.hits);
+									&& s.hits < s.hitsMax).min(s=> s.hits/s.hitsMax);
 		if(creep.repairThis(target)) return;
 
 		// Ramparts
