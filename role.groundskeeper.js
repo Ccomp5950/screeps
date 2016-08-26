@@ -4,6 +4,7 @@ module.exports = {
                 if(creep.spawning) {
                         return;
                 }
+	creep.setupFlag();
         // if creep is trying to repair something but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -70,7 +71,7 @@ module.exports = {
                 if(creep.repairThis(target)) return;
 		creep.memory.lastChecked = "Nothing to repair/build";
 
-
+		creep.approachAssignedFlag(0);
         }
         else {
 		creep.customharvest();
