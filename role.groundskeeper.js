@@ -42,6 +42,7 @@ module.exports = {
 		creep.memory.lastChecked = "Roads";
 		if(creep.repairThis(target)) return;
 
+	/*
 		// Build Shit otherwise.
 		let constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
 		creep.memory.lastChecked = "Construction";
@@ -50,6 +51,7 @@ module.exports = {
 
 			if(creep.buildThis(target)) return;
 		}
+	*/
 
 		// Repair everything else.
 		creep.memory.lastChecked = "Everything but walls and ramparts";
