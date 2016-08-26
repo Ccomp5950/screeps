@@ -82,7 +82,7 @@ module.exports = function() {
 				}
 				creep.memory.pulledfrom = source.id
                             if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                if(creep.moveTo(source {maxRooms: 1}) == ERR_NO_PATH) {
+                                if(creep.moveTo(source, {maxRooms: 1}) == ERR_NO_PATH) {
                                         creep.memory.source = null;
                                 }
                             }
