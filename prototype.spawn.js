@@ -3,7 +3,10 @@ var needed = require('getNeeded');
 module.exports = function() {
     // create a new function for StructureSpawn
     StructureSpawn.prototype.buildBody =
-	function(bodyO) {
+	function(bodyO,movelast) {
+		if(movelast != true) {
+			movelast = false;
+		}
 		result = [];
 		let funky = false;
 		if(_.sum(bodyO) > 50) {
@@ -25,12 +28,14 @@ module.exports = function() {
 			}
 
 			for(let i = 0; i < bodyO[part]; i++) {
-				if((part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
+				if((movelast == true && part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
 					result.push(part);
 				}
 			}
 		}
-	result.push("move");
+	if(movelast != true) {
+		result.push("move");
+	};
 	return result;
 	};
 		
@@ -55,11 +60,26 @@ module.exports = function() {
             var body = [];
 	    var bodyset = false;
 	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
+
+
+
 	if(roleName == "towerdrainer") {
-		body = this.buildBody({tough:23,move:17,heal:10});
-		bodyset = true;
-		creepMem.combat = true;
-	}
+		let Nparts = 6;
+                let base = 140;
+                let calcEnergy = energy - base;
+                let tdbody = {tough:4,move:2,heal:0}
+                let defparts = Math.floor(calcEnergy / 550);
+                for(let i = 0; i < defparts && Nparts <= 47; i++) {
+                        Nparts += 3;
+                        probody.heal++;
+			probody.heal++;
+                        probody.move++;
+			
+                }
+                body = this.buildBody(probody, false);
+                bodyset = true;
+                creepMem.combat = true;
+        }
 	else if(roleName == "groundskeeper") {
 		bodyset = true;
 		if(energy >= 2900) {
