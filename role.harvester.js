@@ -32,39 +32,42 @@ module.exports = {
 			creep.withdraw(creep.room.storage, RESOURCE_ENERGY);
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
-            var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (s) => (s.structureType == STRUCTURE_EXTENSION
+		var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			filter: (s) => (s.structureType == STRUCTURE_EXTENSION
  			     || s.structureType == STRUCTURE_SPAWN
                              || (s.structureType == STRUCTURE_TOWER && s.my == true)
 			)    && s.energy < s.energyCapacity
 			     && s.isBeingHandled(creep) == false
 			     && s.id != creep.memory.pulledfrom
             });
-	    if (structure == null) {
-                        var flagname = "upgraderContainer";
+		if (structure == null) {
+			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
-		structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
+			structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
 			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000 && s.isBeingHandled(creep) == false
 			
-		 }); 
-		if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
-			structure = null;
+			}); 
+			if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
+				structure = null;
+			}
+		}	
+		
+		if (structure == null) {
+			structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (s) => (s.structureType == STRUCTURE_STORAGE
+					&& s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom)
+			});
 		}
-	    }	
-		
-		
-            if (structure == null) {
-             	structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (s) => (s.structureType == STRUCTURE_STORAGE
-                             && s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom)
-
-            });
-	    }
 
             // if we found one
             if (structure != null) {
                 // try to transfer energy, if it is not in range
+		if(creep.pos.getRangeTo(structure) >= 10 && carry < (creep.carryCapacity * .75) {
+			creep.memory.working = false;
+			return;
+		}
+
 		if(creep.pos.getRangeTo(structure) > 1) {
 			creep.moveTo(structure);
 			return;
