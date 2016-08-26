@@ -42,17 +42,6 @@ module.exports = {
 		creep.memory.lastChecked = "Roads";
 		if(creep.repairThis(target)) return;
 
-	/*
-		// Build Shit otherwise.
-		let constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
-		creep.memory.lastChecked = "Construction";
-		if(constructionSites.length > 0) {
-			target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
-
-			if(creep.buildThis(target)) return;
-		}
-	*/
-
 		// Repair everything else.
 		creep.memory.lastChecked = "Everything but walls and ramparts";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType != STRUCTURE_WALL 
@@ -60,6 +49,14 @@ module.exports = {
 									&& s.hits < s.hitsMax).min(s=> s.hits/s.hitsMax);
 		if(creep.repairThis(target)) return;
 
+		// CONSTRUCTION TIME.
+                let constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
+                creep.memory.lastChecked = "Construction";
+                if(constructionSites.length > 0) {
+                        target = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+
+                        if(creep.buildThis(target)) return;
+                }
 		// Ramparts
 		creep.memory.lastChecked = "Ramparts";
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_RAMPART
