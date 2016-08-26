@@ -3,10 +3,7 @@ var needed = require('getNeeded');
 module.exports = function() {
     // create a new function for StructureSpawn
     StructureSpawn.prototype.buildBody =
-	function(bodyO,movelast) {
-		if(movelast != true) {
-			movelast = false;
-		}
+	function(bodyO) {
 		result = [];
 		let funky = false;
 		if(_.sum(bodyO) > 50) {
@@ -28,7 +25,7 @@ module.exports = function() {
 			}
 
 			for(let i = 0; i < bodyO[part]; i++) {
-				if((movelast == true && part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
+				if((part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
 					result.push(part);
 				}
 			}
