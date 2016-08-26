@@ -55,7 +55,7 @@ module.exports.loop = function () {
 	noMoreConstruction = false;
 	validSources = [];
 	var meaniesA = [];
-
+	let totalstorage = 0;
 	for(let room in Memory.rooms) {
 		if(Game.rooms[room] != undefined) {
 			let sourcesA = Game.rooms[room].find(FIND_SOURCES);
@@ -82,11 +82,15 @@ module.exports.loop = function () {
 				let percent = Math.floor((Game.rooms[room].controller.progress / Game.rooms[room].controller.progressTotal) * 100);
 				let storage = "";
 				if(Game.rooms[room].storage != undefined) {
+					totalstorage += Game.rooms[room].storage.store.energy;
 					storage = "[Storage: " + Game.rooms[room].storage.store.energy + " energy]";
 				}
 				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft + " / " + percent + "%   "+ storage);
 			}
 		}
+	}
+	if(Game.time % 100 == 0) {
+		console.log("[" + Game.time + "] Total Storage: " + totalstorage;
 	}
 
     
