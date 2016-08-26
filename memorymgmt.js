@@ -7,13 +7,14 @@ module.exports = {
 		this.newFlags();
 		this.roles();
 		if(Game.time % 5 == 0) this.newRoles(roles);
-		this.spawns();
+		//this.spawns();
 	},
-
+/*
 	spawns: function() {
 		for(let spawnM in Game.spawns) {
 			let spawn = Game.spawns[spawnM];
 			let defaultMem = {name:spawn.name, spawning:false};
+
 			if(Memory.spawns == undefined) {
 				newBody.push(defaultMem);
 				Memory.spawns = newBody;
@@ -30,6 +31,7 @@ module.exports = {
 			
 		}
 	},
+*/
 	newRoles: function(roles) {
 		for(let roleM in roles) {
 			let role = roles[roleM];
