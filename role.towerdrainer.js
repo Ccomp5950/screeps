@@ -14,9 +14,10 @@ module.exports = {
 
 		if(creep.gotoWaypoint()) return;
 		if(creep.memory.healing || creep.hits != creep.hitsMax) {
-                        if(creep.heal(creep) == 0) {
-                                creep.memory.healingothers = false;
-                        }
+                        creep.memory.healingothers = false;
+                }
+                if(creep.memory.healingothers == false) {
+                        creep.heal(creep);
                 }
 
 		/*
