@@ -7,6 +7,9 @@ module.exports = {
 			creep.setupSpawn();
 			return;
 		}
+		if(creep.memory.runAt == undefined) {
+			creep.memory.runAt = (creep.getActiveBodyparts(HEAL) * 100) + 200;
+		}
 		creep.setupFlag();
 
 		if(creep.gotoWaypoint()) return;
@@ -41,7 +44,7 @@ module.exports = {
 			danger = true;
 		}
 
-		if(creep.hits < 1200 || creep.memory.healing == true) {
+		if(creep.hits < creep.memory.runAt || creep.memory.healing == true) {
 			taunt = false;
 			creep.memory.healing = true;
 			creep.memory.healingothers = false;
