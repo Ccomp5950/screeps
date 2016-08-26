@@ -48,7 +48,7 @@ module.exports.loop = function () {
 	if(Memory.cpuwarning == 0) { 
 		if(Game.cpu.bucket < 9900 && Game.cpu.bucket < Memory.lastBucket) {
 			Memory.cpuwarning = 10;
-			console.log("[" + Game.time + "] <span style='color: red;'>CPU Bucket:" +Game.cpu.bucket + "/10000 </span>");
+			console.log("[" + Game.time + "] <span style='color: red;'>CPU Bucket:" +Game.cpu.bucket.toLocaleString() + "/10,000 </span>");
 		}
 		Memory.lastBucket = Game.cpu.bucket;
 	}
@@ -87,12 +87,12 @@ module.exports.loop = function () {
 					totalstorage += Game.rooms[room].storage.store.energy;
 					storage = "[Storage: " + Game.rooms[room].storage.store.energy + " energy]";
 				}
-				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft + " / " + percent + "%   "+ storage);
+				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage.toLocaleString());
 			}
 		}
 	}
 	if(Game.time % 100 == 0) {
-		console.log("[" + Game.time + "] Total Storage: " + totalstorage);
+		console.log("[" + Game.time + "] Total Storage: " + totalstorage.toLocaleString());
 	}
 
     
