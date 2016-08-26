@@ -90,7 +90,7 @@ module.exports.loop = function () {
 		}
 	}
 	if(Game.time % 100 == 0) {
-		console.log("[" + Game.time + "] Total Storage: " + totalstorage;
+		console.log("[" + Game.time + "] Total Storage: " + totalstorage);
 	}
 
     
