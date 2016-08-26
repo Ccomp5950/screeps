@@ -42,7 +42,17 @@ module.exports = {
 
 		} else {
 			let storage = creep.room.storage;
-
+			let container = findClosestByRange(FIND_STRUCTURE, {filter: (s) => s.getRangeTo(creep) < 1 && s.structureType == STRUCTURE_CONTAINER})
+			
+			if(container != undefined) {
+				if(_.sum(container.store) < container.storeCapacity) {
+		                        for(items in creep.carry) {
+		                                creep.transfer(container,items);
+		                        }
+				}
+			return;				
+			}
+			
 			if(storage != undefined) {
 				if(creep.pos.getRangeTo(storage) > 1) {
 					creep.moveTo(storage);
