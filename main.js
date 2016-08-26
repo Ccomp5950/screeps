@@ -44,11 +44,13 @@ module.exports.loop = function () {
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
 	handleLinks();
-	if(Game.time % 10 == 0) { 
-		memorymgmt.newRoles(roles);
-		if(Game.cpu.bucket < 9950) {
-			console.log("[" + Game.time + "] <span style='color: red;'>" +Game.cpu.bucket + "</span>");
+	if(Memory.cpuwarning > 0) Memory.cpuwarning--;
+	if(Memory.cpuwarning == 0) { 
+		if(Game.cpu.bucket < 9900 && Game.cpu.bucket < Memory.lastBucket) {
+			Memory.cpuwarning = 10;
+			console.log("[" + Game.time + "] <span style='color: red;'>CPU Bucket:" +Game.cpu.bucket + "/10000 </span>");
 		}
+		Memory.lastBucket = Game.cpu.bucket;
 	}
 
 

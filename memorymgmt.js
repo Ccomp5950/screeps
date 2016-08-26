@@ -1,13 +1,35 @@
 module.exports = {
-	master: function() {
+	master: function(roles) {
 		this.setup();
 		if(Game.time % 25 == 0) this.structures();
 		this.creeps();
 		if(Game.time % 5 == 0) this.delFlags();
 		this.newFlags();
 		this.roles();
+		if(Game.time % 5 == 0) this.newRoles(roles);
+		this.spawns();
 	},
 
+	spawns: function() {
+		for(let spawnM in Game.spawns) {
+			let spawn = Game.spawns[spawnM];
+			let defaultMem = {name:spawn.name, spawning:false};
+			if(Memory.spawns == undefined) {
+				newBody.push(defaultMem);
+				Memory.spawns = newBody;
+				return;
+			}
+			let index = Memory.spawns.indexOf(spawn.name);
+			if(index = -1) {
+				Memory.spawns.push(defaultMem);
+				return;
+			}
+			else {
+				Memory.spawns[index].spawning = false;
+			}
+			
+		}
+	},
 	newRoles: function(roles) {
 		for(let roleM in roles) {
 			let role = roles[roleM];
