@@ -67,7 +67,7 @@ module.exports = function() {
 		let Nparts = 6;
                 let base = 140;
                 let calcEnergy = energy - base;
-                let tdbody = {tough:4,move:2,heal:0}
+                let probody = {tough:4,move:2,heal:0}
                 let defparts = Math.floor(calcEnergy / 550);
                 for(let i = 0; i < defparts && Nparts <= 47; i++) {
                         Nparts += 3;
