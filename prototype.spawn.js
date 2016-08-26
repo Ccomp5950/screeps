@@ -98,7 +98,7 @@ module.exports = function() {
 			body = this.buildBody({work:10,carry:1,move:1});
 		} else if(energy >= 550){
 			body = this.buildBody({work:4,carry:1,move:2});
-		} else if(energy >= 200) {
+		} else {
 			body = this.buildBody({work:1,carry:1,move:1});
 		}
 		bodyset = true;
