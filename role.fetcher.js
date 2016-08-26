@@ -59,7 +59,7 @@ module.exports = {
 
 			if(creep.memory.container == null || container == null || creep.memory.switchOnce == true) {
 		          	container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 10)
+	                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && _.sum(s.store) > 10)
 				,
 				maxRooms: 1});
 			}
@@ -68,16 +68,22 @@ module.exports = {
 				if(creep.memory.container == null) {
 					creep.memory.container = container.id
 				}
-				if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(container, {maxRooms:1, ignoreCreeps:true});
-				};
+                                if(creep.pos.getRangeTo(container) > 1) {
+                                                creep.moveToRange(container.pos,1);
+                                                return;
+                                        }
+		                for(var resourceType in container.store) {
+		                        creep.withdraw(container, resourceType);
+		                }
 			} else {
 				creep.memory.container = null;
 				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
 				if(target) {
-					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-					        creep.moveTo(target, {maxRooms:1});
+					if(creep.pos.getRangeTo(target) > 1) {
+						creep.moveToRange(target.pos,1);
+						return;
 					}
+					creep.pickup(target);
 				}
 			}
 
