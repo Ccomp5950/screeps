@@ -385,7 +385,7 @@ module.exports = function() {
 					else if(roleMem.requirement == 0 && readyToSpawn) {
 						name = mySpawn.createCustomCreep(myEnergy, role.namer);
 					}
-					else if(role.namer == "harvester") {
+					else if(role.namer == "harvester" || role.namer == "linktender") {
 						break;
 					}
 				} else if (role.namer == "harvester") {
