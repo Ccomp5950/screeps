@@ -85,9 +85,9 @@ module.exports.loop = function () {
 				let storage = "";
 				if(Game.rooms[room].storage != undefined) {
 					totalstorage += Game.rooms[room].storage.store.energy;
-					storage = "[Storage: " + Game.rooms[room].storage.store.energy + " energy]";
+					storage = "[Storage: " + Game.rooms[room].storage.store.energytoLocaleString() + " energy]";
 				}
-				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage.toLocaleString());
+				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage);
 			}
 		}
 	}
