@@ -30,9 +30,7 @@ module.exports = function() {
 				}
 			}
 		}
-	if(movelast != true) {
 		result.push("move");
-	};
 	return result;
 	};
 		
