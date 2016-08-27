@@ -9,6 +9,7 @@ module.exports = {
 			creep.memory.maxTerminalEnergy = 100000;
                         return;
                 }
+		creep.memory.age = Game.time - creep.memory.spawnTime;
 		let hasStorage = false;
 		let hasLink = false;
 		let hasTerminal = false;
