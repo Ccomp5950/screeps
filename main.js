@@ -7,7 +7,7 @@ require('prototype.flag')();
 require('prototype.link')();
 require('prototype.room')();
 const profiler = require('screeps-profiler');
-profiler.enable();
+//profiler.enable();
 require('functions');
 //require('role');
 var memorymgmt = require('memorymgmt');
