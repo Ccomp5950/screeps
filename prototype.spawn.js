@@ -219,7 +219,7 @@ module.exports = function() {
 		}
 		else if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
-			if(energy =>= 2600) {
+			if(energy >= 2600) {
 				fetchbody.work++;
 				fetchbody.move++;
 			}
