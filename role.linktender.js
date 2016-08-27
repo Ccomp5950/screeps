@@ -108,6 +108,9 @@ module.exports = {
 				creep.withdraw(link, RESOURCE_ENERGY);
 				return;
 			}
+			else if(hasStorage && hasSpawn && nearbySpawn.energy < nearbySpawn.energyCapacity) {
+				creep.withdraw(storage, RESOURCE_ENERGY);
+			}
 			else if(hasStorage && hasTerminal && terminal.store.energy < creep.memory.maxTerminalEnergy && storage.store[RESOURCE_ENERGY] > 150000) {
 				creep.withdraw(storage, RESOURCE_ENERGY);
 			} 
