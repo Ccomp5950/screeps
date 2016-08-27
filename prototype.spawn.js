@@ -255,12 +255,14 @@ module.exports = function() {
 		ltbody = {move:1, carry:16};
 		body = this.buildBody(ltbody);
 		bodyset = true;
-	} else if (roleName == "mineralminer") {
+	} else if (roleName == "mineralminei") {
 		bodyset = true;
-		if(energy == 2600) {
+		if(energy >= 2600) {
 			body = this.buildBody({work:25,carry:1,move:1});
-		} else if (energy == 2100) {
+		} else if (energy >= 2100) {
 			body = this.buildBody({work:20,carry:1,move:1});
+		} else if (energy >= 1100) {
+			body = this.buildBody(work:10,carry:1,move:1});
 		} else {
 			bodyset = false;
 		}
