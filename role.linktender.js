@@ -7,16 +7,26 @@ module.exports = {
 			creep.memory.terminal = null;
 			creep.memory.putIn = null;
 			creep.memory.maxTerminalEnergy = 100000;
+			creep.memory.nearbySpawn = null;
                         return;
                 }
 		creep.memory.age = Game.time - creep.memory.spawnTime;
 		let hasStorage = false;
 		let hasLink = false;
 		let hasTerminal = false;
+		let hasSpawn = false;
 		creep.memory.setupTime = 1;
 		creep.setupFlag();
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
+		}
+
+		let nearbySpawn = Game.getObjectById(creep.memory.nearbySpawn);
+		if(nearbySpawn == undefined) {
+			nearbySpawn = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_SPAWN});
+			if(creep.pos.getRangeTo(nearbySpawn) > 1) {
+				creep.memory.nearbySpawn = nearbySpawn.id;
+			}
 		}
 		creep.drivebyRestore();
 
@@ -29,6 +39,9 @@ module.exports = {
 			creep.memory.source = null;
 		}
 
+		if(nearbySpawn != undefined && creep.pos.getRangeTo(nearbySpawn) > 1) {
+			hasSpawn = true;
+		}
 
 		let storage = creep.room.storage;
 		if(storage != undefined) {
@@ -46,6 +59,12 @@ module.exports = {
 		var amount = null;
 		if(creep.memory.working) {
 			if(creep.carry.energy > 0) { // Carrying Energy
+				if(hasSpawn) {
+					if(nearbySpawn.energy < nearbySpawn.energyCapacity) {
+						creep.transfer(nearbySpawn, RESOURCE_ENERGY);
+						return;
+					}
+				}
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || terminal.store.energy < creep.memory.maxTerminalEnergy) {
 						if(creep.carry.energy + terminal.store.energy > creep.memory.maxTerminalEnergy) {
