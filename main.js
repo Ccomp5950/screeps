@@ -90,7 +90,7 @@ module.exports.loop = function () {
 					totalstorage += Game.rooms[room].storage.store.energy;
 					storage = "[Storage: " + Game.rooms[room].storage.store.energy.toLocaleString() + " energy]";
 				}
-				console.log("[" + room + "] Progress Left until GCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage);
+				console.log("[" + room + "]<span style='color: yellow;'> Progress Left until GCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
 			}
 		}
 	}

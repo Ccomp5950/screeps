@@ -148,6 +148,12 @@ module.exports = function() {
 		}
 		bodyset = true;
 	}
+	else if (roleName == "killdozer") {
+		if(energy >= 7650 ) {
+			bodyset = true;
+			body = this.buildBody({move:16,work:6,heal:25});
+		}
+	}
 	else if (roleName == "healer") {
 		if(energy >= 4500) {
 			body = this.buildBody({move:15,heal:15});
