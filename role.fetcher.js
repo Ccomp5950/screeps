@@ -23,7 +23,9 @@ module.exports = {
 	let carry = _.sum(creep.carry);
         if (creep.memory.working == true && carry == 0) {
 		creep.memory.goingToStorage = false;
-            creep.memory.working = false;
+		creep.memory.working = false;
+		creep.memory.switchOnce = false;
+		creep.memory.goingToStorage = false;
         }
         else if (creep.memory.working == false && carry == creep.carryCapacity) {
 		creep.memory.goingToStorage = false;
@@ -139,18 +141,18 @@ module.exports = {
 					creep.memory.goingToStorage = true;
 					return;
 				} else {
-					creep.transfer(storage, RESOURCE_ENERGY);
-					creep.memory.switchOnce = false;
-					creep.memory.goingToStorage = false;
+	                                for(var resourceType in creep.carry) {
+	                                        creep.transfer(storage, resourceType);
+	                                }
 				}
 			} else if(terminal != null) {
                                 if(creep.pos.getRangeTo(terminal) > 1) {
                                         creep.moveTo(terminal);
                                         return;
                                 } else {
-                                        creep.transfer(terminal, RESOURCE_ENERGY);
-                                        creep.memory.switchOnce = false;
-					creep.memory.goingToStorage = false;
+                                        for(var resourceType in creep.carry) {
+                                                creep.transfer(terminal, resourceType);
+                                        }
                                 }
 
 			}
