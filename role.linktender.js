@@ -24,7 +24,7 @@ module.exports = {
 		let nearbySpawn = Game.getObjectById(creep.memory.nearbySpawn);
 		if(nearbySpawn == undefined) {
 			nearbySpawn = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_SPAWN});
-			if(creep.pos.getRangeTo(nearbySpawn) > 1) {
+			if(creep.pos.getRangeTo(nearbySpawn) == 1) {
 				creep.memory.nearbySpawn = nearbySpawn.id;
 			}
 		}
@@ -39,7 +39,7 @@ module.exports = {
 			creep.memory.source = null;
 		}
 
-		if(nearbySpawn != undefined && creep.pos.getRangeTo(nearbySpawn) > 1) {
+		if(nearbySpawn != undefined && creep.pos.getRangeTo(nearbySpawn) == 1) {
 			hasSpawn = true;
 		}
 
