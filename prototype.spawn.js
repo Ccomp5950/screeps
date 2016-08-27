@@ -255,7 +255,7 @@ module.exports = function() {
 		ltbody = {move:1, carry:16};
 		body = this.buildBody(ltbody);
 		bodyset = true;
-	} else if (roleName == "mineralminei") {
+	} else if (roleName == "mineralminer") {
 		bodyset = true;
 		if(energy >= 2600) {
 			body = this.buildBody({work:25,carry:1,move:1});
