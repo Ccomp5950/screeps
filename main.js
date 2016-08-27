@@ -6,6 +6,8 @@ require('prototype.structure')();
 require('prototype.flag')();
 require('prototype.link')();
 require('prototype.room')();
+const profiler = require('screeps-profiler');
+profiler.enable();
 require('functions');
 //require('role');
 var memorymgmt = require('memorymgmt');
@@ -40,6 +42,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         };
 
 module.exports.loop = function () {
+	profiler.wrap(function() {
 	memorymgmt.master();
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
@@ -212,4 +215,5 @@ module.exports.loop = function () {
 	for(spawn in Game.spawns) {
 		Game.spawns[spawn].handlespawn(roles,underAttack[Game.spawns[spawn].room.name]);
 	}
+}
 };
