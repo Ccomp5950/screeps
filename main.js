@@ -50,7 +50,7 @@ module.exports.loop = function () {
 	handleLinks();
 	if(Memory.cpuwarning > 0) Memory.cpuwarning--;
 	if(Memory.cpuwarning == 0) { 
-		if(Game.cpu.bucket < 9900 && Game.cpu.bucket < Memory.lastBucket) {
+		if(Game.cpu.bucket < 9750 && Game.cpu.bucket < Memory.lastBucket) {
 			Memory.cpuwarning = 10;
 			console.log("[" + Game.time + "] <span style='color: red;'>CPU Bucket:" +Game.cpu.bucket.toLocaleString() + "/10,000 </span>");
 		}
