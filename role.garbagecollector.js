@@ -66,6 +66,9 @@ module.exports = {
                                         return;
                                 }
 				if(carry > 0) creep.memory.working=true;	
+	                        if(creep.approachAssignedFlag(1) == false) {
+	                                return;
+        	                }
 
 		}else {
 
