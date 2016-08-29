@@ -6,6 +6,7 @@ require('prototype.structure')();
 require('prototype.flag')();
 require('prototype.link')();
 require('prototype.room')();
+require('prototype.roomobject')();
 const profiler = require('screeps-profiler');
 //profiler.enable();
 require('functions');
