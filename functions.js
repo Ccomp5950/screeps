@@ -106,7 +106,7 @@
 				}
 				if(Memory.rooms[roomM].labs[labIndex] == undefined) {
 					Memory.rooms[roomM].labs[labIndex] = {mineral:null, active:false, react:false, amount: 300};
-					return;
+					continue;
 				}
 				labMem = Memory.rooms[roomM].labs[labIndex];
 				if(labMem.active != false || labMem.mineral == null) {
