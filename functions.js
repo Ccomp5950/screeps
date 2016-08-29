@@ -96,7 +96,7 @@
 	global.handleLabs =
 	function() {
 		for(let roomM in Memory.rooms) {
-		let room = Memory.rooms[roomM];
+		let room = Game.rooms[roomM];
 			let roomLabs = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
 			for(labs in roomLabs) {
 				let lab = roomLabs[labs];
