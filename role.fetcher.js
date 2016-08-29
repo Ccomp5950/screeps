@@ -71,6 +71,10 @@ module.exports = {
 					creep.memory.container = container.id
 				}
                                 if(creep.pos.getRangeTo(container) > 1) {
+						if(flag.memory.strict == true) {
+							creep.memory.container = null;
+							return;
+						}
                                                 creep.moveToRange(container.pos,1);
                                                 return;
                                         }
