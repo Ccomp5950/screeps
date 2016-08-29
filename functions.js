@@ -93,28 +93,25 @@
 		}
 	}
 
-        global.testMemory =
+	global.handleLabs =
 	function() {
-		Memory.test123 = ["lala1", "lala2"];
-
-		var test123 = Memory.test123;
-
-		test123 = ["lala3", "lala4"];
-	return true;
+		for(let roomM in Memory.rooms) {
+		let room = Memory.rooms[roomM];
+			let roomLabs = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
+			for(labs in roomLabs) {
+				let lab = roomLabs[labs];
+				let labIndex = lab.getIndexString();
+				if(Memory.rooms[roomM].labs == undefined) {
+					Memory.rooms[roomM].labs = {}
+				}
+				if(Memory.rooms[roomM].labs[labIndex] == undefined) {
+					Memory.rooms[roomM].labs[labIndex] = {mineral:null, active:false, react:false, amount: 300};
+					return;
+				}
+				labMem = Memory.rooms[roomM].labs[labIndex];
+				if(labMem.active != false || labMem.mineral == null) {
+					continue;
+				}
+			}
+		}
 	}
-	global.timeStamp =
-	function() {
-	  var now = new Date();
-	  var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
-	  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
-	  var suffix = ( time[0] < 12 ) ? "AM" : "PM";
-	  time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
-	  time[0] = time[0] || 12;
-	  for ( var i = 1; i < 3; i++ ) {
-	    if ( time[i] < 10 ) {
-	      time[i] = "0" + time[i];
-	    }
-	  }
-	  return date.join("/") + " " + time.join(":") + " " + suffix;
-	}
-	
