@@ -71,7 +71,7 @@ module.exports = {
 					creep.memory.container = container.id
 				}
                                 if(creep.pos.getRangeTo(container) > 1) {
-						if(flag.memory.strict == true) {
+						if(Game.flags[creep.memory.myflag].memory.strict == true) {
 							creep.memory.container = null;
 							return;
 						}
