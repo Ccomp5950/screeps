@@ -10,7 +10,7 @@ module.exports = {
 		if(creep.memory.myFlag == -1) {
 			return;
 		}
-                let flag = Game.flags[creep.memory.myFlag];
+                var flag = Game.flags[creep.memory.myFlag];
 		let home = creep.memory.spawnRoom;	
 		let container = Game.getObjectById(creep.memory.container);
 		let storage = creep.room.storage
