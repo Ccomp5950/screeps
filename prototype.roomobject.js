@@ -4,6 +4,5 @@ module.exports = function() {
 	function() {
 		let s = this;
 		return s.pos.x.toString() + "_" + s.pos.y.toString();
-		}
 	}
 };
