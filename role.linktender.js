@@ -96,10 +96,10 @@ module.exports = {
 				for(let resource in creep.store) {
 
 					if(resource == "energy") continue;
-					if(terminal.store[resource] != undefined && terminal.store[resource] < creep.memory.maxTerminalMineral) {
+					if(
+					if(terminal.store[resource] == undefined || terminal.store[resource] < creep.memory.maxTerminalMineral) {
 						useTerminal = true;
 						break;
-					}
 				}
 				if(hasTerminal && _.sum(terminal.store) < terminal.storeCapacity && useTerminal) {
 					creep.deposit(terminal);
