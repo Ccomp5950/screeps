@@ -96,7 +96,7 @@ module.exports = {
 				for(let resource in creep.store) {
 
 					if(resource == "energy") continue;
-					if(terminal.store[resource] != undefined && terminal.store[resource] < 20000) {
+					if(terminal.store[resource] != undefined && terminal.store[resource] < creep.memory.maxTerminalMineral) {
 						useTerminal = true;
 						break;
 					}
@@ -126,11 +126,12 @@ module.exports = {
 				for(let resource in terminal.store) {
 					if(resource == "energy") continue;
 					if(terminal.store[resource] != undefined) {
-						if(terminal.store[resource] < 20000) {
+						if(terminal.store[resource] < creep.memory.maxTerminalMineral) {
 							creep.withdraw(storage, resource);
 						}
-						if(terminal.store[resource] > 20000) {
-							creep.withdraw(terminal, resource, terminal.store[resource] - 20000);
+						if(terminal.store[resource] > creep.memory.maxTerminalMineral) {
+							let amounT = terminal.store[resource] - creep.memory.maxTerminalMineral
+							creep.withdraw(terminal, resource, terminal.store[resource] - creep.memory.maxTerminalMineral);
 						}
 					}
 				}
