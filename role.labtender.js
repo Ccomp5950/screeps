@@ -109,9 +109,7 @@ module.exports = {
                                                 return;
 					}
 				}
-				creep.say("fdsa");
-				if(lab.mineralAmount >= 500 && labMem.emptyMe == true) {
-						creep.say("asdf");
+				if(lab.mineralAmount >= 2000 && labMem.emptyMe == true) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "lab";
