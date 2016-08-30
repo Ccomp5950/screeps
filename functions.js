@@ -86,6 +86,7 @@
 			for(let linkM in room.links) {
 				let linkMem = room.links[linkM]
 				let link = Game.getObjectById(linkMem.id);
+				if(link == undefined) continue;
 					if(link.energy == link.energyCapacity && linkMem.priority > 0) {
 						link.transferToLowerPriority();
 					}
