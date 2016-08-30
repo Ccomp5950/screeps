@@ -6,7 +6,6 @@ module.exports = {
 		if(Game.time % 5 == 0) this.delFlags();
 		this.newFlags();
 		this.roles();
-		if(Game.time % 5 == 0) this.newRoles(roles);
 		//this.spawns();
 	},
 /*
@@ -64,13 +63,6 @@ module.exports = {
 	setup: function() {
 		if(Memory.structure == undefined) {
 			Memory.structure = [];
-		}
-		if(Memory.myrooms == undefined) {
-			myrooms = [];
-			for(let room in Game.rooms) {
-				myrooms.push(Game.rooms[room].name);
-			}
-		Memory.myrooms = myrooms;
 		}
 	},
 
