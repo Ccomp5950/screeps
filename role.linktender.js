@@ -116,8 +116,15 @@ module.exports = {
 			} 
 			else if(hasTerminal && terminal.store.energy > creep.memory.maxTerminalEnergy) {
 				creep.withdraw(terminal, RESOURCE_ENERGY);
-			}
-			
+			} 
+			else if(hasTerminal && hasStorage){
+				for(let resource in storage.store) {
+					if(resource == "energy") continue;
+					if(terminal.store[resource] == undefined || terminal.store[resource] < 20000) {
+						creep.withdraw(storage, resource);
+					}
+				}
+			}	
 		}
     }
 };
