@@ -108,13 +108,23 @@
 					Memory.rooms[roomM].labs = {}
 				}
 				if(Memory.rooms[roomM].labs[labIndex] == undefined) {
-					Memory.rooms[roomM].labs[labIndex] = {mineral:null, active:false, react:false, amount: 300};
+					Memory.rooms[roomM].labs[labIndex] = {mineral:null, active:false, react:false, amount: 300, react_labs: [], id: lab.id, emptyMe: false};
 					continue;
 				}
 				if(Memory.rooms[roomM].labs[labIndex].id == undefined) {
 					Memory.rooms[roomM].labs[labIndex].id = lab.id;
-					continuy;
+					continue;
 				}
+				Memory.rooms[roomM].labs[labIndex].react_labs == undefined) {
+					Memory.rooms[roomM].labs[labIndex].react_labs = [];
+					continue;
+				}
+                                Memory.rooms[roomM].labs[labIndex].emptyMe == undefined) {
+                                        Memory.rooms[roomM].labs[labIndex].emptyMe = false;
+                                        continue;
+                                }
+				
+
 				labMem = Memory.rooms[roomM].labs[labIndex];
 				if(labMem.active != false || labMem.mineral == null || lab.cooldown > 0) {
 					continue;
