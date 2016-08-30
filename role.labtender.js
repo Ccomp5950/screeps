@@ -107,12 +107,15 @@ module.exports = {
                                                         creep.moveTo(terminal);
                                                 }
                                                 return;
-					} else if(lab.mineralAmmount >= 500 && labMem.emptyMe == true)
+					}
+				}
+				if(lab.mineralAmmount >= 500 && labMem.emptyMe == true) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "lab";
-						return;
+                                                return;
 				}
+
 			}
 			creep.approachAssignedFlag(0);	
 		}
