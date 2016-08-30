@@ -123,7 +123,7 @@
 				//return;
 				
 				// OH SHIT SON.
-				if(labMem.react == true) {
+				if(labMem.react == true && lab.mineralAmount < lab.mineralCapacity) {
 					let mineral = labMem.mineral;
 					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral = labMem.react_labs[0]).first();
 					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral = labMem.react_labs[1]).first();
@@ -131,7 +131,7 @@
 						lab1 = Game.getObjectById(lab1.id);
 						lab2 = Game.getObjectById(lab2.id);
 						if(lab1.mineralAmount > 10 && lab2.mineralAmount > 10) {
-							lab.react(lab1,lab2);
+							lab.runreact(lab1,lab2);
 						}
 					}
 				}
