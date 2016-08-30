@@ -117,6 +117,10 @@ module.exports = {
 				}
 
 			}
+			if(creep.ticksToLive < 20) {
+				creep.suicide();
+				return;
+			}
 			creep.approachAssignedFlag(0);	
 		}
     }
