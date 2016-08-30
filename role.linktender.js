@@ -96,8 +96,8 @@ module.exports = {
 				for(let resource in creep.store) {
 
 					if(resource == "energy") continue;
+					console.log("[" + creep.name + "] Resource: " + resource + ": " + terminal.store[resource]):
 					if(terminal.store[resource] == undefined || terminal.store[resource] < creep.memory.maxTerminalMineral) {
-						creep.say("lala");
 						useTerminal = true;
 						break;
 					}
