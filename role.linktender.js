@@ -78,13 +78,13 @@ module.exports = {
 				}
 				if(hasStorage) {
 					if(_.sum(storage.store) < storage.storeCapacity) {
-						creep.diposit(storage, RESOURCE_ENERGY);
+						creep.deposit(storage, RESOURCE_ENERGY);
 						return;
 					}
 				}
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || _.sum(terminal.store) < terminal.storeCapacity) {
-						creep.diposit(terminal, RESOURCE_ENERGY);
+						creep.deposit(terminal, RESOURCE_ENERGY);
 						return;
 					}
 				}
