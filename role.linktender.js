@@ -141,23 +141,6 @@ module.exports = {
 						}
 					}
 				}
-                                for(let resource in storage.store) {
-                                        if(resource == "energy") continue;
-                                        if(terminal.store[resource] != undefined) {
-                                                if((terminal.store[resource] == undefined || terminal.store[resource] < creep.memory.maxTerminalMineral) && storage.store[resource] != undefined) {
-                                                        creep.withdraw(storage, resource);
-                                                        return;
-                                                }
-                                                if(terminal.store[resource] > creep.memory.maxTerminalMineral) {
-                                                        if((terminal.store[resource] - creep.carryCapacity) < creep.memory.maxTerminalMineral) {
-                                                                amount = terminal.store[resource] - creep.memory.maxTerminalMineral;
-                                                        }
-
-                                                        creep.withdraw(terminal, resource, amount);
-                                                        return;
-                                                }
-                                        }
-				} 
 			}	
 		}
     }
