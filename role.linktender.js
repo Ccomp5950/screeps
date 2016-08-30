@@ -8,7 +8,6 @@ module.exports = {
 			creep.memory.putIn = null;
 			creep.memory.maxTerminalMineral = 20000;
 			creep.memory.maxTerminalEnergy = 100000;
-			creep.memory.nearbySpawn = null;
                         return;
                 }
 		creep.memory.age = Game.time - creep.memory.spawnTime;
@@ -16,20 +15,25 @@ module.exports = {
 		let hasLink = false;
 		let hasTerminal = false;
 		let hasSpawn = false;
+		let spawnFill = -1;
 		creep.memory.setupTime = 1;
 		creep.setupFlag();
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
 
-		let nearbySpawn = Game.getObjectById(creep.memory.nearbySpawn);
-		if(nearbySpawn == undefined) {
-			nearbySpawn = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_SPAWN});
-			if(creep.pos.getRangeTo(nearbySpawn) == 1) {
-				creep.memory.nearbySpawn = nearbySpawn.id;
+		let nearbySpawn = creep.pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_SPAWN });
+			
+		if(nearbySpawn.length > 0) {
+			creep.drivebyRestore();
+			let hasSpawn = true;
+			for(let index in nearbySpawn) {
+				let spawn = nearbySpawn[index];
+				if(spawn.energy < spawn.energyCapacity) {
+					spawnFill = index;
+				}
 			}
 		}
-		creep.drivebyRestore();
 
 		let carry = _.sum(creep.carry);
 		if (creep.memory.working == true && carry == 0) {
@@ -38,10 +42,6 @@ module.exports = {
 		else if (creep.memory.working == false && carry > 0) {
 			creep.memory.working = true;
 			creep.memory.source = null;
-		}
-
-		if(nearbySpawn != undefined && creep.pos.getRangeTo(nearbySpawn) == 1) {
-			hasSpawn = true;
 		}
 
 		let storage = creep.room.storage;
@@ -60,11 +60,9 @@ module.exports = {
 		var amount = null;
 		if(creep.memory.working) {
 			if(creep.carry.energy > 0) { // Carrying Energy
-				if(hasSpawn) {
-					if(nearbySpawn.energy < nearbySpawn.energyCapacity) {
-						creep.transfer(nearbySpawn, RESOURCE_ENERGY);
-						return;
-					}
+				if(hasSpawn && spawnFill != -1) {
+					creep.transfer(nearbySpawn[spawnFill], RESOURCE_ENERGY);
+					return;
 				}
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || terminal.store.energy < creep.memory.maxTerminalEnergy) {
@@ -114,7 +112,7 @@ module.exports = {
 				creep.withdraw(link, RESOURCE_ENERGY);
 				return;
 			}
-			else if(hasStorage && hasSpawn && nearbySpawn.energy < nearbySpawn.energyCapacity) {
+			else if(hasStorage && hasSpawn && spawnFill != -1) {
 				creep.withdraw(storage, RESOURCE_ENERGY);
 			}
 			else if(hasStorage && hasTerminal && terminal.store.energy < creep.memory.maxTerminalEnergy && storage.store[RESOURCE_ENERGY] > 150000) {
