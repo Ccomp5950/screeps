@@ -51,6 +51,7 @@ module.exports.loop = function () {
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
 	handleLinks();
+	handleLabs();
 	if(Memory.cpuwarning > 0) Memory.cpuwarning--;
 	if(Memory.cpuwarning == 0) { 
 		if(Game.cpu.bucket < 9750 && Game.cpu.bucket < Memory.lastBucket) {
