@@ -103,12 +103,6 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
-/*	else if(roleName == "attacker") {
-		body = this.buildBody({attack:5,move:6});
-		bodyset = true;
-		creepMem.combat = true;
-	}
-*/
 	else if (roleName == "defender" || roleName == "attacker") {
 		let Nparts = 6;
 		let base = 420;
@@ -124,6 +118,11 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
+	else if (roleName == "labtender") {
+		body = this.buildBody({carry:6,move:3});
+		bodyset = true;
+		creepMem.combat = true;
+	]
 	else if (roleName == "sapper") {
 		let Nparts = 0;
 		let base = 0;
@@ -261,8 +260,8 @@ module.exports = function() {
 			body = this.buildBody({work:25,carry:1,move:1});
 		} else if (energy >= 2100) {
 			body = this.buildBody({work:20,carry:1,move:1});
-		} else if (energy >= 1100) {
-			body = this.buildBody({work:10,carry:1,move:1});
+		} else if (energy >= 1300) {
+			body = this.buildBody({work:10,carry:1,move:5});
 		} else {
 			bodyset = false;
 		}
