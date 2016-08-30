@@ -92,6 +92,7 @@ module.exports = {
 				console.log("[" + creep.name + "] Unable to process energy full up.");
 				return;
 			} else { // Carrying Resources
+				creep.say("lala");
 				let useTerminal = false;
 				for(let resource in creep.store) {
 					if(resource == "energy") {
