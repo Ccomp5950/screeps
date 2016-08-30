@@ -110,6 +110,7 @@ module.exports = {
 					}
 				}
 				if(lab.mineralAmount >= 500 && labMem.emptyMe == true) {
+						creep.say("asdf");
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "lab";
