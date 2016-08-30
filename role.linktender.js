@@ -123,7 +123,7 @@ module.exports = {
 				creep.withdraw(terminal, RESOURCE_ENERGY);
 			} 
 			else if(hasTerminal && hasStorage){
-				for(let resource in storage.store) {
+				for(let resource in terminal.store) {
 					if(resource == "energy") continue;
 					if(terminal.store[resource] == undefined) {
 						if(terminal.store[resource] < 20000) {
