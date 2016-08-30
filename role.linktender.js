@@ -132,6 +132,7 @@ module.exports = {
 						}
 						if(terminal.store[resource] > creep.memory.maxTerminalMineral) {
 							creep.withdraw(terminal, resource, terminal.store[resource] - creep.memory.maxTerminalMineral);
+							creep.say(resource);
 							return;
 						}
 					}
