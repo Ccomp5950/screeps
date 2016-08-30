@@ -91,6 +91,7 @@ module.exports = {
 				console.log("[" + creep.name + "] Unable to process energy full up.");
 				return;
 			} else { // Carrying Resources
+				creep.say("here");
 				if(hasTerminal && _.sum(terminal.store) < terminal.storeCapacity) {
 			                for(let resourceType in creep.carry) {
 			                        creep.transfer(terminal, resourceType);
