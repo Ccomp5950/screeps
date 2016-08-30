@@ -100,7 +100,6 @@
 			if(Game.rooms[roomM] == undefined) {
 				continue;
 			}
-			return;
 			let roomLabs = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
 			for(labs in roomLabs) {
 				let lab = roomLabs[labs];
