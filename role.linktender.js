@@ -127,12 +127,12 @@ module.exports = {
 					if(resource == "energy") continue;
 					if(terminal.store[resource] != undefined) {
 						if(terminal.store[resource] < creep.memory.maxTerminalMineral && storage.store[resource] != undefined) {
-							creep.say(resource + Math.floor(terminal.store[resource]/1000) + "k");
 							creep.withdraw(storage, resource);
 							return;
 						}
 						if(terminal.store[resource] > creep.memory.maxTerminalMineral) {
 							creep.withdraw(terminal, resource, terminal.store[resource] - creep.memory.maxTerminalMineral);
+							return;
 						}
 					}
 				}
