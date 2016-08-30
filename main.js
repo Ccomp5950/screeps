@@ -29,7 +29,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         upgrader:       {namer:"upgrader",              minimum:1,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader')},
 			upgradertinder:	{namer:"upgradertinder",	minimum:1,	requirement:1800,	buildRestriction : true,        run: require('role.upgradertinder')},
 			remoteupgrader: {namer:"remoteupgrader",	minimum:0,	requirement:1550,	buildRestriction : true,	run: require('role.remoteupgrader')},
-			labtender:	{namer:"labtender",		minimum:0,      requirement:450,        buildRestriction : true,        run: require('role.labtinder')},
+			labtender:	{namer:"labtender",		minimum:0,      requirement:450,        buildRestriction : true,        run: require('role.labtender')},
 			groundskeeper:	{namer:"groundskeeper",		minimum:0,	requirement:2000,	buildRestriction : true,	run: require('role.groundskeeper')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
