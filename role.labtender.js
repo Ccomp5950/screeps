@@ -50,7 +50,7 @@ module.exports = {
 				return;
 			
 			} else {
-				console.log("Something fucked up happened with this lab tender";
+				console.log("Something fucked up happened with this lab tender");;
 			}
 		
 
