@@ -120,7 +120,7 @@
 					continue;
 				}
 				// REMOVE ME MOTHERFUCKER WHEN THIS IS PRODUCTION READY!
-				return;
+				//return;
 				
 				// OH SHIT SON.
 				if(labMem.react == true) {
