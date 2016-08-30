@@ -122,7 +122,7 @@ module.exports = function() {
 		body = this.buildBody({carry:6,move:3});
 		bodyset = true;
 		creepMem.combat = true;
-	]
+	}	
 	else if (roleName == "sapper") {
 		let Nparts = 0;
 		let base = 0;
