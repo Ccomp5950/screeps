@@ -92,14 +92,14 @@ module.exports = {
 				return;
 			} else { // Carrying Resources
 				if(hasTerminal && _.sum(terminal.store) < terminal.storeCapacity) {
-			                creep.say("here");
-					for(let resourceType in creep.carry) {
-			                        creep.transfer(terminal, resourceType);
+					for(let resource in creep.carry) {
+						creep.say(resource);
+			                        creep.transfer(terminal, resource);
 						return;
 			                }
 				} else if(hasStorage && _.sum(storage.store) < storage.storeCapacity) {
-                                        for(let resourceType in creep.carry) {
-                                                creep.transfer(storage, resourceType);
+                                        for(let resource in creep.carry) {
+                                                creep.transfer(storage, resource);
 						return;
                                         }
 				}
