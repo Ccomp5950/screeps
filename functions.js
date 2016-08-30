@@ -119,20 +119,18 @@
 				if(labMem.active != false || labMem.mineral == null || lab.cooldown > 0) {
 					continue;
 				}
-				// REMOVE ME MOTHERFUCKER WHEN THIS IS PRODUCTION READY!
-				//return;
-				
 				// OH SHIT SON.
 				if(labMem.react == true && lab.mineralAmount < lab.mineralCapacity) {
 					let mineral = labMem.mineral;
 					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[0]).first();
 					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[1]).first();
+					console.log("lab1: " + lab1.mineral + " lab2: " + lab2.mineral);
 					if(lab1 != undefined && lab2 != undefined) {
 						console.log("lab1: " + lab1.mineral + " lab2: " + lab2.mineral);
-						lab1 = Game.getObjectById(lab1.id);
-						lab2 = Game.getObjectById(lab2.id);
-						if(lab1.mineralAmount > 10 && lab2.mineralAmount > 10) {
-							console.log(lab.runReaction(lab1,lab2));
+						let lab1A = Game.getObjectById(lab1.id);
+						let lab2A = Game.getObjectById(lab2.id);
+						if(lab1A.mineralAmount > 10 && lab2A.mineralAmount > 10) {
+							console.log(lab.runReaction(lab1A,lab2A));
 						}
 					}
 				}
