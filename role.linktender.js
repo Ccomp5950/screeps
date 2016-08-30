@@ -95,14 +95,13 @@ module.exports = {
 					for(let resource in creep.carry) {
 						creep.say(resource);
 			                        creep.transfer(terminal, resource);
-						return;
 			                }
 				} else if(hasStorage && _.sum(storage.store) < storage.storeCapacity) {
                                         for(let resource in creep.carry) {
                                                 creep.transfer(storage, resource);
-						return;
                                         }
 				}
+
 			}
 		} else { // grab energy
 			if(hasLink && link.energy > 0) {
