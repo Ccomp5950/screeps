@@ -91,7 +91,7 @@ module.exports = {
 					continue;
 				}
 				if(lab.mineralAmount < 2000 && labMem.react == false) {
-					if(hasStorage && storage.store[labMem.mineral] != undefined && storage.store[labMem.mineral] > 1000) {
+					if(hasStorage && storage.store[labMem.mineral] != undefined && storage.store[labMem.mineral] > 400) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "storage";
@@ -99,7 +99,7 @@ module.exports = {
 							creep.moveTo(storage);
 						}
 						return;
-					} else if(hasTerminal && terminal.store[labMem.mineral] != undefined && terminal.store[labMem.mineral] > 1000) {
+					} else if(hasTerminal && terminal.store[labMem.mineral] != undefined && terminal.store[labMem.mineral] > 400) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "terminal";
