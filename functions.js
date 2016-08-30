@@ -131,6 +131,7 @@
 						lab1 = Game.getObjectById(lab1.id);
 						lab2 = Game.getObjectById(lab2.id);
 						if(lab1.mineralAmount > 10 && lab2.mineralAmount > 10) {
+							console.log("YAY");
 							lab.runReaction(lab1,lab2);
 						}
 					}
