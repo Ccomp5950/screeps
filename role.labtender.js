@@ -40,6 +40,7 @@ module.exports = {
 
 		var amount = null;
 		if(creep.memory.working) {
+			
 			let target = Game.getObjectById(creep.memory.lab);
 			if(target != undefined) {
 				if(creep.pos.getRangeTo(target) > 1) {
@@ -57,7 +58,19 @@ module.exports = {
 		} else { // grab energy
 
 			if(creep.memory.loading != null) {
-				let target = creep.room[creep.memory.loading_from];
+				let target = null;
+				if(creep.memory.loading_from == "lab") {
+					target = Game.getObjectById(creep.memory.lab);
+	                                if(creep.pos.getRangeTo(target) > 1) {
+	                                        creep.moveTo(target);
+	                                        return;
+	                                }	
+	                                creep.withdraw(target, creep.memory.loading);
+					creep.memory.lab = creep.room.storage.id;
+	                                return;
+				}
+			
+				target = creep.room[creep.memory.loading_from];
 				if(creep.pos.getRangeTo(target) > 1) {
 					creep.moveTo(target);
 					return;
@@ -65,6 +78,8 @@ module.exports = {
 				creep.withdraw(target, creep.memory.loading);
 				return;
 			}
+
+			
 
 			for(let index in creep.room.memory.labs) {
 				let labMem = creep.room.memory.labs[index];
@@ -92,7 +107,11 @@ module.exports = {
                                                         creep.moveTo(terminal);
                                                 }
                                                 return;
-					}
+					} else if(lab.mineralAmmount >= 2000 && labMem.emptyMe == true)
+						creep.memory.lab = lab.id;
+						creep.memory.loading = labMem.mineral;
+						creep.memory.loading_from = "lab";
+						return;
 				}
 			}
 			creep.approachAssignedFlag(0);	
