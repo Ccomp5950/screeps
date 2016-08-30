@@ -6,6 +6,7 @@ module.exports = {
 			creep.memory.link = null;
 			creep.memory.terminal = null;
 			creep.memory.putIn = null;
+			creep.memory.maxTerminalMineral = 20000;
 			creep.memory.maxTerminalEnergy = 100000;
 			creep.memory.nearbySpawn = null;
                         return;
@@ -77,13 +78,13 @@ module.exports = {
 				}
 				if(hasStorage) {
 					if(_.sum(storage.store) < storage.storeCapacity) {
-						creep.transfer(storage, RESOURCE_ENERGY);
+						creep.diposit(storage, RESOURCE_ENERGY);
 						return;
 					}
 				}
 				if(hasTerminal) {
 					if(terminal.store.energy == undefined || _.sum(terminal.store) < terminal.storeCapacity) {
-						creep.transfer(terminal, RESOURCE_ENERGY);
+						creep.diposit(terminal, RESOURCE_ENERGY);
 						return;
 					}
 				}
@@ -91,15 +92,19 @@ module.exports = {
 				console.log("[" + creep.name + "] Unable to process energy full up.");
 				return;
 			} else { // Carrying Resources
-				if(hasTerminal && _.sum(terminal.store) < terminal.storeCapacity) {
-					for(let resource in creep.carry) {
-						creep.say(resource);
-			                        creep.transfer(terminal, resource);
-			                }
+				let useTerminal = false;
+				for(let resource in creep.store) {
+
+					if(resource == "energy") continue;
+					if(terminal.store[resource] != undefined && terminal.store[resource] < 20000) {
+						useTerminal = true;
+						break;
+					}
+				}
+				if(hasTerminal && _.sum(terminal.store) < terminal.storeCapacity && useTerminal) {
+					creep.deposit(terminal);
 				} else if(hasStorage && _.sum(storage.store) < storage.storeCapacity) {
-                                        for(let resource in creep.carry) {
-                                                creep.transfer(storage, resource);
-                                        }
+					creep.deposit(storage);
 				}
 
 			}
@@ -120,8 +125,13 @@ module.exports = {
 			else if(hasTerminal && hasStorage){
 				for(let resource in storage.store) {
 					if(resource == "energy") continue;
-					if(terminal.store[resource] == undefined || terminal.store[resource] < 20000) {
-						creep.withdraw(storage, resource);
+					if(terminal.store[resource] == undefined) {
+						if(terminal.store[resource] < 20000) {
+							creep.withdraw(storage, resource);
+						}
+						if(terminal.store[resource] > 20000) {
+							creep.withdraw(terminal, resource, terminal.store[resource] - 20000);
+						}
 					}
 				}
 			}	
