@@ -369,11 +369,30 @@ module.exports = function() {
 		}
 	return true;
 	};
+	Creep.prototype.deposit =
+	function (target, resourceType) {
+		let creep = this;
+		if(target == undefined) {
+			return;
+		}
+		if(resourceType != undefined) {
+			creep.transfer(target, resourceType);
+			return;
+		}
+		for(let resource in creep.carry) {
+			if(creep.carry[resource] > 0) {
+				creep.transfer(target, resource);
+				return;
+			}
+		}
+
+	};
+
 	Creep.prototype.attackHostileCreep =
 	function() {
 		let creep = this;
 		let target = Game.getObjectById(creep.memory.killThis);
-		if(creep.memory.killThis == undefined || target == undefined || Game.time % 5 == 0) {
+		if(creep.memory.killThis == undefined || target == undefined || Game.time % 9 == 0) {
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
                                 filter: (c) => c.checkIfAlly() == false
 	                });
