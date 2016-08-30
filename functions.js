@@ -114,7 +114,7 @@
 				}
 				if(Memory.rooms[roomM].labs[labIndex].id == undefined) {
 					Memory.rooms[roomM].labs[labIndex].id = lab.id;
-					continue;
+					continuy;
 				}
 				labMem = Memory.rooms[roomM].labs[labIndex];
 				if(labMem.active != false || labMem.mineral == null || lab.cooldown > 0) {
@@ -129,6 +129,7 @@
 					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[0]).first();
 					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[1]).first();
 					if(lab1 != undefined && lab2 != undefined) {
+						console.log("lab1: " + lab1.mineral + " lab2: " + lab2.mineral);
 						lab1 = Game.getObjectById(lab1.id);
 						lab2 = Game.getObjectById(lab2.id);
 						if(lab1.mineralAmount > 10 && lab2.mineralAmount > 10) {
