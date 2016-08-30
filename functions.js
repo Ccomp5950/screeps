@@ -123,14 +123,16 @@
 				return;
 				
 				// OH SHIT SON.
-				if(labMem.react == true && labMem.length > 1) {
+				if(labMem.react == true) {
 					let mineral = labMem.mineral;
 					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral = labMem.react_labs[0]).first();
 					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral = labMem.react_labs[1]).first();
 					if(lab1 == undefined || lab1 == infinity || lab2 == undefined || lab2 == infinity) {
 						lab1 = Game.getObjectById(lab1.id);
 						lab2 = Game.getObjectById(lab2.id);
-						lab.react(lab1,lab2);
+						if(lab1.mineralAmount > 10 && lab2.mineralAmount > 10) {
+							lab.react(lab1,lab2);
+						}
 					}
 				}
 			
