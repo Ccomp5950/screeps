@@ -124,7 +124,6 @@
 					let mineral = labMem.mineral;
 					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[0]).first();
 					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[1]).first();
-					console.log("lab1: " + lab1.mineral + " lab2: " + lab2.mineral);
 					if(lab1 != undefined && lab2 != undefined) {
 						console.log("lab1: " + lab1.mineral + " lab2: " + lab2.mineral);
 						let lab1A = Game.getObjectById(lab1.id);
