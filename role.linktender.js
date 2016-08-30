@@ -136,7 +136,6 @@ module.exports = {
 							}
 				
 							creep.withdraw(terminal, resource, amount);
-							creep.say(resource);
 							return;
 						}
 					}
