@@ -126,6 +126,7 @@ module.exports = {
 				for(let resource in terminal.store) {
 					if(resource == "energy") continue;
 					if(terminal.store[resource] != undefined) {
+						creep.say("here");
 						if(terminal.store[resource] < creep.memory.maxTerminalMineral) {
 							creep.withdraw(storage, resource);
 						}
