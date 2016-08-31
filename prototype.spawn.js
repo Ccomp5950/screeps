@@ -54,7 +54,7 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
-	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false, boosted: false};
+	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false, needsBoosted: false};
 
 
 
@@ -73,6 +73,7 @@ module.exports = function() {
                 body = this.buildBody(probody, false);
                 bodyset = true;
                 creepMem.combat = true;
+		creepMem.needBoosted = true;
         }
 	else if(roleName == "groundskeeper") {
 		bodyset = true;
