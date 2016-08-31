@@ -64,7 +64,7 @@ module.exports = {
 				creep.setRespawnTime();
 			}
 		}
-		if(!creep.memory.healing && creep.hits >= creep.hitsMax - 1500) {
+		if(!creep.memory.healing && creep.hits >= (creep.hitsMax - 1500)) {
  			if(creep.attackSavedTarget()) return;
 	                if(creep.attackHostileStructure("FLAG")) return;
 	                if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
