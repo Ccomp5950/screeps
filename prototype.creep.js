@@ -561,6 +561,9 @@ module.exports = function() {
 			} 
 			if(range == fRange + 1) {
 				creep.setRespawnTime();
+				if(creep.memory.role == "towerdrainer") {
+				return false;
+				}
                         } if(range <= fRange) {
 				creep.setRespawnTime();
 				result = true;;
