@@ -64,7 +64,7 @@ module.exports = {
             // if we found one
             if (structure != null) {
                 // try to transfer energy, if it is not in range
-		if(creep.pos.getRangeTo(structure) >= 4 && carry < (creep.carryCapacity * .75)) {
+		if(creep.pos.getRangeTo(structure) >= 6 && carry < (creep.carryCapacity * .75)) {
 			creep.memory.working = false;
 			return;
 		}
@@ -73,9 +73,7 @@ module.exports = {
 			creep.moveTo(structure);
 			return;
 		}
-		for(var resourceType in creep.carry) {
-			creep.transfer(structure, resourceType);
-		}
+		creep.deposit(structure);
 		structure.iGotIt(creep);
             } else {
 		if(creep.carry.energy != creep.carryCapacity) {
