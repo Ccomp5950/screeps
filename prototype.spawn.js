@@ -54,7 +54,7 @@ module.exports = function() {
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
 	    var bodyset = false;
-	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false };
+	    var creepMem = { role: roleName, combat: false, source:null, spawnRoom: this.room.name, working: false, boosted: false};
 
 
 
