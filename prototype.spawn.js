@@ -129,10 +129,9 @@ module.exports = function() {
 		let base = 0;
 		let calcEnergy = energy - base;
 		let probody = {work:0,move:0};
-		let sapparts = Math.floor(calcEnergy / 250);
-                for(let i = 0; i < sapparts && Nparts <= 47; i++) {
-			Nparts += 3;
-                        probody.work++;
+		let sapparts = Math.floor(calcEnergy / 150);
+                for(let i = 0; i < sapparts && Nparts <= 48; i++) {
+			Nparts += 2;
 			probody.work++;
                         probody.move++;
                 }
