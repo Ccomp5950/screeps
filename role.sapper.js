@@ -78,7 +78,9 @@ module.exports = {
 					}
 				}
 			} else if (Game.flags.sapper.room == undefined &&  creep.room.name != Game.flags.sapper.room.name ) {
+				creep.memory.towercheck = 25;
 				creep.memory.hide = 5;
+				
 				return;
 			}
 		}
