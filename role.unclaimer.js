@@ -4,6 +4,7 @@ module.exports = {
 		if(creep.spawning) {
 			creep.setupSpawn();
 		}
+		creep.memory.setupTime = 250;
 		creep.setupFlag();
 		if(creep.gotoWaypoint()) return;
 		if(creep.approachAssignedFlag(0) == false) {
