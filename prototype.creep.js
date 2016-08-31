@@ -25,6 +25,24 @@ module.exports = function() {
 	function() {
 		return this.body.length * 3;
 	}
+
+	Creep.prototype.getBoosted =
+	function(boost) {
+		let creep = this;
+		if(creep.memory.boosted == false) {
+			let lab = creep.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType = STRUCTURE_LAB && s.mineralType == boost && s.mineralAmount > 20});
+			if(lab != undefined) {
+				if(creep.pos.getRangeTo(lab) > 1) {
+					creep.moveTo(lab);
+					return true;
+				}
+				lab.boost(creep);
+				creep.memory.boosted = true;
+				return false;				
+			}
+		}
+		return false;
+	}
 	
 
     Creep.prototype.customharvest =

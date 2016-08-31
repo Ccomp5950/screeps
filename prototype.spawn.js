@@ -59,10 +59,10 @@ module.exports = function() {
 
 
 	if(roleName == "towerdrainer") {
-		let Nparts = 6;
-                let base = 240;
+		let Nparts = 12;
+                let base = 540;
                 let calcEnergy = energy - base;
-                let probody = {tough:4,move:4,heal:0}
+                let probody = {tough:4,move:6,work:2,heal:0}
                 let defparts = Math.floor(calcEnergy / 300);
                 for(let i = 0; i < defparts && Nparts <= 48; i++) {
                         Nparts += 2;
