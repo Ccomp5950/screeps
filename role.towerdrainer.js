@@ -64,7 +64,18 @@ module.exports = {
 				creep.setRespawnTime();
 			}
 		}
-		if(!creep.memory.healing && creep.hits == creep.hitsMax) {
+		if(!creep.memory.healing && creep.hits >= creep.hitsMax - 1500) {
+ 			if(creep.attackSavedTarget()) return;
+	                if(creep.attackHostileStructure("FLAG")) return;
+	                if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+	                if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+	                if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+	                if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
+	                if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
+	                if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
+	                if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+
+
 			var targets = creep.pos.findInRange(FIND_CREEPS, 3 ,{
 					filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
 			});
