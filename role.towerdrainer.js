@@ -81,7 +81,8 @@ module.exports = {
 				}
 			
 			} else {
-	                        if(creep.attackSavedTarget()) return;
+	                        /*
+ 				if(creep.attackSavedTarget()) return;
 	                        if(creep.attackHostileStructure("FLAG")) return;
 	                        if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 	                        if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
@@ -90,6 +91,7 @@ module.exports = {
 	                        if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
 	                        if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
 	                        if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+				*/
 				creep.memory.healingother = false;
 			}
                 return
