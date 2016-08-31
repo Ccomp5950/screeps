@@ -36,7 +36,7 @@ module.exports = function() {
 					creep.moveTo(lab);
 					return true;
 				}
-				lab.boost(creep);
+				lab.boostCreep(creep);
 				creep.memory.needsBoosted = false;
 				creep.memory.boosted = true;
 				return false;				
