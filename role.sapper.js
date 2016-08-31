@@ -12,7 +12,7 @@ module.exports = {
                         }
                 }
 		if(creep.gotoWaypoint()) return;
-		creep.getAwayFromEdge();
+		//creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
 		var hide = creep.memory.hide;
