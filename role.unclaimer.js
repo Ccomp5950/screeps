@@ -9,9 +9,8 @@ module.exports = {
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
-
                 let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-			filter: (s) => s.structureType == STRUCTURE_CONTROLLER
+			filter: (s) => s.structureType == STRUCTURE_CONTROLLER && !s.my
 		});
                 if (target != undefined) {
                             if (creep.pos.getRangeTo(target) > 1) {
