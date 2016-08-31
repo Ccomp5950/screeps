@@ -39,6 +39,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         scout:          {namer:"scout",                 minimum:1,      requirement:50,		buildRestriction : true,        run: require('role.scout')},
                         raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         claimer:        {namer:"claimer",               minimum:1,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
+			unclaimer:      {namer:"unclaimer",             minimum:0,      requirement:3250,       buildRestriction : true,        run: require('role.unclaimer')},
 			gc:		{namer:"gc",			minimum:0,      requirement:2800,       buildRestriction : true,        run: require('role.garbagecollector')},
 			actualclaimer:  {namer:"actualclaimer",		minimum:0,      requirement:650,        buildRestriction : true,        run: require('role.actualclaimer')},
 			feeder:		{namer:"feeder",		minimum:0,	requirement:1100,	buildRestriction : true,	run: require('role.feeder')}

@@ -179,6 +179,10 @@ module.exports = function() {
 		body = this.buildBody({claim:1,move:1})
 		bodyset = true;
 	}
+	else if(roleName == "unclaimer") {
+                body = this.buildBody({claim:5,move:5})
+                bodyset = true;
+	}
 	else if (roleName == "remoteupgrader") {
 		body = this.buildBody({work:10,carry:1,move:10});
 		bodyset = true;
