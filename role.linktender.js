@@ -22,11 +22,11 @@ module.exports = {
 			return;
 		}
 
-		let nearbySpawn = creep.pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_SPAWN });
+		var nearbySpawn = creep.pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_SPAWN });
 			
 		if(nearbySpawn.length > 0) {
 			creep.drivebyRestore();
-			let hasSpawn = true;
+			hasSpawn = true;
 			for(let index in nearbySpawn) {
 				let spawn = nearbySpawn[index];
 				if(spawn.energy < spawn.energyCapacity) {
@@ -35,7 +35,7 @@ module.exports = {
 			}
 		}
 
-		let carry = _.sum(creep.carry);
+		var carry = _.sum(creep.carry);
 		if (creep.memory.working == true && carry == 0) {
 			creep.memory.working = false;
 		}
@@ -44,15 +44,15 @@ module.exports = {
 			creep.memory.source = null;
 		}
 
-		let storage = creep.room.storage;
+		var storage = creep.room.storage;
 		if(storage != undefined) {
 			hasStorage = true;
 		}
-		let link = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK});
+		var link = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK});
 		if(link != undefined) {
 			hasLink = true;
 		}
-		let terminal = creep.room.terminal;
+		var terminal = creep.room.terminal;
 		if(terminal != undefined) {
 			hasTerminal = true;
 		}
