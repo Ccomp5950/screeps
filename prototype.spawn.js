@@ -166,6 +166,7 @@ module.exports = function() {
 		}
 		bodyset = true;
 		creepMem.combat = true;
+		creepMem.needsBoosted = true;
 	}
 	else if (roleName == "claimer") {
 		if(energy >= 2600) {
