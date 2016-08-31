@@ -30,7 +30,7 @@ module.exports = function() {
 	function(boost) {
 		let creep = this;
 		if(creep.memory.needsBoosted == true) {
-			let lab = creep.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LAB && s.mineralType == boost && s.mineralAmount > 20});
+			let lab = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LAB && s.mineralType == boost && s.mineralAmount > 20});
 			if(lab != undefined) {
 				if(creep.pos.getRangeTo(lab) > 1) {
 					creep.moveTo(lab);
