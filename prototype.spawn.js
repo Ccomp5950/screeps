@@ -73,7 +73,7 @@ module.exports = function() {
                 body = this.buildBody(probody, false);
                 bodyset = true;
                 creepMem.combat = true;
-		creepMem.needBoosted = true;
+		creepMem.needsBoosted = true;
         }
 	else if(roleName == "groundskeeper") {
 		bodyset = true;
