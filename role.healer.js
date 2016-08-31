@@ -5,7 +5,11 @@ module.exports = {
 			creep.setupSpawn();
 			return;
 		}
+
+		if(creep.getBoosted("LHO2")) return;
 		creep.setupFlag();
+
+
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
