@@ -33,7 +33,7 @@ module.exports = {
 			return;
 		}
 		var frange = 0;
-		var taunt = false;
+		var taunt = true;
 		if(creep.memory.hop == false) {
 			creep.getAwayFromEdge()
 		}
