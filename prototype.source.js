@@ -35,4 +35,33 @@ module.exports = function() {
                 }
         return false;
         }
+	Source.prototype.energyHarvested =
+	function() {
+		let s = this;
+		let amount = 0;
+		if(Memory.InvaderTracker == undefined) {
+			tmpa = {};
+			tmpa[s.id] = {respawning: -1, energy: s.energy};
+			Memory.InvaderTracker = tmpa;
+			
+		}
+		if(Memory.InvaderTracker[s.id] == undefined) {
+			Memory.InvaderTracker[s.id] = {respawning: -1, energy: s.energy};
+		}
+	
+		let ticks = -1;
+		if(s.ticksToRegeneration == undefined || s.energy == 3000 || Memory.InvaderTracker[s.id].respawning == -1) {
+			ticks = -1;
+		}else if(s.energy != Memory.InvaderTracker[s.id].energy) {
+			amount = Memory.InvaderTracker[s.id].energy - s.energy;
+		}
+
+		if(s.ticksToRegeneration != undefined) {
+			ticks = s.ticksToRegeneration;
+		}
+
+                Memory.InvaderTracker[s.id].respawning = ticks;
+                Memory.InvaderTracker[s.id].energy = s.energy;
+		return amount;
+	}
 };
