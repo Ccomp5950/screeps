@@ -82,6 +82,7 @@ module.exports.loop = function () {
 					filter: (c) => c.checkIfAlly() == false
 			});
 		}
+		Memory.stats['room.' + room + '.totalCreeps'] = Memory.rooms[room].totalCreeps;
 		Memory.rooms[room].totalCreeps = 0;
 		if(Game.time % 100 == 0) {
 			if(Game.rooms[room] != undefined 
@@ -119,7 +120,6 @@ module.exports.loop = function () {
 		worstThreatRating = -2;
 		biggestThreat[room] = null;
 		biggestThreatRating[room] = -2;
-		Memory.stats['room.' + room + '.totalCreeps'] = Memory.rooms[room].totalCreeps;
 		if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
 			Memory.stats['room.' + room + '.underAttack'] = 1
 			redAlert = true;
