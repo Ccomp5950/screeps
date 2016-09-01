@@ -39,6 +39,7 @@ for (let spawnKey in spawns) {
   Memory.stats['spawn.' + spawn.name + '.defenderIndex'] = spawn.memory['defenderIndex']
 }
 
+/*
 Memory.stats['cpu.CreepManagers'] = creepManagement
 Memory.stats['cpu.Towers'] = towersRunning
 Memory.stats['cpu.Links'] = linksRunning
@@ -46,6 +47,7 @@ Memory.stats['cpu.SetupRoles'] = roleSetup
 Memory.stats['cpu.Creeps'] = functionsExecutedFromCreeps
 Memory.stats['cpu.SumProfiling'] = sumOfProfiller
 Memory.stats['cpu.Start'] = startOfMain
+*/
 Memory.stats['cpu.bucket'] = Game.cpu.bucket
 Memory.stats['cpu.limit'] = Game.cpu.limit
 Memory.stats['cpu.stats'] = Game.cpu.getUsed() - lastTick
