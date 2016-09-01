@@ -50,6 +50,6 @@ Memory.stats['cpu.Start'] = startOfMain
 */
 Memory.stats['cpu.bucket'] = Game.cpu.bucket
 Memory.stats['cpu.limit'] = Game.cpu.limit
-Memory.stats['cpu.stats'] = Game.cpu.getUsed() - lastTick
+//Memory.stats['cpu.stats'] = Game.cpu.getUsed() - lastTick
 Memory.stats['cpu.getUsed'] = Game.cpu.getUsed()
 
