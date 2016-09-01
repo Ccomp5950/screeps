@@ -47,6 +47,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 
 module.exports.loop = function () {
 	profiler.wrap(function() {
+	Memory.stats.tickStartCPU = Game.cpu.getUsed()
 	require('stats');
 	memorymgmt.master();
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
@@ -226,5 +227,6 @@ module.exports.loop = function () {
 	for(spawn in Game.spawns) {
 		Game.spawns[spawn].handlespawn(roles,underAttack[Game.spawns[spawn].room.name]);
 	}
+	Memory.stats.tickCPU = Game.cpu.getUsed()
 });
 };
