@@ -28,6 +28,10 @@ module.exports = {
                 // if not in range, move towards the controller
                 creep.moveTo(creep.room.controller);
             }
+	    let container = Game.getObjectById(creep.memory.container);
+	    if(container != null && creep.pos.getRangeTo(container) < 2 && container.store[RESOURCE_ENERGY] > 10) {
+			creep.withdraw(container, RESOURCE_ENERGY);
+	    }
         }
         // if creep is supposed to harvest energy from source
         else {
