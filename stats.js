@@ -25,7 +25,7 @@ for (let roomKey in rooms) {
 
     if (room.storage) {
       stored = room.storage.store.energy;
-      storedTotal = room.storage.storeCapacity[RESOURCE_ENERGY]
+      storedTotal = _.sum(room.storage.store)
     } else {
       stored = 0
       storedTotal = 0
@@ -42,6 +42,7 @@ for (let roomKey in rooms) {
     }
 
     Memory.stats['room.' + room.name + '.storedEnergy'] = stored
+    Memory.stats['room.' + room.name + '.storedAll'] = storedTotal
     Memory.stats['room.' + room.name + '.terminalEnergy'] = terminal
     Memory.stats['room.' + room.name + '.terminalAll'] = terminalfull
 
