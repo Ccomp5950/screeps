@@ -57,6 +57,7 @@ module.exports = {
 					continue;
 				}
 				Memory.stats['room.' + room + '.requiredCreeps'] += Memory.rooms[room].role[role].minimum;
+				Memory.stats['room.' + room + '.totalCreeps'] = Memory.rooms[room].totalCreeps;
 				Memory.rooms[room].role[role].current = 0;
 			}
 		}
