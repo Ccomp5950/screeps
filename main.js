@@ -140,6 +140,8 @@ module.exports.loop = function () {
 			}
 			console.log("[" + room + "]OH FUCK " + meaniesA[room].length + " creeps from an asshole named " + meaniename + " Biggest Threat: " + biggestThreatRating[room]);
 		}
+		Memory.stats['room.' + room + '.underAttack'] = underAttack[room];
+
 	}
     
 	var numberOfCreeps = _.size(Memory.creeps);
