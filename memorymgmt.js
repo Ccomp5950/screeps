@@ -50,11 +50,13 @@ module.exports = {
 		for(let room in Memory.rooms) {
 			let roomM = Memory.rooms[room];
 			Memory.rooms[room].currentCreeps = 0;
+			Memory.stats['room.' + room + '.requiredCreeps'] = 0;
 			for(let role in roomM.role) {
 				if(role == "[object Object]") {
 					delete Memory.rooms[room].role[role];
 					continue;
 				}
+				Memory.stats['room.' + room + '.requiredCreeps'] += Memory.rooms[room].role[role].minimum;
 				Memory.rooms[room].role[role].current = 0;
 			}
 		}
