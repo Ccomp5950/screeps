@@ -111,8 +111,8 @@ module.exports.loop = function () {
 	var underAttack = [];
 	var biggestThreat = [];
 	var biggestThreatRating = [];
-	Memory.stats['room.' + room + '.underAttack'] = 0
 	for(let room in Memory.rooms) {
+		Memory.stats['room.' + room + '.underAttack'] = 0
 		redAlert = false;
 		underAttack[room] = false;
 		worstThreat = null;
