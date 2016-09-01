@@ -18,15 +18,33 @@ for (let roomKey in rooms) {
     var stored = 0
     var storedTotal = 0
 
+    var terminal = 0
+    var terminalfull = 0
+    var terminalTotal = 0;
+    
+
     if (room.storage) {
-      stored = room.storage.store[RESOURCE_ENERGY]
+      stored = room.storage.store.energy;
       storedTotal = room.storage.storeCapacity[RESOURCE_ENERGY]
     } else {
       stored = 0
       storedTotal = 0
     }
 
+    if (room.terminal) {
+	terminal = room.terminal.store.energy;
+	terminalfull = _.sum(room.terminal.store);
+	terminalTotal = room.terminal.storeCapacity;
+    } else {
+        terminal = 0
+        terminalfull = 0
+        terminalTotal = 0
+    }
+
     Memory.stats['room.' + room.name + '.storedEnergy'] = stored
+    Memory.stats['room.' + room.name + '.terminalEnergy'] = terminal
+    Memory.stats['room.' + room.name + '.terminalAll'] = terminalfull
+
   }else {
     Memory.stats['room.' + room.name + '.myRoom'] = undefined
   }
