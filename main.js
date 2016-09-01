@@ -111,6 +111,7 @@ module.exports.loop = function () {
 	var underAttack = [];
 	var biggestThreat = [];
 	var biggestThreatRating = [];
+	Memory.stats['room.' + room + '.underAttack'] = 0
 	for(let room in Memory.rooms) {
 		redAlert = false;
 		underAttack[room] = false;
@@ -119,6 +120,7 @@ module.exports.loop = function () {
 		biggestThreat[room] = null;
 		biggestThreatRating[room] = -2;
 		if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
+			Memory.stats['room.' + room + '.underAttack'] = 1
 			redAlert = true;
 			dontBuild = true;
 			underAttack[room] = true;
@@ -140,7 +142,6 @@ module.exports.loop = function () {
 			}
 			console.log("[" + room + "]OH FUCK " + meaniesA[room].length + " creeps from an asshole named " + meaniename + " Biggest Threat: " + biggestThreatRating[room]);
 		}
-		Memory.stats['room.' + room + '.underAttack'] = underAttack[room] ? 1 : 0;
 
 	}
     
