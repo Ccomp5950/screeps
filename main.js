@@ -47,7 +47,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 
 module.exports.loop = function () {
 	profiler.wrap(function() {
-	require('stats');
+	//require('stats');
 	memorymgmt.master();
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
 	// check for memory entries of died creeps by iterating over Memory.creeps
