@@ -119,6 +119,7 @@ module.exports.loop = function () {
 		worstThreatRating = -2;
 		biggestThreat[room] = null;
 		biggestThreatRating[room] = -2;
+		Memory.stats['room.' + room + '.totalCreeps'] = Memory.rooms[creep.memory.spawnRoom].totalCreeps;
 		if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
 			Memory.stats['room.' + room + '.underAttack'] = 1
 			redAlert = true;
