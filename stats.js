@@ -14,6 +14,7 @@ for (let roomKey in rooms) {
     Memory.stats['room.' + room.name + '.energyAvailable'] = room.energyAvailable;
     Memory.stats['room.' + room.name + '.energyCapacityAvailable'] = room.energyCapacityAvailable;
     var lastProgress = room.controller.progress - Memory.stats['room.' + room.name + '.controllerProgress'];
+    console.log("[" + room.name + "] Progress: "+ room.controller.progress);
     Memory.stats['room.' + room.name + '.controllerIncrease'] = lastProgress;
     Memory.stats['room.' + room.name + '.controllerProgress'] = room.controller.progress
     Memory.stats['room.' + room.name + '.controllerProgressTotal'] = room.controller.progressTotal
