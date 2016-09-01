@@ -1,5 +1,6 @@
 // Put in your main loop
-
+module.exports = {
+	runStats: function() {	
 if (Memory.stats == undefined) {
   Memory.stats = {}
 }
@@ -73,4 +74,5 @@ Memory.stats['cpu.bucket'] = Game.cpu.bucket
 Memory.stats['cpu.limit'] = Game.cpu.limit
 //Memory.stats['cpu.stats'] = Game.cpu.getUsed() - lastTick
 Memory.stats['cpu.getUsed'] = Game.cpu.getUsed()
-
+}
+}

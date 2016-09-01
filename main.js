@@ -12,6 +12,7 @@ const profiler = require('screeps-profiler');
 //profiler.enable();
 require('functions');
 //require('role');
+var stats = require('stats');
 var memorymgmt = require('memorymgmt');
 var needed = require('getNeeded');
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
@@ -48,7 +49,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 module.exports.loop = function () {
 	profiler.wrap(function() {
 	Memory.stats.tickStartCPU = Game.cpu.getUsed()
-	require('stats');
+	stats.runStats();
 	memorymgmt.master();
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
 	// check for memory entries of died creeps by iterating over Memory.creeps
