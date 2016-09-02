@@ -69,20 +69,20 @@ module.exports = {
                 const LEVEL2 = 400000;
                 const LEVEL3 = 600000;
                 const LEVEL4 = 650000;
-		const 20PARTS = 2200;
-		const 10PARTS = 1100;
-		const 4PARTS = 550;
-		const 1PART = 200;		
+		const PARTS20 = 2200;
+		const PARTS10 = 1100;
+		const PARTS4 = 550;
+		const PART1 = 200;		
                 if(energy >= LEVEL4) {
-                        return 20PARTS;
+                        return PARTS20;
                 } else if (energy >= LEVEL3) {
-                        return 20PARTS;
+                        return PARTS20;
                 } else if (energy >= LEVEL2) {
-                        return 10PARTS;
+                        return PARTS10;
                 } else if (energy >= LEVEL1) {
-                        return 4PARTS;
+                        return PARTS4;
                 } else if (energy >= LEVEL0) {
-                        return 1PART;
+                        return PART1;
                 } else {
                         return 0;
                 }
