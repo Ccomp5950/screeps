@@ -58,7 +58,7 @@ module.exports = {
 		} else {
 			return 0;
 		}
-	}
+	},
         upgraderenergy:
         function(room) {
                 var storage = Game.room[room].storage;
