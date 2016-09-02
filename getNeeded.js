@@ -37,8 +37,8 @@ module.exports = {
 	
 	upgrader:
 	function(room) {
-		var storage = Game.room[room].storage;
-		var terminal = Game.room[room].terminal;
+		var storage = Game.rooms[room].storage;
+		var terminal = Game.rooms[room].terminal;
 		var energy = storage.store.energy + terminal.store.energy;
 		const LEVEL0 = 250000;
 		const LEVEL1 = 300000;
@@ -61,8 +61,8 @@ module.exports = {
 	},
         upgraderenergy:
         function(room) {
-                var storage = Game.room[room].storage;
-                var terminal = Game.room[room].terminal;
+                var storage = Game.rooms[room].storage;
+                var terminal = Game.rooms[room].terminal;
                 var energy = storage.store.energy + terminal.store.energy;
                 const LEVEL0 = 250000;
                 const LEVEL1 = 300000;
