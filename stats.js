@@ -8,7 +8,7 @@ if (Memory.stats == undefined) {
 if(Game.rooms["E49S36"] != undefined) {
 	let controller = Game.rooms["E49S36"].controller;
 	let rcl = controller.level;
-	let downgrade = controller.ticksToDowngrade;
+	let ticks = controller.ticksToDowngrade;
 	Memory.stats['combat.scouted.rcl'] = rcl;
 	Memory.stats['combat.scouted.ticks'] = ticks;
 }
