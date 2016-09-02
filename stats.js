@@ -16,8 +16,8 @@ if(isNullOrUndefined(Memory.tick) || Memory.tick.ticks > 3000 )
         Memory.tick.totalTickTime = 0;
         Memory.tick.ticks = 0;
         Memory.tick.lastTick = new Date();
-        Memory.stats.['tick.avg'] = 0;
-        Memory.stats.['tick.lastAvg'] = lastAvg;
+        Memory.stats['tick.avg'] = 0;
+        Memory.stats['tick.lastAvg'] = lastAvg;
     }
     else
     {
