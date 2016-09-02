@@ -46,7 +46,7 @@ module.exports = {
 	                }
 	            }
 	    } else {
-		creep.approachAssignedFlag(1);
+		creep.approachAssignedFlag(0);
                 return;
 		}
 	}
