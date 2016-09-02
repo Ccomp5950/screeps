@@ -5,6 +5,14 @@ if (Memory.stats == undefined) {
   Memory.stats = {}
 }
 
+if(Game.rooms["E49S36"] != undefined) {
+	let controller = Game.rooms["E49S36"].controller;
+	let rcl = controller.level;
+	let downgrade = controller.ticksToDowngrade;
+	Memory.stats['combat.scouted.rcl'] = rcl;
+	Memory.stats['combat.scouted.ticks'] = ticks;
+}
+
 var rooms = Game.rooms
 var spawns = Game.spawns
 for (let roomKey in rooms) {
