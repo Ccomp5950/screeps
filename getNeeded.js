@@ -6,7 +6,7 @@ module.exports = {
 			Memory.rooms[room].role[role].requirement = energy;
 			return energy;
 		} else if(Memory.rooms[room].role[role] != undefined) {
-			return Memory.rooms[room].role[role].requirment;
+			return Memory.rooms[room].role[role].requirement;
 		}
 		return 0;
 	},
