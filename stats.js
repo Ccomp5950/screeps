@@ -4,7 +4,7 @@ module.exports = {
 if (Memory.stats == undefined) {
   Memory.stats = {}
 }
-if(isNullOrUndefined(Memory.tick) || Memory.tick.ticks > 3000 )
+if(Memory.tick == undefined || Memory.tick.ticks > 3000 )
     {
         var lastAvg = 0;
         if(!isNullOrUndefined(Memory.stats['tick']))
