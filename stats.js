@@ -29,7 +29,7 @@ if(isNullOrUndefined(Memory.tick) || Memory.tick.ticks > 3000 )
         Memory.tick.totalTickTime += difference;
         Memory.tick.lastTick = now;
         Memory.stats['tick.avg'] = Memory.tick.totalTickTime / Memory.tick.ticks;
-        Memory.stats['tick.avg'] = (Memory..stats['tick.avg'].toFixed(2) / 1000);
+        Memory.stats['tick.avg'] = (Memory.stats['tick.avg'].toFixed(2) / 1000);
     }
 
 
