@@ -100,7 +100,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "scout") {
-		body = this.buildBody({move:4});
+		body = this.buildBody({move:1});
 		bodyset = true;
 		creepMem.combat = true;
 	}
