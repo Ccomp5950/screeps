@@ -3,10 +3,10 @@ module.exports = {
 		function(role,room) {
 		if(this[role+"energy"] != undefined) {
 			let energy = this[role+"energy"](room);
-			Memory.rooms[room].role[role].required = energy;
+			Memory.rooms[room].role[role].requirment = energy;
 			return energy;
 		} else if(Memory.rooms[room].role[role] != undefined) {
-			return Memory.rooms[room].role[role].required;
+			return Memory.rooms[room].role[role].requirment;
 		}
 		return 0;
 	},
