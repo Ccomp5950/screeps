@@ -2,7 +2,9 @@ module.exports = {
 	getEnergy:
 		function(role,room) {
 		if(this[role+"energy"] != undefined) {
-			return this[role+"energy"](room);
+			let energy = this[role+"energy"](room);
+			Memory.rooms[room].role[role].required = energy;
+			return energy;
 		} else if(Memory.rooms[room].role[role] != undefined) {
 			return Memory.rooms[room].role[role].required;
 		}
@@ -11,7 +13,9 @@ module.exports = {
 
 	getNeeded: function(role,room) {
 		if(this[role] != undefined) {
-			return this[role](room);
+			let numberOcreeps = this[role](room);
+			Memory.rooms[room].role[role].minimum = numberOcreeps;
+			return numberOcreeps;
 		} else if(Memory.rooms[room].role[role] != undefined) {
 				return Memory.rooms[room].role[role].minimum;
 		} 
