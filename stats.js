@@ -48,7 +48,7 @@ for (let roomKey in rooms) {
     Memory.stats['room.' + room.name + '.storedAll'] = storedTotal
     Memory.stats['room.' + room.name + '.terminalEnergy'] = terminal
     Memory.stats['room.' + room.name + '.terminalAll'] = terminalfull
-
+    Memory.stats['room.' + room.name + '.roomEnergy'] = stored + terminal;
   }else {
     Memory.stats['room.' + room.name + '.myRoom'] = undefined
   }
