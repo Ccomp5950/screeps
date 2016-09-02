@@ -437,9 +437,14 @@ module.exports = function() {
 			target = yugeThreat;
                 }
                 if (target != undefined) {
-				creep.memory.killThis = target.id;
-                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-                	                creep.moveTo(target, {maxRooms:1});
+			creep.memory.killThis = target.id;
+			if (creep.pos.getRangeTo(target) > 1) {
+		                if(creep.hits < creep.hitsMax) {
+		                        creep.heal(creep);
+		                }
+               	                creep.moveTo(target, {maxRooms:1});
+			} else {
+				creep.attack(target);
 			}
 			
 		return true;
