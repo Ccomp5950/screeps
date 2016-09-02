@@ -37,8 +37,21 @@ module.exports = {
 	
 	upgrader:
 	function(room) {
+		var gcl = Game.rooms[room].controller.level;
+		if(gcl == 4) {
+			return 1;
+		}
+		if(gcl >= 3) {
+			return 3;
+		}
 		var storage = Game.rooms[room].storage;
 		var terminal = Game.rooms[room].terminal;
+		if(terminal == undefined) {
+			terminal = {store: {energy: 100000}};
+		}
+		if(storage == undefined) {
+			storage = {store: {energy: 150010}};
+		}
 		var energy = storage.store.energy + terminal.store.energy;
 		const LEVEL0 = 250000;
 		const LEVEL1 = 300000;
@@ -61,6 +74,14 @@ module.exports = {
 	},
         upgraderenergy:
         function(room) {
+                var gcl = Game.rooms[room].controller.level;
+                if(gcl == 4 || gcl == 3 || gcl == 2) {
+                        return 550;
+                }
+                if(gcl == 1) {
+                        return 200;
+                }
+
                 var storage = Game.rooms[room].storage;
                 var terminal = Game.rooms[room].terminal;
                 var energy = storage.store.energy + terminal.store.energy;
