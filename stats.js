@@ -4,6 +4,36 @@ module.exports = {
 if (Memory.stats == undefined) {
   Memory.stats = {}
 }
+if(isNullOrUndefined(Memory.tick) || Memory.tick.ticks > 3000 )
+    {
+        var lastAvg = 0;
+        if(!isNullOrUndefined(Memory.stats['tick']))
+        {
+            lastAvg = Memory.stats['tick.avg'];
+        }
+        
+        Memory.tick = {};
+        Memory.tick.totalTickTime = 0;
+        Memory.tick.ticks = 0;
+        Memory.tick.lastTick = new Date();
+        Memory.stats.['tick.avg'] = 0;
+        Memory.stats.['tick.lastAvg'] = lastAvg;
+    }
+    else
+    {
+        var lastTick = new Date(Memory.tick.lastTick);
+        var now = new Date();
+        var difference = now.getTime() - lastTick.getTime();
+
+        Memory.tick.ticks++;
+        Memory.tick.totalTickTime += difference;
+        Memory.tick.lastTick = now;
+        Memory.stats['tick.avg'] = Memory.tick.totalTickTime / Memory.tick.ticks;
+        Memory.stats['tick.avg'] = (Memory..stats['tick.avg'].toFixed(2) / 1000);
+    }
+
+
+
 
 if(Game.rooms["E49S36"] != undefined) {
 	let controller = Game.rooms["E49S36"].controller;
