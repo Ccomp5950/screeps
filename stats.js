@@ -7,7 +7,7 @@ if (Memory.stats == undefined) {
 if(Memory.tick == undefined || Memory.tick.ticks > 3000 )
     {
         var lastAvg = 0;
-        if(!isNullOrUndefined(Memory.stats['tick']))
+        if(Memory.stats['tick'] != undefined)
         {
             lastAvg = Memory.stats['tick.avg'];
         }
