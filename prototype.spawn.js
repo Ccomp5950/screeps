@@ -236,6 +236,8 @@ module.exports = function() {
                         if(energyLeft < 0 || Nparts > 50) break;
                         feedbody.carry++;
                 }
+		body = this.buildBody(feedbody);
+		bodyset = true;
 	}
 	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher") {
 		let fetchbody = {};
