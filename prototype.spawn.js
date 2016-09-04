@@ -216,12 +216,30 @@ module.exports = function() {
 		body = this.buildBody(harvbody);
 		bodyset = true;
 	}
-	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "feeder" || roleName == "lgfetcher") {
+	else if (roleName == "feeder") {
+		let feedbody = {carry:0,move:0};
+		let energyLeft = energy;
+		let Nparts = 0;
+                while(energyLeft > 0 && Nparts < 50) {
+                        energyLeft -= 50;
+                        Nparts++;
+                        if(energyLeft < 0 || Nparts > 50) break;
+                        feedbody.move++;
+
+                        energyLeft -= 50;
+                        Nparts++;
+                        if(energyLeft < 0 || Nparts > 50) break;
+                        feedbody.carry++;
+
+                        energyLeft -= 50;
+                        Nparts++;
+                        if(energyLeft < 0 || Nparts > 50) break;
+                        feedbody.carry++;
+                }
+	}
+	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher") {
 		let fetchbody = {};
-		if(roleName == "feeder" && energy >= 2400) {
-			fetchbody = {carry:32,move:16};
-		}
-		else if(energy >= 2450) {
+		if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
 			if(energy >= 2600) {
 				fetchbody.work++;
