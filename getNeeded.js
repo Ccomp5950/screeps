@@ -71,9 +71,9 @@ module.exports = {
 		} else if (energy >= LEVEL1) {
 			return 2;
 		} else if (energy >= LEVEL0) {
-			return 1;
+			return 3;
 		} else {
-			return 0;
+			return 1;
 		}
 	},
         upgraderenergy:
@@ -109,7 +109,7 @@ module.exports = {
                 } else if (energy >= LEVEL0) {
                         return PART1;
                 } else {
-                        return 99999999999;
+                        return PART1;
                 }
         }	
 }
