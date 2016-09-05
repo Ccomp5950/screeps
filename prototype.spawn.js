@@ -88,8 +88,8 @@ module.exports = function() {
 		}
 	}
 	else if(roleName == "upgrader"){
-		if(energy >= 2200) {
-			body = this.buildBody({work:20,carry:2,move:2});
+		if(energy >= 2400) {
+			body = this.buildBody({work:20,carry:2,move:6});
 		} else if(energy >= 1100) {
 			body = this.buildBody({work:10,carry:1,move:1});
 		} else if(energy >= 550){
