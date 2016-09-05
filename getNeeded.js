@@ -45,7 +45,7 @@ module.exports = {
 		if(gcl == 4) {
 			return 1;
 		}
-		if(gcl >= 3) {
+		if(gcl <= 3) {
 			return 3;
 		}
 		var storage = Game.rooms[room].storage;
@@ -109,7 +109,7 @@ module.exports = {
                 } else if (energy >= LEVEL0) {
                         return PART1;
                 } else {
-                        return 0;
+                        return 99999999999;
                 }
         }	
 }
