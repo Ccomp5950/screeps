@@ -149,11 +149,13 @@ module.exports = function() {
 		body = this.buildBody({work:5,move:1});
 		}
 		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "killdozer") {
 		if(energy >= 7650 ) {
 			bodyset = true;
 			body = this.buildBody({move:16,work:6,heal:25});
+			creepMem.needsBoosted = true;
 		}
 	}
 	else if (roleName == "healer") {
