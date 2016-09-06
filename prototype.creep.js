@@ -409,13 +409,13 @@ module.exports = function() {
 	};
 	Creep.prototype.onRampart =
 	function() {
-		let creep = this;
-		let finder = creep.pos.look(LOOK_STRUCTURES);
+		var creep = this;
+		var finder = creep.pos.look(LOOK_STRUCTURES);
 		if(finder.length == 0) {
 			return false;
 		}
 		for(let structureI of finder){
-			let structure = finder[structureI];
+			var structure = finder[structureI];
 			if(structure == undefined) {
 				continue;
 			}
