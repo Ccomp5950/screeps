@@ -89,8 +89,7 @@ module.exports.loop = function () {
 		if(Game.time % 100 == 0) {
 			if(Game.rooms[room] != undefined 
 			&& Game.rooms[room].controller != undefined
-			&& Game.rooms[room].controller.progress != undefined 
-			&& Game.rooms[room].controller.level != 8) 
+			&& Game.rooms[room].controller.progress != undefined) 
 			{
 				let progressleft = Game.rooms[room].controller.progressTotal - Game.rooms[room].controller.progress;
 				let level = Game.rooms[room].controller.level + 1;
@@ -100,7 +99,11 @@ module.exports.loop = function () {
 					totalstorage += Game.rooms[room].storage.store.energy;
 					storage = "[Storage: " + Game.rooms[room].storage.store.energy.toLocaleString() + " energy]";
 				}
-				console.log("[" + room + "]<span style='color: yellow;'> Progress Left until RCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
+				if(Game.rooms[room].controller.level != 8) {
+					console.log("[" + room + "]<span style='color: yellow;'> Progress Left until RCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
+				} else {
+					console.log("[" + room + "]<span style='color: yellow;'> YAY RCL 8 "+ storage + "</span>"
+				}
 			}
 		}
 	}
@@ -115,7 +118,7 @@ module.exports.loop = function () {
 	var biggestThreat = [];
 	var biggestThreatRating = [];
 	for(let room in Memory.rooms) {
-		Memory.stats['room.' + room + '.underAttack'] = 0
+		Memory.stats['room.' + room + '.underAttack'] = 0;
 		redAlert = false;
 		underAttack[room] = false;
 		worstThreat = null;
@@ -123,7 +126,7 @@ module.exports.loop = function () {
 		biggestThreat[room] = null;
 		biggestThreatRating[room] = -2;
 		if(meaniesA[room] != undefined && meaniesA[room].length > 0) {
-			Memory.stats['room.' + room + '.underAttack'] = 1
+			Memory.stats['room.' + room + '.underAttack'] = 1;
 			redAlert = true;
 			dontBuild = true;
 			underAttack[room] = true;
