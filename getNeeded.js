@@ -82,7 +82,6 @@ module.exports = {
         upgraderenergy:
         function(room) {
                 var gcl = Game.rooms[room].controller.level;
-		console.log("[" + room + "] RCL level is " + gcl);
                 if(gcl == 4 || gcl == 3 || gcl == 2) {
                         return 550;
                 }
