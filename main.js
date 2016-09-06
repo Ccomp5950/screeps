@@ -102,7 +102,7 @@ module.exports.loop = function () {
 				if(Game.rooms[room].controller.level != 8) {
 					console.log("[" + room + "]<span style='color: yellow;'> Progress Left until RCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
 				} else {
-					console.log("[" + room + "]<span style='color: yellow;'> YAY RCL 8 "+ storage + "</span>"
+					console.log("[" + room + "]<span style='color: yellow;'> YAY RCL 8 "+ storage + "</span>");
 				}
 			}
 		}
