@@ -410,7 +410,7 @@ module.exports = function() {
 	Creep.prototype.onRampart =
 	function() {
 		var creep = this;
-		var finder = creep.pos.look(LOOK_STRUCTURES);
+		var finder = creep.pos.lookFor(LOOK_STRUCTURES);
 		if(finder.length == 0) {
 			return false;
 		}
