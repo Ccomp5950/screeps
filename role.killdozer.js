@@ -8,7 +8,7 @@ module.exports = {
 			creep.memory.kill = false;
 			return;
 		}
-		 if(creep.getBoosted("LHO2")) return;
+		if(creep.getBoosted("LHO2")) return;
 		//if(creep.gotoWaypoint()) return;
 		//creep.getAwayFromEdge();
 		if(creep.memory.healing || creep.hits < 2400) {
@@ -20,7 +20,7 @@ module.exports = {
 		}
 		var flag = Game.flags.killdozer;		
 		if(creep.pos.getRangeTo(flag) > 999) {
-			creep.moveTo(flag);
+			creep.moveTo(flag, {ignoreRoads:true});
 			return;
 		}
 		creep.setRespawnTime();
