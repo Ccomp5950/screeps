@@ -42,7 +42,7 @@ module.exports = {
 	upgrader:
 	function(room) {
 		var gcl = Game.rooms[room].controller.level;
-		if(gcl == 4 || gcl == 8) {
+		if(gcl == 4 || gcl >= 8) {
 			return 1;
 		}
 		if(gcl <= 3) {
@@ -85,7 +85,7 @@ module.exports = {
                 if(gcl == 1) {
                         return 200;
                 }
-		if(gcl == 8) {
+		if(gcl >= 8) {
 			return 1750;
 		}
 
