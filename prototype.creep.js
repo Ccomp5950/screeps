@@ -432,7 +432,7 @@ module.exports = function() {
 		let target = Game.getObjectById(creep.memory.killThis);
 		if(creep.memory.killThis == undefined || creep.memory.killThis == -1 || target == undefined || Game.time % 9 == 0) {
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
-                                filter: (c) => c.checkIfAlly() == false && c.onRampart == false
+                                filter: (c) => c.checkIfAlly() == false && c.onRampart() == false
 	                });
 			let yugeThreat = null;
 			let yugestThreat = -1;
