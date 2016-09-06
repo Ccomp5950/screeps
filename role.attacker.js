@@ -38,7 +38,9 @@ module.exports = {
 		/*
 		}
 		*/
+		creep.say("yar!");
                 if(creep.attackHostileCreep()) return;
+		
                 if(creep.attackSavedTarget()) return;
 /*                if(creep.attackHostileStructure("FLAG")) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
