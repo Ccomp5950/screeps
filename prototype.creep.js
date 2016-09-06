@@ -411,6 +411,9 @@ module.exports = function() {
 	function() {
 		let creep = this;
 		let finder = creep.pos.look(LOOK_STRUCTURES);
+		if(finder.length == 0) {
+			return false;
+		}
 		for(let structureI of finder){
 			let structure = finder[structureI];
 			if(structure.structureType == STRUCTURE_RAMPART) {
