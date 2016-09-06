@@ -23,7 +23,7 @@ module.exports = {
 		}
 		if(creep.memory.ready == true) {
 		*/
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
                 if(creep.getAwayFromEdge()) {
                         return;
                 }

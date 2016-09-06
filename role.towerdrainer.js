@@ -14,7 +14,7 @@ module.exports = {
 
 		if(creep.getBoosted("LHO2")) return;
 
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
 		if(creep.memory.healing || creep.hits != creep.hitsMax) {
                         creep.memory.healingothers = false;
                 }
