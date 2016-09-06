@@ -9,7 +9,7 @@ module.exports = {
 			return;
 		}
 		if(creep.getBoosted("LHO2")) return;
-		//if(creep.gotoWaypoint()) return;
+		if(creep.gotoWaypoint()) return;
 		//creep.getAwayFromEdge();
 		if(creep.memory.healing || creep.hits < 2400) {
 			creep.memory.healing = true;
