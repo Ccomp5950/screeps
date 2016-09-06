@@ -30,7 +30,10 @@ module.exports = {
 				creep.say("NO KILL?");
 			}
 			creep.heal(creep);
-			return;
+	                if(creep.pos.getRangeTo(flag) > 999) {
+	                        creep.moveTo(flag, {ignoreRoads:true});
+	                }
+		return;
 		}
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
