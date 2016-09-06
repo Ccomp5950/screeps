@@ -59,18 +59,23 @@ module.exports = function() {
 
 
 	if(roleName == "towerdrainer") {
-		let Nparts = 12;
-                let base = 540;
-                let calcEnergy = energy - base;
-                let probody = {tough:4,move:6,work:2,heal:0}
-                let defparts = Math.floor(calcEnergy / 300);
-                for(let i = 0; i < defparts && Nparts <= 48; i++) {
-                        Nparts += 2;
-                        probody.heal++;
-                        probody.move++;
+		if(energy >= 7500) {
+			body = this.buildBody({move:25,heal:25});
+			bodyset = true;
+		} else {
+			let Nparts = 12;
+	                let base = 540;
+	                let calcEnergy = energy - base;
+	                let probody = {tough:4,move:6,work:2,heal:0}
+	                let defparts = Math.floor(calcEnergy / 300);
+	                for(let i = 0; i < defparts && Nparts <= 48; i++) {
+	                        Nparts += 2;
+	                        probody.heal++;
+	                        probody.move++;
 			
-                }
-                body = this.buildBody(probody, false);
+	                }
+	                body = this.buildBody(probody, false);
+		}
                 bodyset = true;
                 creepMem.combat = true;
 		creepMem.needsBoosted = true;
