@@ -407,6 +407,18 @@ module.exports = function() {
 		}
 
 	};
+	Creep.prototype.onRampart =
+	function() {
+		let creep = this;
+		let finder = creep.pos.look(LOOK_STRUCTURES);
+		for(let structureI of finder){
+			let structure = finder[structureI];
+			if(structure.structureType == STRUCTURE_RAMPART) {
+				return true;
+			}
+		}
+	return false;
+	};
 
 	Creep.prototype.attackHostileCreep =
 	function() {
@@ -414,7 +426,7 @@ module.exports = function() {
 		let target = Game.getObjectById(creep.memory.killThis);
 		if(creep.memory.killThis == undefined || target == undefined || Game.time % 9 == 0) {
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
-                                filter: (c) => c.checkIfAlly() == false
+                                filter: (c) => c.checkIfAlly() == false && c.onRampart == false
 	                });
 			let yugeThreat = null;
 			let yugestThreat = -1;
