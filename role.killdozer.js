@@ -30,7 +30,7 @@ module.exports = {
 				creep.say("NO KILL?");
 			}
 			creep.heal(creep);
-	                if(creep.pos.getRangeTo(flag) > 999) {
+	                if(creep.pos.getRangeTo(flag) > 1) {
 	                        creep.moveTo(flag, {ignoreRoads:true});
 	                }
 		return;
