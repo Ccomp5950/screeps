@@ -416,7 +416,7 @@ module.exports = function() {
 		}
 		for(let structureI of finder){
 			var structure = finder[structureI];
-			console.log("Structure Check: " + structure);
+			console.log("Structure Check(" + structureI + "): " + structure);
 			if(structure == undefined) {
 				continue;
 			}
