@@ -416,6 +416,9 @@ module.exports = function() {
 		}
 		for(let structureI of finder){
 			let structure = finder[structureI];
+			if(structure == undefined) {
+				continue;
+			}
 			if(structure.structureType == STRUCTURE_RAMPART) {
 				return true;
 			}
