@@ -65,12 +65,16 @@ module.exports = {
 		const LEVEL2 = 400000;
 		const LEVEL3 = 600000;
 		const LEVEL4 = 650000;
-		if(energy >= LEVEL4) {
+		const LEVEL5 = 700000;
+
+		if(energy >= LEVEL5) {
+			return 3;
+		} else if(energy >= LEVEL4) {
 			return 3;
 		} else if (energy >= LEVEL3) {
 			return 2;
 		} else if (energy >= LEVEL2) {
-			return 3;
+			return 2;
 		} else if (energy >= LEVEL1) {
 			return 2;
 		} else if (energy >= LEVEL0) {
@@ -100,22 +104,26 @@ module.exports = {
                 const LEVEL2 = 400000;
                 const LEVEL3 = 600000;
                 const LEVEL4 = 650000;
+		const LEVEL5 = 700000;
+		const PARTS25 = 3200;
 		const PARTS20 = 2400;
 		const PARTS10 = 1100;
 		const PARTS4 = 550;
 		const PART1 = 200;		
-                if(energy >= LEVEL4) {
-                        return PARTS20;
+		if(energy >= LEVEL5) {
+			return PARTS25;			// 75
+                } else if(energy >= LEVEL4) {
+                        return PARTS20;			// 60
                 } else if (energy >= LEVEL3) {
-                        return PARTS20;
+                        return PARTS20;			// 40
                 } else if (energy >= LEVEL2) {
-                        return PARTS10;
+                        return PARTS10;			// 20			
                 } else if (energy >= LEVEL1) {
-                        return PARTS4;
+                        return PARTS4;			// 8
                 } else if (energy >= LEVEL0) {
-                        return PART1;
+                        return PART1;			// 3
                 } else {
-                        return PART1;
+                        return PART1;			// 1
                 }
         }	
 }
