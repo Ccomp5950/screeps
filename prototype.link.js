@@ -6,7 +6,7 @@ module.exports = function() {
 		if(link.room.memory.links == undefined) {
 			link.room.memory.links = {};
 		}
-		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
+		let linkPos = link.getIndexString();
 		let linkMem = link.room.memory.links[linkPos];
 		if(linkMem == undefined) {
 			linkMem = {id: link.id, priority: 0};
@@ -21,7 +21,7 @@ module.exports = function() {
 		if(link.cooldown > 0 || link.energy < link.energyCapacity) {
 			return;
 		}
-		let linkPos = link.pos.x.toString() + "_" + link.pos.y.toString();
+		let linkPos = link.getIndexString();
 		let linkMem = link.room.memory.links[linkPos];
 		for(let i = 0; i < linkMem.priority; i++) {
 			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority() == i});
@@ -42,5 +42,5 @@ module.exports = function() {
 				}
 			}
 		}
-	}
+	};
 };
