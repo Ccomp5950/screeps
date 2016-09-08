@@ -55,7 +55,6 @@ module.exports = {
 			}
 		}
 		
-		});
 		let container = Game.getObjectById(creep.memory.container);
 		if(container == null ) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
