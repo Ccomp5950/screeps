@@ -45,11 +45,13 @@ module.exports = {
 			return;
 		}
 		let links = creep.pos.findInRange(FIND_STRUCTURES, 1, { filter: (s) => s.structureType == STRUCTURE_LINK
+		});
 		if(links.length > 0) {
 			let link = link[0];
 			if(link.energy > 10) {
 				creep.withdraw(link, RESOURCE_ENERGY);
 				creep.memory.link = link.id;
+				return;
 			}
 		}
 		
