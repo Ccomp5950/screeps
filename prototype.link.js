@@ -27,7 +27,7 @@ module.exports = function() {
 			let targets = link.room.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.getPriority() == i});
 			for(let targetM in targets) {
 				let target = targets[targetM];
-				if(target.energy == 0 && target.cooldown <= 5) {
+				if(target.energy <= 26 && target.cooldown <= 5) {
 					let energyCapacity = target.energyCapacity - target.energy;
 					let transferEnergy = Math.min(link.energy, energyCapacity);
 					let result = link.transferEnergy(target, transferEnergy);
