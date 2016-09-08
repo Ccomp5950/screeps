@@ -28,6 +28,12 @@ module.exports = {
                 // if not in range, move towards the controller
                 creep.moveTo(creep.room.controller);
             }
+	    let link = Game.getObjectById(creep.memory.link);
+	    if(link != null && creep.pos.getRangeTo(link) <= 1 && link.energy > 10) {
+                        creep.withdraw(link, RESOURCE_ENERGY);
+			return;
+            }
+
 	    let container = Game.getObjectById(creep.memory.container);
 	    if(container != null && creep.pos.getRangeTo(container) < 2 && container.store[RESOURCE_ENERGY] > 10) {
 			creep.withdraw(container, RESOURCE_ENERGY);
@@ -38,6 +44,16 @@ module.exports = {
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
 		}
+		let links = creep.pos.findInRange(FIND_STRUCTURES, 1, { filter: (s) => s.structureType == STRUCTURE_LINK
+		if(links.length > 0) {
+			let link = link[0];
+			if(link.energy > 10) {
+				creep.withdraw(link, RESOURCE_ENERGY);
+				creep.memory.link = link.id;
+			}
+		}
+		
+		});
 		let container = Game.getObjectById(creep.memory.container);
 		if(container == null ) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
