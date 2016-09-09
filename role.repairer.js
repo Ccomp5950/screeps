@@ -70,11 +70,13 @@ module.exports = {
             if (structure != undefined) {
 		creep.memory.repairing = structure.id;
                 // try to repair it, if it is out of range
-                if (creep.repair(structure) == ERR_NOT_IN_RANGE) {
-                    // move towards it
-		    creep.repairOnTheMove();
-                    creep.moveTo(structure);
-                }
+		if(creep.pos.getRangeTo(structure) > 1) {
+			creep.repairOnTheMove();
+			creep.moveTo(structure);
+		}
+		else {
+			creep.repair(structure);
+		}					
 		structure.iGotIt(creep);
             }
             // if we can't fine one
