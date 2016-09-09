@@ -171,7 +171,7 @@
 					}
 				}
 				if(needsTower == true) {
-					createConstructionSite(flag.pos, STRUCTURE_TOWER)
+					room.createConstructionSite(flag.pos, STRUCTURE_TOWER)
 					return;
 				} else {
 				nameNumber++;
