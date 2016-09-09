@@ -599,7 +599,7 @@ module.exports = function() {
 					if(waypointFlag != undefined) {
 						if(creep.pos.getRangeTo(waypointFlag) > 2) {
 							creep.moveTo(waypointFlag, option);
-							return;
+							return false;
 						} else {
 							creep.memory.rolewaypoint = -1;
 						}
