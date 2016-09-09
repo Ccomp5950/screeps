@@ -317,6 +317,9 @@ module.exports = function() {
 		body.push(MOVE);
             }
 	}
+
+	if(body.length == 0) return -6;
+
             // create creep with the created body and the given role
 	    let checkResult = this.canCreateCreep(body, name);
 	    
