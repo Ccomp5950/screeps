@@ -580,6 +580,7 @@ module.exports = function() {
 				creep.memory.pos.y = creep.pos.y;
 				creep.memory.pos.timer = 0;
 			} else {
+				creep.memory.pos.timer++;
 				if(creep.memory.pos.timer > 3) {
 					option = null;
 				}
