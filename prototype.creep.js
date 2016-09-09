@@ -200,7 +200,7 @@ module.exports = function() {
         function() {
             var creep = this;
             var source = Game.getObjectById(creep.memory.source);
-            if(source == null) {
+            if(source == null || source.pos.getRangeTo(creep) > 1) {
                         source = creep.pos.findClosestByRange(FIND_SOURCES);
                         if(source != undefined) {
                                 creep.memory.source = source.id;
