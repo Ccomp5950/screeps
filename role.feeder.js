@@ -32,6 +32,7 @@ module.exports = {
         }
 
 		if(creep.memory.working == true) {
+			creep.memory.waypointfeeder = true;
 			if(creep.memory.getToFlag == null) {
 				creep.memory.getToFlag = true;
 			}
@@ -79,6 +80,14 @@ module.exports = {
 
 			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
+				let waypointflag = Game.flag.waypointfeeder;
+				if(creep.memory.waypointfeeder != false) {
+					if(creep.pos.getRangeTo(waypointflag) > 2) {
+						creep.moveTo(waypointflag);
+					} else {
+						creep.memory.waypointfeeder = false;
+					}
+				}
 				creep.moveTo(homepos);
 				return;
 			}
