@@ -15,7 +15,10 @@ module.exports = {
                 let flag = Game.flags[creep.memory.myFlag];
 		let home = creep.memory.spawnRoom;	
 		let storage = creep.room.storage;
-
+		if(creep.memory.homex == undefined) {
+			creep.memory.homex = creep.pos.x;
+			creep.memory.homey = creep.pos.y;
+		}
 		let energy = creep.pos.lookFor(LOOK_ENERGY);
 			if(energy.length) {
 				creep.pickup(energy[0])
@@ -78,7 +81,7 @@ module.exports = {
 		}else {
 			creep.memory.getToFlag = true;
 
-			let homepos = new RoomPosition(41, 44, home)
+			let homepos = new RoomPosition(creep.memory.homex, creep.memory.homey, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				let waypointflag = Game.flags.waypointfeeder;
 				if(creep.memory.waypointfeeder != false) {
