@@ -46,9 +46,15 @@ module.exports = {
 			return 1;
 		}
 		if(gcl == 4) {
+                        if(Memory.rooms[room].remotelyUpgraded == true) {
+                                return 0;
+                        }
 			return 1;
 		}
 		if(gcl <= 3) {
+			if(Memory.rooms[room].remotelyUpgraded == true) {
+				return 0;
+			}
 			return 3;
 		}
 		var storage = Game.rooms[room].storage;
