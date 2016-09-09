@@ -52,6 +52,12 @@ module.exports = {
 			
 			
 		} else {
+			if(creep.approachAssignedFlag(999) == false) {
+				if(creep.carry.energy > 0) {
+					creep.drop(RESOURCE_ENERGY);
+				}
+				return;
+			}
 			creep.memory.container = null;
 			creep.customharvest();
 		}
