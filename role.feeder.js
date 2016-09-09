@@ -96,8 +96,18 @@ module.exports = {
                                 } else {
                                         creep.withdraw(terminal, RESOURCE_ENERGY);
                                 }
-
+			} else {
+				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType = STRUCTURE_CONTAINER});
+				if(storage != null) {
+	                                if(creep.pos.getRangeTo(storage) > 1) {
+	                                        creep.moveTo(storage);
+	                                        return;
+	                                } else {
+	                                        creep.withdraw(storage, RESOURCE_ENERGY);
+                                	}
+				}
 			}
+			
 			
 
 		}
