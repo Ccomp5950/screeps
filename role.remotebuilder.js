@@ -5,7 +5,7 @@ module.exports = {
                         return;
                 }
 	creep.setupFlag();
-	if(creep.approachAssignedFlag(1) == false) {
+	if(creep.approachAssignedFlag(999) == false) {
 		return;
 	}
 	creep.getAwayFromEdge();
