@@ -48,9 +48,16 @@ module.exports = {
 				}
 			}
 
-	                let target = creep.pos.findClosestByRange(FIND_CREEPS, {
-                                        filter: (c) => c.my == true && c.id != creep.id && c.memory.role=="remotebuilder" && _.sum(c.carry) < c.carryCapacity
-                        });
+	                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                        filter: (s) => s.structureType == STRUCTURE_SPAWN
+                           	    && s.energy < s.energyCapacity
+			});
+
+			if(target == undefined) {
+		                target = creep.pos.findClosestByRange(FIND_CREEPS, {
+	                                        filter: (c) => c.my == true && c.id != creep.id && c.memory.role=="remotebuilder" && _.sum(c.carry) < c.carryCapacity
+	                        });
+			}
 			if(target != undefined) {
 				if(creep.pos.getRangeTo(target) > 1) {
 					creep.moveTo(target, {maxRooms:1});
