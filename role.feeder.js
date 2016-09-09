@@ -84,6 +84,7 @@ module.exports = {
 				if(creep.memory.waypointfeeder != false) {
 					if(creep.pos.getRangeTo(waypointflag) > 2) {
 						creep.moveTo(waypointflag);
+						return;
 					} else {
 						creep.memory.waypointfeeder = false;
 					}
