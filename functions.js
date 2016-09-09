@@ -148,8 +148,8 @@
 				let flag = Game.flags[name];
 		                var sfinder = flag.pos.lookFor(LOOK_STRUCTURES);
 				var cfinder = flag.pos.lookFor(LOOK_CONSTRUCTION_SITES);
-				if(finder.length > 0) {
-			                for(let structureI of finder){
+				if(sfinder.length > 0) {
+			                for(let structureI of sfinder){
 			                        var structure = structureI;
 			                        if(structure == undefined) {
 			                                continue;
