@@ -101,7 +101,7 @@ module.exports = {
 					creep.withdraw(storage, RESOURCE_ENERGY);
 				}
 			} else {
-				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER});
+				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store.energy > 350});
 				if(storage != undefined) {
 	                                if(creep.pos.getRangeTo(storage) > 1) {
 	                                        creep.moveTo(storage);
