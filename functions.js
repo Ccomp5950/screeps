@@ -181,19 +181,3 @@
 	                }
 		}
         };
-
-
-
-
-
-				if(flag.pos.lookFor(LOOK_STRUCTURE
-		                nameNumber++;
-		                name=roleName + nameNumber.toString();
-		                if(nameNumber > 100) {
-		                        break;
-                }
-            }
-
-		}
-		
-	}
