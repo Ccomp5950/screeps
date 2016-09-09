@@ -68,6 +68,7 @@ module.exports = {
                                         creep.memory.container = container.id
                                 if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                                         creep.moveTo(container, {maxRooms:1});
+					return;
                                 };
                         } else {
                                 creep.memory.container = null;
@@ -75,9 +76,11 @@ module.exports = {
                                 if(target) {
                                         if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
                                                 creep.moveTo(target, {maxRooms:1});
+						return;
                                         }
                                 }
                         }
+			creep.approachAssignedFlag(0);
 		}
         
     }
