@@ -81,7 +81,7 @@ module.exports = function() {
             if(source == null) {
 		source = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_CONTAINER && (nopullcan == null || s.id != nopullcan.id) && s.store[RESOURCE_ENERGY] > carryLeft });
 		if(source != undefined) {
-			creep.memory.souce = source.id;
+			creep.memory.source = source.id;
 		} else {
 			creep.memory.source = null;
 		}
