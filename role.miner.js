@@ -57,12 +57,14 @@ module.exports = {
                         if(creep.pos.getRangeTo(structure) > 1) {
                                 game.memory.container = null;
                         }
-                        creep.memory.container = structure.id;
-                        if(structure.hits < structure.hitsMax) {
-                                creep.repair(structure);
-                                return;
-                        }
-                        creep.transfer(structure, RESOURCE_ENERGY);
+			if(structure != undefined) {
+	                        creep.memory.container = structure.id;
+	                        if(structure.hits < structure.hitsMax) {
+	                                creep.repair(structure);
+	                                return;
+	                        }
+	                        creep.transfer(structure, RESOURCE_ENERGY);
+			} 
 		}
     }
 };
