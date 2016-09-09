@@ -80,7 +80,7 @@ module.exports = {
 
 			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
-				let waypointflag = Game.flag.waypointfeeder;
+				let waypointflag = Game.flags.waypointfeeder;
 				if(creep.memory.waypointfeeder != false) {
 					if(creep.pos.getRangeTo(waypointflag) > 2) {
 						creep.moveTo(waypointflag);
