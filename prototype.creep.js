@@ -87,7 +87,7 @@ module.exports = function() {
 		}
 	    }
             if(source == null && creep.getActiveBodyparts(WORK) > 0) {
-                        source = creep.pos.findClosestByPath(validSources[creep.room.name]);
+			source = creep.pos.findClosestByPath(FIND_SOURCES, { filter: (s) => s.energy > 0);
                         if(source != undefined) {
                                 creep.memory.source = source.id;
                         } else {
@@ -113,7 +113,7 @@ module.exports = function() {
 	                        if(source.energy < 20) {
 	                                creep.memory.source = null;
 					if(creep.getActiveBodyParts(WORK) > 0) {
-						source = creep.pos.findClosestByPath(validSources[creep.room.name]);
+						source = creep.pos.findClosestByRange(validSources[creep.room.name]);
 					}
 		                        if(source != undefined) {
 		                                creep.memory.source = source.id;
