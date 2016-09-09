@@ -40,7 +40,7 @@ module.exports = {
 			creep.mine();
 		}
                 if(creep.pos.getRangeTo(structure) > 1) {
-			game.memory.container = null;
+			creep.memory.container = null;
 			structure = null;
                         }
 		if (creep.memory.container == -1) {
