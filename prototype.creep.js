@@ -87,7 +87,7 @@ module.exports = function() {
 		}
 	    }
             if(source == null && creep.getActiveBodyparts(WORK) > 0) {
-			source = creep.pos.findClosestByPath(FIND_SOURCES, { filter: (s) => s.energy > 0);
+			source = creep.pos.findClosestByPath(FIND_SOURCES, { filter: (s) => s.energy > 0});
                         if(source != undefined) {
                                 creep.memory.source = source.id;
                         } else {
