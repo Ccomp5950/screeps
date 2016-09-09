@@ -88,7 +88,7 @@ module.exports.loop = function () {
 		}
 		Memory.stats['room.' + room + '.totalCreeps'] = Memory.rooms[room].totalCreeps;
 		Memory.rooms[room].totalCreeps = 0;
-		if(Game.time % 100 == 0) {
+		if(Game.time % 20 == 0) {
 			if(Game.rooms[room] != undefined 
 			&& Game.rooms[room].controller != undefined
 			&& Game.rooms[room].controller.progress != undefined) 
@@ -109,7 +109,7 @@ module.exports.loop = function () {
 			}
 		}
 	}
-	if(Game.time % 100 == 0) {
+	if(Game.time % 20 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 		let room = Game.rooms.E48S31;
 		let recepient = "E46S31";
