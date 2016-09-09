@@ -4,8 +4,10 @@ module.exports = {
                 if(creep.spawning) {
 			creep.setupSpawn();
 			creep.setupFlag();
+			
                         return;
                 }
+		creep.memory.rolewaypoint = -1;
 		creep.setupFlag();
 		if(creep.memory.myFlag == -1) {
 			return;
