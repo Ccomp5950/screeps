@@ -198,8 +198,10 @@ module.exports = function() {
                 bodyset = true;
 	}
 	else if (roleName == "remoteupgrader") {
-		body = this.buildBody({work:10,carry:1,move:10});
-		bodyset = true;
+		if(energy >= 2000) {
+			body = this.buildBody({work:10,carry:10,move:10});
+			bodyset = true;	
+		}
 	}
         else if (roleName == "remoteharvester") {
 		body = this.buildBody({work:2,carry:9,move:11});
