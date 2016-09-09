@@ -574,6 +574,21 @@ module.exports = function() {
 		let creep = this;
                 let flag = Game.flags[creep.memory.MyFlag];
 		let result = false;
+		if(creep.memory.pos != undefined) {
+			if(creep.memory.pos.x != creep.pos.x || creep.memory.pos.y != creep.pos.y) {
+				creep.memory.pos.x = creep.pos.x;
+				creep.memory.pos.y = creep.pos.y;
+				creep.memory.pos.timer = 0;
+			} else {
+				if(creep.memory.pos.timer > 3) {
+					option = null;
+				}
+			}
+
+		} else {
+                                creep.memory.pos = {x: creep.pos.x, y: creep.pos.y, timer:0};
+
+		}
                 if(flag != undefined) {
 			var flagRoom = flag.pos.roomName;
                         var range = creep.pos.getRangeTo(flag);
@@ -582,7 +597,7 @@ module.exports = function() {
 					var waypointFlag = Game.flags[flagRoom + "_waypoint"];
 					if(waypointFlag != undefined) {
 						if(creep.pos.getRangeTo(waypointFlag) > 2) {
-							creep.moveTo(waypointFlag);
+							creep.moveTo(waypointFlag, option);
 							return;
 						} else {
 							creep.memory.rolewaypoint = -1;
