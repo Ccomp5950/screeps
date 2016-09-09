@@ -92,8 +92,10 @@ module.exports = {
         upgraderenergy:
         function(room) {
                 var gcl = Game.rooms[room].controller.level;
+		var max = Game.rooms[room].availableEnergyCapacity;
                 if(gcl == 4 || gcl == 3 || gcl == 2) {
-                        return 550;
+			if(max >= 550) return 550;
+			return 200;
                 }
                 if(gcl == 1) {
                         return 200;
