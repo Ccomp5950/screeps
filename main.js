@@ -117,7 +117,7 @@ module.exports.loop = function () {
 		let terminal = room.terminal;
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 22000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			terminal.send("energy",80000, recepient);
+			terminal.send("energy",10000, recepient);
 		}
 	}
 
