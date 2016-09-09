@@ -575,7 +575,24 @@ module.exports = function() {
                 let flag = Game.flags[creep.memory.MyFlag];
 		let result = false;
                 if(flag != undefined) {
+			var flagRoom = flag.pos.roomName;
                         var range = creep.pos.getRangeTo(flag);
+			if(range > 999) {
+				if(creep.memory.rolewaypoint != -1) {
+					var waypointFlag = Game.flags[Game.flags[flagRoom + "_waypoint"];
+					if(Game.flags[Game.flags[flagRoom + "_waypoint"] != undefined) {
+						if(creep.pos.getRangeTo(waypointFlag) > 2) {
+							creep.moveTo(waypointFlag);
+							return;
+						} else {
+							creep.memory.rolewaypoint = -1;
+						}
+						
+					} else {
+						creep.memory.rolewaypoint = -1;
+					}
+				}
+			}
                         if(range > fRange) {
 				if(range - fRange < 5) {
 					option = null;
