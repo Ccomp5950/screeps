@@ -88,14 +88,6 @@ module.exports = {
 				} else {
 					creep.withdraw(storage, RESOURCE_ENERGY);
 				}
-
-			} else if(terminal != null) {
-                                if(creep.pos.getRangeTo(terminal) > 1) {
-                                        creep.moveTo(terminal);
-                                        return;
-                                } else {
-                                        creep.withdraw(terminal, RESOURCE_ENERGY);
-                                }
 			} else {
 				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType = STRUCTURE_CONTAINER});
 				if(storage != null) {
