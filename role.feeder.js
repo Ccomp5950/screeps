@@ -81,7 +81,7 @@ module.exports = {
 				return;
 			}
 			let storage = creep.room.storage;	
-			if(storage != null) {
+			if(storage != undefined) {
 				if(creep.pos.getRangeTo(storage) > 1) {
 					creep.moveTo(storage);
 					return;
@@ -89,8 +89,8 @@ module.exports = {
 					creep.withdraw(storage, RESOURCE_ENERGY);
 				}
 			} else {
-				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType = STRUCTURE_CONTAINER});
-				if(storage != null) {
+				storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER});
+				if(storage != undefined) {
 	                                if(creep.pos.getRangeTo(storage) > 1) {
 	                                        creep.moveTo(storage);
 	                                        return;
