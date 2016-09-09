@@ -133,3 +133,67 @@
 			}
 		}
 	}
+
+	global.handleBuild =
+	function(roomName) {
+		let room = Game.rooms[roomName];
+		let towers = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
+		let towerC = room.find(FIND_CONSTRUCTION_SITES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
+		let num = towers.length + towerC.length;
+		if(num < CONTROLLER_STRUCTURES.tower[room.controller.level]) {
+			    var nameNumber = 1;
+		            var name=roomName + "_tower" + nameNumber.toString();
+		            while(Game.flags[name] != undefined) {
+				let needsTower = true;
+				let flag = Game.flags[name];
+		                var sfinder = flag.pos.lookFor(LOOK_STRUCTURES);
+				var cfinder = flag.pos.lookFor(LOOK_CONSTRUCTION_SITES);
+				if(finder.length > 0) {
+			                for(let structureI of finder){
+			                        var structure = structureI;
+			                        if(structure == undefined) {
+			                                continue;
+			                        }
+			                        if(structure.structureType == STRUCTURE_TOWER) {
+			                                needsTower = false;
+						}
+					}
+	                        } 
+				if(cfinder.length > 0) {
+                                        for(let constructureI of cfinder){
+	                                        var constructure = constructureI;
+	                                        if(constructure == undefined) {
+	                                                continue;
+	                                        }
+	                                        if(constructure.structureType == STRUCTURE_TOWER) {
+	                                                needsTower = false;
+						}
+					}
+				}
+				if(needsTower == true) {
+					createConstructionSite(flag.pos, STRUCTURE_TOWER)
+					return;
+				} else {
+				nameNumber++;
+				name=roomName + "_tower" + nameNumber.toString();
+				}
+				
+	                }
+		}
+        };
+
+
+
+
+
+				if(flag.pos.lookFor(LOOK_STRUCTURE
+		                nameNumber++;
+		                name=roleName + nameNumber.toString();
+		                if(nameNumber > 100) {
+		                        break;
+                }
+            }
+
+		}
+		
+	}

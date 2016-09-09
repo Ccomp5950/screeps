@@ -73,6 +73,7 @@ module.exports.loop = function () {
 	let totalstorage = 0;
 	for(let room in Memory.rooms) {
 		if(Game.rooms[room] != undefined) {
+			if(Game.time % 100 == 0) handleBuild(room);
 			let sourcesA = Game.rooms[room].find(FIND_SOURCES);
 			validSources[room] = [];
 			for(let sourceM of sourcesA) {
