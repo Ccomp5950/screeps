@@ -47,7 +47,6 @@ module.exports = {
                         if(creep.room.memory != undefined && creep.room.memory.rampartMinHealth != undefined) {
                                 rampartMinHealth = creep.room.memory.rampartMinHealth;
                         }
-		creep.say(rampartMinHealth);
 		for(let tmpStructure of nextCandidates) {
 	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < rampartMinHealth) {
 	                        rampartCandidates.push(tmpStructure);
