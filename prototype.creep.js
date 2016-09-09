@@ -580,7 +580,7 @@ module.exports = function() {
 			if(range > 999) {
 				if(creep.memory.rolewaypoint != -1) {
 					var waypointFlag = Game.flags[Game.flags[flagRoom + "_waypoint"]];
-					if(Game.flags[Game.flags[flagRoom + "_waypoint"] != undefined) {
+					if(waypointFlag != undefined) {
 						if(creep.pos.getRangeTo(waypointFlag) > 2) {
 							creep.moveTo(waypointFlag);
 							return;
