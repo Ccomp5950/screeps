@@ -154,6 +154,8 @@ module.exports = function() {
 			body = this.buildBody({carry:1,move:6,work:6});
 		} else if(energy >= 850) {
 			body = this.buildBody({carry:1,move:4,work:6});
+		} else if(energy >= 600) {
+			body = this.buildBody({carry:1,work:5,move:1});
 		} else {
 			body = this.buildBody({work:5,move:1});
 		}
