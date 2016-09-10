@@ -188,6 +188,8 @@ module.exports = function() {
 			body = this.buildBody({claim:4,move:4});
 		} else if (energy >= 1300) {
 			body = this.buildBody({claim:2,move:2});
+		} else if (energy >= 650) {
+			body = this.buildBody({claim:1,move:1});
 		}
 		bodyset = true;
 	}
