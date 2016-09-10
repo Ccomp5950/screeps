@@ -453,7 +453,7 @@ module.exports = function() {
 					Memory.rooms[mySpawn.room.name].role[role.namer].current++;
 					break;
 				} else if(name < 0) { 
-					console.log("Tried to spawn a " + role.namer + " but got error " + name);
+					console.log("[" + mySpawn.name + "] Tried to spawn a " + role.namer + " but got error " + name);
 				}
 			}
 		}
