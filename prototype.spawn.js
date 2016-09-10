@@ -423,6 +423,9 @@ module.exports = function() {
 		} else {
 			Memory.rooms[mySpawn.room.name].goingToSpawn = [];
 			for(let roleM in roles) {
+				if(name < 0) {
+					name = undefined;
+				}
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
 				if(roleM == "undefined" || roleMem == undefined) continue;
