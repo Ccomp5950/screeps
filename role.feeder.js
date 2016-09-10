@@ -7,7 +7,6 @@ module.exports = {
 			
                         return;
                 }
-		creep.memory.rolewaypoint = -1;
 		creep.setupFlag();
 		if(creep.memory.myFlag == -1) {
 			return;
