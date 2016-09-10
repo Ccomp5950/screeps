@@ -44,6 +44,9 @@ module.exports = {
 		if(Memory.rooms[room].remotelyUpgraded == true) {
                                 return 0;
 		}
+		if(Memory.rooms[room].only1upgrader == true) {
+				return 1;
+		}
 		var gcl = Game.rooms[room].controller.level;
 		if(gcl == 8) {
 			return 1;
@@ -90,6 +93,9 @@ module.exports = {
         function(room) {
                 var gcl = Game.rooms[room].controller.level;
 		var max = Game.rooms[room].energyCapacityAvailable
+                if(Memory.rooms[room].only1upgrader == true) {
+                                return 200;
+                }
                 if(gcl == 4 || gcl == 3 || gcl == 2) {
 			if(max >= 550) return 550;
 			return 200;
