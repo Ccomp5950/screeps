@@ -86,6 +86,9 @@ module.exports = {
 			
 
 		}else {
+			if(creep.memory.setupTime > 500) {
+				creep.suicide();
+			}
 			creep.memory.getToFlag = true;
 
 			let homepos = new RoomPosition(creep.memory.homex, creep.memory.homey, home)
