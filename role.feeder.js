@@ -49,7 +49,8 @@ module.exports = {
 			}
 
 	                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: (s) => s.structureType == STRUCTURE_SPAWN
+                        filter: (s) => (s.structureType == STRUCTURE_SPAWN
+				    ||  s.structureType == STRUCTURE_EXTENSION)
                            	    && s.energy < s.energyCapacity
 			});
 
