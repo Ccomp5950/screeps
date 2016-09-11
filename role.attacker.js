@@ -9,7 +9,7 @@ module.exports = {
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
-		creep.memory.myFlag = "attack";
+		creep.memory.MyFlag = "attack";
 		if(creep.approachAssignedFlag(999)) return;
 		if(creep.attackAdjacentCreep()) return;
                 if(creep.attackHostileCreep()) return;
