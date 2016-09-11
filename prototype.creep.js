@@ -426,6 +426,17 @@ module.exports = function() {
 	return false;
 	};
 
+	Creep.prototype.attackAdjacentCreep =
+	function() {
+		let creep = this;
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1);
+		if(targets.length > 0) {
+		    creep.attack(targets[0]);
+		    return true;
+		}
+		return false;
+	};
+
 	Creep.prototype.attackHostileCreep =
 	function(ignoreEdgeHuggers) {
 		if(ignoreEdgeHuggers != true) {

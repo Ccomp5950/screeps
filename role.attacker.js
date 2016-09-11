@@ -17,7 +17,8 @@ module.exports = {
 					return;
 				}
 			}
-                //if(creep.attackHostileCreep()) return;
+		if(creep.attackAdjacentCreep()) return;
+                if(creep.attackHostileCreep()) return;
 		
                 if(creep.attackSavedTarget()) return;
                 if(creep.attackHostileStructure("FLAG")) return;
