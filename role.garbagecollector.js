@@ -47,10 +47,11 @@ module.exports = {
 				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 25);
 				if(target) {
 					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-					        creep.moveTo(target);
+					        if(creep.moveTo(target, {maxRooms:0}) == 0) {
+							return;
+						}
 				
 					}
-					return;
 				}
                         var feflagname = "free_energy";
                         var feflags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,feflagname.length) == feflagname })
