@@ -9,14 +9,8 @@ module.exports = {
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
-
-			if(Game.flags["attack"] != undefined) {
-				var range = creep.pos.getRangeTo(Game.flags.attack);
-				if(range > 999) {
-					creep.moveTo(Game.flags.attack);
-					return;
-				}
-			}
+		creep.memory.myFlag = "attack";
+		if(creep.approachAssignedFlag(999)) return;
 		if(creep.attackAdjacentCreep()) return;
                 if(creep.attackHostileCreep()) return;
 		
@@ -37,17 +31,7 @@ module.exports = {
                                 return;
                 }
 
-
-
-                        if(Game.flags["attack"] != undefined) {
-                                var range = creep.pos.getRangeTo(Game.flags.attack);
-                                if(range > 0) {
-                                        creep.moveTo(Game.flags.attack);
-                                        return;
-                                }
-                        }
-
-
+		creep.approachAssignedFlag(0);
         }
     
 };
