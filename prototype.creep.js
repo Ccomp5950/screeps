@@ -474,7 +474,7 @@ module.exports = function() {
 		                if(creep.hits < creep.hitsMax) {
 		                        creep.heal(creep);
 		                }
-               	                creep.moveTo(target, {maxRooms:0});
+               	                creep.moveTo(target, {maxRooms:1, ignoreRoads:true});
 			} else {
 				creep.attack(target);
 			}
