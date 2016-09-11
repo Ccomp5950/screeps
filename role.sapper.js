@@ -26,7 +26,7 @@ module.exports = {
 			towercheck = creep.memory.towercheck;
 		}
 		if(creep.hits < 3000) {
-			creep.memory.towercheck = 25;
+			creep.memory.towercheck = 50;
 			towercheck = 10;
 			creep.memory.hide = 5;
 			hide = 5;
