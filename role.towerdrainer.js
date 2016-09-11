@@ -17,7 +17,8 @@ module.exports = {
                 if(creep.memory.healing || creep.hits != creep.hitsMax) {
                         creep.memory.healingothers = false;
                 }
-                if(creep.memory.healingothers == false) {
+                if(creep.memory.healingothers == false || creep.memory.hide == false) {
+			
                         creep.heal(creep);
                 }
 
@@ -49,6 +50,7 @@ module.exports = {
 		}
 
 		if(creep.hits < creep.memory.runAt || creep.memory.healing == true) {
+			creep.memory.hide = true;
 			taunt = false;
 			creep.memory.healing = true;
 			creep.memory.healingothers = false;
