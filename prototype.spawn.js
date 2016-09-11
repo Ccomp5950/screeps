@@ -116,9 +116,9 @@ module.exports = function() {
 	}
 	else if (roleName == "defender" || roleName == "attacker") {
 		let Nparts = 6;
-		let base = 670;
+		let base = 720;
 		let calcEnergy = energy - base;
-		let probody = {tough:2,move:3,attack:0,heal:2}; // 420 cost body
+		let probody = {tough:2,move:4,attack:0,heal:2}; // 420 cost body
 		let defparts = Math.floor(calcEnergy / 130);
 		for(let i = 0; i < defparts && Nparts <= 48; i++) {
 			Nparts += 2;
