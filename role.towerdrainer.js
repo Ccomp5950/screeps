@@ -60,6 +60,7 @@ module.exports = {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
 				creep.moveTo(flag);
+				return;
 			} else {
 				if(taunt) creep.say("Ha Missed!",true);
 				creep.setRespawnTime();
