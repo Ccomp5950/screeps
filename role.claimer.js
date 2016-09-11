@@ -15,7 +15,7 @@ module.exports = {
 		});
                 if (target != undefined) {
                             if (creep.reserveController(target) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(target, {maxRooms:1});
+                                creep.moveTo(target, {maxRooms:1, ignoreRoads:true});
                                 }
                 return;
                 }
