@@ -12,11 +12,8 @@ module.exports = {
                         return;
                 }
 		creep.memory.MyFlag = "attack";
-		creep.say("YAP");
 		if(creep.approachAssignedFlag(999) == false) return;
-		creep.say("YIPP");
-		if(creep.attackAdjacentCreep()) return;
-		creep.say("YAR");
+		if(creep.attackAdjacentCreep() == true) return;
                 if(creep.attackHostileCreep()) return;
 		
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
