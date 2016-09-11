@@ -51,11 +51,14 @@ module.exports = {
 		if(gcl == 8) {
 			return 1;
 		}
-		if(gcl == 4) {
-			return 1;
-		}
-		if(gcl <= 3) {
-			return 3;
+		if(Memory.rooms[room].skipRCLcheck != true) {
+			if(gcl == 4) {
+				return 1;
+			}
+		
+			if(gcl <= 3) {
+				return 3;
+			}
 		}
 		var storage = Game.rooms[room].storage;
 		var terminal = Game.rooms[room].terminal;
@@ -96,13 +99,15 @@ module.exports = {
                 if(Memory.rooms[room].only1upgrader == true) {
                                 return 200;
                 }
-                if(gcl == 4 || gcl == 3 || gcl == 2) {
-			if(max >= 550) return 550;
-			return 200;
-                }
-                if(gcl == 1) {
-                        return 200;
-                }
+                if(Memory.rooms[room].skipRCLcheck != true) {
+	                if(gcl == 4 || gcl == 3 || gcl == 2) {
+				if(max >= 550) return 550;
+				return 200;
+	                }
+	                if(gcl == 1) {
+	                        return 200;
+	                }
+		}
 		if(gcl == 8) {
 			return 1750;
 		}
