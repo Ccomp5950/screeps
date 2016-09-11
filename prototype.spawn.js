@@ -115,7 +115,7 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "defender" || roleName == "attacker") {
-		let Nparts = 6;
+		let Nparts = 8;
 		let base = 720;
 		let calcEnergy = energy - base;
 		let probody = {tough:2,move:4,attack:0,heal:2}; // 420 cost body
