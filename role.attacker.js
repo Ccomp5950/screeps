@@ -6,13 +6,16 @@ module.exports = {
 			return;
 		}
 		creep.drivebyRestore();
+		if(creep.getBoosted("LHO2")) return;
 		if(creep.gotoWaypoint()) return;
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
 		creep.memory.MyFlag = "attack";
 		if(creep.approachAssignedFlag(999)) return;
+		creep.say("YIPP");
 		if(creep.attackAdjacentCreep()) return;
+		creep.say("YAR");
                 if(creep.attackHostileCreep()) return;
 		
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
