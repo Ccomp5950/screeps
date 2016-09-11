@@ -225,8 +225,8 @@ module.exports.loop = function () {
 			});
 			if(underAttack[room]) {
 				for (let tower of towers) {
-					let target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
-						filter: (c) => c.onEdge() == false || c.hits < 600
+					let target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS //, {
+//						filter: (c) => c.onEdge() == false || c.hits < 600
 					});
 					if(target != undefined) {
 						tower.attack(target);
