@@ -13,7 +13,7 @@ module.exports = {
                 }
 		creep.memory.MyFlag = "attack";
 		creep.say("YAP");
-		if(creep.approachAssignedFlag(999)) return;
+		if(creep.approachAssignedFlag(999) == false) return;
 		creep.say("YIPP");
 		if(creep.attackAdjacentCreep()) return;
 		creep.say("YAR");
