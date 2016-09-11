@@ -227,7 +227,7 @@ module.exports.loop = function () {
 				for (let tower of towers) {
 					let target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
 						filter: (c) => c.onEdge() == false || c.hits < 600
-					}
+					});
 					if(target != undefined) {
 						tower.attack(target);
 					}
