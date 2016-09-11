@@ -8,7 +8,7 @@ module.exports = {
 
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
-		if(creep.attackHostileCreep() == true) {
+		if(creep.attackHostileCreep(true) == true) {
 			return;
 		}
                 if(creep.hits < creep.hitsMax) {
