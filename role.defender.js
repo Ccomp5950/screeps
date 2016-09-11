@@ -3,9 +3,10 @@ module.exports = {
     run: function(creep) {
 		if(creep.spawning) {
 			creep.setupSpawn();
+			creep.memory.needsBoosted = true;
 		}
 		creep.setupFlag();
-
+		if(creep.getBoosted("LHO2")) return;
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
 		if(creep.attackHostileCreep(true) == true) {
