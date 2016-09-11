@@ -114,6 +114,13 @@ module.exports = {
 
                 var storage = Game.rooms[room].storage;
                 var terminal = Game.rooms[room].terminal;
+                if(terminal == undefined) {
+                        terminal = {store: {energy: 0}};
+                }
+                if(storage == undefined) {
+                        storage = {store: {energy: 0}};
+                }
+
                 var energy = storage.store.energy + terminal.store.energy;
                 const LEVEL0 = 250000;
                 const LEVEL1 = 300000;
