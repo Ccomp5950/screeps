@@ -14,13 +14,7 @@ module.exports = {
                 if(creep.hits < creep.hitsMax) {
                         creep.heal(creep);
                 }
-                if(flag != undefined) {
-                        var range = creep.pos.getRangeTo(flag);
-                        if(range > 999) {
-                                creep.moveTo(flag);
-				return;
-                        }
-                }
+		creep.approachAssignedFlag(999);
                 target = creep.pos.findClosestByRange(FIND_CREEPS, {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
