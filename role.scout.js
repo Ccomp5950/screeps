@@ -6,7 +6,7 @@ module.exports = {
                         return;
                 }
 
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
 
                 if(creep.getAwayFromEdge()) {
                         return;
