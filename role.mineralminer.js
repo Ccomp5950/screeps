@@ -10,7 +10,7 @@ module.exports = {
 		creep.setupFlag();
 
 		let carry = _.sum(creep.carry);
-		if (creep.memory.working == true && carry == 0 && creep.getActiveBodyparts(CARRY) > 0)) {
+		if (creep.memory.working == true && carry == 0 && creep.getActiveBodyparts(CARRY) > 0) {
 			creep.memory.working = false;
 		}
 		else if (creep.memory.working == false && carry == creep.carryCapacity) {
