@@ -11,7 +11,7 @@ module.exports = {
                         if(creep.heal(creep) == 0) {
                         }
                 }
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
 		//creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
 		var frange = 999;
