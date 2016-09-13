@@ -301,7 +301,7 @@ module.exports = function() {
 		bodyset = true;
 	} else if (roleName == "mineralminer") {
 		bodyset = true;
-		if(energy >= 4800 {
+		if(energy >= 4800) {
 			body = this.buildBody({work:46,move:4});
 		} else if(energy >= 2600) {
 			body = this.buildBody({work:25,carry:1,move:1});
