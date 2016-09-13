@@ -26,6 +26,7 @@ module.exports = {
 			towercheck = creep.memory.towercheck;
 		}
 		if(creep.hits < Math.min(3000, creep.hitsMax - 500) {
+			creep.say ("YIP!");
 			creep.memory.towercheck = 50;
 			towercheck = 10;
 			creep.memory.hide = 5;
