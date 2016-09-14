@@ -27,11 +27,11 @@ module.exports = {
 		if(target != undefined) {
 			if(creep.pos.getRangeTo(target) > 1) {
 				creep.moveTo(target);
-				if(target.hits != target.hitsMax) {
+				if(target.hits != target.hitsMax && creep.hits > 4000) {
 					creep.rangedHeal(target);
 				}
 			} else {
-                                if(target.hits != target.hitsMax) {
+                                if(target.hits != target.hitsMax && creep.hits > 4000) {
                                         creep.heal(target);
                                 }
 			}
