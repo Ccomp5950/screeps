@@ -15,7 +15,7 @@ module.exports = {
 			});
 			if(healing != undefined) {
 				creep.memory.healing = healing.id;
-				healing.memory.healer = creep.id;
+				healing.memory.Healer = creep.id;
 			} else {
 				creep.say(":(");
 				return;
