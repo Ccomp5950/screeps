@@ -24,6 +24,7 @@ module.exports = {
 
 		if(creep.hits < creep.hitsMax - 900) {
 			creep.heal(creep);
+			return;
 		}
 
 		var target = Game.getObjectById(creep.memory.healing);
