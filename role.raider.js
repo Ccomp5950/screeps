@@ -17,7 +17,7 @@ module.exports = {
 		var healer = Game.getObjectById(creep.memory.Healer);
 		if(healer != undefined) {
 			if(creep.pos.getRangeTo(flag) < 999) {
-				if(creep.pos.getRangeTo(healer) > 1 {
+				if(creep.pos.getRangeTo(healer) > 1) {
 					return;
 				}
 			}
