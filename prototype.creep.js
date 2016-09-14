@@ -152,13 +152,13 @@ module.exports = function() {
 			switch(part.type) {
 				case "attack":
 				case "ranged_attack":
-					threat += 10;
+					threat += 20;
 					break;
 				case "heal":
 					if(!ally) threat += 50;
 					break;
 				case "build":
-					if(!ally) threat += 55555;
+					if(!ally) threat += 1;
 					break;
 			}
 		}
