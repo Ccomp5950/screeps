@@ -131,7 +131,7 @@ module.exports = function() {
 	}
 	else if (roleName == "raider") {
 		if(energy >= 3250) {
-			body = this.buildBody({attack:25,move:25});
+			body = this.buildBody({move:25,attack:25});
 			bodyset = true;
 			creepMem.combat = true;
 		} else {
