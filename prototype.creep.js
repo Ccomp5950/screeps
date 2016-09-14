@@ -158,7 +158,7 @@ module.exports = function() {
 					if(!ally) threat += 50;
 					break;
 				case "build":
-					if(!ally) threat += 40;
+					if(!ally) threat += 55555;
 					break;
 			}
 		}
