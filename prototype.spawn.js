@@ -62,6 +62,8 @@ module.exports = function() {
 		if(energy >= 7500) {
 			body = this.buildBody({move:25,heal:25});
 			bodyset = true;
+		} else if(energy >= 7300) {
+			body = this.buildBody({move:24,heal:24,carry:2});
 		} else {
 			let Nparts = 12;
 	                let base = 540;
