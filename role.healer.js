@@ -39,11 +39,22 @@ module.exports = {
 				creep.moveTo(target);
 				if(target.hits != target.hitsMax && creep.hits > 4000) {
 					creep.rangedHeal(target);
+					return;
 				}
 			} else {
                                 if(target.hits != target.hitsMax && creep.hits > 4000) {
                                         creep.heal(target);
+					return;
                                 }
+			}
+		}
+		let extra_target = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (c) => c.hits < c.hitsMax && c.id != creep.id});
+		if(extra_target.length > 0) {
+			target = extra_target
+			if(creep.pos.getRangeTo(target) == 1) {
+				creep.heal(target);
+			} else {
+				creep.rangedHeal(target);
 			}
 		}
         }
