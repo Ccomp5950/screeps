@@ -8,9 +8,6 @@ module.exports = {
 		}
 
 		if(creep.getBoosted("LHO2")) return;
-                if(creep.getAwayFromEdge()) {
-                        return;
-                }
 
 		if(creep.memory.healing == -1) {
 			var healing  = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
@@ -28,6 +25,12 @@ module.exports = {
 		var target = Game.getObjectById(creep.memory.healing);
 
 		if(target != undefined) {
+			if(creep.pos.getRangeTo(target) < 999) {
+		                if(creep.getAwayFromEdge()) {
+		                        return;
+		                }
+
+			}
 			if(creep.pos.getRangeTo(target) > 1) {
 				creep.moveTo(target);
 				if(target.hits != target.hitsMax && creep.hits > 4000) {
