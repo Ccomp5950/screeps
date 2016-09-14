@@ -8,6 +8,9 @@ module.exports = {
 		}
 
 		if(creep.getBoosted("LHO2")) return;
+                if(creep.getAwayFromEdge()) {
+                        return;
+                }
 
 		if(creep.memory.healing == -1) {
 			var healing  = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
