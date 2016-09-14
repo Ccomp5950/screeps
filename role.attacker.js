@@ -18,7 +18,7 @@ module.exports = {
                 if(creep.attackHostileCreep()) return;
 		
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
-		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 
 
