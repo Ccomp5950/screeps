@@ -11,7 +11,7 @@ module.exports = {
 
 		if(creep.memory.healing == -1) {
 			var healing  = creep.room.find(FIND_MY_CREEPS, {
-				    filter: (c) => c.memory.healer ==  -1 && c.memory.role: "raider"
+				    filter: (c) => c.memory.healer ==  -1 && c.memory.role == "raider"
 			});
 			if(healing != undefined) {
 				creep.memory.healing = healing.id;
