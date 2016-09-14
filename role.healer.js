@@ -10,8 +10,8 @@ module.exports = {
 		if(creep.getBoosted("LHO2")) return;
 
 		if(creep.memory.healing == -1) {
-			var healing  = creep.room.find(FIND_MY_CREEPS, {
-				    filter: (c) => c.memory.healer ==  -1 && c.memory.role == "raider"
+			var healing  = creep.room.findClosestByRange(FIND_MY_CREEPS, {
+				    filter: (c) => c.memory.Healer ==  -1 && c.memory.role == "raider"
 			});
 			if(healing != undefined) {
 				creep.memory.healing = healing.id;
