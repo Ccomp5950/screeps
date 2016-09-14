@@ -132,6 +132,8 @@ module.exports = function() {
 	else if (roleName == "raider") {
 		if(energy >= 3250) {
 			body = this.buildBody({attack:25,move:25});
+			bodyset = true;
+			creepMem.combat = true;
 		} else {
 			console.log("Raiders require 3250 energy");
 			return;
