@@ -568,7 +568,7 @@ module.exports = function() {
                 if(creep.memory.waypoint != -1 &&  flag != undefined) {
                         var range = creep.pos.getRangeTo(flag);
                         if(range > 0) {
-                                creep.moveTo(flag);
+                                creep.moveTo(flag, {reusePath:50});
                         } else {
                                 creep.memory.waypoint += 1;
                         }
