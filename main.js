@@ -9,7 +9,9 @@ require('prototype.link')();
 require('prototype.room')();
 require('prototype.roomobject')();
 const profiler = require('screeps-profiler');
-//profiler.enable();
+if(Memory.config != undefined && Memory.config.profiler == true) {
+	profiler.enable();
+}
 require('functions');
 //require('role');
 var stats = require('stats');

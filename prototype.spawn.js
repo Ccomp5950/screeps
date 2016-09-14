@@ -110,7 +110,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "scout") {
-		body = this.buildBody({move:1});
+		body = this.buildBody({move:1,carry:1});
 		bodyset = true;
 		creepMem.combat = true;
 	}
@@ -128,6 +128,14 @@ module.exports = function() {
 		body = this.buildBody(probody);
 		bodyset = true;
 		creepMem.combat = true;
+	}
+	else if (roleName == "raider") {
+		if(energy >= 3250) {
+			body = this.buildBody({attack:25,move:25});
+		} else {
+			console.log("Raiders require 3250 energy");
+			return;
+		}
 	}
 	else if (roleName == "labtender") {
 		body = this.buildBody({carry:6,move:3});
@@ -170,7 +178,9 @@ module.exports = function() {
 		}
 	}
 	else if (roleName == "healer") {
-		if(energy >= 4500) {
+		if(energy >= 7500) {
+			body = this.buildBody({move:25,heal:25});
+		} else if(energy >= 4500) {
 			body = this.buildBody({move:15,heal:15});
 		} else if(energy >= 2100) {
 			body = this.buildBody({move:7,heal:7});
