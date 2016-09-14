@@ -22,6 +22,10 @@ module.exports = {
 			}
 		}
 
+		if(creep.hits < creep.hitsMax - 900) {
+			creep.heal(creep);
+		}
+
 		var target = Game.getObjectById(creep.memory.healing);
 
 		if(target != undefined) {
