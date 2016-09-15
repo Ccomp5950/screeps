@@ -231,12 +231,15 @@ module.exports = function() {
 	};
 
 	Creep.prototype.onEdge =
-        function() {
+        function(extended) {
 	let c = this;
+	if(extended != true) {
+		extended = false;
+	}
 	if(c.pos.x == 0 || c.pos.x == 49 || c.pos.y == 0 || c.pos.y == 49) {
 		return true;
 	}
-        if(c.pos.x == 1 || c.pos.x == 48 || c.pos.y == 1 || c.pos.y == 48) {
+        if(extended && (c.pos.x == 1 || c.pos.x == 48 || c.pos.y == 1 || c.pos.y == 48)) {
                 return true;
         }
 	return false;
