@@ -21,7 +21,36 @@ module.exports = {
 		} 
 		return 0;
 	},
+	mineralminer:
+	function(room) {
+		var roomO = Game.rooms[room];
+		var needed = 0;
+		if(roomO.controller.level < 6) {
+			return 0;
+		}
+		if(Memory.rooms[room].mineMinerals == true) {
+                        let mineral = Game.getObjectById(Memory.rooms[room].mineral);
+			let extractor = Game.getObjectById(Memory.rooms[room].extractor);
+                        if(mineral == undefined) {
+				mineral = roomO.storage.findClosestByRange(FIND_MINERALS);
+			}
+                        if(extractor != undefined) {
+				extractor = roomO.storage.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_EXTRACTOR});
+				if(mineral != undefined && mineral.ticksToRegeneration == undefined) {
+					needed = 1;
+				}
+			}
+			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined) {
+				needed = 1;
+			}
+		}
+		return needed;
 
+	},
+	mmfetcher:
+	function(room) {
+		return Memory.rooms[room].role[mineralminer].minimum;
+	}
         claimer : 
         function(room) {
                 var needed = 0;
