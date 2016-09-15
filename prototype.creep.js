@@ -450,7 +450,7 @@ module.exports = function() {
 		if(creep.memory.killThis == undefined || creep.memory.killThis == -1 || target == undefined || Game.time % 9 == 0) {
 			creep.memory.killThis = -1;
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
-                                filter: (c) => c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false)
+                                filter: (c) => c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false))
 	                });
 			let yugeThreat = null;
 			let yugestThreat = -1;
