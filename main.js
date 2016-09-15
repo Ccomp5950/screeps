@@ -114,16 +114,16 @@ module.exports.loop = function () {
 	}
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
-/*		let room = Game.rooms.E48S31;
-		let recepient = "E46S31";
+		let room = Game.rooms.E48S31;
+		let recepient = "E49S36";
 		let storage = room.storage;
 		let terminal = room.terminal;
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 320000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
 			console.log("Sending Energy to: " + recepient);
-			terminal.send("energy",80000, recepient);
+			terminal.send("energy",70000, recepient);
 		}
-*/
+
 	}
 
     
