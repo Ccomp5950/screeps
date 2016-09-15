@@ -32,13 +32,12 @@ module.exports = {
                         let mineral = Game.getObjectById(Memory.rooms[room].mineral);
 			let extractor = Game.getObjectById(Memory.rooms[room].extractor);
                         if(mineral == undefined) {
-				mineral = roomO.storage.findClosestByRange(FIND_MINERALS);
+				mineral = roomO.storage.pos.findClosestByRange(FIND_MINERALS);
+				Memory.rooms[room].mineral = mineral.id;
 			}
                         if(extractor != undefined) {
-				extractor = roomO.storage.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_EXTRACTOR});
-				if(mineral != undefined && mineral.ticksToRegeneration == undefined) {
-					needed = 1;
-				}
+				extractor = roomO.storage.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_EXTRACTOR});
+				Memory.rooms[room].extractor = extractor.id;
 			}
 			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined) {
 				needed = 1;
