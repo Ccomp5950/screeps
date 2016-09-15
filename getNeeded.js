@@ -35,7 +35,7 @@ module.exports = {
 				mineral = roomO.storage.pos.findClosestByRange(FIND_MINERALS);
 				Memory.rooms[room].mineral = mineral.id;
 			}
-                        if(extractor != undefined) {
+                        if(extractor == undefined) {
 				extractor = roomO.storage.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_EXTRACTOR});
 				Memory.rooms[room].extractor = extractor.id;
 			}
