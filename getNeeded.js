@@ -156,10 +156,10 @@ module.exports = {
                 const LEVEL3 = 600000;
                 const LEVEL4 = 650000;
 		const LEVEL5 = 700000;
-		const PARTS25 = 3200;
-		const PARTS20 = 2400;
-		const PARTS10 = 1100;
-		const PARTS4 = 550;
+		const PARTS25 = Math.min(3200, max);
+		const PARTS20 = Math.min(2400, max);
+		const PARTS10 = Math.min(1100, max);
+		const PARTS4 = Math.min(550, max);
 		const PART1 = 200;		
 		if(energy >= LEVEL5) {
 			return PARTS25;			// 75
