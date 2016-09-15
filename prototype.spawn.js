@@ -273,7 +273,7 @@ module.exports = function() {
 		body = this.buildBody(feedbody);
 		bodyset = true;
 	}
-	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher") {
+	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher" || roleName == "mmfetcher") {
 		let fetchbody = {};
 		if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
