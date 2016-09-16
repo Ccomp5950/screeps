@@ -10,5 +10,12 @@ module.exports = function() {
 			value+= creep.calculateSpawnTicks();
 		}
 		return value;
-	}
+	};
+
+	Room.prototype.getTowerAlpha =
+	function() {
+		console.log("Yeah defined");
+		let room = this;
+	};
+	
 };
