@@ -52,8 +52,7 @@
             var nameNumber = 1;
 	    var towerFlags = [];
             while(nameNumber < 7) {
-                nameNumber++;
-                let name=roleName + nameNumber.toString();
+                let name="tower" + nameNumber.toString();
 		if(Game.flags[name] != undefined && Game.flags[name].pos.roomName == room) {
 			towerFlags.push(Game.flags[name])
 		}
