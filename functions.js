@@ -59,11 +59,11 @@
 		nameNumber++;
             }
 	    var damage = 0;
-	    let checkflag = Game.flags.towershoot;
+	    var checkflag = Game.flags.towershoot;
 	    for(let index of towerFlags) {
 		//MAX(150, MIN(600, (25 - L4) * 30))
 		let flag = towerFlags[index];
-		let distance = checkflag.getRangeTo(flag);
+		let distance = checkflag.pos.getRangeTo(flag);
 		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30));
 		damage += tdamage;	
 	    }
