@@ -65,9 +65,10 @@
 		let flag = towerFlags[index];
 		let distance = checkflag.pos.getRangeTo(flag);
 		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30));
+		console.log("Checking flag: " + flag.name + " Damage: " + tdamage + " Distance: " + distance);
 		damage += tdamage;	
 	    }
-	console.log("XXX Tower Damage Report for (" + room + " | " + checkflag.pos.x + "/" + checkflag.pos.y +"): Damage: " + damage + " Towers: " + towerFlags.length);
+	return "XXX Tower Damage Report for (" + room + " | " + checkflag.pos.x + "/" + checkflag.pos.y +"): Damage: " + damage + " Towers: " + towerFlags.length;
 	}
 
 	global.getClaimersNeeded =
