@@ -65,7 +65,7 @@
 		//MAX(150, MIN(600, (25 - L4) * 30))
 		let flag = towerFlags[index];
 		let distance = checkflag.getRangeTo(flag);
-		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30);
+		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30));
 		damage += tdamage;	
 	    }
 	console.log("XXX Tower Damage Report for (" + room + " | " + checkflag.pos.x + "/" + checkflag.pos.y +"): Damage: " + damage + " Towers: " + towerFlags.length);
