@@ -47,6 +47,30 @@
 		return Math.sqrt(ysqr + xsqr);
 	}
 
+	global.towercalc =
+	function(room) {
+            var nameNumber = 1;
+	    var towerFlags = [];
+            while(nameNumber < 7) {
+                nameNumber++;
+                let name=roleName + nameNumber.toString();
+		if(Game.flags[name] != undefined && Game.flags[name].pos.roomName == room) {
+			towerFlags.push(Game.flags[name])
+		}
+		nameNumber++;
+            }
+	    var damage = 0;
+	    let checkflag = Game.flags.towershoot;
+	    for(let index of towerFlags) {
+		//MAX(150, MIN(600, (25 - L4) * 30))
+		let flag = towerFlags[index];
+		let distance = checkflag.getRangeTo(flag);
+		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30);
+		damage += tdamage;	
+	    }
+	console.log("XXX Tower Damage Report for (" + room + " | " + checkflag.pos.x + "/" + checkflag.pos.y +"): Damage: " + damage + " Towers: " + towerFlags.length);
+	}
+
 	global.getClaimersNeeded =
 	function() {
 		var needed = 0;
