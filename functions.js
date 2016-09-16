@@ -60,9 +60,10 @@
             }
 	    var damage = 0;
 	    var checkflag = Game.flags.towershoot;
-	    for(let index of towerFlags) {
+	    for(let index in towerFlags) {
 		//MAX(150, MIN(600, (25 - L4) * 30))
 		let flag = towerFlags[index];
+		if(flag == undefined)
 		let distance = checkflag.pos.getRangeTo(flag);
 		let tdamage = Math.max(150, Math.min(600, (25 - distance) * 30));
 		console.log("Checking flag: " + flag.name + " Damage: " + tdamage + " Distance: " + distance);
