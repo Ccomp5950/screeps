@@ -5,6 +5,12 @@ module.exports = {
                         creep.setupSpawn();
                         return;
                 }
+	if(creep.memory.role == "rupgradertinder") {
+		creep.setupFlag()
+		if(creep.approachAssignedFlag(999) == false) {
+			return;
+		}
+	}
 		let energy = creep.pos.lookFor(LOOK_ENERGY);
 			if(energy.length) {
 				creep.pickup(energy[0])
