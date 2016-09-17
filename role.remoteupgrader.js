@@ -27,7 +27,7 @@ module.exports = {
             // try to upgrade the controller
 	    let container = Game.getObjectById(creep.memory.container);
 	    if(container != null && container.hits < container.hitsMax - 1000) {
-		creep.repair(structure);
+		creep.repair(container);
 		return;
 	    }
 
