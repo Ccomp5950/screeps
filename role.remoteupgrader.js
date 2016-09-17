@@ -25,6 +25,16 @@ module.exports = {
             // if (creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 
             // try to upgrade the controller
+	    let container = Game.getObjectById(creep.memory.container);
+	    if(container != null && container.hits < container.hitsMax - 1000) {
+		creep.repair(structure);
+		return;
+	    }
+
+	    if(container != null) {
+		creep.withdraw(container, RESOURCE_ENERGY);
+	    }
+
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 // if not in range, move towards the controller
                 creep.moveTo(creep.room.controller);
