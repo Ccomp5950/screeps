@@ -72,6 +72,12 @@ module.exports = {
 			if(target == undefined) {
 				target = creep.room.storage;
 			}
+			if(target == undefined) {
+				target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+					filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(creep) < 3
+				};
+			}
+
                         if(target != undefined) {
                                 if(creep.pos.getRangeTo(target) > 1) {
                                         creep.moveTo(target, {maxRooms:1});
