@@ -42,10 +42,17 @@ module.exports = {
         }
         // if creep is supposed to harvest energy from source
         else {
-		
+		if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.pos.roomName) {
+			creep.memory.goingToFlag = true;
+		}	
 		if(creep.memory.goingToFlag == true && creep.approachAssignedFlag(0) == false) {
 			return;
 		}
+                if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.pos.roomName) {
+                        creep.memory.goingToFlag = true;
+			return;
+                }
+
 		creep.memory.goingToFlag = false;
 		let container = Game.getObjectById(creep.memory.container);
 		if(container == null ) {
