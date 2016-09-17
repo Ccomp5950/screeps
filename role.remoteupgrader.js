@@ -45,7 +45,7 @@ module.exports = {
 		if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.pos.roomName) {
 			creep.memory.goingToFlag = true;
 		}	
-		if(creep.memory.goingToFlag == true && creep.approachAssignedFlag(0) == false) {
+		if(creep.memory.goingToFlag == true && creep.approachAssignedFlag(2) == false) {
 			return;
 		}
                 if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.pos.roomName) {
