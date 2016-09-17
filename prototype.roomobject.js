@@ -13,7 +13,7 @@ module.exports = function() {
                 if(finder.length == 0) {
                         return false;
                 }
-		if(finder[0].id = creep.id) {
+		if(creep != null && finder[0].id = creep.id) {
 			return false;
 		}
         return true;
