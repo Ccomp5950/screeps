@@ -32,6 +32,8 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			lgfetcher:      {namer:"lgfetcher",             minimum:0,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
 			mineralminer:   {namer:"mineralminer",		minimum:0,	requirement:1000,	buildRestriction : true,	run: require('role.mineralminer')},
 			mmfetcher:      {namer:"mmfetcher",             minimum:0,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
+                        rmineralminer:   {namer:"rmineralminer",        minimum:0,      requirement:1000,       buildRestriction : true,        run: require('role.mineralminer')},
+                        rmmfetcher:      {namer:"rmmfetcher",           minimum:0,      requirement:1800,       buildRestriction : true,        run: require('role.fetcher')},
 			remotebuilder:	{namer:"remotebuilder",         minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.remotebuilder')},
                         upgrader:       {namer:"upgrader",              minimum:0,      requirement:1100,       buildRestriction : true,        run: require('role.upgrader')},
 			upgradertinder:	{namer:"upgradertinder",	minimum:0,	requirement:1800,	buildRestriction : true,        run: require('role.upgradertinder')},
