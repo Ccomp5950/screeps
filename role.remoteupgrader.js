@@ -34,11 +34,8 @@ module.exports = {
 	    if(container != null) {
 		creep.withdraw(container, RESOURCE_ENERGY);
 	    }
-
-            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                // if not in range, move towards the controller
-                creep.moveTo(creep.room.controller);
-            }
+	    creep.approachAssignedFlag(0);
+            creep.upgradeController(creep.room.controller);
         }
         // if creep is supposed to harvest energy from source
         else {
