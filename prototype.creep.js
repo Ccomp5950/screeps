@@ -718,7 +718,7 @@ module.exports = function() {
 	Creep.prototype.repairOnTheMove =
 	function() {
 			let creep = this;
-                        let target = _(creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax })).min((s) => s.hits / s.hitsMax);
+                        let target = _(creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hits < s.hitsMax })).min((s) => s.hits / s.hitsMax);
 			creep.repair(target);
 	}
 };
