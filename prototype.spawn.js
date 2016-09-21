@@ -227,7 +227,7 @@ module.exports = function() {
 		body = this.buildBody({work:2,carry:9,move:11});
                 bodyset = true;
         }
-	else if ((roleName == "harvester" && energy >= 500) || roleName == "gc" || roleName == "upgradertinder" || roleName = "rupgradertinder") {
+	else if ((roleName == "harvester" && energy >= 500) || roleName == "gc" || roleName == "upgradertinder" || roleName == "rupgradertinder") {
 		let harvbody = {carry:0,move:0};
 		creepMem.combat = true;
 		let energyLeft = energy;
@@ -275,7 +275,7 @@ module.exports = function() {
 		body = this.buildBody(feedbody);
 		bodyset = true;
 	}
-	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher" || roleName == "mmfetcher" || roleName = "rmmfetcher") {
+	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher" || roleName == "mmfetcher" || roleName == "rmmfetcher") {
 		let fetchbody = {};
 		if(energy >= 2450) {
 			fetchbody = {work:1,move:16,carry:31};
