@@ -118,7 +118,7 @@ module.exports.loop = function () {
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 		let room = Game.rooms.E48S31;
-		let recepient = "E46S31";
+		let recepient = "E48S36";
 		let storage = room.storage;
 		let terminal = room.terminal;
 		let energy = storage.store.energy + terminal.store.energy;
@@ -128,7 +128,7 @@ module.exports.loop = function () {
 		}
 
 	}
-/*        if(Game.time % 100 == 50) {
+        if(Game.time % 100 == 50) {
                 let room = Game.rooms.E46S31;
                 let recepient = "E49S36";
                 let storage = room.storage;
@@ -140,7 +140,7 @@ module.exports.loop = function () {
                 }
 
         }
-*/
+
 
 
     
