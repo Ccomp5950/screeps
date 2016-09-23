@@ -294,6 +294,8 @@ module.exports = function() {
 			case "FLAG":
 				if(Game.flags.priority.room != undefined && Game.flags.priority.room.name == creep.room.name) {
 					target = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => s.pos.getRangeTo(Game.flags.priority) < 1, maxRooms:1});
+				} else if (Game.flags[creep.room.name + "_priority"] != undefined && Game.flags[creep.room.name + "_priority"].room.name == creep.room.name) {
+					target = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => s.pos.getRangeTo(Game.flags[creep.room.name + "_priority"]) < 1, maxRooms:1});
 				}
 				break;
 			case "ANYTHING":
