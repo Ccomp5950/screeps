@@ -43,7 +43,9 @@ module.exports = {
 					return;
 				}
 			} else {
+				creep.moveTo(target);
                                 if(target.hits != target.hitsMax && creep.hits > 4000) {
+				
                                         creep.heal(target);
 					return;
                                 }
