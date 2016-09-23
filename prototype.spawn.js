@@ -152,7 +152,7 @@ module.exports = function() {
 		let Nparts = 0;
 		let base = 0;
 		let calcEnergy = energy - base;
-		let probody = {work:0,move:0};
+		let probody = {move:0,work:0};
 		let sapparts = Math.floor(calcEnergy / 150);
                 for(let i = 0; i < sapparts && Nparts <= 48; i++) {
 			Nparts += 2;
