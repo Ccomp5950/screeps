@@ -7,7 +7,7 @@ module.exports = {
 		}
 		creep.drivebyRestore();
 		if(creep.getBoosted("XLHO2")) return;
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
