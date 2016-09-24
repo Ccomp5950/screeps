@@ -13,11 +13,11 @@ module.exports = {
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
-
+		if(creep.attackAdjacentCreep() == true) return;
 		var healer = Game.getObjectById(creep.memory.Healer);
 		if(healer != undefined) {
 			if(creep.pos.getRangeTo(flag) < 999) {
-				if(creep.pos.getRangeTo(healer) > 1) {
+				if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
 					return;
 				}
 			}
@@ -27,7 +27,6 @@ module.exports = {
 		}
 		if(creep.gotoWaypoint()) return;
 		creep.memory.MyFlag = "raider";
-		if(creep.attackAdjacentCreep() == true) return;
 		if(creep.approachAssignedFlag(999) == false) return;
 
                 //if(creep.attackHostileCreep()) return;
