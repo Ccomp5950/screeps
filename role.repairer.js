@@ -8,6 +8,11 @@ module.exports = {
                         return;
                 }
 	creep.memory.currentRole = "repairer";
+	if(creep.memory.role == "remoterepairer") {
+		creep.memory.MyFlag = "remoterepairer";
+		creep.approachAssignedFlag(999);
+	}
+
         // if creep is trying to repair something but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
