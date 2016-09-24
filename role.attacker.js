@@ -14,10 +14,10 @@ module.exports = {
 		creep.memory.MyFlag = "attack";
 		if(creep.approachAssignedFlag(999) == false) return;
 		if(creep.attackAdjacentCreep() == true) return;
-		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
                 if(creep.attackHostileCreep()) return;
 		
-                if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+                //if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 
