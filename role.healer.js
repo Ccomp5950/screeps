@@ -45,7 +45,6 @@ module.exports = {
 			} else {
 				creep.moveTo(target);
                                 if(target.hits != target.hitsMax && creep.hits > 4000) {
-				
                                         creep.heal(target);
 					return;
                                 }
@@ -53,7 +52,7 @@ module.exports = {
 		}
 		let extra_target = creep.pos.findInRange(FIND_MY_CREEPS, 3, {filter: (c) => c.hits < c.hitsMax && c.id != creep.id});
 		if(extra_target.length > 0) {
-			target = extra_target
+			target = extra_target[0]
 			if(creep.pos.getRangeTo(target) == 1) {
 				creep.heal(target);
 			} else {
