@@ -434,7 +434,7 @@ module.exports = function() {
 	Creep.prototype.attackAdjacentCreep =
 	function() {
 		let creep = this;
-		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1, {filter: (c) => c.onRampart() == false});
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1, {filter: (c) => c.onRampart() == false && c.checkIfAlly() == false});
 		if(targets.length > 0) {
 		    creep.attack(targets[0]);
 		    return true;
