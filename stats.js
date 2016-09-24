@@ -34,7 +34,7 @@ if(Memory.tick == undefined || Memory.tick.ticks > 3000 )
 
 
 
-
+/*
 if(Game.rooms["E49S36"] != undefined) {
 	let controller = Game.rooms["E49S36"].controller;
 	let rcl = controller.level;
@@ -42,6 +42,7 @@ if(Game.rooms["E49S36"] != undefined) {
 	Memory.stats['combat.scouted.rcl'] = rcl;
 	Memory.stats['combat.scouted.ticks'] = ticks;
 }
+*/
 
 var rooms = Game.rooms
 var spawns = Game.spawns
@@ -52,7 +53,7 @@ for (let roomKey in rooms) {
     Memory.stats['room.' + room.name + '.myRoom'] = 1;
     Memory.stats['room.' + room.name + '.energyAvailable'] = room.energyAvailable;
     Memory.stats['room.' + room.name + '.energyCapacityAvailable'] = room.energyCapacityAvailable;
-    var lastProgress = room.controller.progress - Memory.stats['room.' + room.name + '.controllerProgress'];
+    var lastProgress = Math.max(0, room.controller.progress - Memory.stats['room.' + room.name + '.controllerProgress']);
     Memory.stats['room.' + room.name + '.controllerIncrease'] = lastProgress;
     Memory.stats['room.' + room.name + '.controllerProgress'] = room.controller.progress
     Memory.stats['room.' + room.name + '.controllerProgressTotal'] = room.controller.progressTotal
