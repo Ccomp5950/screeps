@@ -11,7 +11,7 @@ module.exports = {
 
 		if(creep.memory.healing == -1) {
 			var healing  = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
-				    filter: (c) => c.memory.Healer ==  -1 && c.memory.role == "raider"
+				    filter: (c) => c.memory.Healer ==  -1 && (c.memory.role == "raider" || c.memory.role == "sapper")
 			});
 			if(healing != undefined) {
 				creep.memory.healing = healing.id;

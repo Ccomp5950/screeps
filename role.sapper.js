@@ -7,10 +7,19 @@ module.exports = {
 			creep.memory.hide = 0;
 			return;
 		}
-                if(creep.memory.healing) {
-                        if(creep.heal(creep) == 0) {
+
+                var healer = Game.getObjectById(creep.memory.Healer);
+                if(healer != undefined) {
+                        if(creep.pos.getRangeTo(flag) < 999) {
+                                if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
+                                        return;
+                                }
                         }
-                }
+                        if(creep.pos.getRangeTo(healer) > 999) {
+                                return;
+                        }
+                }		
+
 		if(creep.gotoWaypoint()) return;
 		//creep.getAwayFromEdge();
 		var flag = Game.flags.sapper;		
