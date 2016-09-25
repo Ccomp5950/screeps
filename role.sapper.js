@@ -11,6 +11,7 @@ module.exports = {
 		}
 
 		if(creep.getBoosted("XZHO2")) return;
+		if(creep.getBoosted("XZH2O")) return;
 		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
 		
