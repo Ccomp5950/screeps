@@ -11,7 +11,6 @@ module.exports = {
 
 		if(creep.getBoosted("XZHO2")) return;
 		creep.memory.needsBoosted = false;
-		creep.getAwayFromEdge();
                 var healer = Game.getObjectById(creep.memory.Healer);
                 if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {
@@ -20,6 +19,7 @@ module.exports = {
                                 }
                         }
                         if(creep.pos.getRangeTo(healer) > 999) {
+				creep.getAwayFromEdge();
                                 return;
                         }
                 }		
