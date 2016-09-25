@@ -161,7 +161,7 @@
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
-		if(room == undefined || room.controller.my != true || room.controller.level == undefined) {
+		if(room == undefined || room.controller == undefined || room.controller.my != true || room.controller.level == undefined) {
 			return;
 		}
 		let towers = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
