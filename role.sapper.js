@@ -6,6 +6,7 @@ module.exports = {
 			creep.memory.towercheck = 0;
 			creep.memory.hide = 0;
 			creep.memory.Healer = -1;
+			creep.memory.needsBoosted = true;
 			return;
 		}
 
