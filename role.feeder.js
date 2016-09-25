@@ -26,8 +26,10 @@ module.exports = {
         if (creep.memory.working == true && carry == 0) {
 		creep.memory.goingToStorage = false;
             creep.memory.working = false;
+		creep.memory.waypointfeeder = true;
         }
         else if (creep.memory.working == false && carry == creep.carryCapacity) {
+		creep.memory.waypointfeeder = true;
 		creep.memory.goingToStorage = false;
             creep.memory.working = true;
             creep.memory.source = null;
