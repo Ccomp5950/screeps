@@ -20,7 +20,7 @@ module.exports = {
 		
                 //if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
-		if(creep.attackHostileStructure("FLAG")) return;
+		//if(creep.attackHostileStructure("FLAG")) return;
 
 
                 if(creep.hits != creep.hitsMax) {
