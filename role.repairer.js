@@ -82,9 +82,8 @@ module.exports = {
 	        if(creep.memory.role == "remoterepairer") {
 	                creep.memory.MyFlag = "remoterepairer";
         	        creep.approachAssignedFlag(1)
-			return;;
+			return;
 		}
-        }
 		roleBuilder.run(creep);
             }
         }
