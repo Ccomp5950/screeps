@@ -29,7 +29,7 @@ module.exports = function() {
 	Creep.prototype.getBoosted =
 	function(boost) {
 		let creep = this;
-		if(creep.memory.needsBoosted == true) {
+		if(creep.memory.needsBoosted == true && creep.memory.boosts.indexOf(boost) == -1) {
 			let lab = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LAB && s.mineralType == boost && s.mineralAmount > 20});
 			if(lab != undefined) {
 				if(creep.pos.getRangeTo(lab) > 1) {
@@ -37,12 +37,15 @@ module.exports = function() {
 					return true;
 				}
 				lab.boostCreep(creep);
-				creep.memory.needsBoosted = false;
 				creep.memory.boosted = true;
+				if(creep.memory.boosts) == undefined) {
+					creep.memory.boosts = [boost];
+				} else {
+					creep.memory.boosts.push(boost);
+				}
 				return false;				
 			}
 		}
-		creep.memory.needsBoosted = false;
 		return false;
 	}
 	

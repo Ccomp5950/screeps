@@ -9,7 +9,7 @@ module.exports = {
 		}
 
 		if(creep.getBoosted("XZHO2")) return;
-
+		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
                 if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {

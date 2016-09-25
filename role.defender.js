@@ -7,6 +7,7 @@ module.exports = {
 		}
 		creep.setupFlag();
 		if(creep.getBoosted("XLHO2")) return;
+		creep.memory.needsBoosted = false;
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
 		if(creep.attackHostileCreep(true) == true) {

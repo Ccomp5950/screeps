@@ -13,7 +13,7 @@ module.exports = {
 		creep.setupFlag();
 
 		if(creep.getBoosted("XLHO2")) return;
-
+		creep.memory.needsBoosted = false;
                 if(creep.memory.healing || creep.hits != creep.hitsMax) {
                         creep.memory.healingothers = false;
                 }
