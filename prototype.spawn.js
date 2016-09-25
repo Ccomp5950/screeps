@@ -149,16 +149,20 @@ module.exports = function() {
 		creepMem.combat = true;
 	}	
 	else if (roleName == "sapper") {
-		let Nparts = 0;
-		let base = 0;
-		let calcEnergy = energy - base;
-		let probody = {move:0,work:0};
-		let sapparts = Math.floor(calcEnergy / 150);
-                for(let i = 0; i < sapparts && Nparts <= 48; i++) {
-			Nparts += 2;
-			probody.work++;
-                        probody.move++;
-                }
+		let probody = {move:0, work:0};
+		if(energy >= 4500) {
+			probody = {move:10, work:40};	
+		} else {
+			let Nparts = 0;
+			let base = 0;
+			let calcEnergy = energy - base;
+			let sapparts = Math.floor(calcEnergy / 150);
+	                for(let i = 0; i < sapparts && Nparts <= 48; i++) {
+				Nparts += 2;
+				probody.work++;
+	                        probody.move++;
+	                }
+		}
                 body = this.buildBody(probody);
                 bodyset = true;
 		creepMem.combat = true;
@@ -184,7 +188,9 @@ module.exports = function() {
 		}
 	}
 	else if (roleName == "healer") {
-		if(energy >= 7500) {
+		if(energy >= 10500) {
+			body = this.buildBody({move:10,heal:40});
+		} else if(energy >= 7500) {
 			body = this.buildBody({move:25,heal:25});
 		} else if(energy >= 4500) {
 			body = this.buildBody({move:15,heal:15});
