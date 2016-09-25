@@ -161,6 +161,9 @@
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
+		if(room.controller.my != true) {
+			return;
+		}
 		let towers = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
 		let towerC = room.find(FIND_CONSTRUCTION_SITES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
 		let num = towers.length + towerC.length;
