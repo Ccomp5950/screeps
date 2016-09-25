@@ -148,7 +148,7 @@
 					if(lab1 != undefined && lab2 != undefined) {
 						let lab1A = Game.getObjectById(lab1.id);
 						let lab2A = Game.getObjectById(lab2.id);
-						if(lab1A.mineralAmount > 10 && lab2A.mineralAmount > 10) {
+						if(lab1A.mineralAmount >= 10 && lab2A.mineralAmount >= 10) {
 							lab.runReaction(lab1A,lab2A);
 						}
 					}
