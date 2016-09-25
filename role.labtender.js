@@ -109,7 +109,7 @@ module.exports = {
                                                 return;
 					}
 				}
-				if(lab.mineralAmount >= 2000 && labMem.emptyMe == true) {
+				if(lab.mineralAmount >= 1 && labMem.emptyMe == true) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "lab";
