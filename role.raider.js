@@ -13,7 +13,7 @@ module.exports = {
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
-		if(creep.attackAdjacentCreep() == true) return;
+		//if(creep.attackAdjacentCreep() == true) return;
 		var healer = Game.getObjectById(creep.memory.Healer);
 		if(healer != undefined) {
 			if(creep.pos.getRangeTo(flag) < 999) {
