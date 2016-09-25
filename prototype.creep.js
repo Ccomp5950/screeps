@@ -38,7 +38,7 @@ module.exports = function() {
 				}
 				lab.boostCreep(creep);
 				creep.memory.boosted = true;
-				if(creep.memory.boosts) == undefined) {
+				if(creep.memory.boosts == undefined) {
 					creep.memory.boosts = [boost];
 				} else {
 					creep.memory.boosts.push(boost);
