@@ -109,7 +109,7 @@ module.exports = {
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				option = {ignoreCreeps:true};
 				let tempcheck = creep.pos.findInRange(FIND_CREEPS, 2, {filter: (c) => c.id != creep.id});
-				if(tecmpcheck.length > 0) {
+				if(tempcheck.length > 0) {
 					option = null;
 				}
 				creep.moveTo(homepos, option);
