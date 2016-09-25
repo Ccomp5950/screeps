@@ -78,7 +78,7 @@ module.exports = {
 			}
 			if(target == undefined) {
 				target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-					filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(creep) < 3
+					filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.pos.getRangeTo(creep) < 20
 				});
 			}
 
