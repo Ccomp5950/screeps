@@ -10,7 +10,7 @@ module.exports = {
 	creep.memory.currentRole = "repairer";
 	if(creep.memory.role == "remoterepairer") {
 		creep.memory.MyFlag = "remoterepairer";
-		creep.approachAssignedFlag(999);
+		if(creep.approachAssignedFlag(999) == false) return;
 	}
 
         // if creep is trying to repair something but has no energy left
@@ -79,6 +79,12 @@ module.exports = {
             }
             // if we can't fine one
             else {
+	        if(creep.memory.role == "remoterepairer") {
+	                creep.memory.MyFlag = "remoterepairer";
+        	        creep.approachAssignedFlag(1)
+			return;;
+		}
+        }
 		roleBuilder.run(creep);
             }
         }
