@@ -5,7 +5,7 @@ module.exports = {
 			creep.setupSpawn();
 			creep.memory.towercheck = 0;
 			creep.memory.hide = 0;
-			creep.memory.healer = -1;
+			creep.memory.Healer = -1;
 			return;
 		}
 
