@@ -137,7 +137,7 @@
 				}
 
 				labMem = Memory.rooms[roomM].labs[labIndex];
-				if(labMem.active != false || labMem.mineral == null || lab.cooldown > 0) {
+				if(labMem.active != true || labMem.mineral == null || lab.cooldown > 0) {
 					continue;
 				}
 				// OH SHIT SON.
