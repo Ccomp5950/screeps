@@ -17,7 +17,7 @@ require('functions');
 var stats = require('stats');
 var memorymgmt = require('memorymgmt');
 var needed = require('getNeeded');
-var const C_RESERVE_MIN = 3500;
+const C_RESERVE_MIN = 3500;
 									//DEFAULTS  ONLY  CHANGE IN MEMORY
 var roles =            {harvester:      {namer:"harvester",             minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			linktender:     {namer:"linktender",            minimum:0,      requirement:1400,       buildRestriction : false,       run: require('role.linktender')},
