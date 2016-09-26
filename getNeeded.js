@@ -60,8 +60,11 @@ module.exports = {
                         if(flag.room != undefined && flag.room.controller.reservation != undefined) {
                                 ticks = flag.room.controller.reservation.ticksToEnd;
                         }
-        		require('global_vars');
-	                if(flag.memory.active == true && ticks < C_RESERVE_MIN) {
+			if(Memory.reserve_min_ticks == undefined) {
+				Memory.reserve_min_ticks = 3500;
+			}
+			let reserve_min = Memory.reserve_min_ticks;
+	                if(flag.memory.active == true && ticks < reserve_min) {
                                 needed++;
                         }
                 }

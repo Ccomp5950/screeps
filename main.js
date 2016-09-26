@@ -13,7 +13,7 @@ if(Memory.config != undefined && Memory.config.profiler == true) {
 	profiler.enable();
 }
 require('functions');
-require('global_vars');
+//require('global_vars');
 //require('role');
 var stats = require('stats');
 var memorymgmt = require('memorymgmt');

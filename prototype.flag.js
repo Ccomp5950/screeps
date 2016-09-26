@@ -1,5 +1,3 @@
-require('global_vars');
-
 module.exports = function() {
     // create a new function for StructureSpawn
 	Flag.prototype.hasFetcher =
@@ -59,7 +57,8 @@ module.exports = function() {
 			if(flag.memory.active == undefined) {
 				flag.memory.active = true;
 			}	
-                        if(flag.memory.active == true && ticks < C_RESERVE_MIN && flag.hasClaimer() == false) {
+			let reserve_min = Memory.reserve_min_ticks;
+                        if(flag.memory.active == true && ticks < reserve_min && flag.hasClaimer() == false) {
                                 return true;
                         }
 	return false;
