@@ -1,4 +1,3 @@
-require('global_vars');
 module.exports = {
 	getEnergy:
 		function(role,room) {
@@ -61,7 +60,8 @@ module.exports = {
                         if(flag.room != undefined && flag.room.controller.reservation != undefined) {
                                 ticks = flag.room.controller.reservation.ticksToEnd;
                         }
-                        if(flag.memory.active == true && ticks < C_RESERVE_MIN) {
+        		require('global_vars');
+	                if(flag.memory.active == true && ticks < C_RESERVE_MIN) {
                                 needed++;
                         }
                 }
