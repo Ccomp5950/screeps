@@ -9,6 +9,10 @@ module.exports = {
 		creep.memory.MyFlag = "raider";
 		let flag = Game.flags[creep.memory.MyFlag];
 		creep.drivebyRestore();
+                if(creep.getActiveBodyparts(MOVE) == 10) {
+                        if(creep.getBoosted("XZHO2")) return;
+                }
+
 		if(creep.memory.Healer == -1) return;
                 if(creep.getAwayFromEdge()) {
                         return;
@@ -30,14 +34,14 @@ module.exports = {
 		if(creep.approachAssignedFlag(999) == false) return;
 
                 //if(creep.attackHostileCreep()) return;
-		if(creep.attackHostileCreep()) return;
+		//(creep.attackHostileCreep()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
-		// if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		//if(creep.attackHostileCreep()) return;
+		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		if(creep.attackHostileCreep()) return;
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 
 		creep.approachAssignedFlag(0);
