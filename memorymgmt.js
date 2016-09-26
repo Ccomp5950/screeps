@@ -118,7 +118,9 @@ module.exports = {
 	                if(Memory.creeps[name].MyFlag != null) {
 	                        flag = "(" + Memory.creeps[name].MyFlag + ")";
 	                }
-	                console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + " HPs and "+ Memory.creeps[name].ticksToLive + " Ticks Left " + flag);
+	                if(Memory.creeps[name].ticksToLive > 1) {
+				console.log("RIP: " + name + " the " +Memory.creeps[name].role + " in "+ Memory.creeps[name].currentRoom + " with " + Memory.creeps[name].currentHits + "/" + Memory.creeps[name].currentMaxHits + " HPs and "+ Memory.creeps[name].ticksToLive + " Ticks Left " + flag);
+			}
 	            delete Memory.creeps[name];
 	        }
 	    }
