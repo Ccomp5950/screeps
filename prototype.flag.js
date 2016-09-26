@@ -1,3 +1,5 @@
+require('global_vars');
+
 module.exports = function() {
     // create a new function for StructureSpawn
 	Flag.prototype.hasFetcher =

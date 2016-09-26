@@ -1,3 +1,4 @@
+require('global_vars');
 module.exports = {
 	getEnergy:
 		function(role,room) {
