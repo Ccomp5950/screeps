@@ -117,6 +117,40 @@
 		}
 	}
 
+        global.handleRamparts =
+	function(room) {
+		let open = true;
+		let change = false;
+		if(Memory.rooms[room].rampartsOpen == undefined) {
+			Memory.rooms[room].rampartsOpen = false;
+			open = false;
+			change = true;
+		}
+		let meanies = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
+			filter: (c) => c.checkIfAlly() == false
+		}
+		let allies = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
+			filter: (c) => c.checkIfAlly() == true
+		}
+		if(meanies.length > 0 && Memory.rooms[room].rampartsOpen == true) {
+			open = false;
+			change = true;
+		}
+		else if (allies.length > 0 && meanies.length == 0 && Memory.rooms[room].rampartsOpen == false) {
+			open = true;
+			change = true;
+		}
+		if(change = false) return;
+		let roomO = Game.rooms[room];
+		if(roomO == undefined) return;
+
+		let ramparts = roomO.find(FIND_STRUCTURES, {filter (s) => s.structureType == STRUCTURE_RAMPART});
+		for(let i in ramparts) {
+			let rampart = ramparts[i];
+			if(rampart.ispublic() != open) rampart.setPublic(open);
+		}
+	}
+
 	global.handleLabs =
 	function() {
 		for(let roomM in Memory.rooms) {
