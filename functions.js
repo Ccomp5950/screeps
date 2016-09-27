@@ -167,7 +167,7 @@
 		let ramparts = roomO.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
 		for(let i in ramparts) {
 			let rampart = ramparts[i];
-			if(rampart.isPublic() != open) rampart.setPublic(open);
+			if(rampart.isPublic != open) rampart.setPublic(open);
 		}
 	}
 
