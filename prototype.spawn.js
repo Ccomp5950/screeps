@@ -323,8 +323,8 @@ module.exports = function() {
 		bodyset = true;
 	} else if (roleName == "mineralminer" || roleName == "rmineralminer") {
 		bodyset = true;
-		if(energy >= 4800) {
-			body = this.buildBody({work:46,move:4});
+		if(energy >= 4500) {
+			body = this.buildBody({work:40,carry:1,move:9});
 		} else if(energy >= 2600) {
 			body = this.buildBody({work:25,carry:1,move:1});
 		} else if (energy >= 2100) {
