@@ -131,6 +131,7 @@
 	function(room) {
 		let open = true;
 		let change = false;
+		let scary = true;
 		if(Memory.rooms[room].rampartsOpen == undefined) {
 			Memory.rooms[room].rampartsOpen = true;
 			open = true;
@@ -144,14 +145,20 @@
 			filter: (c) => c.checkIfAlly() == true
 		});
 		if(meanies.length > 0 && Memory.rooms[room].rampartsOpen == true) {
+			Memory.rooms[room].rampartsOpen = false;
 			open = false;
 			change = true;
 		}
 		else if (allies.length > 0 && meanies.length == 0 && Memory.rooms[room].rampartsOpen == false) {
+			Memory.rooms[room].rampartsOpen = true;
 			open = true;
 			change = true;
 		}
-		if(change == false) return;
+		if(change == false && Game.time % 20 != 0) return;
+		if(change == false && meanies.length == 0) {
+			open = true;
+			Memory.rooms[room].rampartsOpen = true;
+		}
 		let roomO = Game.rooms[room];
 		if(roomO == undefined) return;
 
