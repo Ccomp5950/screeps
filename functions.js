@@ -154,10 +154,13 @@
 			open = true;
 			change = true;
 		}
-		if(change == false && Game.time % 20 != 0) return;
-		if(change == false && meanies.length == 0) {
-			open = true;
-			Memory.rooms[room].rampartsOpen = true;
+		if(change == false) {
+			if(Game.time % 20 != 0) return;
+			if(meanies.length > 0) return;
+			if(Memory.rooms[room].rampartsOpen == false) {
+				open = true;
+				Memory.rooms[room].rampartsOpen = true;
+			}
 		}
 		let roomO = Game.rooms[room];
 		if(roomO == undefined) return;
