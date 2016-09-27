@@ -122,8 +122,8 @@
 		let open = true;
 		let change = false;
 		if(Memory.rooms[room].rampartsOpen == undefined) {
-			Memory.rooms[room].rampartsOpen = false;
-			open = false;
+			Memory.rooms[room].rampartsOpen = true;
+			open = true;
 			change = true;
 		}
 		let meanies = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
@@ -140,7 +140,7 @@
 			open = true;
 			change = true;
 		}
-		if(change = false) return;
+		if(change == false) return;
 		let roomO = Game.rooms[room];
 		if(roomO == undefined) return;
 
