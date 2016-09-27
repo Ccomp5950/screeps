@@ -155,7 +155,7 @@
 			change = true;
 		}
 		if(change == false) {
-			if(Game.time % 20 != 0) return;
+			if(Game.time % 5 != 0) return;
 			if(meanies.length > 0) return;
 			if(Memory.rooms[room].rampartsOpen == false) {
 				open = true;
