@@ -11,7 +11,9 @@ module.exports = {
 		}
 
 		if(creep.getBoosted("XZHO2")) return;
-		if(creep.getBoosted("XZH2O")) return;
+                if(creep.getActiveBodyparts(MOVE) == 10) {
+                        if(creep.getBoosted("XZHO2")) return;
+                }
 		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
 		
@@ -108,16 +110,16 @@ module.exports = {
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
-		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
-		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
-		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
-		if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
+		if(creep.attackHostileStructure(STRUCTURE_WALL)) return;
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
+		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		//if(creep.attackHostileStructure("ANYTHING")) return;
                 if(flag != undefined) {
                         range = creep.pos.getRangeTo(flag);
@@ -125,6 +127,31 @@ module.exports = {
                                 creep.moveTo(flag);
                                 return;
                         }
+			if(creep.memory.suicide == true) {
+				let index = 1;
+				let say = ["Welcome!", "Enjoy your", "stay!");
+				if(creep.memory.suisay == undefined) {
+					creep.memory.suisay = 2;
+				} else {
+					index = creep.memory.suisay;
+					creep.memory.suisay = creep.memory.suisay + 1;
+				}
+				if(say[index] != undefined) {
+					creep.say(say[index], true);
+					return;
+				} else {
+					if(creep.memory.dienow == undefined) {
+						creep.say("Bye!", true);
+						healer.say("^_^", true);
+						creep.memory.dienow = true;
+						return;
+					} else {
+						creep.suicide();
+						healer.suicide();
+					}
+					
+				}
+			
                 }
 
                 
