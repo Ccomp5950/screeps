@@ -130,7 +130,7 @@ module.exports = {
                         }
 			if(creep.memory.suicide == true) {
 				let index = 1;
-				let say = ["Welcome!", "Enjoy your", "stay!");
+				let say = ["Welcome!", "Enjoy your", "stay!"];
 				if(creep.memory.suisay == undefined) {
 					creep.memory.suisay = 2;
 				} else {
