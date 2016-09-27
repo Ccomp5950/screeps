@@ -158,8 +158,6 @@
 		if(change == false && meanies.length == 0) {
 			open = true;
 			Memory.rooms[room].rampartsOpen = true;
-		} else {
-			return;
 		}
 		let roomO = Game.rooms[room];
 		if(roomO == undefined) return;
