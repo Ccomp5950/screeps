@@ -42,6 +42,15 @@ module.exports = {
 	                                }
 				}
 			}
+                        let container = Game.getObjectById(creep.memory.container)
+			if(container != undefined) {
+				if(_.sum(container.store) < container.storeCapacity) {
+					for(items in creep.carry) {
+						creep.transfer(container,items);
+					}
+				}
+			}
+
 
 		} else {
 			let storage = creep.room.storage;
