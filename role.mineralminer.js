@@ -17,11 +17,6 @@ module.exports = {
 			creep.memory.working = true;
 		}
 
-
-
-
-
-
 		if(!creep.memory.working) {
 	                if(creep.approachAssignedFlag(0) == false) {
 	                        return;
@@ -38,6 +33,14 @@ module.exports = {
 					console.log("[" + creep.name + "] Cannot locate their extractor");
 					return;
 				}
+				let container = Game.getObjectById(creep.memory.container)
+				if(container != undefined) {
+	                                if(_.sum(container.store) < container.storeCapacity) {
+	                                        for(items in creep.carry) {
+	                                                creep.transfer(container,items);
+	                                        }
+	                                }
+				}
 			}
 
 		} else {
@@ -45,6 +48,7 @@ module.exports = {
 			let container = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.pos.getRangeTo(creep) <= 1 && s.structureType == STRUCTURE_CONTAINER})
 			
 			if(container != undefined) {
+				creep.memory.container = container.id;
 				if(_.sum(container.store) < container.storeCapacity) {
 		                        for(items in creep.carry) {
 		                                creep.transfer(container,items);
