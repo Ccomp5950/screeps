@@ -139,10 +139,10 @@
 		}
 		let meanies = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
 			filter: (c) => c.checkIfAlly() == false
-		}
+		});
 		let allies = Game.rooms[room].find(FIND_HOSTILE_CREEPS, {
 			filter: (c) => c.checkIfAlly() == true
-		}
+		});
 		if(meanies.length > 0 && Memory.rooms[room].rampartsOpen == true) {
 			open = false;
 			change = true;
