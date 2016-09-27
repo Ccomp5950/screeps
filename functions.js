@@ -119,7 +119,7 @@
 
 	global.clearWaypoints =
 	function() {
-		for(let i = 1; i == 20; i++) {
+		for(let i = 1; i <= 20; i++) {
 			let name ="waypoint" + i.toString();
 			if(Game.flags[name] != undefined) {
 				Game.flags[name].remove();
