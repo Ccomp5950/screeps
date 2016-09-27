@@ -155,7 +155,7 @@
 		let roomO = Game.rooms[room];
 		if(roomO == undefined) return;
 
-		let ramparts = roomO.find(FIND_STRUCTURES, {filter (s) => s.structureType == STRUCTURE_RAMPART});
+		let ramparts = roomO.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
 		for(let i in ramparts) {
 			let rampart = ramparts[i];
 			if(rampart.ispublic() != open) rampart.setPublic(open);
