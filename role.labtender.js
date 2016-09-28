@@ -90,7 +90,7 @@ module.exports = {
 				if(lab == undefined) {
 					continue;
 				}
-				if((lab.mineralAmount < 2000 && labMem.react == false && labMem.emptyMe == false) || lab.mineralAmount < 800 && labMem.react == true && labMem.emptyMe == false) {
+				if((lab.mineralAmount < 2000 && labMem.react == false && labMem.emptyMe == false) || lab.mineralAmount < 1200 && labMem.react == true && labMem.emptyMe == false) {
 					if(hasStorage && storage.store[labMem.mineral] != undefined && storage.store[labMem.mineral] > 400) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
