@@ -115,7 +115,7 @@ module.exports = {
 				creep.moveTo(homepos, option);
 				return;
 			}
-			if(Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(Game.flags[creep.room.name + "_remoteDropOff"]) < storageRange ) {
+			if(Game.flags[creep.memory.MyFlag] != undefined && Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(Game.flags[creep.room.name + "_remoteDropOff"]) < storageRange ) {
 				let links = Game.flags[creep.room.name + "_remoteDropOff"].pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
 				if(links.length) {
 					let link = links[0];
