@@ -58,9 +58,14 @@ module.exports = {
 			target = extra_target[0]
 			if(creep.pos.getRangeTo(target) == 1) {
 				creep.heal(target);
+				return;
 			} else {
 				creep.rangedHeal(target);
+				return;
 			}
+		}
+		if(creep.hits != creep.hitsMax) {
+			creep.heal(creep);
 		}
         }
 };
