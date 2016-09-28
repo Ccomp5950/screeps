@@ -11,7 +11,7 @@ module.exports = {
 			return;
 		}
 
-		if(creep.getBoosted("XZHO2")) return;
+		if(creep.getBoosted("XZH2O")) return;
                 if(creep.getActiveBodyparts(MOVE) == 10) {
                         if(creep.getBoosted("XZHO2")) return;
                 }
