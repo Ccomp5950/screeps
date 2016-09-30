@@ -114,7 +114,11 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "scout") {
-		body = this.buildBody({move:1,carry:1});
+		if(energy >= 1750) {
+			body = this.buildBody({tough:24,move:25,heal:1});
+		} else {
+			body = this.buildBody({move:1,carry:1});
+		}
 		bodyset = true;
 		creepMem.combat = true;
 	}
