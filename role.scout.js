@@ -6,7 +6,7 @@ module.exports = {
                         return;
                 }
 
-		if(creep.getActiveBodyParts(HEAL) > 0 && creep.hits < creep.hitsMax) {
+		if(creep.getActiveBodyparts(HEAL) > 0 && creep.hits < creep.hitsMax) {
 			creep.heal(creep);
 		}
 
