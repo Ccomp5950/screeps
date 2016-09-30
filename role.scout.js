@@ -6,6 +6,10 @@ module.exports = {
                         return;
                 }
 
+		if(creep.getActiveBodyParts(HEAL) > 0 && creep.hits < creep.hitsMax) {
+			creep.heal(creep);
+		}
+
 		//if(creep.gotoWaypoint()) return;
 
                 if(creep.getAwayFromEdge()) {
