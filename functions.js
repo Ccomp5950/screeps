@@ -119,12 +119,19 @@
 
 	global.clearWaypoints =
 	function() {
-		for(let i = 1; i <= 20; i++) {
+		if(Memory.firstFlag == undefined) {
+			Memory.firstFlag = 1;
+		}
+		for(let i = Memory.firstFlag; i <= 20; i++) {
 			let name ="waypoint" + i.toString();
 			if(Game.flags[name] != undefined) {
+				Memory.firstFlag = i;
 				Game.flags[name].remove();
+				return false;
 			}
 		}
+		Memory.firstFlag = 1;
+		return true;
 	}
 
         global.handleRamparts =
