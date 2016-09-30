@@ -73,7 +73,11 @@ module.exports.loop = function () {
 		}
 		Memory.lastBucket = Game.cpu.bucket;
 	}
-
+	if(Memory.clearWaypointFlags = true) {
+		if(clearWaypoints() == true) {
+			Memory.clearWaypointFlags = false;
+		}
+	}
 
 	noMoreConstruction = false;
 	validSources = [];
