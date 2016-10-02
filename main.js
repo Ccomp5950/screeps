@@ -126,7 +126,7 @@ module.exports.loop = function () {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
 
-	if(Game.time % 100 == 0 && Memory.rooms.E48S31.feed == true)
+	if(Game.time % 100 == 0 && Memory.rooms.E48S31.feed == true) {
 		let room = Game.rooms.E48S31;
 		let recepient = "E48S39";
 		let storage = room.storage;
