@@ -124,6 +124,9 @@ module.exports.loop = function () {
 	}
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
+	}
+
+	if(Game.time % 100 == 0 && Memory.rooms.E48S31.feed == true)
 		let room = Game.rooms.E48S31;
 		let recepient = "E48S39";
 		let storage = room.storage;
@@ -135,7 +138,7 @@ module.exports.loop = function () {
 		}
 
 	}
-        if(Game.time % 100 == 50) {
+        if(Game.time % 100 == 50 && Memory.rooms.E46S31.feed == true) {
                 let room = Game.rooms.E46S31;
                 let recepient = "E48S39";
                 let storage = room.storage;
