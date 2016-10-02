@@ -23,11 +23,16 @@ module.exports = {
 	                }
 			let extractor = Game.getObjectById(creep.memory.extractor);
 			if(extractor != undefined) {
-				creep.harvest(extractor);
+				if(Game.time %6 == 0) {
+					creep.harvest(extractor);
+				}
 			} else {
 				extractor = creep.pos.findClosestByRange(FIND_MINERALS);
 				if(extractor != undefined) {
-					creep.harvest(extractor);
+					if(Game.time %6 == 0) {
+						creep.harvest(extractor);
+					}
+
 					creep.memory.extractor = extractor.id;
 				} else {
 					console.log("[" + creep.name + "] Cannot locate their extractor");
