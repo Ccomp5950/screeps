@@ -224,7 +224,7 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "unclaimer") {
-                body = this.buildBody({claim:5,move:5})
+                body = this.buildBody({claim:15,move:15})
                 bodyset = true;
 	}
 	else if (roleName == "remoteupgrader") {
