@@ -134,7 +134,7 @@ module.exports.loop = function () {
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
 			console.log("Sending Energy to: " + recepient);
-			terminal.send("energy",60000, recepient);
+			terminal.send("energy",50000, recepient);
 		}
 
 	}
@@ -146,9 +146,19 @@ module.exports.loop = function () {
                 let energy = storage.store.energy + terminal.store.energy;
                 if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
                         console.log("Sending Energy to: " + recepient);
-                        terminal.send("energy",60000, recepient);
+                        terminal.send("energy",50000, recepient);
                 }
-
+        }
+        if(Game.time % 100 == 75 && Memory.rooms.E49S36.feed == true) {
+                let room = Game.rooms.E49S36;
+                let recepient = "E48S39";
+                let storage = room.storage;
+                let terminal = room.terminal;
+                let energy = storage.store.energy + terminal.store.energy;
+                if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
+                        console.log("Sending Energy to: " + recepient);
+                        terminal.send("energy",50000, recepient);
+                }
         }
 
 
