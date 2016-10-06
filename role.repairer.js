@@ -75,7 +75,6 @@ module.exports = {
 		}
 		creep.memory.repairing = structure.id;
                 // try to repair it, if it is out of range
-		console.log("["+ creep.name + "] structure = 
 		let debugRep = creep.repairThis(structure);
 		console.log("["+ creep.name + "] structure = " + structure.id + " and repairThis returned: " + debugRep);
 		//creep.repairThis(structure);
