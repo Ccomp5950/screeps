@@ -29,52 +29,50 @@ module.exports = {
 
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
-	    var structure = undefined;
-	    var structureCandidates = [];
-	    var criticalStructures = creep.room.find(FIND_STRUCTURES, {
-		filter: (s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && (s.hits / s.hitsMax < 0.05)
-	    });
-	    for(let tmpStructure of criticalStructures) {
-		if(tmpStructure.hits == 1) {
-			structureCandidates.push(tmpStructure);
-			structure = tmpStructure;
-			break;
+		var structure = game.getObjectById(creep.memory.repairing);
+		if(structure.hits == structure.hitsMax || creep.memory.repairedCached >= 5) {
+			structure = undefined;
 		}
-			
-	    }
-	    var rampartCandidates = [];	    
-	    if(structureCandidates.length == 0) {
-		var nextCandidates = creep.room.find(FIND_STRUCTURES, {
-                 filter: (s) => (s.hits /  s.hitsMax < 0.90)  && s.structureType != STRUCTURE_WALL
-                                                                         });
-
-                 var rampartMinHealth = Memory.rampartMinHealth;
-                        if(creep.room.memory != undefined && creep.room.memory.rampartMinHealth != undefined) {
-                                rampartMinHealth = creep.room.memory.rampartMinHealth;
-                        }
-		for(let tmpStructure of nextCandidates) {
-	                if(tmpStructure.structureType == STRUCTURE_RAMPART && tmpStructure.hits < rampartMinHealth) {
-	                        rampartCandidates.push(tmpStructure);
-	                        continue;
-	                } else if (tmpStructure.structureType != STRUCTURE_RAMPART) {
-					structureCandidates.push(tmpStructure);
+		if(structure == undefined) { 
+			// CRITICAL!!!
+			structure = _(creep.room.find(FIND_STRUCTURES))
+				.filter((s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
+				.min(s=>s.hits / s.hitsMax);
+		}
+		// Anythign that doesn't decay.
+                if(structure == undefined) {
+			structure = _(creep.room.find(FIND_STRUCTURES))
+				.filter((s) => (s.structureType != STRUCTURE_ROAD 
+						&& s.structureType != STRUCTURE_CONTAINER
+						&& s.structureType != STRUCTURE_RAMPART
+						&& s.structureType != STRUCTURE_WALL)
+					&& s.hits < s.hitsMax)
+				.min(s=>s.hits / s.hitsMax);
+                }
+		// Roads and containers
+                if(structure == undefined) {
+                        structure = _(creep.room.find(FIND_STRUCTURES))
+                                .filter((s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hitsMax - s.hits > 750)
+                                .min(s=>s.hits / s.hitsMax);
+                }
+		// Ramparts only if storage is > 50k
+                if(structure == undefined) {
+			storage = creep.room.storage;
+			if(storage == undefined || storage.store.energy > 50000) {
+	                        structure = _(creep.room.find(FIND_STRUCTURES))
+	                                .filter((s) => (s.structureType == STRUCTURE_RAMPART && s.hits < s.hitsMax)
+	                                .min(s=>s.hits / s.hitsMax);
 			}
-		}
-		if(structureCandidates.length == 0 && rampartCandidates.length > 0) {
-			structureCandidates = rampartCandidates;
-		}
-
-	    }
-	    if (structure == undefined && structureCandidates.length > 0) {
-		 structure = creep.pos.findClosestByPath(structureCandidates, {
-				filter: (s) => s.isBeingHandled(creep) == false
-		});
-	    }
+                }
             // if we find one
             if (structure != undefined) {
+		if(creep.memory.repairing == undefined || creep.memory.repairing != structure.id) {
+			creep.memory.repairCached = 0;
+		}
 		creep.memory.repairing = structure.id;
                 // try to repair it, if it is out of range
 		creep.repairThis(structure);
+		creep.memory.repairCached++;
 		structure.iGotIt(creep);
             }
             // if we can't fine one
