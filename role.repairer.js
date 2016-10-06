@@ -31,21 +31,22 @@ module.exports = {
         if (creep.memory.working == true) {
 		var structure = Game.getObjectById(creep.memory.repairing);
 		if((structure != undefined && structure.hits == structure.hitsMax) || creep.memory.repairedCached >= 5) {
-			creep.say("reset");
 			creep.memory.repairCached = 0;
 			structure = undefined;
 		}
 		if(structure == undefined) { 
-			creep.say("crit");
 			// CRITICAL!!!
 			structure = _(creep.room.find(FIND_STRUCTURES))
 				.filter((s) => (s.hits + 1) < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
 				.min(s=>s.hits / s.hitsMax);
-			console.log("Structure is: " + structure);
+                    if(structure == Infinity) {
+                        structure = undefined;
+                    }
+
+			
 		}
 		// Anythign that doesn't decay.
                 if(structure == undefined) {
-			creep.say("nondecay");
 			structure = _(creep.room.find(FIND_STRUCTURES))
 				.filter((s) => (s.structureType != STRUCTURE_ROAD 
 						&& s.structureType != STRUCTURE_CONTAINER
@@ -53,23 +54,34 @@ module.exports = {
 						&& s.structureType != STRUCTURE_WALL)
 					&& (s.hits + 1) < s.hitsMax)
 				.min(s=>s.hits / s.hitsMax);
+
+                    if(structure == Infinity) {
+                        structure = undefined;
+                    }
+
                 }
 		// Roads and containers
                 if(structure == undefined) {
-			creep.say("road + box");
                         structure = _(creep.room.find(FIND_STRUCTURES))
                                 .filter((s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hitsMax - s.hits > 750)
                                 .min(s=>s.hits / s.hitsMax);
+	                    if(structure == Infinity) {
+        	                structure = undefined;
+	                    }
+
                 }
 		// Ramparts only if storage is > 50k
                 if(structure == undefined) {
-			creep.say("ramp NO");
 			storage = creep.room.storage;
 			if(storage == undefined || storage.store.energy > 50000) {
 				creep.say("ramp YES");
 	                        structure = _(creep.room.find(FIND_STRUCTURES))
 	                                .filter((s) => (s.structureType == STRUCTURE_RAMPART && s.hits < s.hitsMax))
 	                                .min(s=>s.hits / s.hitsMax);
+	                    if(structure == Infinity) {
+	                        structure = undefined;
+	                    }
+
 			}
                 }
             // if we find one
