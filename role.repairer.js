@@ -41,7 +41,7 @@ module.exports = {
 			structure = _(creep.room.find(FIND_STRUCTURES))
 				.filter((s) => (s.hits + 1) < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
 				.min(s=>s.hits / s.hitsMax);
-			
+			console.log("Structure is: " + structure);
 		}
 		// Anythign that doesn't decay.
                 if(structure == undefined) {
@@ -80,7 +80,7 @@ module.exports = {
 		creep.memory.repairing = structure.id;
                 // try to repair it, if it is out of range
 		let debugRep = creep.repairThis(structure);
-		console.log("["+ creep.name + "] structure = " + structure.id + " and repairThis returned: " + debugRep);
+		//console.log("["+ creep.name + "] structure = " + structure.id + " and repairThis returned: " + debugRep);
 		//creep.repairThis(structure);
 		//structure.iGotIt(creep);
             }
