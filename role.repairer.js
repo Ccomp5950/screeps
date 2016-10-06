@@ -47,7 +47,7 @@ module.exports = {
 						&& s.structureType != STRUCTURE_CONTAINER
 						&& s.structureType != STRUCTURE_RAMPART
 						&& s.structureType != STRUCTURE_WALL)
-					&& s.hits < s.hitsMax)
+					&& (s.hits + 1) < s.hitsMax)
 				.min(s=>s.hits / s.hitsMax);
                 }
 		// Roads and containers
