@@ -39,8 +39,9 @@ module.exports = {
 			creep.say("crit");
 			// CRITICAL!!!
 			structure = _(creep.room.find(FIND_STRUCTURES))
-				.filter((s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
+				.filter((s) => (s.hits + 1) < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
 				.min(s=>s.hits / s.hitsMax);
+			
 		}
 		// Anythign that doesn't decay.
                 if(structure == undefined) {
