@@ -664,16 +664,17 @@ module.exports = function() {
 			return false;
 		}
 		if(target.hits >= target.hitsMax - 100) {
-			creep.memory.repair = null;
+			creep.memory.repairing = null;
 			return false;
 		}
-		creep.memory.repair = target.id;
+		creep.memory.repairing = target.id;
 		if (creep.pos.getRangeTo(target) > 3){
 			creep.repairOnTheMove();
 			creep.moveToRange(target.pos, 3);
 			return true;
 		} else {
                     creep.repair(target);
+			creep.memory.repairCached++;
 			return true;
                 }
 	};

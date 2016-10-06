@@ -77,7 +77,6 @@ module.exports = {
                 // try to repair it, if it is out of range
 		creep.say('3');
 		creep.repairThis(structure);
-		creep.memory.repairCached++;
 		//structure.iGotIt(creep);
             }
             // if we can't fine one
