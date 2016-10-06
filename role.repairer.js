@@ -74,7 +74,6 @@ module.exports = {
                 if(structure == undefined) {
 			storage = creep.room.storage;
 			if(storage == undefined || storage.store.energy > 50000) {
-				creep.say("ramp YES");
 	                        structure = _(creep.room.find(FIND_STRUCTURES))
 	                                .filter((s) => (s.structureType == STRUCTURE_RAMPART && s.hits < s.hitsMax))
 	                                .min(s=>s.hits / s.hitsMax);
