@@ -30,7 +30,7 @@ module.exports = {
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
 		var structure = game.getObjectById(creep.memory.repairing);
-		if(structure.hits == structure.hitsMax || creep.memory.repairedCached >= 5) {
+		if((structure != undefined && structure.hits == structure.hitsMax) || creep.memory.repairedCached >= 5) {
 			structure = undefined;
 		}
 		if(structure == undefined) { 
