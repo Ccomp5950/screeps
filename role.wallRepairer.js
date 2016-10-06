@@ -25,7 +25,12 @@ module.exports = {
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
             // find all walls in the room
-            var target = Game.getObjectById(creep.memory.repair);
+            var target = Game.getObjectById(creep.memory.repairing);
+	    if(target != undefined && (target.hits == target.hitsMax || creep.memory.repairCached >= 5)) {
+		target = undefined;
+		creep.memory.repairing = null;
+		creep.memory.repairCached = 0;
+	    }
 	    if(target == undefined) {
 		    target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_WALL && s.hits != s.hitsMax).min(s=>s.hits);
 		    if(target == Infinity) {
@@ -34,6 +39,9 @@ module.exports = {
 	   }
             // if we find a wall that has to be repaired
             if (target != undefined && (creep.room.stroage == undefined || creep.room.storage.store.energy > 50000)) {
+		if(target.id != creep.memory.repairing) {
+			creep.memory.repairCached = 0;
+		}
 		creep.repairThis(target);
             }
             // if we can't fine one
