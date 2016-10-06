@@ -36,6 +36,7 @@ module.exports = {
 			structure = undefined;
 		}
 		if(structure == undefined) { 
+			creep.say("crit");
 			// CRITICAL!!!
 			structure = _(creep.room.find(FIND_STRUCTURES))
 				.filter((s) => s.hits < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05))
@@ -43,6 +44,7 @@ module.exports = {
 		}
 		// Anythign that doesn't decay.
                 if(structure == undefined) {
+			creep.say("nondecay");
 			structure = _(creep.room.find(FIND_STRUCTURES))
 				.filter((s) => (s.structureType != STRUCTURE_ROAD 
 						&& s.structureType != STRUCTURE_CONTAINER
@@ -53,16 +55,17 @@ module.exports = {
                 }
 		// Roads and containers
                 if(structure == undefined) {
+			creep.say("road + box");
                         structure = _(creep.room.find(FIND_STRUCTURES))
                                 .filter((s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hitsMax - s.hits > 750)
                                 .min(s=>s.hits / s.hitsMax);
                 }
 		// Ramparts only if storage is > 50k
                 if(structure == undefined) {
-			creep.say("1")
+			creep.say("ramp NO");
 			storage = creep.room.storage;
 			if(storage == undefined || storage.store.energy > 50000) {
-				creep.say("2");
+				creep.say("ramp YES");
 	                        structure = _(creep.room.find(FIND_STRUCTURES))
 	                                .filter((s) => (s.structureType == STRUCTURE_RAMPART && s.hits < s.hitsMax))
 	                                .min(s=>s.hits / s.hitsMax);
