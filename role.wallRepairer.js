@@ -33,7 +33,7 @@ module.exports = {
 		    }
 	   }
             // if we find a wall that has to be repaired
-            if (target != undefined) {
+            if (target != undefined && (creep.room.stroage == undefined || creep.room.storage.store.energy > 50000)) {
 		creep.repairThis(target);
             }
             // if we can't fine one
