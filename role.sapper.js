@@ -17,7 +17,7 @@ module.exports = {
 		if(creep.getBoosted("XZH2O")) return;
 		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
-		
+		var flag = Game.flags.sapper;	
                 if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {
                                 if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
@@ -34,7 +34,6 @@ module.exports = {
 
 		if(creep.gotoWaypoint()) return;
 		//creep.getAwayFromEdge();
-		var flag = Game.flags.sapper;		
 		var frange = 999;
 		var hide = creep.memory.hide;
 		var towercheck = creep.memory.towercheck;
