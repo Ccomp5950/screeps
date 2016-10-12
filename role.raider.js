@@ -36,8 +36,8 @@ module.exports = {
                 //if(creep.attackHostileCreep()) return;
 		//(creep.attackHostileCreep()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
-		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
