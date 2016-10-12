@@ -33,7 +33,7 @@ module.exports = {
 		}
 
 		if(creep.gotoWaypoint()) return;
-		//creep.getAwayFromEdge();
+		creep.getAwayFromEdge();
 		var frange = 999;
 		var hide = creep.memory.hide;
 		var towercheck = creep.memory.towercheck;
