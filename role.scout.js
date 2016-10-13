@@ -18,7 +18,6 @@ module.exports = {
 		if(Game.flags["scout1"] != undefined) {
 			var range = creep.pos.getRangeTo(Game.flags.scout1);
 			if(range > 0) {
-				 if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 				creep.moveTo(Game.flags.scout1);
 			} 
 			if (range == 1) {
