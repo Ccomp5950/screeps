@@ -6,7 +6,7 @@ module.exports = {
 			creep.setupFlag();
 		}
 		if(creep.memory.MyFlag == "claimerSpot_E55S32") {
-			creep.memory.setupTime = 375;
+			creep.memory.setupTime = 400;
 		}
 		if(creep.approachAssignedFlag(0) == false) {
 			return;
