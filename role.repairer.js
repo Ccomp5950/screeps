@@ -9,7 +9,7 @@ module.exports = {
                 }
 	creep.memory.currentRole = "repairer";
 
-	if(creep.getBoosted("XLH2O")) return;
+	//if(creep.getBoosted("XLH2O")) return;
 	creep.memory.needsBoosted = false;
 
 	if(creep.memory.role == "remoterepairer") {
