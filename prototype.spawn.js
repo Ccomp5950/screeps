@@ -344,7 +344,7 @@ module.exports = function() {
 
 
 
-	if8(!bodyset) {
+	if(!bodyset) {
 		let Nparts = 0;
             for (let i = 0; i < numberOfParts && Nparts <=47; i++) {
 		Nparts += 3;
