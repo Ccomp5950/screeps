@@ -338,11 +338,13 @@ module.exports = function() {
 		} else {
 			bodyset = false;
 		}
+	} else if (roleName == "repairer") {
+		creepMem.needsBoosted = true;
 	}
 
 
 
-	if(!bodyset) {
+	if8(!bodyset) {
 		let Nparts = 0;
             for (let i = 0; i < numberOfParts && Nparts <=47; i++) {
 		Nparts += 3;
