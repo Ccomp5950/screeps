@@ -8,6 +8,10 @@ module.exports = {
                         return;
                 }
 	creep.memory.currentRole = "repairer";
+
+	if(creep.getBoosted("XLH2O")) return;
+	creep.memory.needsBoosted = false;
+
 	if(creep.memory.role == "remoterepairer") {
 		creep.memory.MyFlag = "remoterepairer";
 		if(creep.approachAssignedFlag(999) == false) return;
