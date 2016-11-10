@@ -45,7 +45,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			groundskeeper:	{namer:"groundskeeper",		minimum:0,	requirement:2000,	buildRestriction : true,	run: require('role.groundskeeper')},
                         builder:        {namer:"builder",               minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.builder')},
                         repairer:       {namer:"repairer",              minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
-                        wallrepairer:   {namer:"wallrepairer",          minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.wallRepairer')},
+                        wallrepairer:   {namer:"wallrepairer",          minimum:0,      requirement:0,          buildRestriction : true,        run: require('role.repairer')},
                         towertender:    {namer:"towertender",           minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.towertender')},
                         scout:          {namer:"scout",                 minimum:0,      requirement:50,		buildRestriction : true,        run: require('role.scout')},
                         claimer:        {namer:"claimer",               minimum:0,      requirement:1400,       buildRestriction : true,        run: require('role.claimer')},
