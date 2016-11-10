@@ -21,7 +21,12 @@ module.exports = {
 			creep.repairing = null;
 			creep.moveTo(roompos);
 			return;
+		} else {
+	                if(creep.getAwayFromEdge()) {
+	                        return;
+	                }
 		}
+
 		
 	}
 
