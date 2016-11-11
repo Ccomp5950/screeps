@@ -125,10 +125,9 @@ module.exports.loop = function () {
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
-
+	var recepient = "E46S31"
 	if(Game.time % 100 == 0 && Memory.rooms.E48S31.feed == true) {
 		let room = Game.rooms.E48S31;
-		let recepient = "E49S31";
 		let storage = room.storage;
 		let terminal = room.terminal;
 		let energy = storage.store.energy + terminal.store.energy;
@@ -140,7 +139,6 @@ module.exports.loop = function () {
 	}
         if(Game.time % 100 == 50 && Memory.rooms.E46S31.feed == true) {
                 let room = Game.rooms.E46S31;
-                let recepient = "E49S31";
                 let storage = room.storage;
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
@@ -151,7 +149,6 @@ module.exports.loop = function () {
         }
         if(Game.time % 100 == 75 && Memory.rooms.E49S36.feed == true) {
                 let room = Game.rooms.E49S36;
-                let recepient = "E49S31";
                 let storage = room.storage;
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
@@ -162,7 +159,6 @@ module.exports.loop = function () {
         }
         if(Game.time % 100 == 25 && Memory.rooms.E48S39.feed == true) {
                 let room = Game.rooms.E48S39;
-                let recepient = "E49S31";
                 let storage = room.storage;
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
