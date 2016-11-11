@@ -322,7 +322,11 @@ module.exports = function() {
 		body = this.buildBody(fetchbody)
 		bodyset = true;
         } else if (roleName == "linktender") {
-		ltbody = {move:1, carry:16};
+		if(energy >= 1400) {
+			ltbody = {move:1, carry:16};
+		} else {
+			ltbody = {move:1, carry:8};
+		}
 		body = this.buildBody(ltbody);
 		bodyset = true;
 	} else if (roleName == "mineralminer" || roleName == "rmineralminer") {
