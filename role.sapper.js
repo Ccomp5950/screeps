@@ -19,10 +19,15 @@ module.exports = {
                 var healer = Game.getObjectById(creep.memory.Healer);
 		var flag = Game.flags.sapper;	
 		creep.getAwayFromEdge();
-                if(healer != undefined) {
+		if(creep.memory.role == "solosapper") {
+			healer = creep.id
+		}
+
+
+		if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {
                                 if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
-                                        //return;
+                                        return;
                                 }
                         }
                         if(creep.pos.getRangeTo(healer) > 999) {

@@ -22,6 +22,7 @@ var needed = require('getNeeded');
 var roles =            {harvester:      {namer:"harvester",             minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			linktender:     {namer:"linktender",            minimum:0,      requirement:1400,       buildRestriction : false,       run: require('role.linktender')},
 			attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
+			solosapper:	{namer:"solosapper",            minimum:0,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
 			sapper:         {namer:"sapper",                minimum:0,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         towerdrainer:   {namer:"towerdrainer",          minimum:0,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
 			killdozer:      {namer:"killdozer",             minimum:0,      requirement:7650,       buildRestriction : true,        run: require('role.killdozer')},
