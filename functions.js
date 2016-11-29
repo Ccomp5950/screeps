@@ -26,7 +26,14 @@
 		}
 	return null;
 	};
+	global.roomLink =
+	function(room, braces) {
+		if(braces == false) {
+			return "<a href='https://screeps.com/a/#!/room/" + room + "'>" + room + "</a>"
+		}
+		return "[<a href='https://screeps.com/a/#!/room/" + room + "'>" + room + "</a>] "
 
+	}
 	global.distCheck =
 	function() {
 	if(Game.flags.check1 != undefined && Game.flags.check2 != undefined) {

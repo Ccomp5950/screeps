@@ -116,9 +116,9 @@ module.exports.loop = function () {
 					storage = "[Storage: " + Game.rooms[room].storage.store.energy.toLocaleString() + " energy]";
 				}
 				if(Game.rooms[room].controller.level != 8) {
-					console.log("[" + room + "]<span style='color: yellow;'> Progress Left until RCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
+					console.log(roomLink(room) + "<span style='color: yellow;'> Progress Left until RCL" + level + " : " + progressleft.toLocaleString() + " / " + percent + "%   "+ storage + "</span>");
 				} else {
-					console.log("[" + room + "]<span style='color: yellow;'> YAY RCL 8 "+ storage + "</span>");
+					console.log(roomLink(room) + "<span style='color: yellow;'> YAY RCL 8 "+ storage + "</span>");
 				}
 			}
 		}
@@ -133,7 +133,7 @@ module.exports.loop = function () {
 		let terminal = room.terminal;
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log("[E48S31] Sending Energy to: " + recepient);
+			console.log(roomLink("E48S31") + "Sending Energy to: " + recepient);
 			terminal.send("energy",50000, recepient);
 		}
 
@@ -144,7 +144,7 @@ module.exports.loop = function () {
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
                 if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-                        console.log("[E46S31] Sending Energy to: " + recepient);
+			console.log(roomLink("E46S31") + "Sending Energy to: " + recepient);
                         terminal.send("energy",50000, recepient);
                 }
         }
@@ -154,7 +154,7 @@ module.exports.loop = function () {
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
                 if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-                        console.log("[E49S36] Sending Energy to: " + recepient);
+			console.log(roomLink("E49S36") + "Sending Energy to: " + recepient);
                         terminal.send("energy",50000, recepient);
                 }
         }
@@ -164,7 +164,7 @@ module.exports.loop = function () {
                 let terminal = room.terminal;
                 let energy = storage.store.energy + terminal.store.energy;
                 if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log("[E48S39] Sending Energy to: " + recepient);
+			console.log(roomLink("E48S39") + "Sending Energy to: " + recepient);
 			terminal.send("energy",50000, recepient);
                 }
 	}
@@ -203,10 +203,10 @@ module.exports.loop = function () {
 					biggestThreatRating[room] = 1;
 				}
 				if(enemy_creep.owner != undefined) {
-					meaniename = "from " + enemy_creep.owner.username;
+					meaniename = enemy_creep.owner.username;
 				}
 			}
-			console.log("[" + room + "]OH FUCK " + meaniesA[room].length + " creeps from an asshole named " + meaniename + " Biggest Threat: " + biggestThreatRating[room]);
+			console.log(roomLink(room) + "OH FUCK " + meaniesA[room].length + " creeps from an asshole named " + meaniename + " Biggest Threat: " + biggestThreatRating[room]);
 		}
 
 	}
