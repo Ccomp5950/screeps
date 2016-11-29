@@ -367,7 +367,7 @@ module.exports = function() {
 	            checkResult =  this.createCreep(body, name, creepMem);
 	    }
 	    if(checkResult < 0) {
-		message = "[" + this.name + "] tried to spawn " + name + " but received error: ";
+		message = "[" + this.name + "(" + roomLink(this.room.name, false) + ")]  tried to spawn " + name + " but received error: ";
 		let err = "";
 		switch(checkResult) {
 			case 0:
@@ -502,7 +502,7 @@ module.exports = function() {
 			}
 		}
 		if (!(name < 0) && name != undefined) {
-			console.log("[" + mySpawn.name + "] Spawned new creep: " + name );
+			console.log("[" + mySpawn.name + "(" + roomLink(this.room.name, false) + ")] Spawned new creep: " + name );
 		}
 	}
 };
