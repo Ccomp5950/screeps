@@ -81,7 +81,7 @@ module.exports = {
 		// Roads and containers
                 if(structure == undefined) {
                         structure = _(creep.room.find(FIND_STRUCTURES))
-                                .filter((s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hitsMax - s.hits > 750 && s.isBeingHandled(creep) == false)
+                                .filter((s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hitsMax - s.hits > 1500 && s.isBeingHandled(creep) == false)
                                 .min(s=>s.hits / s.hitsMax);
 	                    if(structure == Infinity) {
         	                structure = undefined;
