@@ -15,12 +15,12 @@ module.exports = {
                 let flag = Game.flags[creep.memory.myFlag];
 		
 		let terminal = creep.room.terminal;
-		let storage = creep.room.storage;;
+		let storage = creep.room.storage;
 
 		let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
 		for(let resource in energy) {
 			creep.pickup(resource)
-		}										                                }
+		}										                                
 	let carry = _.sum(creep.carry);
         if (creep.memory.working == true && carry == 0) {
 
