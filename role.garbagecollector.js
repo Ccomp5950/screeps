@@ -17,10 +17,10 @@ module.exports = {
 		let terminal = creep.room.terminal;
 		let storage = creep.room.storage;;
 
-		let energy = creep.pos.lookFor(LOOK_ENERGY);
-			if(energy.length) {
-				creep.pickup(energy[0])
-			}
+		let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
+		for(let resource in energy) {
+			creep.pickup(resource)
+		}										                                }
 	let carry = _.sum(creep.carry);
         if (creep.memory.working == true && carry == 0) {
 
