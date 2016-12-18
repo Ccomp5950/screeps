@@ -129,6 +129,9 @@ module.exports.loop = function () {
 	var recepient = Memory.pumpEnergyHere;
 	for(let room in Memory.rooms) {
 
+		if(Game.rooms[recepient] == undefined) break;
+		if(Game.rooms[recepient].terminal == undefined) break;
+
 		if(room == recepient) continue;
 
 		if(Memory.rooms[room].feed != true) continue;
