@@ -137,12 +137,12 @@ module.exports.loop = function () {
 
 		let storage = roomO.storage;
 		let terminal = roomO.terminal;
-		if(terminal == undefined || storage == undefined || terminal.store.energy <= 5000) continue;
+		if(terminal == undefined || storage == undefined || terminal.store.energy <= 10000) continue;
 
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 250000) {
 			console.log(roomLink(room) + "Sending Energy to: " + recepient);
-			terminal.send("energy",5000, recepient);
+			terminal.send("energy",10000, recepient);
 			break;
 		}
 	}
