@@ -137,7 +137,7 @@ module.exports.loop = function () {
 
 		let storage = roomO.storage;
 		let terminal = roomO.terminal;
-		if(terminal == undefined || storage == undefined) continue;
+		if(terminal == undefined || storage == undefined || terminal.store.energy <= 5000) continue;
 
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 250000) {
