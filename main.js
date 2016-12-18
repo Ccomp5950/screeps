@@ -135,8 +135,10 @@ module.exports.loop = function () {
 		let roomO = Game.rooms[room]
 		if(roomO.controller.level <= 6) continue;
 
-		let storage = room0.storage;
+		let storage = roomO.storage;
 		let terminal = roomO.terminal;
+		if(terminal == undefined || storage == undefined) continue;
+
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 250000) {
 			console.log(roomLink(room) + "Sending Energy to: " + recepient);
