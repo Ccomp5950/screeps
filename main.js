@@ -126,47 +126,23 @@ module.exports.loop = function () {
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
-	var recepient = "E49S36"
-	if(Game.time % 100 == 0 && Memory.rooms.E48S31.feed == true) {
-		let room = Game.rooms.E48S31;
-		let storage = room.storage;
-		let terminal = room.terminal;
-		let energy = storage.store.energy + terminal.store.energy;
-		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log(roomLink("E48S31") + "Sending Energy to: " + recepient);
-			terminal.send("energy",50000, recepient);
-		}
+	var recepient = Memory.pumpEnergyHere;
+	for(let room in Memory.rooms) {
 
-	}
-        if(Game.time % 100 == 50 && Memory.rooms.E46S31.feed == true) {
-                let room = Game.rooms.E46S31;
-                let storage = room.storage;
-                let terminal = room.terminal;
-                let energy = storage.store.energy + terminal.store.energy;
-                if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log(roomLink("E46S31") + "Sending Energy to: " + recepient);
-                        terminal.send("energy",50000, recepient);
-                }
-        }
-        if(Game.time % 100 == 75 && Memory.rooms.E49S36.feed == true) {
-                let room = Game.rooms.E49S36;
-                let storage = room.storage;
-                let terminal = room.terminal;
-                let energy = storage.store.energy + terminal.store.energy;
-                if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log(roomLink("E49S36") + "Sending Energy to: " + recepient);
-                        terminal.send("energy",50000, recepient);
-                }
-        }
-        if(Game.time % 100 == 25 && Memory.rooms.E48S39.feed == true) {
-                let room = Game.rooms.E48S39;
-                let storage = room.storage;
-                let terminal = room.terminal;
-                let energy = storage.store.energy + terminal.store.energy;
-                if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 220000) {
-			console.log(roomLink("E48S39") + "Sending Energy to: " + recepient);
-			terminal.send("energy",50000, recepient);
-                }
+		if(room == recepient) continue;
+
+		if(Memory.rooms[room].feed != true) continue;
+		let roomO = Game.rooms[room]
+		if(roomO.controller.level <= 6) continue;
+
+		let storage = room0.storage;
+		let terminal = roomO.terminal;
+		let energy = storage.store.energy + terminal.store.energy;
+		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 250000) {
+			console.log(roomLink(room) + "Sending Energy to: " + recepient);
+			terminal.send("energy",5000, recepient);
+			break;
+		}
 	}
 
 
