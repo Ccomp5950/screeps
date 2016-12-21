@@ -143,10 +143,15 @@ module.exports.loop = function () {
 		if(terminal == undefined || storage == undefined || terminal.store.energy <= 10000) continue;
 
 		let energy = storage.store.energy + terminal.store.energy;
-		if(energy >= 540000 && _.sum(Game.rooms[recepient].terminal.store) <= 250000) {
-			console.log(roomLink(room) + "Sending Energy to: " + recepient);
-			terminal.send("energy",10000, recepient);
-			break;
+		if(energy >= 540000) {
+		        if(_.sum(Game.rooms[recepient].terminal.store) <= 250000) {
+				console.log(roomLink(room) + "Sending Energy to: " + recepient);
+				terminal.send("energy",10000, recepient);
+				break;
+			} else {
+				console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E48S29"));
+				terminal.send("energy",5000, "E68S29");
+			}
 		}
 	}
 
