@@ -140,7 +140,7 @@ module.exports.loop = function () {
 
 		let storage = roomO.storage;
 		let terminal = roomO.terminal;
-		if(terminal == undefined || storage == undefined || terminal.store.energy <= 10000) continue;
+		if(terminal == undefined || storage == undefined || terminal.store.energy <= 20000) continue;
 
 		let energy = storage.store.energy + terminal.store.energy;
 		if(energy >= 540000) {
