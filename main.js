@@ -149,7 +149,7 @@ module.exports.loop = function () {
 				terminal.send("energy",10000, recepient);
 				break;
 			} else {
-				console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E48S29"));
+				console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E68S29"));
 				terminal.send("energy",5000, "E68S29");
 			}
 		}
