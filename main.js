@@ -143,7 +143,7 @@ module.exports.loop = function () {
 		if(terminal == undefined || storage == undefined || terminal.store.energy <= 20000) continue;
 
 		let energy = storage.store.energy + terminal.store.energy;
-		if(energy >= 280000) {
+		if(energy >= 500000) {
 		        if(_.sum(Game.rooms[recepient].terminal.store) <= 250000) {
 				console.log(roomLink(room) + "Sending Energy to: " + recepient);
 				terminal.send("energy",10000, recepient);
