@@ -60,6 +60,12 @@ module.exports = {
 					&& s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom)
 			});
 		}
+                if (structure == null && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
+                        structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                                filter: (s) => (s.structureType == STRUCTURE_NUKER
+                                        && s.energy < s.enegyCapacity)
+		});
+								                }
 
             // if we found one
             if (structure != null) {
