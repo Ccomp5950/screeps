@@ -66,7 +66,7 @@ module.exports = {
 	                                        return;
 	                                }	
 	                                creep.withdraw(target, creep.memory.loading);
-					if(creep.room.storage != undefined && _.sum(creep.room.storage.store) < creep.room.storage.storeCapacity) {
+					if(creep.room.storage != undefined && _.sum(creep.room.storage.store) < creep.room.storage.storeCapacity - 1000) {
 						creep.memory.lab = creep.room.storage.id;
 					} else if(creep.room.terminal != undefined && _.sum(creep.room.terminal.store) < creep.room.terminal.storeCapacity) {
 						creep.memory.lab = creep.room.terminal.id;
