@@ -115,7 +115,7 @@ module.exports = {
                                                 return;
 					}
 				}
-				if((labMem.active == false && lab.mineralAmount >= 1 && labMem.emptyMe == true) || (labMem.active == true && lab.mineralAmount >= 2000 && labMem.emptyMe == true)) {
+				if((labMem.active == false && lab.mineralAmount >= 1 && labMem.emptyMe == true) || (labMem.active == true && (lab.mineralAmount >= 2000 || (lab.mineralAmount >= 400 && (labMem.mineral == "ZK" || labMem.mineral == "UL" || labmem.mineral == "G")  && labMem.emptyMe == true)) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
 						creep.memory.loading_from = "lab";
