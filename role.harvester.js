@@ -64,8 +64,8 @@ module.exports = {
                         structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                                 filter: (s) => (s.structureType == STRUCTURE_NUKER
                                         && s.energy < s.enegyCapacity)
-		});
-								                }
+			});
+		}						                }
 
             // if we found one
             if (structure != null) {
