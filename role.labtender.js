@@ -77,7 +77,11 @@ module.exports = {
 				}
 			
 				target = creep.room[creep.memory.loading_from];
+				if(target.store[creep.memory.loading] == undefined) {
+					creep.memory.loading = null;
+				}
 				if(creep.pos.getRangeTo(target) > 1) {
+
 					creep.moveTo(target);
 					return;
 				}
