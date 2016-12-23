@@ -65,7 +65,7 @@ module.exports = {
                                 filter: (s) => (s.structureType == STRUCTURE_NUKER
                                         && s.energy < s.enegyCapacity)
 			});
-		}						                }
+		}						                
 
             // if we found one
             if (structure != null) {
