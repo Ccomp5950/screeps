@@ -148,7 +148,7 @@ module.exports = function() {
 		}
 	}
 	else if (roleName == "labtender") {
-		body = this.buildBody({carry:6,move:3});
+		body = this.buildBody({carry:12,move:6});
 		bodyset = true;
 		creepMem.combat = true;
 	}	
