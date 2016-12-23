@@ -96,7 +96,7 @@ module.exports = {
 				if(lab == undefined) {
 					continue;
 				}
-				if((lab.mineralAmount < 2000 && labMem.react == false && labMem.emptyMe == false) || lab.mineralAmount < 1200 && labMem.react == true && labMem.emptyMe == false) {
+				if((lab.mineralAmount < 1600 && labMem.react == false && labMem.emptyMe == false) || lab.mineralAmount < 1200 && labMem.react == true && labMem.emptyMe == false) {
 					if(hasStorage && storage.store[labMem.mineral] != undefined) {
 						creep.memory.lab = lab.id;
 						creep.memory.loading = labMem.mineral;
@@ -116,7 +116,7 @@ module.exports = {
 					}
 				}
 				if(labMem.emptyMe == true && (labMem.active == false && lab.mineralAmount >= 1) 
-						|| (labMem.active == true && (lab.mineralAmount >= 2000 || (lab.mineralAmount >= 400 && (labMem.mineral == "ZK" || labMem.mineral == "UL" || labMem.mineral == "G"))))){ 
+						|| (labMem.active == true && (lab.mineralAmount >= 2400 || (lab.mineralAmount >= 400 && (labMem.mineral == "ZK" || labMem.mineral == "UL" || labMem.mineral == "G"))))){ 
 
 				
 						creep.memory.lab = lab.id;
