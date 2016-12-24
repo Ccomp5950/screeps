@@ -14,6 +14,12 @@ module.exports = {
 		var skminer = false;
 		if(creep.memory.role == "skminer") skminer = true;
 
+                let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
+                for(let resource in energy) {
+                        creep.pickup(resource)
+                }
+
+
 		if(skminer) {
                         var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS,5, {
 	                                filter: (c) => c.owner.username == "Invader" || c.owner.username == "Source Keeper"  || (c.checkIfAlly() == false)
@@ -59,7 +65,9 @@ module.exports = {
 		} else {
 			structure = Game.getObjectById(creep.memory.container)
 		}
-	    
+
+		
+
 		if(creep.carry[RESOURCE_ENERGY] < 50) {
 			creep.mine();
 		}
