@@ -14,7 +14,7 @@ module.exports = {
 		var skminer = false;
 		if(creep.memory.role == "skminer") skminer = true;
 
-                let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
+                let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
                 for(let resource in energy) {
                         creep.pickup(resource)
                 }
