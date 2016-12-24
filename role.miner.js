@@ -14,10 +14,13 @@ module.exports = {
 		var skminer = false;
 		if(creep.memory.role == "skminer") skminer = true;
 
-                let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
-                for(let resource in energy) {
-                        creep.pickup(resource)
-                }
+		if(_sum(creep.carry) < creep.carryCapacity) {
+			let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
+	                for(let resource in energy) {
+	                        creep.pickup(resource)
+				return;
+			}
+		}
 
 
 		if(skminer) {
@@ -40,7 +43,13 @@ module.exports = {
 			}
 			
 		}
-
+                if(_sum(creep.carry) < creep.carryCapacity) {
+                        let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
+			for(let resource in energy) {
+				creep.pickup(resource)
+				return;
+			}
+		}
 		if(creep.approachAssignedFlag(0,ignorecreeps) == false) {
 			return;
 		}
