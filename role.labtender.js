@@ -146,6 +146,7 @@ module.exports = {
 					
 					if(hasStorage && storage.store.G != undefined) {
 						creep.memory.lab = nuker.id
+						creep.memory.loading = "G"
 						creep.memory.loading_from = "storage";
                                                 if(creep.pos.getRangeTo(storage) > 1) {
                                                         creep.moveTo(storage);
@@ -153,7 +154,8 @@ module.exports = {
                                                 return;						
 					}else if(hasTerminal && terminal.store.G != undefined) {
                                                 creep.memory.lab = nuker.id
-                                                creep.memory.loading_from = "terminal";
+						creep.memory.loading = "G"
+						creep.memory.loading_from = "terminal";
                                                 if(creep.pos.getRangeTo(terminal) > 1) {
                                                         creep.moveTo(terminal);
                                                 }
