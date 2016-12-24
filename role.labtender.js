@@ -131,7 +131,7 @@ module.exports = {
 				}
 
 			}
-			if(creep.memory.nuker != -1)
+			if(creep.memory.nuker != -1) {
 				nuker = game.getObjectById(creep.memory.nuker);
 				if(nuker == undefined) {
 					if (structure == null && creep.room.memory.loadNuke == true) {
