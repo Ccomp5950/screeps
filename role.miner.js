@@ -14,14 +14,6 @@ module.exports = {
 		var skminer = false;
 		if(creep.memory.role == "skminer") skminer = true;
 
-		if(_.sum(creep.carry) < creep.carryCapacity) {
-			let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
-	                for(let resource in energy) {
-	                        creep.pickup(energy[resource])
-			}
-		}
-
-
 		if(skminer) {
                         var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS,5, {
 	                                filter: (c) => c.owner.username == "Invader" || c.owner.username == "Source Keeper"  || (c.checkIfAlly() == false)
@@ -42,10 +34,10 @@ module.exports = {
 			}
 			
 		}
-                if(_sum(creep.carry) < creep.carryCapacity) {
+                if(_.sum(creep.carry) < creep.carryCapacity) {
                         let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
 			for(let resource in energy) {
-				creep.pickup(resource)
+				creep.pickup(energy[resource])
 				return;
 			}
 		}
