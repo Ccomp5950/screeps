@@ -75,7 +75,8 @@ module.exports = {
                                 }
 
                         }
-                        creep.drop(RESOURCE_ENERGY);
+                        return;
+			creep.drop(RESOURCE_ENERGY);
 
 		} else {
                         if(creep.pos.getRangeTo(structure) > 1) {
