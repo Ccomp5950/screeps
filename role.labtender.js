@@ -135,7 +135,7 @@ module.exports = {
 				nuker = game.getObjectById(creep.memory.nuker);
 				if(nuker == undefined) {
 					if (structure == null && creep.room.memory.loadNuke == true) {
-			                        nuker = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => (s.structureType == STRUCTURE_NUKER });
+			                        nuker = creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => (s.structureType == STRUCTURE_NUKER) });
 						creep.memory.nuker = nuker.id;
 					}
 				}
