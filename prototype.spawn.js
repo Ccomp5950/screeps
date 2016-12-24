@@ -3,7 +3,7 @@ var needed = require('getNeeded');
 module.exports = function() {
     // create a new function for StructureSpawn
     StructureSpawn.prototype.buildBody =
-	function(bodyO) {
+	function(bodyO, sort = true) {
 		result = [];
 		let funky = false;
 		if(_.sum(bodyO) > 50) {
@@ -25,7 +25,7 @@ module.exports = function() {
 			}
 
 			for(let i = 0; i < bodyO[part]; i++) {
-				if((part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
+				if(sort == false || (part != "MOVE" && part != "move") || (i+1 != bodyO[part])) {
 					result.push(part);
 				}
 			}
@@ -146,6 +146,11 @@ module.exports = function() {
 			console.log("Raiders require 3250 energy");
 			return;
 		}
+	}
+	else if (roleName == "skminer") {
+		body = this.buildBody({move:17,work:10,attack:16,ranged_attack:1,heal:4,carry:2}, false);
+		bodyset = true;
+		creepMem.combat = true;
 	}
 	else if (roleName == "labtender") {
 		body = this.buildBody({carry:12,move:6});
