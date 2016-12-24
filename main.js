@@ -268,7 +268,7 @@ module.exports.loop = function () {
 						tower.attack(target);
 					}
 				}
-			} else {
+			} else if(Game.time % 10 == 0) {
 				for (let tower of towers) {
 					let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
 							filter: (s) => s.hits != s.hitsMax && s.hits < 4000
