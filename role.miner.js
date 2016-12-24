@@ -19,6 +19,7 @@ module.exports = {
 	                                filter: (c) => c.owner.username == "Invader" || c.owner.username == "Source Keeper"  || (c.checkIfAlly() == false)
 		                        });
 			if(targets.length != 0) {
+				creep.approachAssignedFlag(0);
 				creep.rangedMassAttack();
 				if(creep.getActiveBodyparts(ATTACK) == 0 || creep.attackAdjacentCreep() == false) {
 					creep.heal(creep);
