@@ -7,10 +7,33 @@ module.exports = {
                 }
 
 		creep.setupFlag();
-		let ignorecreeps = null;
+		var ignorecreeps = null;
 		if(creep.pos.roomName != creep.memory.spawnRoom) {
 			ignorecreeps = true;
 		}
+		var skminer = false;
+		if(creep.memory.role == "skminer") skminer = true;
+
+		if(skminer) {
+                        var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS,5, {
+	                                filter: (c) => c.owner.username == "Invader" || c.owner.username == "Source Keeper"  || (c.checkIfAlly() == false)
+		                        });
+			if(targets.length != 0) {
+				creep.rangedMassAttack();
+				if(creep.getActiveBodyparts(ATTACK) == 0 || creep.attackAdjacentCreep() == false) {
+					creep.heal(creep);
+					return
+				} else {
+					return;
+				}
+			}
+
+			if(creep.hits < creep.hitsMax) {
+				creep.heal(creep);
+			}
+			
+		}
+
 		if(creep.approachAssignedFlag(0,ignorecreeps) == false) {
 			return;
 		}
