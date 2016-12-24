@@ -68,7 +68,7 @@ module.exports = {
 
 		
 
-		if(creep.carry[RESOURCE_ENERGY] < 50) {
+		if(creep.carry[RESOURCE_ENERGY] < creep.carryCapacity) {
 			creep.mine();
 		}
                 if(creep.pos.getRangeTo(structure) > 1) {
@@ -102,7 +102,7 @@ module.exports = {
 	                                creep.repair(structure);
 	                                return;
 	                        }
-	                        creep.transfer(structure, RESOURCE_ENERGY);
+	                        if(creep.memory.repBox != false) creep.transfer(structure, RESOURCE_ENERGY);
 			} 
 		}
     }
