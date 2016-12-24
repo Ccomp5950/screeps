@@ -206,14 +206,15 @@
 				}
 
 				labMem = Memory.rooms[roomM].labs[labIndex];
+				Memory.rooms.labs[labIndex].amount = labs.mineralAmount;
 				if(labMem.active != true || labMem.mineral == null || lab.cooldown > 0) {
 					continue;
 				}
 				// OH SHIT SON.
 				if(labMem.react == true && lab.mineralAmount < lab.mineralCapacity) {
 					let mineral = labMem.mineral;
-					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[0]).first();
-					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[1]).first();
+					let lab1 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[0] && o.amount >= 5).first();
+					let lab2 = _(Memory.rooms[roomM].labs).filter((o) => o.mineral == labMem.react_labs[1] && o.amount >= 5).first();
 					if(lab1 != undefined && lab2 != undefined) {
 						let lab1A = Game.getObjectById(lab1.id);
 						let lab2A = Game.getObjectById(lab2.id);
