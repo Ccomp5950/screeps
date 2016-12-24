@@ -275,6 +275,13 @@ module.exports.loop = function () {
 					});
 					if(structure != undefined) {
 						tower.repair(structure);
+						continue;
+					}
+					let healme = tower.pos.findClosestByRange(FIND_CREEPS, {
+						filter: (c) => c.hits != c.hitsMax && c.my});
+					if(healme != undefined) {
+						tower.heal(healme);
+						continue;
 					}
 				}
 			}
