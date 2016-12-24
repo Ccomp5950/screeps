@@ -17,8 +17,7 @@ module.exports = {
 		if(_sum(creep.carry) < creep.carryCapacity) {
 			let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 2);
 	                for(let resource in energy) {
-	                        creep.pickup(resource)
-				return;
+	                        creep.pickup(energy[resource])
 			}
 		}
 
