@@ -102,7 +102,7 @@ module.exports = {
 	                                creep.repair(structure);
 	                                return;
 	                        }
-	                        if(creep.memory.repBox != false) creep.transfer(structure, RESOURCE_ENERGY);
+	                        if(creep.memory.repBox != true) creep.transfer(structure, RESOURCE_ENERGY);
 			} 
 		}
     }
