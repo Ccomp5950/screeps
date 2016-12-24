@@ -98,7 +98,7 @@ module.exports = {
 				if(structure.hits = structure.hitsMax) {
 					creep.memory.repBox = false;
 				}
-				if(creep.carry.energy >= 50 && creep.memory.repBox == true structure.hits < structure.hitsMax) {
+				if(creep.carry.energy >= 50 && creep.memory.repBox == true) {
 	                                creep.repair(structure);
 	                                return;
 	                        }
