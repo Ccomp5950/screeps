@@ -206,7 +206,7 @@
 				}
 
 				labMem = Memory.rooms[roomM].labs[labIndex];
-				Memory.rooms.labs[labIndex].amount = labs.mineralAmount;
+				Memory.rooms[roomM].labs[labIndex].amount = labs.mineralAmount;
 				if(labMem.active != true || labMem.mineral == null || lab.cooldown > 0) {
 					continue;
 				}
