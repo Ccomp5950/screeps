@@ -38,7 +38,7 @@ module.exports = {
                         let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
 			for(let resource in energy) {
 				creep.pickup(energy[resource])
-				return;
+			//	return;
 			}
 		}
 		if(creep.approachAssignedFlag(0,ignorecreeps) == false) {
