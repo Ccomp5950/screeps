@@ -68,7 +68,7 @@ module.exports = {
 
 		
 
-		if(creep.carry[RESOURCE_ENERGY] < creep.carryCapacity) {
+		if(_.sum(creep.carry) < creep.carryCapacity) {
 			creep.mine();
 		}
                 if(creep.pos.getRangeTo(structure) > 1) {
@@ -95,7 +95,7 @@ module.exports = {
 				if(structure.hits <= 150000) {
 					creep.memory.repBox = true;
 				}
-				if(structure.hits = structure.hitsMax) {
+				if(structure.hits == structure.hitsMax) {
 					creep.memory.repBox = false;
 				}
 				if(creep.carry.energy >= 50 && creep.memory.repBox == true) {
