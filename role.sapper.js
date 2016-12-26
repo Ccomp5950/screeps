@@ -23,7 +23,7 @@ module.exports = {
 			healer = creep.id
 		//}
 
-
+		/*
 		if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {
                                 if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
@@ -37,6 +37,7 @@ module.exports = {
                 } else {
 			return;
 		}
+		*/
 
 		//if(creep.gotoWaypoint()) return;
 		var frange = 999;
