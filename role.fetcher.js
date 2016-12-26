@@ -100,11 +100,7 @@ module.exports = {
 	                        storageRange = creep.pos.getRangeTo(creep.room.storage);
 	                }
 
-			let roads = creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax });
-			if(roads.length) {
-				creep.repair(roads[0]);
-			}
-
+			creep..repairOnTheMove()
 			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				option = {ignoreCreeps:true};
