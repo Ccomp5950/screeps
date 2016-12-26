@@ -100,7 +100,7 @@ module.exports = {
 	                        storageRange = creep.pos.getRangeTo(creep.room.storage);
 	                }
 
-			creep..repairOnTheMove()
+			creep.repairOnTheMove()
 			let homepos = new RoomPosition(41, 44, home)
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				option = {ignoreCreeps:true};
