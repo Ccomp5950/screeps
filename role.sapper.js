@@ -19,9 +19,9 @@ module.exports = {
                 var healer = Game.getObjectById(creep.memory.Healer);
 		var flag = Game.flags.sapper;	
 		creep.getAwayFromEdge();
-		if(creep.memory.role == "solosapper") {
+		//if(creep.memory.role == "solosapper") {
 			healer = creep.id
-		}
+		//}
 
 
 		if(healer != undefined) {
@@ -114,10 +114,11 @@ module.exports = {
 		// KILL SHIT
 		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
-		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
-		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
