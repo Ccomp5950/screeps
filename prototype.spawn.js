@@ -159,7 +159,7 @@ module.exports = function() {
 	}	
 	else if (roleName == "sapper") {
 		let probody = {move:0, work:0};
-		if(energy > 4500) {
+		if(energy >= 4500) {
 			probody = {move:10, work:40};	
 		} else {
 			let Nparts = 0;
