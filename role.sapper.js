@@ -14,7 +14,7 @@ module.exports = {
                 if(creep.getActiveBodyparts(MOVE) == 10) {
                         if(creep.getBoosted("XZHO2")) return;
                 }
-		if(creep.getBoosted("XZH2O")) return;
+		//if(creep.getBoosted("XZH2O")) return;
 		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
 		var flag = Game.flags.sapper;	
