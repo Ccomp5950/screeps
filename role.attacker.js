@@ -2,6 +2,7 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep, squadsize) {
 		if(creep.spawning) {
+			creep.setupSpawn();
 			creep.memory.needsBoosted = true
 			return;
 		}
