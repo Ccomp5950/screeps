@@ -158,6 +158,7 @@ module.exports = function() {
 					threat += 20;
 					break;
 				case "heal":
+				case "carry":
 					if(!ally) threat += 50;
 					break;
 				case "build":
