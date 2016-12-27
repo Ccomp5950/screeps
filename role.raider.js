@@ -34,7 +34,7 @@ module.exports = {
 		if(creep.approachAssignedFlag(999) == false) return;
 
                 //if(creep.attackHostileCreep()) return;
-		(creep.attackHostileCreep()) return;
+		if(creep.attackHostileCreep()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
