@@ -21,23 +21,22 @@ module.exports = {
 		creep.getAwayFromEdge();
 		if(creep.memory.role == "solosapper") {
 			healer = creep.id
+		} else {
+	
+			if(healer != undefined) {
+	                        if(creep.pos.getRangeTo(flag) < 999) {
+	                                if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
+	                                        return;
+	                                }
+	                        }
+	                        if(creep.pos.getRangeTo(healer) > 999) {
+					creep.getAwayFromEdge();
+	                                return;
+	                        }
+	                } else {
+				return;
+			}
 		}
-
-		
-		if(healer != undefined && healer != -1) {
-                        if(creep.pos.getRangeTo(flag) < 999) {
-                                if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
-                                        return;
-                                }
-                        }
-                        if(creep.pos.getRangeTo(healer) > 999) {
-				creep.getAwayFromEdge();
-                                return;
-                        }
-                } else if(healer != -1){
-			return;
-		}
-		
 
 		if(creep.gotoWaypoint()) return;
 		var frange = 999;
