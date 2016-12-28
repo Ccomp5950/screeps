@@ -14,16 +14,16 @@ module.exports = {
                 if(creep.getActiveBodyparts(MOVE) == 10) {
                         if(creep.getBoosted("XZHO2")) return;
                 }
-		//if(creep.getBoosted("XZH2O")) return;
+		if(creep.getBoosted("XZH2O")) return;
 		creep.memory.needsBoosted = false;
                 var healer = Game.getObjectById(creep.memory.Healer);
 		var flag = Game.flags.sapper;	
 		creep.getAwayFromEdge();
-		//if(creep.memory.role == "solosapper") {
+		if(creep.memory.role == "solosapper") {
 			healer = creep.id
-		//}
+		}
 
-		/*
+		
 		if(healer != undefined) {
                         if(creep.pos.getRangeTo(flag) < 999) {
                                 if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
@@ -37,9 +37,9 @@ module.exports = {
                 } else {
 			return;
 		}
-		*/
+		
 
-		//if(creep.gotoWaypoint()) return;
+		if(creep.gotoWaypoint()) return;
 		var frange = 999;
 		var hide = creep.memory.hide;
 		var towercheck = creep.memory.towercheck;
