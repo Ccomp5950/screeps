@@ -24,17 +24,17 @@ module.exports = {
 		}
 
 		
-		if(healer != undefined) {
+		if(healer != undefined && healer != -1) {
                         if(creep.pos.getRangeTo(flag) < 999) {
                                 if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
                                         return;
                                 }
                         }
-                        if(healer != -1 && creep.pos.getRangeTo(healer) > 999) {
+                        if(creep.pos.getRangeTo(healer) > 999) {
 				creep.getAwayFromEdge();
                                 return;
                         }
-                } else {
+                } else if(healer != -1){
 			return;
 		}
 		
