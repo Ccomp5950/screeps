@@ -26,9 +26,11 @@ module.exports = {
                 if(creep.hits != creep.hitsMax) {
 			creep.heal(creep);
                 }
-                let target = creep.pos.findClosestByRange(FIND_CREEPS, {
+		/*
+		let target = creep.pos.findClosestByRange(FIND_CREEPS, {
                                         filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
                         });
+		*/
                 if (target != undefined) {
                         if (creep.heal(target) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(target);
