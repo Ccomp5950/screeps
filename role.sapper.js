@@ -30,7 +30,7 @@ module.exports = {
                                         return;
                                 }
                         }
-                        if(creep.pos.getRangeTo(healer) > 999) {
+                        if(healer != -1 && creep.pos.getRangeTo(healer) > 999) {
 				creep.getAwayFromEdge();
                                 return;
                         }
