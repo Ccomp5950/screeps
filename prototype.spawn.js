@@ -157,7 +157,7 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}	
-	else if (roleName == "sapper") {
+	else if (roleName == "sapper" || roleName == "solosapper") {
 		let probody = {move:0, work:0};
 		if(energy >= 4500) {
 			probody = {move:10, work:40};	
