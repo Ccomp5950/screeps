@@ -69,9 +69,12 @@ module.exports = {
 			}
 		}
 		if(!creep.memory.healing && creep.hits >= (creep.hitsMax - 1500)) {
+			var targets = []
+			/* 
 			var targets = creep.pos.findInRange(FIND_CREEPS, 3 ,{
 					filter: (c) => c.my == true && c.id != creep.id && c.hits < (c.hitsMax - 100)
 			});
+			*/
 			if(targets.length > 0) {
 				
 				if(creep.pos.getRangeTo(targets[0]) == 1) {
