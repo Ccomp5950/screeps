@@ -132,11 +132,9 @@
 		}
 		for(let i = Memory.firstFlag; i <= 20; i++) {
 			let name ="waypoint" + i.toString();
-			console.log("checking " + name);
 			if(Game.flags[name] != undefined) {
 				Memory.firstFlag = ++i;
 				Game.flags[name].remove();
-				console.log("tried removing " + name);
 				return false;
 			}
 		}
