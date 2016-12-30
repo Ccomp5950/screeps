@@ -130,6 +130,7 @@
 			Memory.firstFlag = 1;
 		}
 		for(let i = Memory.firstFlag; i <= 20; i++) {
+		        console.log("Checking " + i);			
 			let name ="waypoint" + i.toString();
 			if(Game.flags[name] != undefined) {
 				Memory.firstFlag = i;
