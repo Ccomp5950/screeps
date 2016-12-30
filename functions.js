@@ -126,6 +126,7 @@
 
 	global.clearWaypoints =
 	function() {
+
 		if(Memory.firstFlag == undefined) {
 			Memory.firstFlag = 1;
 		}
@@ -133,7 +134,7 @@
 		        console.log("Checking " + i);			
 			let name ="waypoint" + i.toString();
 			if(Game.flags[name] != undefined) {
-				Memory.firstFlag = i;
+				Memory.firstFlag = ++i;
 				Game.flags[name].remove();
 				return false;
 			}
