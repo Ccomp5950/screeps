@@ -20,7 +20,7 @@ module.exports = {
         if (creep.memory.working == true) {
             // find closest spawn, extension or tower which is not full
 
-		var structure = = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_TOWER && s.energy != s.energyCapacity).min(s=>s.energy);
+		var structure  = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_TOWER && s.energy != s.energyCapacity).min(s=>s.energy);
 
             // if we found one
             if (structure != undefined && structure != infinity) {
