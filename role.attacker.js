@@ -38,6 +38,8 @@ module.exports = {
                                 return;
                 }
 
+		if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
+
 		creep.approachAssignedFlag(0);
         }
     
