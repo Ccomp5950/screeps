@@ -38,6 +38,11 @@ module.exports = {
 		creep.memory.lastChecked = "Saved";
 		if(creep.repairThis(target)) return;
 
+		//Containers
+                target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_CONTAINER && s.hits < s.hitsMax - 50000).min(s=>s.hits);
+		creep.memory.lastChecked = "Containers";
+		if(creep.repairThis(target)) return;
+
 		//Roads that are down 4000 hits.
 		target = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_ROAD && s.hits < s.hitsMax - 1000).min(s=>s.hits);
 		creep.memory.lastChecked = "Roads";
