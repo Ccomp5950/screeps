@@ -26,7 +26,7 @@ module.exports = {
 		var roomO = Game.rooms[room];
 		var needed = 0;
 		if(roomO.controller.level < 6) {
-			return 0;
+			return needed;
 		}
 		if(Memory.rooms[room].mineMinerals == true) {
                         let mineral = Game.getObjectById(Memory.rooms[room].mineral);
@@ -39,7 +39,14 @@ module.exports = {
 				extractor = roomO.storage.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_EXTRACTOR});
 				Memory.rooms[room].extractor = extractor.id;
 			}
-			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined) {
+			var stored = 0;
+			if(roomO.storage != undefined && roomO.storage.store[mineral.mineralType] != undefined) {
+				stored += roomO.storage.store[mineral.mineralType];
+			}
+                        if(roomO.terminal != undefined && roomO.terminal.store[mineral.mineralType] != undefined) {
+                                stored += roomO.terminal.store[mineral.mineralType];
+			}
+			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined  && (roomO.storage != undefined && stored <= 120000)) {
 				needed = 1;
 			}
 		}
