@@ -455,9 +455,11 @@ module.exports = function() {
 		let target = Game.getObjectById(creep.memory.killThis);
 		if(creep.memory.killThis == undefined || creep.memory.killThis == -1 || target == undefined || Game.time % 9 == 0) {
 			creep.memory.killThis = -1;
+			/*
 			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
                                 filter: (c) => c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false))
 	                });
+			
 			let yugeThreat = null;
 			let yugestThreat = -1;
 			for (let enemy_creep of targets) {
@@ -477,6 +479,10 @@ module.exports = function() {
 	                        }
 			}
 			target = yugeThreat;
+			*/
+			target = creep.pos.findClosestByPath(FIND_HOSTILES_CREEPS, {
+										filter: (c) =>  c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false))
+			});
                 }
                 if (target != undefined) {
 			creep.memory.killThis = target.id;
