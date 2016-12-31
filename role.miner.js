@@ -20,7 +20,11 @@ module.exports = {
 		                        });
 			if(targets.length != 0) {
 				creep.approachAssignedFlag(0);
-				creep.rangedMassAttack();
+				if(targets.length == 1) {
+					creep.rangedAttack(targets[0]
+				} else {
+					creep.rangedMassAttack();
+				}
 				if(creep.getActiveBodyparts(ATTACK) == 0 || creep.attackAdjacentCreep() == false) {
 					creep.heal(creep);
 					return
