@@ -21,7 +21,7 @@ module.exports = {
 			if(targets.length != 0) {
 				creep.approachAssignedFlag(0);
 				if(targets.length == 1) {
-					creep.rangedAttack(targets[0]
+					creep.rangedAttack(targets[0])
 				} else {
 					creep.rangedMassAttack();
 				}
