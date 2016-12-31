@@ -229,6 +229,17 @@
 		}
 	}
 
+	global.terminal =
+	function(roomName) {
+		let room = Game.rooms[roomName];
+		if(room == undefined) return {send: function() { console.log("Room Undefined")}}
+
+		let terminal = room.terminal
+		if(terminal == undefined) return {send: function() { console.log("Terminal Undefined")}}
+
+		return terminal;
+	}
+
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
