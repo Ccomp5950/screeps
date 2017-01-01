@@ -60,6 +60,11 @@ module.exports = {
 			}
 			if(container == null) {
 				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+						filter: (s) => (s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 20) ,maxRooms:1
+				});
+			}
+			if(container == null) {
+				container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                                 filter: (s) => (s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 20) ,maxRooms:1
                                         });
                         }
