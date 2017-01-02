@@ -33,15 +33,15 @@ module.exports = {
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
 		var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-			filter: (s) => (s.structureType == STRUCTURE_EXTENSION
+			filter: (s) => creep.carry.energy > 0 && ((s.structureType == STRUCTURE_EXTENSION
  			     || s.structureType == STRUCTURE_SPAWN
 			     || s.structureType == STRUCTURE_LAB
                              || (s.structureType == STRUCTURE_TOWER && s.my == true)
 			)    && s.energy < s.energyCapacity
 			     && s.isBeingHandled(creep) == false
-			     && s.id != creep.memory.pulledfrom
+			     && s.id != creep.memory.pulledfrom)
             });
-		if (structure == null) {
+		if (structure == null && creep.carry.energy > 0) {
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
@@ -53,7 +53,7 @@ module.exports = {
 				structure = null;
 			}
 		}	
-                if (structure == null && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
+                if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
                         structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				                                filter: (s) => (s.structureType == STRUCTURE_NUKER
 					                                        && s.energy < s.energyCapacity)
@@ -84,7 +84,7 @@ module.exports = {
 		creep.deposit(structure);
 		structure.iGotIt(creep);
             } else {
-		if(creep.carry.energy != creep.carryCapacity) {
+		if(_.sum(creep.carry) != creep.carryCapacity) {
 			creep.customharvest();
 		} else {
 			creep.approachAssignedFlag(0);
