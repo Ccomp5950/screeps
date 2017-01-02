@@ -248,8 +248,8 @@
 		}
 		let towers = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
 		let towerC = room.find(FIND_CONSTRUCTION_SITES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
-		let num = towers.length + towerC.length;
-		if(num < CONTROLLER_STRUCTURES.tower[room.controller.level]) {
+		let numtower = towers.length + towerC.length;
+		if(numtower < CONTROLLER_STRUCTURES.tower[room.controller.level]) {
 			    var nameNumber = 1;
 		            var name=roomName + "_tower" + nameNumber.toString();
 		            while(Game.flags[name] != undefined) {
@@ -288,5 +288,18 @@
 				}
 				
 	                }
+		}
+		if(CONTROLLER_STRUCTURES.storage[room.controller.level] && (room.storage == undefined || room.storage.my != true)) {
+			if(room.storage != undefined) {
+				room.storage.destroy();
+				return;
+			}
+			
+			var storageflagname = roomName + "_storage"
+			var storageflag = Game.flags[storageflagname];
+			if(Game.flags[storageflag]) {
+				room.createConstructionSite(storageflag.pos, STRUCTURE_STORAGE)
+				return;
+			}
 		}
         };
