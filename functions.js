@@ -290,7 +290,7 @@
 	                }
 		}
 		if(CONTROLLER_STRUCTURES.storage[room.controller.level] && (room.storage == undefined || room.storage.my != true)) {
-			if(room.storage != undefined) {
+			if(room.storage != undefined && room.storage.my != true) {
 				room.storage.destroy();
 				return;
 			}
