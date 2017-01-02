@@ -297,7 +297,7 @@
 			
 			var storageflagname = roomName + "_storage"
 			var storageflag = Game.flags[storageflagname];
-			if(Game.flags[storageflag]) {
+			if(storageflag != undefined) {
 				room.createConstructionSite(storageflag.pos, STRUCTURE_STORAGE)
 				return;
 			}
