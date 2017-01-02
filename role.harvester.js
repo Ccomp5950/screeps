@@ -28,7 +28,7 @@ module.exports = {
         }
 
         if (creep.memory.working == true) {
-		if(creep.carry.energy < creep.carryCapacity && creep.pos.getRangeTo(creep.room.storage) < 2) {
+		if(_.sum(creep.carry) < creep.carryCapacity && creep.pos.getRangeTo(creep.room.storage) < 2) {
 			creep.withdraw(creep.room.storage, RESOURCE_ENERGY);
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
