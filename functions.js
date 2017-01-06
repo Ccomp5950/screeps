@@ -240,6 +240,27 @@
 		return terminal;
 	}
 
+        global.nuke =
+        function(roomName) {
+                let room = Game.rooms[roomName];
+                if(room == undefined) return {launchNuke: function() { console.log("Room Undefined")}}
+
+		let nuke = Game.getObjectById(room.memory.nuke)
+		if(nuke == undefined) {
+			nuke = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_NUKER}
+			if(nuke.length) {
+			nuke = nuke[0];
+			room.memory.nuke = nuke.id;
+			} else {
+			nuke = undefined;
+			}
+			
+		}
+		if(nuke == undefined) return {launchNuke: function() { console.log("NukeUndefined")}}
+
+		return nuke;
+	}
+
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
