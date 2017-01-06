@@ -735,6 +735,13 @@ module.exports = function() {
 	function() {
 			let creep = this;
                         let target = _(creep.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => (s.structureType == STRUCTURE_ROAD || s.structureType == STRUCTURE_CONTAINER) && s.hits < s.hitsMax })).min((s) => s.hits / s.hitsMax);
-			creep.repair(target);
+			if(target != Infinity) {
+				creep.repair(target);
+				return;
+			}
+			target = creep.pos.finInRange(FIND_CONSTRUCTION_SITES, 3)
+			if(target != undefined) {
+				creep.build(target);
+			}
 	}
 };
