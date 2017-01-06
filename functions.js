@@ -240,6 +240,31 @@
 		return terminal;
 	}
 
+        global.structure =
+	function(roomName) {
+		let room = Game.rooms[roomName];
+		if(room == undefined) {
+			console.log("Room " + roomName + "Undefined")
+			return {};
+		}
+		let storage = room.storage;
+                if(storage == undefined) {
+                        console.log("Storage in " + roomName + "Undefined")
+                        return {};
+		}
+		return storage;
+	}
+
+	global.creep =
+	function(creepName) {
+		let creep = Game.creeps[creepName];
+		if(creep == undefined) {
+			console.log("Creep " + creepName + " undefined");
+			return {};
+		}
+		return creep;
+	}
+
         global.nuke =
         function(roomName) {
                 let room = Game.rooms[roomName];
