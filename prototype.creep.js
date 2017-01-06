@@ -740,8 +740,8 @@ module.exports = function() {
 				return;
 			}
 			target = creep.pos.findInRange(FIND_CONSTRUCTION_SITES, 2)
-			if(target != undefined) {
-				creep.build(target);
+			if(target.length) {
+				creep.build(target[0]);
 			}
 	}
 };
