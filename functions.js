@@ -247,7 +247,7 @@
 
 		let nuke = Game.getObjectById(room.memory.nuke)
 		if(nuke == undefined) {
-			nuke = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_NUKER}
+			nuke = room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_NUKER});
 			if(nuke.length) {
 			nuke = nuke[0];
 			room.memory.nuke = nuke.id;
