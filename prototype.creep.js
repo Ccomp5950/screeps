@@ -739,7 +739,7 @@ module.exports = function() {
 				creep.repair(target);
 				return;
 			}
-			target = creep.pos.finInRange(FIND_CONSTRUCTION_SITES, 3)
+			target = creep.pos.findInRange(FIND_CONSTRUCTION_SITES, 3)
 			if(target != undefined) {
 				creep.build(target);
 			}
