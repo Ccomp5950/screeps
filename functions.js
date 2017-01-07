@@ -348,4 +348,25 @@
 				return;
 			}
 		}
+		if(CONTROLLER_STRUCTURES.terminal[room.controller.level] && (room.terminal == undefined || room.terminal.my != true)) {
+                        if(room.terminal != undefined && room.terminal.my != true) {
+                                room.terminal.destroy();
+				return;
+			}
+                        var terminalflagname = roomName + "_terminal"
+                        var terminalflag = Game.flags[terminalflagname];
+                        if(terminalflag != undefined) {
+                                room.createConstructionSite(terminalflag.pos, STRUCTURE_TERMINAL)
+				return;
+			}
+		}
+
+
+
+
+
+
+
+
+
         };
