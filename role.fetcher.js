@@ -101,7 +101,10 @@ module.exports = {
 	                }
 
 			creep.repairOnTheMove()
+
+			let dropoffFlag = Game.flags[creep.memory.spawnRoom + "_remoteDropOff"]
 			let homepos = new RoomPosition(41, 44, home)
+			if(dropOffFlag != undefined) homepos = dropoffFlag.pos
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				option = {ignoreCreeps:true};
 				let tempcheck = creep.pos.findInRange(FIND_CREEPS, 2, {filter: (c) => c.id != creep.id});
@@ -111,8 +114,8 @@ module.exports = {
 				creep.moveTo(homepos, option);
 				return;
 			}
-			if(Game.flags[creep.memory.MyFlag] != undefined && Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && Game.flags[creep.room.name + "_remoteDropOff"] != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(Game.flags[creep.room.name + "_remoteDropOff"]) < storageRange ) {
-				let links = Game.flags[creep.room.name + "_remoteDropOff"].pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
+			if(Game.flags[creep.memory.MyFlag] != undefined && Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && dropoffFlag != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(dropoffFlag) < storageRange ) {
+				let links = dropoffFlag.pos.findInRange(FIND_STRUCTURES,1, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
 				if(links.length) {
 					let link = links[0];
 					if(creep.pos.getRangeTo(link) > 1) {
@@ -122,8 +125,8 @@ module.exports = {
 						creep.transfer(link, RESOURCE_ENERGY);
 						return;
 					}
-				}else if(Game.flags[creep.room.name + "_remoteDropOff"] != undefined) {
-					let dropOffContainers = Game.flags[creep.room.name + "_remoteDropOff"].pos.findInRange(FIND_STRUCTURES,1, 
+				}else if(dropoffFlag != undefined) {
+					let dropOffContainers = dropoffFlag.pos.findInRange(FIND_STRUCTURES,1, 
 						{ filter: (s) => s.structureType == STRUCTURE_CONTAINER && _.sum(s.store) < s.storeCapacity});
 					if(dropOffContainers.length) {
 						let dropOffContainer = dropOffContainers[0];
