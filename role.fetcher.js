@@ -104,7 +104,7 @@ module.exports = {
 
 			let dropoffFlag = Game.flags[creep.memory.spawnRoom + "_remoteDropOff"]
 			let homepos = new RoomPosition(41, 44, home)
-			if(dropOffFlag != undefined) homepos = dropoffFlag.pos
+			if(dropoffFlag != undefined) homepos = dropoffFlag.pos
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
 				option = {ignoreCreeps:true};
 				let tempcheck = creep.pos.findInRange(FIND_CREEPS, 2, {filter: (c) => c.id != creep.id});
