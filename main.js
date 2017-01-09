@@ -137,7 +137,7 @@ module.exports.loop = function () {
 
 		if(Memory.rooms[room].feed != true) continue;
 		let roomO = Game.rooms[room]
-		if(roomO.controller.level <= 6) continue;
+		if(roomO.controller.level < 6) continue;
 
 		let storage = roomO.storage;
 		let terminal = roomO.terminal;
