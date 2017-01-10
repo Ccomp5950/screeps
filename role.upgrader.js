@@ -2,11 +2,14 @@ module.exports = {
     // a function to run the logic for this role
     run: function(creep) {
                 if(creep.spawning) {
+			creep.memory.needsBoosted = true;
 			creep.setupSpawn();
                         return;
                 }
 	creep.setupFlag();
-        // if creep is bringing energy to the controller but has no energy left
+	if(creep.room.memory.boostUpgrader == true && creep.getBoosted("XGH2O")) return;	
+	creep.memory.needsBoosted = false;
+	// if creep is bringing energy to the controller but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
             creep.memory.working = false;
