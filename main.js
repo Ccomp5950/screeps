@@ -128,33 +128,40 @@ module.exports.loop = function () {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
 	var recepient = Memory.pumpEnergyHere;
-	for(let room in Memory.rooms) {
+	var sentLimit = 0;
+	var sent = 0;
+	if(Game.time % 5 == 3)) {
+	
+		for(let room in Memory.rooms) {
 
-		if(Game.rooms[recepient] == undefined) break;
-		if(Game.rooms[recepient].terminal == undefined) break;
+			if(Game.rooms[recepient] == undefined) break;
+			if(Game.rooms[recepient].terminal == undefined) break;
+			let recepientT = Game.rooms[recepient].terminal
+			if(sentLimit == 0) {
+				sentLimit = Math.floor((recepientT.storeCapacity - _.sum(recepientT.storei)) / 10000)
+			}
+			if(room == recepient) continue;
 
-		if(room == recepient) continue;
+			if(Memory.rooms[room].feed != true) continue;
+			let roomO = Game.rooms[room]
+			if(roomO.controller.level < 6) continue;
 
-		if(Memory.rooms[room].feed != true) continue;
-		let roomO = Game.rooms[room]
-		if(roomO.controller.level < 6) continue;
+			let storage = roomO.storage;
+			let terminal = roomO.terminal;
+			if(terminal == undefined || storage == undefined || terminal.store.energy <= 20000) continue;
 
-		let storage = roomO.storage;
-		let terminal = roomO.terminal;
-		if(terminal == undefined || storage == undefined || terminal.store.energy <= 20000) continue;
-
-		let energy = storage.store.energy + terminal.store.energy;
-		if(energy >= 500000) {
-		        if(_.sum(Game.rooms[recepient].terminal.store) <= 250000) {
-				console.log(roomLink(room) + "Sending Energy to: " + recepient);
-				terminal.send("energy",10000, recepient);
-				break;
-			} else {
-				console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E68S29"));
-				terminal.send("energy",5000, "E68S29");
+			let energy = storage.store.energy + terminal.store.energy;
+			if(energy >= 500000) {
+			        if(_.sum(Game.rooms[recepient].terminal.store) <= 250000) {
+					console.log(roomLink(room) + "Sending Energy to: " + recepient);
+					terminal.send("energy",10000, recepient);
+					if(++sent >= sentLimit) break;
+				} else {
+					console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E68S29"));
+					terminal.send("energy",5000, "E68S29");
+				}
 			}
 		}
-	}
 
 
 
