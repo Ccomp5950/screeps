@@ -130,7 +130,7 @@ module.exports.loop = function () {
 	var recepient = Memory.pumpEnergyHere;
 	var sentLimit = 0;
 	var sent = 0;
-	if(Game.time % 5 == 3) {
+	if(Game.time % 50 == 27) {
 	
 		for(let room in Memory.rooms) {
 
