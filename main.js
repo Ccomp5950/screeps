@@ -279,7 +279,7 @@ module.exports.loop = function () {
 			} else {
 				for (let tower of towers) {
 					let structure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-							filter: (s) => s.hits != s.hitsMax && s.hits < 4000
+							filter: (s) => s.hits != s.hitsMax && s.hits < 1200
 					});
 					if(structure != undefined) {
 						tower.repair(structure);
