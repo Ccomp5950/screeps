@@ -449,9 +449,12 @@ module.exports = function() {
 	};
 
 	Creep.prototype.attackHostileCreep =
-	function(ignoreEdgeHuggers) {
+	function(ignoreEdgeHuggers, ignoreSK) {
 		if(ignoreEdgeHuggers != true) {
 			ignoreEdgeHuggers = false;
+		}
+		if(ignoreSK != true) {
+			ignoreSK = false;
 		}
 		let creep = this;
 		let target = Game.getObjectById(creep.memory.killThis);
@@ -483,7 +486,7 @@ module.exports = function() {
 			target = yugeThreat;
 			*/
 			target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
-										filter: (c) =>  c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false))
+										filter: (c) =>  c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false) && (ignoreSK == false && c.owner.username = "Source Keeper"))
 			});
                 }
                 if (target != undefined) {
