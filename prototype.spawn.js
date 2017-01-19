@@ -123,7 +123,7 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "ranger") {
-		body=this.buildBody(move:25,ranged_attack:20,heal:5) // 4750
+		body=this.buildBody({move:25,ranged_attack:20,heal:5}) // 4750
 		bodyset = true;
 		creepMem.combat = true;
 	}
