@@ -28,6 +28,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			killdozer:      {namer:"killdozer",             minimum:0,      requirement:7650,       buildRestriction : true,        run: require('role.killdozer')},
 			raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
                         healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
+			ranger:         {namer:"ranger",                minimum:0,      requirement:4750,       buildRestriction : false,       run: require('role.ranger')},
 			defender:       {namer:"defender",              minimum:0,      requirement:-1,         buildRestriction : false,       run: require('role.defender')},
                         miner:          {namer:"miner",                 minimum:0,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
 			skminer:        {namer:"skminer",               minimum:0,      requirement:4380,       buildRestriction : true,        run: require('role.miner')},

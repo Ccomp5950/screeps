@@ -122,6 +122,11 @@ module.exports = function() {
 		bodyset = true;
 		creepMem.combat = true;
 	}
+	else if (roleName == "ranger") {
+		body=this.buildBody(move:25,ranged_attack:20,heal:5) // 4750
+		bodyset = true;
+		creepMem.combat = true;
+	}
 	else if (roleName == "defender" || roleName == "attacker") {
 		let Nparts = 8;
 		let base = 720;

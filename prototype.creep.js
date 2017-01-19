@@ -438,10 +438,19 @@ module.exports = function() {
 	};
 
 	Creep.prototype.attackAdjacentCreep =
-	function() {
+	function(ranged) {
+		attackRange = 3;
+		if(ranged != true) {
+			ranged = false;
+			attackRange = 1;
+		}
 		let creep = this;
-		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1, {filter: (c) => c.onRampart() == false && c.checkIfAlly() == false});
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, attackRange, {filter: (c) => c.onRampart() == false && c.checkIfAlly() == false});
 		if(targets.length > 0) {
+		    if(ranged) {
+			creep.rangedAttack(targets[0]);
+			return true;
+		    }
 		    creep.attack(targets[0]);
 		    return true;
 		}
@@ -449,42 +458,22 @@ module.exports = function() {
 	};
 
 	Creep.prototype.attackHostileCreep =
-	function(ignoreEdgeHuggers, ignoreSK) {
+	function(ignoreEdgeHuggers, ignoreSK, ranged) {
 		if(ignoreEdgeHuggers != true) {
 			ignoreEdgeHuggers = false;
 		}
 		if(ignoreSK != true) {
 			ignoreSK = false;
 		}
+		let attackRange = 3;
+		if(ranged != true) {
+			attackRange = 1;
+			ranged = false;
+		} 
 		let creep = this;
 		let target = Game.getObjectById(creep.memory.killThis);
 		if(creep.memory.killThis == undefined || creep.memory.killThis == -1 || target == undefined || Game.time % 9 == 0) {
 			creep.memory.killThis = -1;
-			/*
-			var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
-                                filter: (c) => c.owner.username == "Invader" || (c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false))
-	                });
-			
-			let yugeThreat = null;
-			let yugestThreat = -1;
-			for (let enemy_creep of targets) {
-	                        var creepThreat = enemy_creep.getThreat();
-				var pathTo = creep.pos.findPathTo(enemy_creep);
-				if(pathTo == null || pathTo.length == 0) {
-					continue;
-				}
-				var pathLast = pathTo[pathTo.length -1];
-				var hasPath = false;
-				if(pathTo.length > 0 && pathLast.x == enemy_creep.pos.x && pathLast.y == enemy_creep.pos.y) {
-					hasPath = true;
-				}
-	                        if(yugestThreat < creepThreat && hasPath) {
-	                                yugeThreat = enemy_creep;
-        	                        yugestThreat = creepThreat;
-	                        }
-			}
-			target = yugeThreat;
-			*/
 			target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
 										filter: (c) =>  c.owner.username == "Invader" || 
 			(c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false) && (ignoreSK == false && c.owner.username != "Source Keeper"))
@@ -492,11 +481,11 @@ module.exports = function() {
                 }
                 if (target != undefined) {
 			creep.memory.killThis = target.id;
-			if (creep.pos.getRangeTo(target) > 1) {
+			if (creep.pos.getRangeTo(target) > attackRange) {
 		                if(creep.hits < creep.hitsMax) {
 		                        creep.heal(creep);
 		                }
-               	                creep.moveTo(target, {maxRooms:1, ignoreRoads:true});
+				creep.moveToRange(target.pos, attackRange);
 			} else {
 				creep.attack(target);
 			}
