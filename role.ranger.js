@@ -27,7 +27,7 @@ module.exports = {
 
 		if(!healing) {
 			target = creep.pos.findClosestByRange(FIND_CREEPS, {
-	                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
+	                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax && c.memory.role != "skminer"
 	                        });
 	                if (target != undefined) {
 	                        if (creep.heal(target) == ERR_NOT_IN_RANGE && move) {
