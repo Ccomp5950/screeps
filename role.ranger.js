@@ -18,7 +18,10 @@ module.exports = {
 		var target = null;
 		var ignoreSK = false;
 		var move = true;
+		creep.attackAdjacentCreep(true);
+
 		if(creep.memory.ignoreSK == true) ignoreSK = true;
+		
 		if(creep.attackHostileCreep(true, ignoreSK, true) == true) {
 			creep.getAwayFromEdge();
 			move = false;
