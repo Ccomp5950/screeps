@@ -10,7 +10,7 @@ module.exports = {
 		creep.memory.needsBoosted = false;
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
-		if(creep.attackHostileCreep(true, false) == true) {
+		if(creep.attackHostileCreep(true, true) == true) {
 			creep.getAwayFromEdge();
 			return;
 		}
