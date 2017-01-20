@@ -3,6 +3,7 @@ module.exports = {
     run: function(creep) {
 		if(creep.spawning) {
 			creep.setupSpawn();
+			creep.memory.ignoreSK = true;
 			//creep.memory.needsBoosted = true;
 		}
 		creep.setupFlag();
@@ -15,7 +16,9 @@ module.exports = {
                 }
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
-		if(creep.attackHostileCreep(true, false, true) == true) {
+		ignoreSK = false;
+		if(creep.memory.ignoreSK = true) ignoreSK = true;
+		if(creep.attackHostileCreep(true, ignoreSK, true) == true) {
 			creep.getAwayFromEdge();
 			return;
 		}
