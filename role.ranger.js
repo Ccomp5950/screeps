@@ -17,10 +17,11 @@ module.exports = {
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
 		var ignoreSK = false;
+		var move = true;
 		if(creep.memory.ignoreSK == true) ignoreSK = true;
 		if(creep.attackHostileCreep(true, ignoreSK, true) == true) {
 			creep.getAwayFromEdge();
-			return;
+			move = false;
 		}
 		if(creep.approachAssignedFlag(999) == false) return;
 
@@ -29,8 +30,9 @@ module.exports = {
 	                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax
 	                        });
 	                if (target != undefined) {
-	                        if (creep.heal(target) == ERR_NOT_IN_RANGE) {
-	                                creep.moveTo(target);
+	                        if (creep.heal(target) == ERR_NOT_IN_RANGE && move) {
+
+					creep.moveTo(target);
 	                        }
 	                                return;
 	                }
