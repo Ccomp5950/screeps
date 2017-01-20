@@ -487,7 +487,11 @@ module.exports = function() {
 		                }
 				creep.moveToRange(target.pos, attackRange);
 			} else {
+				if(ranged) {
+					creep.rangedAttack(target)
+				} else {
 				creep.attack(target);
+				}
 			}
 			
 		return true;
