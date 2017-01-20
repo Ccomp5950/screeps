@@ -16,7 +16,7 @@ module.exports = {
                 }
 		let flag = Game.flags[creep.memory.MyFlag];
 		var target = null;
-		ignoreSK = false;
+		var ignoreSK = false;
 		if(creep.memory.ignoreSK == true) ignoreSK = true;
 		if(creep.attackHostileCreep(true, ignoreSK, true) == true) {
 			creep.getAwayFromEdge();
