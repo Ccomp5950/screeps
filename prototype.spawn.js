@@ -42,6 +42,7 @@ module.exports = function() {
 	    if(roleName == undefined || roleName == "undefined") {
 		console.log("[" + this.name + "] tried to spawn an undefined");
 	    }
+	/*
 	    var name=roleName + nameNumber.toString();
 	    while(Game.creeps[name] != undefined) {
 		nameNumber++;
@@ -50,6 +51,8 @@ module.exports = function() {
 			break;
 		}
 	    }
+	 */
+	    var name=null;
 	    var maxParts = 50;
             var numberOfParts = Math.floor(energy / 200);
             var body = [];
