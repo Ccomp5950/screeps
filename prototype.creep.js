@@ -457,9 +457,6 @@ module.exports = function() {
 		return false;
 	};
 
-	creep.prototype.notSK =
-	function(ignoreSK)
-
 	Creep.prototype.attackHostileCreep =
 	function(ignoreEdgeHuggers, ignoreSK, ranged) {
 		if(ignoreEdgeHuggers != true) {
