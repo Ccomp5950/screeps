@@ -31,13 +31,13 @@ module.exports = {
 	                        });
 	                if (target != undefined) {
 	                        if (creep.heal(target) == ERR_NOT_IN_RANGE && move) {
-
+					move = false;
 					creep.moveTo(target);
 	                        }
 	                                return;
 	                }
 		}
-		creep.approachAssignedFlag(0);
+		if(move) creep.approachAssignedFlag(0);
 
         }
         
