@@ -476,7 +476,7 @@ module.exports = function() {
 			creep.memory.killThis = -1;
 			target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
 										filter: (c) =>  c.owner.username == "Invader" || 
-			(c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false) && (ignoreSK == false || c.owner.username != "Source Keeper"))
+			(c.checkIfAlly() == false && c.onRampart() == false && (ignoreEdgeHuggers == false || c.onEdge() == false) && (ignoreSK == true && c.owner.username != "Source Keeper"))
 			});
                 }
                 if (target != undefined) {
