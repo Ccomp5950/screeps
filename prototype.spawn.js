@@ -515,7 +515,7 @@ module.exports = function() {
 			}
 		}
 		if (!(name < 0) && name != undefined) {
-			console.log("[" + mySpawn.name + "(" + roomLink(this.room.name, false) + ")] Spawned new creep: " + name );
+			console.log("[" + mySpawn.name + "(" + roomLink(this.room.name, false) + ")] Spawned new creep: " + name + " (" + Memory.creep[name].role + ")");
 		}
 	}
 };
