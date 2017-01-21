@@ -185,7 +185,9 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "miner" || roleName == "remoteminer") {
-		if(energy >= 950) {
+		if(energy >= 1250) {
+			body = this.buildBody({carry:1,move:8,work:8});
+		} else if(energy >= 950) {
 			body = this.buildBody({carry:1,move:6,work:6});
 		} else if(energy >= 850) {
 			body = this.buildBody({carry:1,move:4,work:6});
