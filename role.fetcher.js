@@ -46,7 +46,7 @@ module.exports = {
 			}
 
 			if(creep.memory.getToFlag == true) {
-				if(creep.approachAssignedFlag(0,ignorecreeps) == true) { 
+				if(creep.approachAssignedFlag(0,ignorecreeps,50) == true) { 
 					creep.memory.getToFlag = false;
 				} else {
 					return;
