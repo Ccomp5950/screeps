@@ -112,18 +112,6 @@ module.exports = function() {
 		    return;
 		    }
 		    else {
-							        
-	                        if(source.energy < 20) {
-	                                creep.memory.source = null;
-					if(creep.getActiveBodyparts(WORK) > 0) {
-						source = creep.pos.findClosestByRange(validSources[creep.room.name]);
-					}
-		                        if(source != undefined) {
-		                                creep.memory.source = source.id;
-		                        } else {
-						return;
-		                        }
-	                        }
 		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
 		                if(creep.moveTo(source, {maxRooms: 1}) == ERR_NO_PATH) {
 					creep.memory.source = null;
