@@ -585,7 +585,7 @@ module.exports = function() {
 	Creep.prototype.approachAssignedFlag =
 	function(fRange, ignoreCreeps, retainPath) {
 		if(retainPath == undefined) {
-			retainPath = 5;
+			retainPath = 50;
 		}
 		let option = null;
 		if(ignoreCreeps == true) {
