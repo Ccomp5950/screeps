@@ -34,9 +34,10 @@ module.exports = {
 		}
 		var structure = Game.getObjectById(creep.memory.structure);
 		if(structure != null) {
-			if(structure.energy == structure.energyCapacity)
-			structure = null;
-			creep.memory.structure = null;
+			if(structure.energy == structure.energyCapacity) {
+				structure = null;
+				creep.memory.structure = null;
+			}
 		}
 		// Test if we even need to do any of this shit.
 		var fillStructures = creep.room.find(FIND_STRUCTURES, {
