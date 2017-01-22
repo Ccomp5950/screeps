@@ -60,9 +60,9 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 
 module.exports.loop = function () {
 	profiler.wrap(function() {
-//	for(let role in roles) {
-		profiler.registerObject(roles, "role");
-//	}
+	for(let role in roles) {
+		profiler.registerObject(roles[role], "roles." + role);
+	}
 	Memory.stats.tickStartCPU = Game.cpu.getUsed()
 	stats.runStats();
 	memorymgmt.master();
