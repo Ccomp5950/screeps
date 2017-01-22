@@ -106,7 +106,7 @@ module.exports = {
 			let homepos = new RoomPosition(41, 44, home)
 			if(dropoffFlag != undefined) homepos = dropoffFlag.pos
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
-				option = {ignoreCreeps:true};
+				option = {ignoreCreeps:true, reusePath:50};
 				let tempcheck = creep.pos.findInRange(FIND_CREEPS, 2, {filter: (c) => c.id != creep.id});
 				if(tempcheck.length > 0) {
 					option = null;
