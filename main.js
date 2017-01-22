@@ -59,7 +59,7 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
                         };
 
         for(let role in roles) {
-                profiler.registerObject(roles[role].run, "roles." + role.run);
+                profiler.registerObject(roles[role].run, "roles." + role);
         }		
 
 module.exports.loop = function () {
