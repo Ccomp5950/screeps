@@ -35,6 +35,7 @@ module.exports = {
 		if(creep.memory.doNothing >=0) {
 			creep.memory.doNothing--;
 			creep.say("Zzzz");
+			creep.approachAssignedFlag(0);
 			return;
 		}
 		var structure = Game.getObjectById(creep.memory.structure);
@@ -57,6 +58,7 @@ module.exports = {
 		});
 		if(fillStructures.length == 0) {
 			creep.memory.doNothing = 5;
+			creep.approachAssignedFlag(0);
 			creep.say("Zzzz");
 			return;
 		}
