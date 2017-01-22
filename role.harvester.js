@@ -32,6 +32,11 @@ module.exports = {
 			creep.withdraw(creep.room.storage, RESOURCE_ENERGY);
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
+		if(creep.memory.doNothing >=0) {
+			creep.memory.doNothing--;
+			creep.say("Zzzz");
+			return;
+		}
 		var structure = Game.getObjectById(creep.memory.structure);
 		if(structure != null) {
 			if(structure.energy == structure.energyCapacity) {
@@ -50,6 +55,11 @@ module.exports = {
 			                                             && s.id != creep.memory.pulledfrom)
 
 		});
+		if(fillStructures.length == 0) {
+			creep.memory.doNothing = 5;
+			creep.say("Zzzz");
+			return;
+		}
 		if(structure == null) {
 			structure = creep.pos.findClosestByRange(fillStructures, {
 				filter: (s) => creep.carry.energy > 0 && (s.structureType == STRUCTURE_EXTENSION
