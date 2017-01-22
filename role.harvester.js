@@ -32,7 +32,7 @@ module.exports = {
 			creep.withdraw(creep.room.storage, RESOURCE_ENERGY);
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
-		var structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+		var structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 			filter: (s) => creep.carry.energy > 0 && ((s.structureType == STRUCTURE_EXTENSION
  			     || s.structureType == STRUCTURE_SPAWN
 			     || s.structureType == STRUCTURE_LAB
@@ -54,14 +54,14 @@ module.exports = {
 			}
 		}	
                 if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
-                        structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                        structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 				                                filter: (s) => (s.structureType == STRUCTURE_NUKER
 					                                        && s.energy < s.energyCapacity)
 					                        });
                 }
 
 		if (structure == null) {
-			structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+			structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 				filter: (s) => (s.structureType == STRUCTURE_STORAGE
 					&& s.store[RESOURCE_ENERGY] < s.storeCapacity && s.id != creep.memory.pulledfrom)
 			});
