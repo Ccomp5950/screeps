@@ -33,27 +33,46 @@ module.exports = {
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
 		var structure = Game.getObjectById(creep.memory.structure);
+		if(structure != null) {
+			if(structure.energy == structure.energyCapacity)
+			structure = null;
+			creep.memory.structure = null;
+		}
+		// Test if we even need to do any of this shit.
+		var fillStructures = creep.room.find(FIND_STRUCTURES, {
+                                filter: (s) => creep.carry.energy > 0 && ((s.structureType == STRUCTURE_EXTENSION
+					                                     || s.structureType == STRUCTURE_SPAWN
+									     || s.structureType == STRUCTURE_LAB
+									     || (s.structureType == STRUCTURE_TOWER && s.my == true)
+										)    && s.energy < s.energyCapacity
+				                                     && s.isBeingHandled(creep) == false
+			                                             && s.id != creep.memory.pulledfrom)
+
+		});
 		if(structure == null) {
-			structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-				filter: (s) => creep.carry.energy > 0 && ((s.structureType == STRUCTURE_EXTENSION
+			structure = creep.pos.findClosestByRange(fillStructures, {
+				filter: (s) => creep.carry.energy > 0 && (s.structureType == STRUCTURE_EXTENSION
 	 			     || s.structureType == STRUCTURE_SPAWN
 				     || s.structureType == STRUCTURE_LAB
 	                             || (s.structureType == STRUCTURE_TOWER && s.my == true)
-				)    && s.energy < s.energyCapacity
-				     && s.isBeingHandled(creep) == false
-				     && s.id != creep.memory.pulledfrom)
+				     )
 	            });
 		}
 		if (structure == null && creep.carry.energy > 0) {
-			var flagname = "upgraderContainer";
-                        var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
-                        var flag = flags[0];
-			structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
-			filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000
-			
-			}); 
-			if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
-				structure = null;
+			var upgraderContainer = Game.getObjectById(creep.memory.upgraderContainer);
+			if(upgraderContainer != undefined) {
+				if(upgraderContainer.store[RESOURCE_ENERGY] < 1200) structure = upgraderContainer;
+			}
+			if(upgraderContainer == undefined) {
+				var flagname = "upgraderContainer";
+	                        var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
+	                        var flag = flags[0];
+				structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
+				filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000
+				}); 
+				if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
+					structure = null;
+				}
 			}
 		}	
                 if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
