@@ -106,12 +106,7 @@ module.exports = {
 			let homepos = new RoomPosition(41, 44, home)
 			if(dropoffFlag != undefined) homepos = dropoffFlag.pos
 			if(creep.room.name != home && creep.pos.getRangeTo(homepos) > 999) {
-				option = {ignoreCreeps:true, reusePath:50};
-				let tempcheck = creep.pos.findInRange(FIND_CREEPS, 2, {filter: (c) => c.id != creep.id});
-				if(tempcheck.length > 0) {
-					option = null;
-				}
-				creep.moveTo(homepos, option);
+				creep.approachPos(homepos);
 				return;
 			}
 			if(Game.flags[creep.memory.MyFlag] != undefined && Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && dropoffFlag != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(dropoffFlag) < storageRange ) {

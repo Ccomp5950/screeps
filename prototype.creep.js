@@ -582,8 +582,34 @@ module.exports = function() {
 
 	}
 
+	Creep.prototype.approachPos =
+	function(pos, range) {
+		let creep = this;
+		let option = {ignoreCreeps:true, reusePath:50};
+		if(range == null || range == undefined) {
+			range = 0;
+		}
+                if(creep.memory.pos != undefined) {
+			if(creep.memory.pos.x != creep.pos.x || creep.memory.pos.y != creep.pos.y) {
+				creep.memory.pos.x = creep.pos.x;
+				creep.memory.pos.y = creep.pos.y;
+				creep.memory.pos.timer = 0;
+			} else {
+				creep.memory.pos.timer++;
+				if(creep.memory.pos.timer > 2) {
+					option = null;
+				}
+			}
+		} else {
+			creep.memory.pos = {x: creep.pos.x, y: creep.pos.y, timer:0};
+		}		
+		if(creep.pos.getRangeTo(pos) > range) {
+			creep.moveTo(pos, option);
+		}
+	}
+
 	Creep.prototype.approachAssignedFlag =
-	function(fRange, ignoreCreeps, retainPath) {
+	function(fRange, ignoreCreeps, retainPath, overideFlag) {
 		if(retainPath == undefined) {
 			retainPath = 50;
 		}
@@ -593,6 +619,7 @@ module.exports = function() {
 		}
 		let creep = this;
                 let flag = Game.flags[creep.memory.MyFlag];
+		if(overideFlag != null) flag = overideFlag
 		let result = false;
 		if(creep.memory.pos != undefined) {
 			if(creep.memory.pos.x != creep.pos.x || creep.memory.pos.y != creep.pos.y) {
