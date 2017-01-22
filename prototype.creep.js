@@ -583,10 +583,13 @@ module.exports = function() {
 	}
 
 	Creep.prototype.approachAssignedFlag =
-	function(fRange, ignoreCreeps) {
+	function(fRange, ignoreCreeps, retainPath) {
+		if(retainPath == undefined) {
+			retainPath = 5;
+		}
 		let option = null;
 		if(ignoreCreeps == true) {
-			option = {ignoreCreeps:true};
+			option = {ignoreCreeps:true, reusePath:retainPath};
 		}
 		let creep = this;
                 let flag = Game.flags[creep.memory.MyFlag];
