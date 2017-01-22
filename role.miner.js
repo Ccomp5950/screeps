@@ -5,7 +5,9 @@ module.exports = {
 			creep.setupSpawn()
                         return;
                 }
+		if(creep.memory.energyPerTick == undefined) creep.memory.energyPerTick = creep.getActiveBodyparts(WORK) * 2
 
+		var energyPerTick = creep.memory.energyPerTick;
 		creep.setupFlag();
 		var ignorecreeps = null;
 		if(creep.pos.roomName != creep.memory.spawnRoom) {
@@ -106,7 +108,7 @@ module.exports = {
 	                                creep.repair(structure);
 	                                return;
 	                        }
-	                        if(creep.memory.repBox != true) creep.transfer(structure, RESOURCE_ENERGY);
+				if(creep.memory.repBox != true && _.sum(creep.carry) >= creep.carryCapacity - energyPerTick) creep.transfer(structure, RESOURCE_ENERGY);
 			} 
 		}
     }
