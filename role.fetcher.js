@@ -119,7 +119,7 @@ module.exports = {
 				if(links.length) {
 					let link = links[0];
 					if(creep.pos.getRangeTo(link) > 1) {
-						creep.moveTo(link, {ignoreCreeps:true});
+						creep.moveTo(link, {ignoreCreeps:false});
 						return;
 					} else {
 						creep.transfer(link, RESOURCE_ENERGY);
