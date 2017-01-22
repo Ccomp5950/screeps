@@ -58,11 +58,12 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			feeder:		{namer:"feeder",		minimum:0,	requirement:1100,	buildRestriction : true,	run: require('role.feeder')}
                         };
 
+        for(let role in roles) {
+                profiler.registerObject(roles[role].run, "roles." + role.run);
+        }		
+
 module.exports.loop = function () {
 	profiler.wrap(function() {
-	for(let role in roles) {
-		profiler.registerObject(roles[role], "roles." + role);
-	}
 	Memory.stats.tickStartCPU = Game.cpu.getUsed()
 	stats.runStats();
 	memorymgmt.master();
