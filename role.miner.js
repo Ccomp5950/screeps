@@ -47,7 +47,7 @@ module.exports = {
 			//	return;
 			}
 		}
-		if(creep.approachAssignedFlag(0,ignorecreeps) == false) {
+		if(creep.approachAssignedFlag(0,ignorecreeps, 50) == false) {
 			return;
 		}
 		var structure = null;
