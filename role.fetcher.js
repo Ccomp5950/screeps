@@ -115,7 +115,7 @@ module.exports = {
 				return;
 			}
 			if(Game.flags[creep.memory.MyFlag] != undefined && Game.flags[creep.memory.MyFlag].pos.roomName != creep.memory.spawnRoom && dropoffFlag != undefined && creep.memory.goingToStorage == false && creep.pos.getRangeTo(dropoffFlag) < storageRange ) {
-				let links = dropoffFlag.pos.findInRange(FIND_STRUCTURES,3, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
+				let links = dropoffFlag.pos.findInRange(FIND_STRUCTURES,2, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy < s.energyCapacity || s.cooldown < 5});
 				if(links.length) {
 					let link = links[0];
 					if(creep.pos.getRangeTo(link) > 1) {
