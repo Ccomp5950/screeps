@@ -132,7 +132,7 @@ module.exports.loop = function () {
 	if(Game.time % 100 == 0) {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
-	var recepient = Memory.pumpEnergyHere;
+	var recepient = Memory.config.pumpEnergyHere;
 	var sentLimit = 0;
 	var sent = 0;
 	if(Game.time % 50 == 27) {
