@@ -473,10 +473,9 @@ module.exports = function() {
                 if (target != undefined) {
 			creep.memory.killThis = target.id;
 			flee = false;
-			if(target.getActiveBodyparts(ATTACK)) {
+			if(target.body != undefined && target.getActiveBodyparts(ATTACK)) {
 				attackRange = 3;
 				flee = true;
-					
 			}
 			if (creep.pos.getRangeTo(target) > attackRange) {
 		                if(creep.hits < creep.hitsMax) {
