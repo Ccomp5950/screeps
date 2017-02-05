@@ -38,8 +38,8 @@ module.exports = {
                                 return;
                 }
 
-		if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
-		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
+		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 
 		creep.approachAssignedFlag(0);
         }
