@@ -18,6 +18,7 @@ module.exports = {
 		if(creep.attackAdjacentCreep() == true) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		//if(creep.attackAdjacentCreep() == true) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
                 if(creep.attackHostileCreep()) return;
