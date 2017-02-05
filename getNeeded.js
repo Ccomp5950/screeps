@@ -46,7 +46,7 @@ module.exports = {
                         if(roomO.terminal != undefined && roomO.terminal.store[mineral.mineralType] != undefined) {
                                 stored += roomO.terminal.store[mineral.mineralType];
 			}
-			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined  && (roomO.storage != undefined && stored <= 120000)) {
+			if(extractor != undefined && mineral != undefined && mineral.ticksToRegeneration == undefined  && (roomO.storage != undefined && stored <= 220000)) {
 				needed = 1;
 			}
 		}
