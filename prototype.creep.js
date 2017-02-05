@@ -278,10 +278,13 @@ module.exports = function() {
 		}
 	}
 	Creep.prototype.attackHostileStructure =
-	function(structure) {
+	function(structure, disregardRampart) {
 		let creep = this;
 		let target = null;
 		let cs = false;
+		if(disregardRampart != true) {
+			disregardRampart = false;
+		}
 		switch(structure) {
 			case "FLAG":
 				if(Game.flags.priority != undefined && Game.flags.priority.room != undefined && Game.flags.priority.room.name == creep.room.name) {
@@ -324,7 +327,7 @@ module.exports = function() {
 			default:
 				if(creep.room.controller == undefined || creep.room.controller.my != true) {
 					target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-							filter: (s) => s.structureType == structure && (s.my != true)
+							filter: (s) => s.structureType == structure && (s.my != true && (disregardRampart == true || s.onRampart() == false))
 					});
 				}
 				break;

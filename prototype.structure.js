@@ -47,5 +47,23 @@ module.exports = function() {
 			Smem.creep = creep.id;
 			Smem.lastHandled = Game.time;
 		}
-	}
+	};
+        Stucture.prototype.onRampart =
+        function() {
+		var thisStructure = this;
+		var finder = thisStructure.pos.lookFor(LOOK_STRUCTURES);
+		if(finder.length == 0) {
+			return false;
+		}
+		for(let structureI of finder){
+			var structure = structureI;
+			if(structure == undefined) {
+				continue;
+			}
+			if(structure.structureType == STRUCTURE_RAMPART) {
+				return true;
+			}
+		}
+		return false;
+	};
 };
