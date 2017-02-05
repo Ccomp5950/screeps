@@ -456,7 +456,7 @@ module.exports = function() {
 		if(ignoreSK != true) {
 			ignoreSK = false;
 		}
-		let attackRange = 3;
+		let attackRange = 2;
 		if(ranged != true) {
 			attackRange = 1;
 			ranged = false;
@@ -472,6 +472,12 @@ module.exports = function() {
                 }
                 if (target != undefined) {
 			creep.memory.killThis = target.id;
+			flee = false;
+			if(target.getActiveBodyParts(ATTACK) {
+				attackRange = 3;
+				flee = true;
+					
+			}
 			if (creep.pos.getRangeTo(target) > attackRange) {
 		                if(creep.hits < creep.hitsMax) {
 		                        creep.heal(creep);
@@ -725,17 +731,17 @@ module.exports = function() {
         };
 
 	Creep.prototype.moveToRange = 
-	function (target, range) {
+	function (target, Arange, flee) {
 		let creep = this;
 		PathFinder.use(true);
 		let pos = target;
 		if (target.pos) {
 			pos = target.pos;
 		}
-		if(creep.pos.getRangeTo(pos) > range) {
-			creep.moveTo({pos: pos, range: range}, {
-				maxRooms: 1,
-			});
+		if(creep.pos.getRangeTo(pos) > Arange) {
+			options = {maxRooms:1, range: Arange};
+			if(flee == true) options.flee = true;
+			creep.moveTo(pos,, options);
 		}
 	};
 
