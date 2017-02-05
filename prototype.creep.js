@@ -456,7 +456,7 @@ module.exports = function() {
 		if(ignoreSK != true) {
 			ignoreSK = false;
 		}
-		let attackRange = 2;
+		let attackRange = 3;
 		if(ranged != true) {
 			attackRange = 1;
 			ranged = false;
