@@ -322,7 +322,7 @@ module.exports = function() {
 				}
 				break;
 			default:
-				if(creep.room.controller.my != true) {
+				if(creep.room.controller == undefined || creep.room.controller.my != true) {
 					target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 							filter: (s) => s.structureType == structure && (s.my != true)
 					});
