@@ -297,7 +297,7 @@ module.exports = function() {
 				target = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
 				break;
 			case FIND_CONSTRUCTION_SITES:
-				target = creep.pos.findClosestByRange(FIND_HOSTILE_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_EXTRACTOR });
+				target = creep.pos.findClosestByRange(FIND_HOSTILE_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_EXTRACTOR && s.progress > 1});
 				cs = true;
 				break;
 			case STRUCTURE_WALL:
