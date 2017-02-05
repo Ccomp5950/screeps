@@ -23,7 +23,7 @@ module.exports = {
 			let score=0;
 			let damage = [0,10,4,1];
 			for(let nasty in targets) {
-				score += damage[creep.pos.getRangeTo(nasty)];
+				score += damage[creep.pos.getRangeTo(targets[nasty])];
 			}
 			if(score > 10) {
 			    creep.rangedMassAttack();
