@@ -21,7 +21,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		//if(creep.attackAdjacentCreep() == true) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-                if(creep.attackHostileCreep()) return;
+                if(creep.attackHostileCreep(true)) return;
 		if(creep.attackHostileStructure(STRUCTURE_LAB)) return;
 		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		//if(creep.attackHostileStructure("FLAG")) return;

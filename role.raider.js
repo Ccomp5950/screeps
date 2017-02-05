@@ -29,12 +29,12 @@ module.exports = {
 				return;
 			}
 		}
-		if(creep.gotoWaypoint()) return;
+		//if(creep.gotoWaypoint()) return;
 		creep.memory.MyFlag = "raider";
 		if(creep.approachAssignedFlag(999) == false) return;
 
                 //if(creep.attackHostileCreep()) return;
-		//if(creep.attackHostileStructure("FLAG")) return;
+		if(creep.attackHostileStructure("FLAG")) return;
 		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_LAB)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
@@ -44,7 +44,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TERMINAL)) return;
-		if(creep.attackHostileCreep()) return;
+		if(creep.attackHostileCreep(true)) return;
 		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 
 		creep.approachAssignedFlag(0);
