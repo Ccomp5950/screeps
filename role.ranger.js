@@ -18,10 +18,17 @@ module.exports = {
 		var target = null;
 		var ignoreSK = false;
 		var move = true;
-		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 2);
-		if(targets.length > 2) {
-		    creep.rangedMassAttack();
-		    return;
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
+		if(targets.length > 1) {
+			let score=0;
+			let damage = [0,10,4,1];
+			for(let nasty in targets) {
+				score += damage[creep.pos.getRangeTo(nasty)];
+			}
+			if(score > 10) {
+			    creep.rangedMassAttack();
+			    return;
+			}
 		}
 		var targets = creep.pos.findInRange()
 		creep.attackAdjacentCreep(true);
