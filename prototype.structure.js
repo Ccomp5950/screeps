@@ -48,7 +48,7 @@ module.exports = function() {
 			Smem.lastHandled = Game.time;
 		}
 	};
-        Stucture.prototype.onRampart =
+        Structure.prototype.onRampart =
         function() {
 		var thisStructure = this;
 		var finder = thisStructure.pos.lookFor(LOOK_STRUCTURES);
