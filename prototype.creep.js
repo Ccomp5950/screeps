@@ -473,7 +473,7 @@ module.exports = function() {
                 if (target != undefined) {
 			creep.memory.killThis = target.id;
 			flee = false;
-			if(target.getActiveBodyParts(ATTACK) {
+			if(target.getActiveBodyParts(ATTACK)) {
 				attackRange = 3;
 				flee = true;
 					
