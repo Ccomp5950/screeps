@@ -741,7 +741,7 @@ module.exports = function() {
 		if(creep.pos.getRangeTo(pos) > Arange) {
 			options = {maxRooms:1, range: Arange};
 			if(flee == true) options.flee = true;
-			creep.moveTo(pos,, options);
+			creep.moveTo(pos, options);
 		}
 	};
 
