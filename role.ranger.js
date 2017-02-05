@@ -40,7 +40,10 @@ module.exports = {
 	                                return;
 	                }
 		}
-		if(move) creep.approachAssignedFlag(0);
+		if(!move) return;
+		if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
+		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+		creep.approachAssignedFlag(0);
 
         }
         
