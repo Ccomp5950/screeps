@@ -48,8 +48,8 @@ module.exports = {
 		}
 		if(!move) return;
 		if(creep.pos.getRangeTo(flag) < 999) {
-			if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
-			if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
+			//if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
+			//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		}
 		creep.approachAssignedFlag(0);
 
