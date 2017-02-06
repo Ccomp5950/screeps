@@ -60,9 +60,12 @@ module.exports = {
 		                        filter: (s) => (s.structureType == STRUCTURE_CONTAINER && (feflag != undefined &&  s.pos.getRangeTo(feflag) <= 1) && _.sum(s.store) > 600)
 				});
                                 if(target) {
-                                        if(creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                                creep.moveTo(target);
-
+					if(creep.pos.getRangeTo(target) > 1) {
+						creep.moveTo(target);
+						return;
+					}
+	                                for(let resource in target.store) {
+	                                        creep.withdraw(target, resource);
                                         }
                                         return;
                                 }
