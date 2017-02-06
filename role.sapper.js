@@ -131,7 +131,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_STORAGE,true)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION,true)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
-		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
+		if(creep.attackHostileStructure(STRUCTURE_RAMPART,true)) return;
 		//if(creep.attackHostileStructure("ANYTHING")) return;
                 if(flag != undefined) {
                         range = creep.pos.getRangeTo(flag);
