@@ -130,7 +130,7 @@ module.exports = {
 		//if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
 		if(creep.attackHostileStructure(STRUCTURE_STORAGE,true)) return;
 		if(creep.attackHostileStructure(STRUCTURE_EXTENSION,true)) return;
-		if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
+		//if(creep.attackHostileStructure(STRUCTURE_ROAD)) return;
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART)) return;
 		//if(creep.attackHostileStructure("ANYTHING")) return;
                 if(flag != undefined) {
