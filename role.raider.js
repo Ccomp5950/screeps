@@ -33,7 +33,7 @@ module.exports = {
 		creep.memory.MyFlag = "raider";
 		if(creep.approachAssignedFlag(999) == false) return;
 
-                //if(creep.attackHostileCreep()) return;
+                if(creep.attackHostileCreep()) return;
 		if(creep.attackHostileStructure("FLAG")) return;
 		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_LAB)) return;
