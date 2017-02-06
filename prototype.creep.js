@@ -486,7 +486,8 @@ module.exports = function() {
 				if(ranged) {
 					creep.rangedAttack(target)
 				} else {
-				creep.attack(target);
+					creep.attack(target);
+					creep.moveTo(target);
 				}
 			}
 			
