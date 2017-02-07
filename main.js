@@ -70,7 +70,7 @@ module.exports.loop = function () {
 	if(Game.time ==  17272000) {
 		Game.flag.rangerSpot_E38S27.memory.active = true;
 		Game.flag.rangerSpot_E38S27.memory.spawn = "E46S31";
-	        Game.room.E46S31.memory.roles.ranger.minimum++;	
+	        Game.rooms.E46S31.memory.roles.ranger.minimum++;	
 	}
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
 	// check for memory entries of died creeps by iterating over Memory.creeps
