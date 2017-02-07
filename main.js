@@ -22,12 +22,12 @@ var needed = require('getNeeded');
 var roles =            {harvester:      {namer:"harvester",             minimum:0,      requirement:0,          buildRestriction : false,       run: require('role.harvester')},
 			linktender:     {namer:"linktender",            minimum:0,      requirement:1400,       buildRestriction : false,       run: require('role.linktender')},
 			attacker:       {namer:"attacker",              minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.attacker')},
+			healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
 			solosapper:	{namer:"solosapper",            minimum:0,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
 			sapper:         {namer:"sapper",                minimum:0,      requirement:-1,         buildRestriction : true,        run: require('role.sapper')},
                         towerdrainer:   {namer:"towerdrainer",          minimum:0,      requirement:2300,       buildRestriction : true,        run: require('role.towerdrainer')},
 			killdozer:      {namer:"killdozer",             minimum:0,      requirement:7650,       buildRestriction : true,        run: require('role.killdozer')},
 			raider:         {namer:"raider",                minimum:0,      requirement:800,        buildRestriction : false,       run: require('role.raider')},
-                        healer:         {namer:"healer",                minimum:0,      requirement:1500,       buildRestriction : true,        run: require('role.healer')},
 			ranger:         {namer:"ranger",                minimum:0,      requirement:4750,       buildRestriction : false,       run: require('role.ranger')},
 			defender:       {namer:"defender",              minimum:0,      requirement:-1,         buildRestriction : false,       run: require('role.defender')},
                         miner:          {namer:"miner",                 minimum:0,      requirement:900,        buildRestriction : true,        run: require('role.miner')},
@@ -71,6 +71,8 @@ module.exports.loop = function () {
 		Game.flag.rangerSpot_E38S27.memory.active = true;
 		Game.flag.rangerSpot_E38S27.memory.spawn = "E46S31";
 	        Game.rooms.E46S31.memory.roles.ranger.minimum++;	
+		Game.rooms.E46S31.memory.roles.solosapper.minimum = 2;
+		Game.flag.attack.setPosition(new RoomPosition(12, 19, 'E38S27'));
 	}
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
 	// check for memory entries of died creeps by iterating over Memory.creeps
