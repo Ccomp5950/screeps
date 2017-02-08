@@ -61,7 +61,8 @@ module.exports = {
 		if(flag != undefined && creep.memory.healingother == false) {
 			var range = creep.pos.getRangeTo(flag);
 			if(range > frange) {
-				creep.moveTo(flag);
+				creep.memory.MyFlag = flag.name
+				creep.approachAssignedFlag(frange);
 				return;
 			} else {
 				if(taunt) creep.say("Ha Missed!",true);
