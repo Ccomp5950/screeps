@@ -692,6 +692,7 @@ module.exports = function() {
 	};
 	Creep.prototype.doVisual =
 	function() {
+		if(Memory.config.drawVisuals != true) return;
 		let creep = this;
 		let y = creep.pos.y;
 		let x = creep.pos.x;
