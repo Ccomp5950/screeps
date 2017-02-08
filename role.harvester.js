@@ -88,9 +88,9 @@ module.exports = {
 			}
 		}	
                 if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && creep.room.storage != undefined && creep.room.storage.store.energy >= 120000) {
-			let nuke = nuke(creep.room.name);
-			if(nuke != undefined && nuke.energy != undefined && nuke.energy < nuke.energyCapacity) {
-				structure = nuke;
+			let nukeO = nuke(creep.room.name);
+			if(nukeO != undefined && nukeO.energy != undefined && nukeO.energy < nukeO.energyCapacity) {
+				structure = nukeO;
 			}
 			
 		}
