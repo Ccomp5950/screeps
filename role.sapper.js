@@ -10,7 +10,7 @@ module.exports = {
 			creep.memory.suicide = false;
 			return;
 		}
-
+		if(creep.memory.getToFlag == undefined) creep.memory.getToFlag = true;
                 if(creep.getActiveBodyparts(MOVE) == 10) {
                         if(creep.getBoosted("XZHO2")) return;
                 }
@@ -37,8 +37,14 @@ module.exports = {
 				return;
 			}
 		}
-
-		if(creep.gotoWaypoint()) return;
+                if(creep.memory.getToFlag == true) {
+			if(creep.approachAssignedFlag(0,ignorecreeps,50) == true) {
+				creep.memory.getToFlag = false;
+			} else {
+				return;
+			}
+		}
+		//if(creep.gotoWaypoint()) return;
 		var frange = 999;
 		var hide = creep.memory.hide;
 		var towercheck = creep.memory.towercheck;
