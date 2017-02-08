@@ -693,6 +693,8 @@ module.exports = function() {
 	Creep.prototype.doVisual =
 	function() {
 		if(Memory.config.drawVisuals != true) return;
+		let textColor = 'white';
+		if(Memory.config.creepColor != undefined) textColor = Memory.config.creepColor;
 		let creep = this;
 		let y = creep.pos.y;
 		let x = creep.pos.x;
@@ -702,7 +704,7 @@ module.exports = function() {
 		} else {
 			y++;
 		}
-		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.5, align: textAlign});
+		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: textColor, size: 0.5, align: textAlign});
 	};
 	Creep.prototype.repairThis =
 	function(target) {
