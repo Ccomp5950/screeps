@@ -690,6 +690,20 @@ module.exports = function() {
 			return false;
                 }
 	};
+	Creep.prototype.doVisual =
+	function() {
+		let creep = this;
+		let y = creep.pos.y;
+		let x = creep.pos.x;
+		let textAlign = "left";
+		if(creep.pos.x > 25) {
+			x++;
+		} else {
+			x--;
+			align = "right";
+		}
+		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.8, align: textAlign});
+	};
 	Creep.prototype.repairThis =
 	function(target) {
 		let creep = this;

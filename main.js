@@ -223,6 +223,7 @@ module.exports.loop = function () {
 	for (let name in Game.creeps) {
 		// get the creep object
 		var creep = Game.creeps[name];
+		if(creep.spawning != true) creep.doVisual();
 		Memory.rooms[creep.memory.spawnRoom].totalCreeps++;
 		creep.memory.ticksToLive = creep.ticksToLive;
 		creep.memory.currentRoom = creep.room.name;
