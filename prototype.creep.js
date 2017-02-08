@@ -702,7 +702,7 @@ module.exports = function() {
 		} else {
 			y++;
 		}
-		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.8, align: textAlign});
+		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.5, align: textAlign});
 	};
 	Creep.prototype.repairThis =
 	function(target) {
