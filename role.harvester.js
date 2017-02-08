@@ -33,6 +33,11 @@ module.exports = {
 			creep.memory.pulledfrom = creep.room.storage.id;
 		}
 		if(creep.memory.doNothing >=0) {
+			if(carry != creep.carryCapacity) {
+				creep.memory.working = false;
+				creep.customharvest();
+				return;
+			}
 			creep.memory.doNothing--;
 			creep.say("Zzzz");
 			creep.approachAssignedFlag(0);
@@ -56,12 +61,6 @@ module.exports = {
 			                                             && s.id != creep.memory.pulledfrom)
 
 		});
-		if(fillStructures.length == 0) {
-			creep.memory.doNothing = 5;
-			creep.approachAssignedFlag(0);
-			creep.say("Zzzz");
-			return;
-		}
 		if(structure == null) {
 			structure = creep.pos.findClosestByRange(fillStructures, {
 				filter: (s) => creep.carry.energy > 0 && (s.structureType == STRUCTURE_EXTENSION
@@ -122,8 +121,10 @@ module.exports = {
 		structure.iGotIt(creep);
             } else {
 		if(_.sum(creep.carry) != creep.carryCapacity) {
+			creep.memory.working=false;
 			creep.customharvest();
 		} else {
+			creep.memory.doNothing = 5;
 			creep.approachAssignedFlag(0);
 		}
 	    }
