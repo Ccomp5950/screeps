@@ -88,12 +88,13 @@ module.exports = {
 				}
 			}
 		}	
-                if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && creep.room.storage.store.energy >= 120000) {
-                        structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-				                                filter: (s) => (s.structureType == STRUCTURE_NUKER
-					                                        && s.energy < s.energyCapacity)
-					                        });
-                }
+                if (structure == null && creep.carry.energy > 0 && creep.room.memory.loadNuke == true && && creep.room.storage != undefined && creep.room.storage.store.energy >= 120000) {
+			let nuke = nuke(creep.room.name);
+			if(nuke != undefined && nuke.energy != undefined && nuke.energy < nuke.energyCapacity) {
+				structure = nuke;
+			}
+			
+		}
 
 		if (structure == null) {
 			structure = creep.pos.findClosestByRange(FIND_STRUCTURES, {
