@@ -697,9 +697,9 @@ module.exports = function() {
 		let x = creep.pos.x;
 		let textAlign = "center";
 		if(creep.pos.y >= 2) {
-			y++;
-		} else {
 			y--;
+		} else {
+			y++;
 		}
 		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.8, align: textAlign});
 	};
