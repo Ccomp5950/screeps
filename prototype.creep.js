@@ -695,12 +695,11 @@ module.exports = function() {
 		let creep = this;
 		let y = creep.pos.y;
 		let x = creep.pos.x;
-		let textAlign = "left";
-		if(creep.pos.x > 25) {
-			x++;
+		let textAlign = "center";
+		if(creep.pos.y >= 2) {
+			y++;
 		} else {
-			x--;
-			align = "right";
+			y--;
 		}
 		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: 'green', size: 0.8, align: textAlign});
 	};
