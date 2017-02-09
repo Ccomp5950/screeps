@@ -303,23 +303,23 @@ module.exports = function() {
 	else if (roleName == "fetcher" || roleName == "remotefetcher" || roleName == "lgfetcher" || roleName == "mmfetcher" || roleName == "rmmfetcher") {
 		let fetchbody = {};
 		if(energy >= 2450) {
-			fetchbody = {work:1,move:16,carry:31};
+			fetchbody = {carry:31,work:1,move:16};
 			if(energy >= 2600) {
 				fetchbody.work++;
 				fetchbody.move++;
 			}
 		}
 		else if(energy >= 1550) {
-			fetchbody = {work:1,move:10,carry:19};
+			fetchbody = {carry:19,work:1,move:10};
 		}
 		else if(energy >= 950) {
-			fetchbody = {work:1,move:6,carry:11};
+			fetchbody = {carry:11,work:1,move:6};
 		}
 		else if(energy >= 900) {
-			fetchbody = {move:6,carry:12};
+			fetchbody = {carry:12,move:6};
 		}
 		else if(energy >= 450) {
-			fetchbody = {move:3,carry:6};
+			fetchbody = {carry:6,move:3};
 		}
 		/*
  		let energyLeft = energy - 200;
