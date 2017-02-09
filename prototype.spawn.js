@@ -359,6 +359,10 @@ module.exports = function() {
 		}
 	} else if (roleName == "repairer") {
 		creepMem.needsBoosted = true;
+		if(energy >= 3650) {
+			body = this.buildBody({work:23,carry:10,move:17});
+			bodyset = true;
+		}
 	}
 
 
