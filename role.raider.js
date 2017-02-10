@@ -35,14 +35,12 @@ module.exports = {
 		}
 		if(creep.approachAssignedFlag(999) == false) return;
 
-                if(creep.attackHostileCreep()) return;
+		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
+		if(creep.attackHostileCreep()) return;
+		
 		if(creep.attackHostileStructure("FLAG")) return;
-		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
-		if(creep.attackHostileStructure(STRUCTURE_LAB)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_LINK)) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
-		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
 		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART, true)) return;
 
