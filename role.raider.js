@@ -35,6 +35,7 @@ module.exports = {
 		}
 		if(creep.approachAssignedFlag(999) == false) return;
 
+		if(creep.attackSavedTarget()) return;
 		if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
 		if(creep.attackHostileCreep()) return;
 		
