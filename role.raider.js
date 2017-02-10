@@ -13,24 +13,26 @@ module.exports = {
                         if(creep.getBoosted("XZHO2")) return;
                 }
 
-		if(creep.memory.Healer == -1) return;
+		var solo = false;
+		if(creep.memory.role == "soloraider") solo = true;
+		if(solo == false &&  creep.memory.Healer == -1) return;
                 if(creep.getAwayFromEdge()) {
                         return;
                 }
 		if(creep.attackAdjacentCreep() == true) return;
-		var healer = Game.getObjectById(creep.memory.Healer);
-		if(healer != undefined) {
-			if(creep.pos.getRangeTo(flag) < 999) {
-				if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
+		if(!solo) {
+			var healer = Game.getObjectById(creep.memory.Healer);
+			if(healer != undefined) {
+				if(creep.pos.getRangeTo(flag) < 999) {
+					if(creep.pos.getRangeTo(healer) > 1 || healer.fatigue != 0) {
+						return;
+					}
+				}
+				if(creep.pos.getRangeTo(healer) > 999) {
 					return;
 				}
 			}
-			if(creep.pos.getRangeTo(healer) > 999) {
-				return;
-			}
 		}
-		//if(creep.gotoWaypoint()) return;
-		creep.memory.MyFlag = "raider";
 		if(creep.approachAssignedFlag(999) == false) return;
 
                 if(creep.attackHostileCreep()) return;
