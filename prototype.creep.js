@@ -660,10 +660,7 @@ module.exports = function() {
 				}
 			}
                         if(range > fRange) {
-				if(range - fRange < 5) {
-					option = null;
-				}
-                                creep.moveTo(flag, option);
+                                creep.approachPos(flag.pos,0);
 			} 
 			if(range == fRange + 1) {
 				creep.setRespawnTime();
