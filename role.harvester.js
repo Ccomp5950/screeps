@@ -43,7 +43,8 @@ module.exports = {
 			}
 			creep.memory.doNothing--;
 			creep.say("Zzzz");
-			creep.approachAssignedFlag(0);
+			if(creep.approachAssignedFlag(0)) == false) creep.memory.pos.timer = 0;
+			
 			creep.memory.lastAction = "Zzz and shit";
 			return;
 		}
