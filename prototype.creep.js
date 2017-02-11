@@ -607,6 +607,7 @@ module.exports = function() {
 			creep.moveTo(pos, option);
 			return true;
 		}
+	creep.memory.pos = undefined;
 	return false;
 	}
 
@@ -697,7 +698,10 @@ module.exports = function() {
 		} else {
 			y++;
 		}
-		new RoomVisual(creep.room.name).text(creep.memory.role + "(" + creep.ticksToLive + ")" , x, y, {color: textColor, size: 0.5, align: textAlign});
+		var text = creep.memory.role;
+		if(creep.ticksToLive != undefined) text += "(" + creep.ticksToLive + ")";
+		if(creep.memory.pos != undefined && creep.memory.pos.timer != undefined) text += " [" + creep.memory.pos.timer + "]";
+		new RoomVisual(creep.room.name).text(text, x, y, {color: textColor, size: 0.5, align: textAlign});
 	};
 	Creep.prototype.repairThis =
 	function(target) {
