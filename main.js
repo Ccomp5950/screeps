@@ -59,10 +59,11 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			actualclaimer:  {namer:"actualclaimer",		minimum:0,      requirement:650,        buildRestriction : true,        run: require('role.actualclaimer')},
 			feeder:		{namer:"feeder",		minimum:0,	requirement:1100,	buildRestriction : true,	run: require('role.feeder')}
                         };
-
+/*
         for(let role in roles) {
                 profiler.registerObject(roles[role].run, "roles." + role);
         }		
+*/
 
 module.exports.loop = function () {
 /*	profiler.wrap(function() { */
