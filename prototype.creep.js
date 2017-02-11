@@ -582,7 +582,8 @@ module.exports = function() {
 
 	}
 
-	Creep.prototype.gotoTimeout() {
+	Creep.prototype.gotoTimeout =
+	function() {
 		var creep = this;
 		var flag = creep.pos.roomName + "_timeout";
 		if(flag == undefined) {
