@@ -74,7 +74,7 @@ module.exports = {
 
 		
 
-		if(_.sum(creep.carry) < creep.carryCapacity) {
+		if(creep.carry.energy == 0 || _.sum(creep.carry) < creep.carryCapacity) {
 			creep.mine();
 		}
                 if(creep.pos.getRangeTo(structure) > 1) {
