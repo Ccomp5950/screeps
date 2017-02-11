@@ -732,10 +732,8 @@ module.exports = function() {
                 }
 		creep.repairOnTheMove();
 		if(creep.approachPos(target.pos, 2))  return true;
-                } else {
-                    creep.build(target);
-                        return true;
-                }
+		creep.build(target);
+		return true;
         };
 
 	Creep.prototype.moveToRange = 
