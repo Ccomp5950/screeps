@@ -114,7 +114,7 @@ module.exports = {
 		creep.memory.structure = structure.id;
 
 		if(creep.pos.getRangeTo(structure) > 1) {
-			creep.moveTo(structure);
+			creep.moveToRange(structure.pos, 1);
 			return;
 		}
 		creep.deposit(structure);
