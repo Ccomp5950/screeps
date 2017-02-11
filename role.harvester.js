@@ -71,7 +71,7 @@ module.exports = {
 				filter: (s) => creep.carry.energy > 0 && (s.structureType == STRUCTURE_EXTENSION
 	 			     || s.structureType == STRUCTURE_SPAWN
 				     || s.structureType == STRUCTURE_LAB
-	                             || (s.structureType == STRUCTURE_TOWER && s.my == true)
+	                             || (s.structureType == STRUCTURE_TOWER && s.my == true && s.energy < 600)
 				     )
 	            });
 		}
