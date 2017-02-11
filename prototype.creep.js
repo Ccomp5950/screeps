@@ -585,7 +585,7 @@ module.exports = function() {
 	Creep.prototype.gotoTimeout =
 	function() {
 		var creep = this;
-		var flag = creep.pos.roomName + "_timeout";
+		var flag = Game.flags[creep.pos.roomName + "_timeout"];
 		if(flag == undefined) {
 			creep.say("no timeout");
 			return;
