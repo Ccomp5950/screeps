@@ -113,7 +113,7 @@ module.exports = function() {
 		}
 	} else {
 		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
-		if(creep.approachPos(energy.pos,l)) return;
+		if(creep.approachPos(energy.pos,1)) return;
 		if(energy != undefined) {
 			if(creep.approachPos(energy.pos,l)) return;
 			creep.pickup(energy); 
@@ -714,7 +714,7 @@ module.exports = function() {
 		target.iGotIt(creep);
 		if (creep.pos.getRangeTo(target) > 3){
 			creep.repairOnTheMove();
-			creep.moveToRange(target.pos, 3);
+			creep.approachPos(target.pos, 3);
 			return true;
 		} else {
                     creep.repair(target);
@@ -730,10 +730,8 @@ module.exports = function() {
                 if(target == undefined) {
                         return false;
                 }
-                if (creep.pos.getRangeTo(target) > 2) {
-                        creep.repairOnTheMove();
-                        creep.moveTo(target);
-                        return true;
+		creep.repairOnTheMove();
+		if(creep.approachPos(target.pos, 2))  return true;
                 } else {
                     creep.build(target);
                         return true;
@@ -746,7 +744,7 @@ module.exports = function() {
 		if (target.pos != undefined) {
 			pos = target.pos;
 		}
-		creep.approachPos(pos, Arange);
+		this.approachPos(pos, Arange);
 	};
 
 
