@@ -608,7 +608,7 @@ module.exports = function() {
 				creep.memory.pos.timer = 0;
 			} else {
 				creep.memory.pos.timer++;
-				if(creep.memory.pos.timer > 2) {
+				if(creep.memory.pos.timer > 3) {
 					option = null;
 				}
 			}
@@ -634,7 +634,8 @@ module.exports = function() {
 			option = {ignoreCreeps:true, reusePath:retainPath};
 		}
 		let creep = this;
-                let flag = Game.flags[creep.memory.MyFlag];
+		if(creep.memory.moved) return;
+		let flag = Game.flags[creep.memory.MyFlag];
 		if(overideFlag != null) flag = overideFlag
 		let result = false;
 		if(creep.memory.pos != undefined) {
@@ -662,6 +663,7 @@ module.exports = function() {
 					if(waypointFlag != undefined) {
 						if(creep.pos.getRangeTo(waypointFlag) > 2) {
 							creep.moveTo(waypointFlag, option);
+							creep.memory.moved = true;
 							return false;
 						} else {
 							creep.memory.rolewaypoint = -1;
