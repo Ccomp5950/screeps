@@ -5,6 +5,7 @@ module.exports = {
 			creep.setupSpawn();
                         return;
                 }
+	creep.memory.lastAction = "";
 	creep.setupSpawn();
 	creep.setupFlag();
 	creep.setRespawnTime();
@@ -15,6 +16,7 @@ module.exports = {
 			creep.pickup(energy[0])
                         }
 	if(creep.approachAssignedFlag(999) == false) {
+		creep.memory.lastAction = "approach room"
 		return;
 	}
         let carry = _.sum(creep.carry);
@@ -36,11 +38,13 @@ module.exports = {
 			if(carry != creep.carryCapacity) {
 				creep.memory.working = false;
 				creep.customharvest();
+				creep.memory.lastAction = "switching to filling";
 				return;
 			}
 			creep.memory.doNothing--;
 			creep.say("Zzzz");
 			creep.approachAssignedFlag(0);
+			creep.memory.lastAction = "Zzz and shit";
 			return;
 		}
 		var structure = Game.getObjectById(creep.memory.structure);
@@ -108,14 +112,15 @@ module.exports = {
 		if(creep.room.storage != undefined) {
 			if(creep.pos.getRangeTo(structure) >= 6 && creep.pos.getRangeTo(creep.room.storage) < 15 && carry < (creep.carryCapacity * .75)) {
 				creep.memory.working = false;
+				creep.memory.lastAction = "changing mind and filling up at storage";
 				return;
 			}
 		}
 		creep.memory.structure = structure.id;
 
-		if(creep.pos.getRangeTo(structure) > 1) {
-			creep.approachPos(structure.pos, 1);
+		if(creep.approachPos(structure.pos, 1)) {
 			structure.iGotIt(creep);
+			creep.memory.lastAction = "approaching fill structure";
 			return;
 		}
 		creep.deposit(structure);
@@ -132,6 +137,7 @@ module.exports = {
         // if creep is supposed to harvest energy from source
         else {
 		creep.customharvest();
+		creep.memory.lastAction = "customharvest";
         }
     }
 };
