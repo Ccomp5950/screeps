@@ -114,11 +114,11 @@ module.exports = {
 		creep.memory.structure = structure.id;
 
 		if(creep.pos.getRangeTo(structure) > 1) {
-			creep.moveToRange(structure.pos, 1);
+			creep.approachPos(structure.pos, 1);
+			structure.iGotIt(creep);
 			return;
 		}
 		creep.deposit(structure);
-		structure.iGotIt(creep);
             } else {
 		if(_.sum(creep.carry) != creep.carryCapacity) {
 			creep.memory.working=false;
