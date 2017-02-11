@@ -115,7 +115,7 @@ module.exports = function() {
 		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
 		if(creep.approachPos(energy.pos,l)) return;
 		if(energy != undefined) {
-			if(creep..approachPos(energy.pos,l)) return;
+			if(creep.approachPos(energy.pos,l)) return;
 			creep.pickup(energy); 
 		}
 	    }
