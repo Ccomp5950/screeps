@@ -97,39 +97,31 @@ module.exports = function() {
                                 creep.memory.source = null;
                         }
             }
-	    if(source != undefined) {
-		    if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
-				if(source.store[RESOURCE_ENERGY] < carryLeft) {
-					creep.memory.source = null;
-					return;
-				}
-				creep.memory.pulledfrom = source.id
-                            if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                if(creep.moveTo(source, {maxRooms: 1}) == ERR_NO_PATH) {
-                                        creep.memory.source = null;
-                                }
-                            }
-		    return;
-		    }
-		    else {
-		            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-		                if(creep.moveTo(source, {maxRooms: 1}) == ERR_NO_PATH) {
-					creep.memory.source = null;
-				}
-			    }
-			
-		    return;
-		    }
-            } else {
-		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
-		if(energy != undefined) {
-			if(creep.pickup(energy) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(energy);
+	if(source != undefined) {
+		if(creep.approachPos(source.pos,l)) return;
+		if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
+			if(source.store[RESOURCE_ENERGY] < carryLeft) {
+				creep.memory.source = null;
+				return;
 			}
+			creep.memory.pulledfrom = source.id
+			creep.withdraw(source, RESOURCE_ENERGY)
+		    	return;
+		}
+		else {
+			creep.harvest(source);
+		}
+	} else {
+		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
+		if(creep.approachPos(energy.pos,l)) return;
+		if(energy != undefined) {
+			if(creep..approachPos(energy.pos,l)) return;
+			creep.pickup(energy); 
 		}
 	    }
 		
         };
+
 	Creep.prototype.getThreat =
 	function() {
 		var creep = this;
@@ -614,7 +606,9 @@ module.exports = function() {
 		}		
 		if(creep.pos.getRangeTo(pos) > range) {
 			creep.moveTo(pos, option);
+			return true;
 		}
+	return false;
 	}
 
 	Creep.prototype.approachAssignedFlag =
