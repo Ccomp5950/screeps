@@ -113,7 +113,6 @@ module.exports = function() {
 		}
 	} else {
 		var energy = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY)
-		if(creep.approachPos(energy.pos,1)) return;
 		if(energy != undefined) {
 			if(creep.approachPos(energy.pos,l)) return;
 			creep.pickup(energy); 
