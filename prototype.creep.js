@@ -98,7 +98,7 @@ module.exports = function() {
                         }
             }
 	if(source != undefined) {
-		if(creep.approachPos(source.pos,l)) return;
+		if(creep.approachPos(source.pos,1)) return;
 		if(source.structureType == STRUCTURE_CONTAINER || source.structureType == STRUCTURE_STORAGE || source.structureType == STRUCTURE_TERMINAL) {
 			if(source.store[RESOURCE_ENERGY] < carryLeft) {
 				creep.memory.source = null;
