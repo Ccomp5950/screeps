@@ -584,8 +584,8 @@ module.exports = function() {
 
 	Creep.prototype.approachPos =
 	function(pos, range) {
-		if(creep.memory.moved == true) return;
 		let creep = this;
+		if(creep.memory.moved == true) return;
 		let option = {ignoreCreeps:true, reusePath:50};
 		if(range == null || range == undefined) {
 			range = 0;
