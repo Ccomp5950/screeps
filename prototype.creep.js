@@ -742,17 +742,11 @@ module.exports = function() {
 
 	Creep.prototype.moveToRange = 
 	function (target, Arange, flee) {
-		let creep = this;
-		PathFinder.use(true);
 		let pos = target;
-		if (target.pos) {
+		if (target.pos != undefined) {
 			pos = target.pos;
 		}
-		if(creep.pos.getRangeTo(pos) > Arange) {
-			options = {maxRooms:1, range: Arange};
-			if(flee == true) options.flee = true;
-			creep.moveTo(pos, options);
-		}
+		creep.approachPos(pos, Arange);
 	};
 
 
