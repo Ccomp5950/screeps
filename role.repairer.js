@@ -112,6 +112,7 @@ module.exports = {
 			creep.memory.repairCached = 0;
 		}
 		creep.memory.repairing = structure.id;
+		structure.iGotIt(creep);
 		if(creep.approachPos(structure.pos, 3)) return;
 		// try to repair it, if it is out of range
 		let debugRep = creep.repairThis(structure);
