@@ -35,7 +35,6 @@ module.exports = {
 	                // try to build, if the constructionSite is not in range
 			    if(creep.approachPos(constructionSite.pos, 2)) return;
     			    creep.build(constructionSite);
-	                }
 	            }
 	    }
             // if no constructionSite is found
