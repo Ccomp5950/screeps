@@ -89,7 +89,7 @@ module.exports = {
 		if(sites.length > 0) return room.memory.role.builder.minimum;
 
 		return 0;
-	}
+	},
 
 	upgrader:
 	function(room) {
