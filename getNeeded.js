@@ -80,11 +80,11 @@ module.exports = {
 
 	builder:
 	function(room) {
-		if(Game.room[room] == undefined) return 0;
+		if(Game.rooms[room] == undefined) return 0;
 
-		let roomO = Game.room[room];
+		let roomO = Game.roomis[room];
 
-		let sites = Game.room.find(FIND_CONSTRUCTION_SITES);
+		let sites = roomO.find(FIND_CONSTRUCTION_SITES);
 
 		if(sites.length > 0) return room.memory.role.builder.minimum;
 
