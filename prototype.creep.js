@@ -696,7 +696,7 @@ module.exports = function() {
 			y++;
 		}
 		if(creep.memory.role == "upgrader") {
-			if(creep.ticksToLive != undefined) new RoomVisual(creep.room.name).text(creep.ticksToLive, creep.pos.x -1 , creep.pos.y, {color: "white",size: 0.5});
+			if(creep.ticksToLive != undefined) new RoomVisual(creep.room.name).text(creep.ticksToLive, creep.pos.x , creep.pos.y -1, {color: "white",size: 0.5});
 			return;
 		}
 		var text = creep.memory.role;
