@@ -52,7 +52,7 @@ module.exports = {
 			structure = undefined;
 		}
 		if(structure == undefined) {
-			structure = _(creep.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_RAMPART && s.hits < 5000 && s.isBeingHandled(creep) == false).min(s=>s.hits);
+			structure = _(creep.room.find(FIND_STRUCTURES)).filter((s) => s.structureType == STRUCTURE_RAMPART && s.hits < 5000 && s.isBeingHandled(creep) == false).min(s=>s.hits);
 			if(structure == Infinity) structure = undefined;
 		}
 		if(structure == undefined) { 
