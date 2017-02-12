@@ -32,9 +32,8 @@ module.exports = {
 					creep.customharvest(creep);
 					return;
 				}
-				if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(storage);
-				};
+				if(creep.approachPos(storage.pos, 1)) return;
+				creep.withdraw(storage, RESOURCE_ENERGY)
 		}else {
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
