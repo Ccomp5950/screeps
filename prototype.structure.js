@@ -46,8 +46,10 @@ module.exports = function() {
 			Smem = Memory.structure[s.id][role];
 			Memory.structure[s.id][role].creep = creep.id;
 			Memory.structure[s.id][role].lastHandled = Game.time;
-			var text = creep.name;
-			new RoomVisual(s.room.name).text(text, s.pos.x, s.pos.y, {color: 'red', size: 0.5, align: 'center'});
+			if(drawVisuals()) {		
+				var text = creep.name;
+				new RoomVisual(s.room.name).text(text, s.pos.x, s.pos.y, {color: 'red', size: 0.5, align: 'center'});
+			}
 		}
 	};
         Structure.prototype.onRampart =
