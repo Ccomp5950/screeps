@@ -86,7 +86,7 @@ module.exports = {
 
 		let sites = roomO.find(FIND_CONSTRUCTION_SITES);
 
-		if(sites.length > 0) return room.memory.role.builder.minimum;
+		if(sites.length > 0) return roomO.memory.role.builder.minimum;
 
 		return 0;
 	},
