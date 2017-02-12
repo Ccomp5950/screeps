@@ -85,7 +85,7 @@ module.exports = {
 	                        var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
 	                        var flag = flags[0];
 				structure = flag.pos.findClosestByRange(FIND_STRUCTURES, {
-				filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000
+				filter:(s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < 1000 && !s.isBeingHandled(creep)
 				}); 
 				if(structure != null && structure.pos.getRangeTo(flag.pos) > 2) {
 					structure = null;
