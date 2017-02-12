@@ -77,7 +77,20 @@ module.exports = {
                 }
                 return needed;
         },
-	
+
+	builder:
+	function(room) {
+		if(Game.room[room] == undefined) return 0;
+
+		let roomO = Game.room[room];
+
+		let sites = Game.room.find(FIND_CONSTRUCTION_SITES);
+
+		if(sites.length > 0) return room.memory.role.builder.minimum;
+
+		return 0;
+	}
+
 	upgrader:
 	function(room) {
 		if(Memory.rooms[room].remotelyUpgraded == true) {
