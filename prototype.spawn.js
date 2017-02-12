@@ -136,7 +136,7 @@ module.exports = function() {
 		let base = 0;
 		let calcEnergy = energy - base;
 		let probody = {tough:0,move:0,attack:0,heal:0};
-		if(energy > = 1500) {
+		if(energy >  1500) {
 			base = 720;
 			calcEnergy = energy - base;
 			probody = {tough:2,move:4,attack:0,heal:2}; // 420 cost body
