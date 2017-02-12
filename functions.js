@@ -310,6 +310,13 @@
 		return false;
 	}
 
+	global.getMaxDefenseHits =
+	function() {
+		if(Memory.config != undefined && Memory.config.maxDefenseHits != undefined) return Memory.config.maxDefenseHits
+		return 300000000;
+	}
+
+
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
