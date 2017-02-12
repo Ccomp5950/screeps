@@ -44,9 +44,9 @@ module.exports = function() {
                 }
 		if(s.isBeingHandled(creep) == false) {
 			Smem = Memory.structure[s.id][role];
-			Smem.creep = creep.id;
-			Smem.lastHandled = Game.time;
-			var text =  ":round_pushpin: " + creep.name;
+			Memory.structure[s.id][role].creep = creep.id;
+			Memory.structure[s.id][role].lastHandled = Game.time;
+			var text = creep.name;
 			new RoomVisual(s.room.name).text(text, s.pos.x, s.pos.y, {color: 'red', size: 0.5, align: 'center'});
 		}
 	};
