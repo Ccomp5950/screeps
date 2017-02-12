@@ -303,7 +303,6 @@
 		return u(leadSurrogate) + u(tailSurrogate);
 	}
 
-
 	global.drawVisuals =
 	function() {
 		if(Memory.config != undefined && Memory.config.drawVisuals == true) return true;

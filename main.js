@@ -8,11 +8,11 @@ require('prototype.flag')();
 require('prototype.link')();
 require('prototype.room')();
 require('prototype.roomobject')();
-/*const profiler = require('screeps-profiler');
+const profiler = require('screeps-profiler');
 if(Memory.config != undefined && Memory.config.profiler == true) {
 	profiler.enable();
 }
-*/
+
 require('functions');
 //require('global_vars');
 //require('role');
@@ -59,16 +59,14 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			actualclaimer:  {namer:"actualclaimer",		minimum:0,      requirement:650,        buildRestriction : true,        run: require('role.actualclaimer')},
 			feeder:		{namer:"feeder",		minimum:0,	requirement:1100,	buildRestriction : true,	run: require('role.feeder')}
                         };
-/*
         for(let role in roles) {
                 profiler.registerObject(roles[role].run, "roles." + role);
         }		
-*/
 
 module.exports.loop = function () {
-/*	profiler.wrap(function() { */
-	Memory.stats.tickStartCPU = Game.cpu.getUsed()
-	stats.runStats();
+	profiler.wrap(function() { 
+	//if(Memory.stats != undefined) Memory.stats.tickStartCPU = Game.cpu.getUsed()
+	//stats.runStats();
 	memorymgmt.master();
 	if(Game.time ==  17272000) {
 		Game.flag.rangerSpot_E38S27.memory.active = true;
@@ -315,6 +313,6 @@ module.exports.loop = function () {
 	for(spawn in Game.spawns) {
 		Game.spawns[spawn].handlespawn(roles,underAttack[Game.spawns[spawn].room.name]);
 	}
-	Memory.stats.tickCPU = Game.cpu.getUsed()
-/* }); */
+	//Memory.stats.tickCPU = Game.cpu.getUsed()
+ }); 
 };

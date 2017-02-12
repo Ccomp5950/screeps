@@ -63,9 +63,23 @@ module.exports = {
 	},
 
 	setup: function() {
-		if(Memory.structure == undefined) {
-			Memory.structure = [];
+		if(Memory.rooms == undefined)  Memory.rooms = {};
+		if(Memory.allies == undefined) Memory.allies = [];
+		if(Memory.flags == undefined)  Memory.flags = [];
+		var defaultConfig = {	drawVisuals: false,
+		       			maxDefenseHits: 301000000,
+				       	profiler: false, 
+					pumpEnergyHere: "", 
+					clearWaypointFlags: false, 
+					reserve_min_ticks: 3500
+		};
+		if(Memory.config == undefined) Memory.config = defaultConfig;
+		for(let entry of defaultConfig) {
+			if(Memory.config[entry] == undefined) Memory.config[entry] = defaultConfig[entry];
 		}
+		if(Memory.stats == undefined)  Memory.stats = {};
+		if(Memory.structure == undefined) Memory.structure = {};
+
 	},
 
 	delFlags: function() {
