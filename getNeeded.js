@@ -67,10 +67,7 @@ module.exports = {
                         if(flag.room != undefined && flag.room.controller.reservation != undefined) {
                                 ticks = flag.room.controller.reservation.ticksToEnd;
                         }
-			if(Memory.reserve_min_ticks == undefined) {
-				Memory.reserve_min_ticks = 3500;
-			}
-			let reserve_min = Memory.reserve_min_ticks;
+			let reserve_min = Memory.config.reserve_min_ticks;
 	                if(flag.memory.active == true && ticks < reserve_min) {
                                 needed++;
                         }
