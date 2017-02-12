@@ -304,6 +304,12 @@
 	}
 
 
+	global.drawVisuals =
+	function() {
+		if(Memory.config != undefined && Memory.config.drawVisuals == true) return true;
+		return false;
+	}
+
 	global.handleBuild =
 	function(roomName) {
 		let room = Game.rooms[roomName];
