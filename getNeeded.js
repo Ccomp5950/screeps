@@ -82,7 +82,7 @@ module.exports = {
 	function(room) {
 		if(Game.rooms[room] == undefined) return 0;
 
-		let roomO = Game.roomis[room];
+		let roomO = Game.rooms[room];
 
 		let sites = roomO.find(FIND_CONSTRUCTION_SITES);
 
