@@ -131,10 +131,16 @@ module.exports = function() {
 		creepMem.combat = true;
 	}
 	else if (roleName == "defender" || roleName == "attacker") {
+		
 		let Nparts = 8;
-		let base = 720;
+		let base = 0;
 		let calcEnergy = energy - base;
-		let probody = {tough:2,move:4,attack:0,heal:2}; // 420 cost body
+		let probody = {tough:0,move:0,attack:0,heal:0};
+		if(energy > = 1500) {
+			base = 720;
+			calcEnergy = energy - base;
+			probody = {tough:2,move:4,attack:0,heal:2}; // 420 cost body
+		}
 		let defparts = Math.floor(calcEnergy / 130);
 		for(let i = 0; i < defparts && Nparts <= 48; i++) {
 			Nparts += 2;
