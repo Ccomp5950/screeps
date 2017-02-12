@@ -14,7 +14,7 @@ module.exports = {
 	getNeeded: function(role,room) {
 		if(this[role] != undefined) {
 			let numberOcreeps = this[role](room);
-			Memory.rooms[room].role[role].minimum = numberOcreeps;
+			//Memory.rooms[room].role[role].minimum = numberOcreeps;
 			return numberOcreeps;
 		} else if(Memory.rooms[room].role[role] != undefined) {
 				return Memory.rooms[room].role[role].minimum;
