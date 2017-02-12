@@ -695,6 +695,10 @@ module.exports = function() {
 		} else {
 			y++;
 		}
+		if(creep.memory.role == "upgrader") {
+			if(creep.ticksToLive != undefined) new RoomVisual(creep.room.name).text(creep.ticksToLive, creep.pos.x, creep.pos.y);
+			return;
+		}
 		var text = creep.memory.role;
 		if(creep.ticksToLive != undefined) text += "(" + creep.ticksToLive + ")";
 		if(creep.memory.pos != undefined && creep.memory.pos.timer != undefined) text += " [" + creep.memory.pos.timer + "]";
@@ -703,6 +707,7 @@ module.exports = function() {
 	Creep.prototype.repairThis =
 	function(target) {
 		let creep = this;
+
 		if(target == undefined || target == Infinity) {
 			return false;
 		}
