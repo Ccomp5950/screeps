@@ -74,7 +74,7 @@ module.exports = {
 					reserve_min_ticks: 3500
 		};
 		if(Memory.config == undefined) Memory.config = defaultConfig;
-		for(let entry of defaultConfig) {
+		for(let entry in defaultConfig) {
 			if(Memory.config[entry] == undefined) Memory.config[entry] = defaultConfig[entry];
 		}
 		if(Memory.stats == undefined)  Memory.stats = {};
