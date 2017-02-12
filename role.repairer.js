@@ -94,7 +94,7 @@ module.exports = {
 			if(storage == undefined || storage.store.energy > 50000) {
 				var hitsMax = RAMPART_HITS_MAX[creep.room.controller.level];
 				structure = _(creep.room.find(FIND_STRUCTURES))
-					.filter((s) => (s.structureType == STRUCTURE_RAMPART || s.structureType == STRUCTURE_WALL) && s.hits < s.hitsMax && s.isBeingHandled(creep) == false)
+					.filter((s) => (s.structureType == STRUCTURE_RAMPART || s.structureType == STRUCTURE_WALL) && s.hits < hitsMax && s.hits < s.hitsMax && s.isBeingHandled(creep) == false)
 	                                .min(s=>s.hits / hitsMax);
 	                    if(structure == Infinity) {
 	                        structure = undefined;
