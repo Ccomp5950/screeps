@@ -40,7 +40,7 @@ module.exports = function() {
 
                 if(Smem[role] == undefined) {
 
-                        Smem[role] = {creep: null, lastHandled: -1};
+                        Memory.structure[s.id][role] = {creep: null, lastHandled: -1};
                 }
 		if(s.isBeingHandled(creep) == false) {
 			Smem = Memory.structure[s.id][role];
