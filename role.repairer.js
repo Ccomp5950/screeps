@@ -51,10 +51,14 @@ module.exports = {
 			creep.memory.repairCached = 0;
 			structure = undefined;
 		}
+		if(structure == undefined) {
+			structure = _(creep.find(FIND_STRUCTURES)).filter((s) => (s.structureType == STRUCTURE_RAMPART && s.hits < 5000) && s.isBeingHandled(creep) == false).min(s=>s.hits);
+			if(structure == Infinity) structure = undefined;
+		}
 		if(structure == undefined) { 
 			// CRITICAL!!!
 			structure = _(creep.room.find(FIND_STRUCTURES))
-				.filter((s) => (s.hits + 1) < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05) && s.isBeingHandled(creep) == false)
+				.filter((s) => ((s.hits + 1) < s.hitsMax && s.structureType != STRUCTURE_WALL && s.structureType != STRUCTURE_RAMPART && (s.hits / s.hitsMax < 0.05) && s.isBeingHandled(creep) == false)
 				.min(s=>s.hits / s.hitsMax);
                     if(structure == Infinity) {
                         structure = undefined;
