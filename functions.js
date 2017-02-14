@@ -29,9 +29,9 @@
 	global.roomLink =
 	function(room, braces) {
 		if(braces == false) {
-			return "<a href='https://screeps.com/a/#!/room/" + room + "'>" + room + "</a>"
+			return "<a href='/a/#!/room/" + room + "'>" + room + "</a>"
 		}
-		return "[<a href='https://screeps.com/a/#!/room/" + room + "'>" + room + "</a>] "
+		return "[<a href='/a/#!/room/" + room + "'>" + room + "</a>] "
 
 	}
 	global.distCheck =
