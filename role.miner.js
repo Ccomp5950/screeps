@@ -40,15 +40,14 @@ module.exports = {
 			}
 			
 		}
-                if(_.sum(creep.carry) < creep.carryCapacity) {
-                        let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
-			for(let resource in energy) {
-				creep.pickup(energy[resource])
-			//	return;
-			}
-		}
 		if(creep.approachAssignedFlag(0,ignorecreeps, 50) == false) {
 			return;
+		}
+                if(_.sum(creep.carry) < creep.carryCapacity) {
+			let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
+				for(let resource in energy) {
+					creep.pickup(energy[resource])
+				}
 		}
 		var structure = null;
 		if(creep.memory.container == undefined || creep.memory.container == null) {
