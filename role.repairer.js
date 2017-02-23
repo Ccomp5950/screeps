@@ -14,7 +14,10 @@ module.exports = {
 
 	if(creep.memory.role == "remoterepairer") {
 		creep.memory.MyFlag = "remoterepairer";
-		if(creep.approachAssignedFlag(999) == false) return;
+		if(creep.approachAssignedFlag(999) == false) {
+			creep.drop("energy");
+			return;
+		}
 	} else {
 		if(creep.memory.spawnRoom != creep.room.name) {
 			var roompos = new RoomPosition(25, 25, creep.memory.spawnRoom);
