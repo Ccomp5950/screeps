@@ -184,9 +184,11 @@ module.exports = function() {
             var creep = this;
             var source = Game.getObjectById(creep.memory.source);
             if(source == undefined) {
-                        source = creep.pos.findClosestByRange(FIND_SOURCES);
-                        if(source != undefined) {
-                                creep.memory.source = source.id;
+	
+			sources = creep.pos.findInRange(FIND_SOURCES, 1);
+                        if(sources.length > 0) {
+				source = sources[0];
+				creep.memory.source = source.id;
                         } else {
                                 creep.memory.source = null;
                         }
@@ -196,6 +198,7 @@ module.exports = function() {
 			creep.harvest(source);
 		}
 	    }
+
 	};
 	Creep.prototype.checkTimeToReplace =
 	function() {
@@ -634,7 +637,7 @@ module.exports = function() {
 			option = {ignoreCreeps:true, reusePath:retainPath};
 		}
 		let creep = this;
-		if(creep.memory.moved || creep.fatigue != 0) return;
+		if(creep.memory.moved || creep.fatigue != 0) return return;
 		let flag = Game.flags[creep.memory.MyFlag];
 		if(overideFlag != null) flag = overideFlag
 		let result = false;
