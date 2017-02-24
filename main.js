@@ -243,7 +243,11 @@ module.exports.loop = function () {
 			// Spawning
 
 			Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
-			roles[creep.memory.role].run.run(creep);
+			try {
+				roles[creep.memory.role].run.run(creep);
+			} catch(err) {
+				console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+			}
 			continue;
 		}
 		if((underAttack[creep.room.name] && !creep.memory.combat && creep.memory.role != "miner" && creep.memory.role != "upgrader") || creep.memory.role == 'towertender') {
@@ -254,7 +258,11 @@ module.exports.loop = function () {
 			if(creep.checkTimeToReplace() == false) {
 				Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 			}
-			roles[creep.memory.role].run.run(creep);
+			try {
+				roles[creep.memory.role].run.run(creep);
+			} catch(err) {
+				console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+			}
 		} 
 		else {
 			if(roles[creep.memory.role] == null) {
@@ -263,7 +271,11 @@ module.exports.loop = function () {
 				if((creep.ticksToLive - (creep.body.length * 3)) >= 0) {
 					Memory.rooms[creep.memory.spawnRoom].role[creep.memory.role].current++;
 				}
-				roles[creep.memory.role].run.run(creep);
+	                        try {
+					roles[creep.memory.role].run.run(creep);
+				} catch(err) {
+					console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+				}
 			}
 		}
 		if(creep.ticksToLive > 4) continue;
