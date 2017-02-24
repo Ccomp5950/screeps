@@ -6,7 +6,6 @@ module.exports = {
                         return;
                 }
 		if(creep.memory.energyPerTick == undefined) creep.memory.energyPerTick = creep.getActiveBodyparts(WORK) * 2
-
 		var energyPerTick = creep.memory.energyPerTick;
 		creep.setupFlag();
 		var ignorecreeps = null;
@@ -29,8 +28,10 @@ module.exports = {
 				}
 				if(creep.getActiveBodyparts(ATTACK) == 0 || creep.attackAdjacentCreep() == false) {
 					creep.heal(creep);
+					creep.memory.lastAction = "SKMiner Heal";
 					return
 				} else {
+					creep.memory.lastAction = "SKminer Attack";
 					return;
 				}
 			}
@@ -41,6 +42,7 @@ module.exports = {
 			
 		}
 		if(creep.approachAssignedFlag(0,ignorecreeps, 50) == false) {
+			creep.memory.lastAction = "Miner approach assigned flag room";
 			return;
 		}
                 if(_.sum(creep.carry) < creep.carryCapacity) {
@@ -74,6 +76,7 @@ module.exports = {
 		
 
 		if(creep.carry.energy == 0 || _.sum(creep.carry) < creep.carryCapacity) {
+			creep.memory.lastAction = "Miner Build";
 			creep.mine();
 		}
                 if(creep.pos.getRangeTo(structure) > 1) {
@@ -84,11 +87,13 @@ module.exports = {
                         structure = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
                         if(creep.carry.energy >= 50 && structure != null) {
                                 if(creep.build(structure) == OK) {
-                                        return;
+					creep.memory.lastAction = "Miner Build";
+					return;
                                 }
 
                         }
-                        return;
+			
+			return;
 			creep.drop(RESOURCE_ENERGY);
 
 		} else {
@@ -105,7 +110,8 @@ module.exports = {
 				}
 				if(creep.carry.energy >= 50 && creep.memory.repBox == true) {
 	                                creep.repair(structure);
-	                                return;
+					creep.memory.lastAction = "SKminer Repair";
+					return;
 	                        }
 				if(creep.memory.repBox != true && _.sum(creep.carry) >= creep.carryCapacity - energyPerTick) creep.transfer(structure, RESOURCE_ENERGY);
 			} 
