@@ -16,6 +16,10 @@ module.exports = {
 		let hasTerminal = false;
 		let hasSpawn = false;
 		let spawnFill = -1;
+		if(creep.memory.thisRoomsMineral == undefined && creep.room.memory.mineral != undefined) {
+			let tmpmineral = Game.getObjectById(creep.room.memory.mineral)
+			if(tmpmineral != undefined) creep.memory.thisRoomsMineral = tmpmineral.mineralType;
+		}
 		creep.memory.setupTime = 1;
 		creep.setupFlag();
 		if(creep.approachAssignedFlag(0) == false) {
@@ -95,7 +99,9 @@ module.exports = {
 					if(resource == "energy") {
 						continue;
 					}
-					if(terminal.store[resource] == undefined || terminal.store[resource] < creep.memory.maxTerminalMineral) {
+					let maxTerminal = creep.memory.maxTerminalMineral;
+					if(resource == creep.memory.thisRoomsMineral) maxTerminal = 20000;
+					if(terminal.store[resource] == undefined || (resource == terminal.store[resource] < maxTerminal) {
 						useTerminal = true;
 						break;
 					}
