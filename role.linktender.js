@@ -101,7 +101,7 @@ module.exports = {
 					}
 					let maxTerminal = creep.memory.maxTerminalMineral;
 					if(resource == creep.memory.thisRoomsMineral) maxTerminal = 20000;
-					if(terminal.store[resource] == undefined || (resource == terminal.store[resource] < maxTerminal) {
+					if(terminal.store[resource] == undefined || resource == terminal.store[resource] < maxTerminal) {
 						useTerminal = true;
 						break;
 					}
