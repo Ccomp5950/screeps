@@ -596,7 +596,7 @@ module.exports = function() {
 	Creep.prototype.approachPos =
 	function(pos, range) {
 		let creep = this;
-		if(creep.memory.moved == true) return;
+		if(creep.memory.moved == true || creep.fatigue != 0) return;
 		let option = {ignoreCreeps:true, reusePath:50};
 		if(range == null || range == undefined) {
 			range = 0;
@@ -634,7 +634,7 @@ module.exports = function() {
 			option = {ignoreCreeps:true, reusePath:retainPath};
 		}
 		let creep = this;
-		if(creep.memory.moved) return;
+		if(creep.memory.moved || creep.fatigue != 0) return;
 		let flag = Game.flags[creep.memory.MyFlag];
 		if(overideFlag != null) flag = overideFlag
 		let result = false;
