@@ -246,7 +246,7 @@ module.exports.loop = function () {
 			try {
 				roles[creep.memory.role].run.run(creep);
 			} catch(err) {
-				console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+				console.log("[" + creep.memory.role + "/" + creep.name + "] ERROR: " + err);
 			}
 			continue;
 		}
@@ -261,7 +261,7 @@ module.exports.loop = function () {
 			try {
 				roles[creep.memory.role].run.run(creep);
 			} catch(err) {
-				console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+				console.log("[" + creep.memory.role + "/" + creep.name + "] ERROR: " + err);
 			}
 		} 
 		else {
@@ -274,7 +274,7 @@ module.exports.loop = function () {
 	                        try {
 					roles[creep.memory.role].run.run(creep);
 				} catch(err) {
-					console.log("[" + creep.memory.role + "/" creep.name + "] ERROR: " + err);
+					console.log("[" + creep.memory.role + "/" + creep.name + "] ERROR: " + err);
 				}
 			}
 		}
