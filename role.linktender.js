@@ -145,13 +145,15 @@ module.exports = {
 				}
                                 for(let resource in terminal.store) {
                                         if(resource == "energy") continue;
-                                        if((storage.store[resource] == undefined || terminal.store[resource] < creep.memory.maxTerminalMineral) && terminal.store[resource] != undefined) {
+                                        let maxTerminal = creep.memory.maxTerminalMineral;
+					if(resource == creep.memory.thisRoomsMineral) maxTerminal = 20000;
+					if((storage.store[resource] == undefined || terminal.store[resource] < maxTerminal) && terminal.store[resource] != undefined) {
                                                 creep.withdraw(storage, resource);
                                                 return;
                                         }
-                                        if(terminal.store[resource] > creep.memory.maxTerminalMineral) {
-                                                if((terminal.store[resource] - creep.carryCapacity) < creep.memory.maxTerminalMineral) {
-                                                        amount = terminal.store[resource] - creep.memory.maxTerminalMineral;
+                                        if(terminal.store[resource] > maxTerminal) {
+                                                if((terminal.store[resource] - creep.carryCapacity) < maxTerminal) {
+                                                        amount = terminal.store[resource] - maxTerminal;
                                                 }
 
                                                 creep.withdraw(terminal, resource, amount);
