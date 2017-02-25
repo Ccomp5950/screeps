@@ -70,6 +70,7 @@ module.exports = {
 		       			maxDefenseHits: 301000000,
 				       	profiler: false, 
 					pumpEnergyHere: "", 
+					pumpEnergyHereNext: "",
 					clearWaypointFlags: false, 
 					reserve_min_ticks: 3500
 		};

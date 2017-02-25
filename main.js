@@ -141,6 +141,7 @@ module.exports.loop = function () {
 		console.log("[" + Game.time + "] <span style='color: yellow;'>Total Storage: " + totalstorage.toLocaleString() + "</span>");
 	}
 	var recepient = Memory.config.pumpEnergyHere;
+	var overflow  = Memory.config.pumpEnergyHereNext;
 	var sentLimit = 0;
 	var sent = 0;
 	if(Game.time % 50 == 27) {
@@ -170,8 +171,8 @@ module.exports.loop = function () {
 					terminal.send("energy",10000, recepient);
 					if(++sent >= sentLimit) break;
 				} else {
-					console.log(roomLink(room) + "Sending Energy to: weekOff " + roomLink("E68S29"));
-					terminal.send("energy",5000, "E68S29");
+					console.log(roomLink(room) + "Sending Energy to: " + roomLink(poverflow) + "(overflow)");
+					terminal.send("energy",10000, overflow);
 				}
 			}
 		}
