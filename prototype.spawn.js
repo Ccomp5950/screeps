@@ -341,6 +341,7 @@ module.exports = function() {
 		}
 		*/
 		body = this.buildBody(fetchbody)
+		creepMem.combat = true
 		bodyset = true;
         } else if (roleName == "linktender") {
 		if(energy >= 1400) {
