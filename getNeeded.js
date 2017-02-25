@@ -56,7 +56,7 @@ module.exports = {
 	},
 	mmfetcher:
 	function(room) {
-		return Memory.rooms[room].role["mineralminer"].minimum;
+		return this["mineralminer"](room);
 	},
         claimer : 
         function(room) {
