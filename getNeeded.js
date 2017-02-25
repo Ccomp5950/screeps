@@ -50,6 +50,7 @@ module.exports = {
 				needed = 1;
 			}
 		}
+		Memory.rooms[room].role["mineralminer"].minimum = needed;
 		return needed;
 
 	},
