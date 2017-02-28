@@ -109,7 +109,8 @@ module.exports = function() {
 			}
 			creep.memory.pulledfrom = source.id
 			creep.withdraw(source, RESOURCE_ENERGY)
-		    	return;
+			creep.memory.source = null;
+			return;
 		}
 		else {
 			creep.harvest(source);
