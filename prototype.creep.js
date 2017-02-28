@@ -61,7 +61,7 @@ module.exports = function() {
 	    var carryLeft = (creep.carryCapacity - _.sum(creep.carry));
 	    
             var source = Game.getObjectById(creep.memory.source); 
-	    if(source != null && source.store.energy <= carryLeft) {
+	    if(source != null && ((source.energy != undefined && source.energy <= carryLeft) || (source.store != undefined && source.store.energy <= carryLeft))) {
 		source = null
 	    }
 			var flagname = "upgraderContainer";
