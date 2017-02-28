@@ -57,10 +57,13 @@ module.exports = function() {
 	    if(resource.len) {
 		creep.pickup(resource[0]);
 	    }
+
 	    var carryLeft = (creep.carryCapacity - _.sum(creep.carry));
-
-            var source = null; 
-
+	    
+            var source = Game.getObjectById(creep.memory.source); 
+	    if(source != null && source.store.energy <= carryLeft) {
+		source = null
+	    }
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
