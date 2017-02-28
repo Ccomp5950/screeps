@@ -39,7 +39,7 @@ module.exports = {
 		}
                 if(creep.memory.getToFlag == true) {
 			creep.memory.MyFlag = "sapper"
-			if(creep.approachAssignedFlag(0,true,50) == true) {
+			if(creep.approachAssignedFlag(999,true,50) == true) {
 				creep.memory.getToFlag = false;
 			} else {
 				return;
