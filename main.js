@@ -8,11 +8,12 @@ require('prototype.flag')();
 require('prototype.link')();
 require('prototype.room')();
 require('prototype.roomobject')();
+/*
 const profiler = require('screeps-profiler');
 if(Memory.config != undefined && Memory.config.profiler == true) {
 	profiler.enable();
 }
-
+*/
 require('functions');
 //require('global_vars');
 //require('role');
@@ -59,12 +60,13 @@ var roles =            {harvester:      {namer:"harvester",             minimum:
 			actualclaimer:  {namer:"actualclaimer",		minimum:0,      requirement:650,        buildRestriction : true,        run: require('role.actualclaimer')},
 			feeder:		{namer:"feeder",		minimum:0,	requirement:1100,	buildRestriction : true,	run: require('role.feeder')}
                         };
-        for(let role in roles) {
+/*
+	for(let role in roles) {
                 profiler.registerObject(roles[role].run, "roles." + role);
         }		
-
+*/
 module.exports.loop = function () {
-	profiler.wrap(function() { 
+//	profiler.wrap(function() { 
 	//if(Memory.stats != undefined) Memory.stats.tickStartCPU = Game.cpu.getUsed()
 	//stats.runStats();
 	memorymgmt.master();
@@ -327,5 +329,5 @@ module.exports.loop = function () {
 		Game.spawns[spawn].handlespawn(roles,underAttack[Game.spawns[spawn].room.name]);
 	}
 	//Memory.stats.tickCPU = Game.cpu.getUsed()
- }); 
+// }); 
 };
