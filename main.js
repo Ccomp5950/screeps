@@ -173,7 +173,7 @@ module.exports.loop = function () {
 					terminal.send("energy",10000, recepient);
 					if(++sent >= sentLimit) break;
 				} else {
-					console.log(roomLink(room) + "Sending Energy to: " + roomLink(poverflow) + "(overflow)");
+					console.log(roomLink(room) + "Sending Energy to: " + roomLink(overflow) + "(overflow)");
 					terminal.send("energy",10000, overflow);
 				}
 			}
