@@ -57,10 +57,13 @@ module.exports = function() {
 	    if(resource.len) {
 		creep.pickup(resource[0]);
 	    }
+
 	    var carryLeft = (creep.carryCapacity - _.sum(creep.carry));
-
-            var source = null; 
-
+	    
+            var source = Game.getObjectById(creep.memory.source); 
+	    if(source != null && ((source.energy != undefined && source.energy <= carryLeft) || (source.store != undefined && source.store.energy <= carryLeft))) {
+		source = null
+	    }
 			var flagname = "upgraderContainer";
                         var flags = creep.room.find(FIND_FLAGS, {filter: (f) => f.name.substr(0,flagname.length) == flagname })
                         var flag = flags[0];
@@ -106,7 +109,8 @@ module.exports = function() {
 			}
 			creep.memory.pulledfrom = source.id
 			creep.withdraw(source, RESOURCE_ENERGY)
-		    	return;
+			creep.memory.source = null;
+			return;
 		}
 		else {
 			creep.harvest(source);
