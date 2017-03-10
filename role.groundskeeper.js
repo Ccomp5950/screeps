@@ -76,7 +76,7 @@ module.exports = {
 			.filter((s) => (s.structureType == STRUCTURE_RAMPART || s.structureType == STRUCTURE_WALL) && s.hits < hitsMax && s.hits < s.hitsMax && s.isBeingHandled(creep) == false)
 			.min(s=>s.hits / hitsMax);
 			if(structure != Infinity) {
-				f(creep.repairThis(target)) return;
+				if(creep.repairThis(target)) return;
 			}
 
 																										                            }
