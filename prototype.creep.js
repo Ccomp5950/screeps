@@ -641,7 +641,7 @@ module.exports = function() {
 			option = {ignoreCreeps:true, reusePath:retainPath};
 		}
 		let creep = this;
-		if(creep.memory.moved || creep.fatigue != 0) return ;
+		if(creep.memory.moved || creep.fatigue != 0) return false;
 		let flag = Game.flags[creep.memory.MyFlag];
 		if(overideFlag != null) flag = overideFlag
 		let result = false;
