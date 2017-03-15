@@ -157,9 +157,6 @@ module.exports = {
 	                        return 200;
 	                }
 		}
-		if(gcl == 8) {
-			return 1750;
-		}
 
                 var storage = Game.rooms[room].storage;
                 var terminal = Game.rooms[room].terminal;
@@ -169,6 +166,12 @@ module.exports = {
                 if(storage == undefined) {
                         storage = {store: {energy: 0}};
                 }
+		if(gcl == 8) {
+			if(energy <= 200000) {
+				return 200;
+			} else {
+				return 1750;
+		}
 
                 var energy = storage.store.energy + terminal.store.energy;
                 const LEVEL0 = 250000;
