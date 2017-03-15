@@ -171,6 +171,7 @@ module.exports = {
 				return 200;
 			} else {
 				return 1750;
+			}
 		}
 
                 var energy = storage.store.energy + terminal.store.energy;
