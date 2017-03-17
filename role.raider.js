@@ -42,7 +42,7 @@ module.exports = {
 		if(creep.attackHostileStructure("FLAG")) return;
 		if(creep.attackHostileStructure(STRUCTURE_TOWER)) return;
                 if(creep.attackHostileStructure(STRUCTURE_SPAWN)) return;
-		//if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
+		if(creep.attackHostileStructure(STRUCTURE_EXTENSION)) return;
 		if(creep.attackHostileStructure(STRUCTURE_RAMPART, true)) return;
 
 		if(creep.attackHostileStructure(STRUCTURE_STORAGE)) return;
