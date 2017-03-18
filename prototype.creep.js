@@ -653,7 +653,7 @@ module.exports = function() {
 				if(creep.memory.rolewaypoint != -1) {
 					var waypointFlag = Game.flags[flagRoom + "_waypoint"];
 					if(waypointFlag != undefined) {
-						if(creep.approachPos(waypointFlag.pos, 2)) {
+						if(creep.approachPos(waypointFlag.pos, 1)) {
 							creep.memory.moved = true;
 							return false;
 						} else {
