@@ -3,7 +3,7 @@ module.exports = {
     run: function(creep, squadsize) {
 		if(creep.spawning) {
 			creep.setupSpawn();
-			creep.memory.needsBoosted = false
+			creep.memory.needsBoosted = true
 			return;
 		}
 		creep.drivebyRestore();

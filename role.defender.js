@@ -3,7 +3,7 @@ module.exports = {
     run: function(creep) {
 		if(creep.spawning) {
 			creep.setupSpawn();
-			creep.memory.needsBoosted = true;
+			creep.memory.needsBoosted = false;
 		}
 		creep.setupFlag();
 		if(creep.getBoosted("XLHO2")) return;
