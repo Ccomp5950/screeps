@@ -29,7 +29,7 @@ module.exports = {
 					}
 				}
 				if(creep.pos.getRangeTo(healer) > 999) {
-					if(_(creep.pos.lookFor(LOOK_STRUCTURES).filter((s) => s.structureType == STRUCTURE_PORTAL)) == undefined) return;
+					return;
 				}
 			}
 		}
