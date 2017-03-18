@@ -657,10 +657,7 @@ module.exports = function() {
 							creep.memory.moved = true;
 							return false;
 						} else {
-							creep.approachPos(waypointFlag.pos, 0)
 							creep.memory.rolewaypoint = -1;
-							creep.memory.moved=true;
-							return false;
 						}
 						
 					} else {
