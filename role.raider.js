@@ -50,7 +50,7 @@ module.exports = {
 		if(creep.attackHostileStructure(STRUCTURE_TERMINAL)) return;
 		if(creep.attackHostileCreep(true)) return;
 		if(creep.attackHostileStructure(FIND_CONSTRUCTION_SITES)) return;
-		if(creep.attackHostileStructure("ANYTHING")) return;
+		//if(creep.attackHostileStructure("ANYTHING")) return;
 		creep.approachAssignedFlag(0);
         }
     
