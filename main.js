@@ -70,13 +70,6 @@ module.exports.loop = function () {
 	//if(Memory.stats != undefined) Memory.stats.tickStartCPU = Game.cpu.getUsed()
 	//stats.runStats();
 	memorymgmt.master();
-	if(Game.time ==  17272000) {
-		Game.flag.rangerSpot_E38S27.memory.active = true;
-		Game.flag.rangerSpot_E38S27.memory.spawn = "E46S31";
-	        Game.rooms.E46S31.memory.roles.ranger.minimum++;	
-		Game.rooms.E46S31.memory.roles.solosapper.minimum = 2;
-		Game.flag.attack.setPosition(new RoomPosition(12, 19, 'E38S27'));
-	}
 	if(Game.time % 5 == 0) memorymgmt.newRoles(roles);
 	// check for memory entries of died creeps by iterating over Memory.creeps
 	distCheck();
@@ -96,7 +89,6 @@ module.exports.loop = function () {
 		}
 	}
 
-	noMoreConstruction = false;
 	validSources = [];
 	var meaniesA = [];
 	let totalstorage = 0;
