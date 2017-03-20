@@ -120,7 +120,7 @@ module.exports = function() {
 		if(energy >= 1750) {
 			body = this.buildBody({tough:24,move:25,heal:1});
 		} else {
-			body = this.buildBody({move:1,carry:1});
+			body = this.buildBody({move:2});
 		}
 		bodyset = true;
 		creepMem.combat = true;
