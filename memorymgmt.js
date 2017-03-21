@@ -93,7 +93,7 @@ module.exports = {
 	},
 
 	newFlags: function() {
-		var defaultMem = {active: false, spawn: "", strict: "false"}
+		var defaultMem = {active: false, spawn: "", strict: false}
 		for (let name in Game.flags) {
 			if(Memory.flags[name] == undefined) {
 				if(Game.flags[name].room != undefined && Game.flags[name].room.controller != undefined && Game.flags[name].room.controller.my == true) defaultMem.spawn = Game.flags[name].pos.roomName;
