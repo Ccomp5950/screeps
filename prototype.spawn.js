@@ -120,7 +120,7 @@ module.exports = function() {
 		if(energy >= 1750) {
 			body = this.buildBody({tough:24,move:25,heal:1});
 		} else {
-			body = this.buildBody({move:1,carry:1});
+			body = this.buildBody({move:2});
 		}
 		bodyset = true;
 		creepMem.combat = true;
@@ -245,7 +245,11 @@ module.exports = function() {
 		bodyset = true;
 	}
 	else if(roleName == "unclaimer") {
-                body = this.buildBody({claim:15,move:15})
+		if(energy >= 9000) {
+			body = this.buildBody({claim:15,move:15})
+		} else {
+			body = this.buildBody({claim:5,move:5});
+		}
                 bodyset = true;
 	}
 	else if (roleName == "remoteupgrader") {
@@ -491,39 +495,39 @@ module.exports = function() {
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
 				if(roleM == "undefined" || roleMem == undefined) continue;
-				let minimum = needed.getNeeded(role.namer,mySpawn.room.name);
-				let requirement = needed.getEnergy(role.namer,mySpawn.room.name);
+				let minimum = needed.getNeeded(role.name,mySpawn.room.name);
+				let requirement = needed.getEnergy(role.name,mySpawn.room.name);
 				var route = "NONE";
 				if(minimum > roleMem.current) {
-					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
-					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
+					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.name);
+					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.name != "harvester")) {
 						route = "BOOTSTRAPPING";
 						continue;
 					}
 					if(requirement > 0 && myActualEnergy >= requirement) {
 						route = "REQUIREMENT>0";
-						name = mySpawn.createCustomCreep(requirement, role.namer);
+						name = mySpawn.createCustomCreep(requirement, role.name);
 					}
 					else if(requirement == -1 && readyToMaxSpawn) {
 						route = "REQUIREMENT-1";
-						name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
+						name = mySpawn.createCustomCreep(myActualEnergy, role.name);
 					}
 					else if(requirement == 0 && readyToSpawn) {
 						route = "REQUIREMENT0";
-						name = mySpawn.createCustomCreep(myEnergy, role.namer);
+						name = mySpawn.createCustomCreep(myEnergy, role.name);
 					}
-					else if(role.namer == "harvester" || role.namer == "linktender") {
+					else if(role.name == "harvester" || role.name == "linktender") {
 						break;
 					}
-				} else if (role.namer == "harvester") {
+				} else if (role.name == "harvester") {
 					Memory.rooms[mySpawn.room.name].bootstraping = false;
 				}
 				if(!(name < 0) && name != undefined) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.pop();
-					Memory.rooms[mySpawn.room.name].role[role.namer].current++;
+					Memory.rooms[mySpawn.room.name].role[role.name].current++;
 					break;
 				} else if(name < 0) { 
-					console.log("[" + mySpawn.name + "] Tried to spawn a " + role.namer + " but got error " + name + " (Required: " + minimum + " / Current: " + roleMem.current + ") Route: "+ route);
+					console.log("[" + mySpawn.name + "] Tried to spawn a " + role.name + " but got error " + name + " (Required: " + minimum + " / Current: " + roleMem.current + ") Route: "+ route);
 				}
 			}
 		}

@@ -65,7 +65,7 @@ module.exports = {
 	setup: function() {
 		if(Memory.rooms == undefined)  Memory.rooms = {};
 		if(Memory.allies == undefined) Memory.allies = [];
-		if(Memory.flags == undefined)  Memory.flags = [];
+		if(Memory.flags == undefined)  Memory.flags = {};
 		var defaultConfig = {	drawVisuals: false,
 		       			maxDefenseHits: 301000000,
 				       	profiler: false, 
@@ -93,19 +93,13 @@ module.exports = {
 	},
 
 	newFlags: function() {
+		var defaultMem = {active: false, spawn: "", strict: false}
 		for (let name in Game.flags) {
 			if(Memory.flags[name] == undefined) {
-				Memory.flags[name] = {}
-				continue;
+				if(Game.flags[name].room != undefined && Game.flags[name].room.controller != undefined && Game.flags[name].room.controller.my == true) defaultMem.spawn = Game.flags[name].pos.roomName;
+				Memory.flags[name] = defaultMem;
+				defaultMem.spawn = ""
 		        }
-			if(Memory.flags[name].active == undefined) {
-				Memory.flags[name].active = false;
-				continue;
-			}
-			if(Memory.flags[name].spawn == undefined) {
-				Memory.flags[name].spawn = "";
-				continue;
-			}
 		}
 	},
 
