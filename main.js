@@ -319,6 +319,7 @@ module.exports.loop = function () {
 		}
 	}
 	for(spawn in Game.spawns) {
+		console.log(roomLink(Game.spawns[spawn].room.name) + " " + Game.spawns[spawn].name + " handling spawn");
 		Game.spawns[spawn].handlespawn(roles,underAttack[Game.spawns[spawn].room.name]);
 	}
 	//Memory.stats.tickCPU = Game.cpu.getUsed()
