@@ -495,39 +495,39 @@ module.exports = function() {
 				let roleMem = roomroles[roleM];
 				let role = roles[roleM];
 				if(roleM == "undefined" || roleMem == undefined) continue;
-				let minimum = needed.getNeeded(role.name,mySpawn.room.name);
-				let requirement = needed.getEnergy(role.name,mySpawn.room.name);
+				let minimum = needed.getNeeded(role.namer,mySpawn.room.name);
+				let requirement = needed.getEnergy(role.namer,mySpawn.room.name);
 				var route = "NONE";
 				if(minimum > roleMem.current) {
-					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.name);
-					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.name != "harvester")) {
+					Memory.rooms[mySpawn.room.name].goingToSpawn.push(role.namer);
+					if((role.buildRestriction == true && dontBuild == true) || (Memory.rooms[mySpawn.room.name].bootstraping == true && role.namer != "harvester")) {
 						route = "BOOTSTRAPPING";
 						continue;
 					}
 					if(requirement > 0 && myActualEnergy >= requirement) {
 						route = "REQUIREMENT>0";
-						name = mySpawn.createCustomCreep(requirement, role.name);
+						name = mySpawn.createCustomCreep(requirement, role.namer);
 					}
 					else if(requirement == -1 && readyToMaxSpawn) {
 						route = "REQUIREMENT-1";
-						name = mySpawn.createCustomCreep(myActualEnergy, role.name);
+						name = mySpawn.createCustomCreep(myActualEnergy, role.namer);
 					}
 					else if(requirement == 0 && readyToSpawn) {
 						route = "REQUIREMENT0";
-						name = mySpawn.createCustomCreep(myEnergy, role.name);
+						name = mySpawn.createCustomCreep(myEnergy, role.namer);
 					}
-					else if(role.name == "harvester" || role.name == "linktender") {
+					else if(role.namer == "harvester" || role.namer == "linktender") {
 						break;
 					}
-				} else if (role.name == "harvester") {
+				} else if (role.namer == "harvester") {
 					Memory.rooms[mySpawn.room.name].bootstraping = false;
 				}
 				if(!(name < 0) && name != undefined) {
 					Memory.rooms[mySpawn.room.name].goingToSpawn.pop();
-					Memory.rooms[mySpawn.room.name].role[role.name].current++;
+					Memory.rooms[mySpawn.room.name].role[role.namer].current++;
 					break;
 				} else if(name < 0) { 
-					console.log("[" + mySpawn.name + "] Tried to spawn a " + role.name + " but got error " + name + " (Required: " + minimum + " / Current: " + roleMem.current + ") Route: "+ route);
+					console.log("[" + mySpawn.name + "] Tried to spawn a " + role.namer + " but got error " + name + " (Required: " + minimum + " / Current: " + roleMem.current + ") Route: "+ route);
 				}
 			}
 		}
