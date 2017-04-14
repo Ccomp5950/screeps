@@ -18,6 +18,7 @@ module.exports = {
 		var target = null;
 		var ignoreSK = false;
 		var move = true;
+		if(creep.attackHostileStructure("FLAG")) return;
 		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3, {filter: (c)=> c.checkIfAlly() == false } );
 		if(targets.length > 1) {
 			let score=0;
