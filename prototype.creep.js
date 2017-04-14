@@ -601,10 +601,11 @@ module.exports = function() {
 	};
 
 	Creep.prototype.approachPos =
-	function(pos, range) {
+	function(pos, range, ignoreRoads) {
 		let creep = this;
+		if(ignoreRoads != true) ignoreRoads = false;
 		if(creep.memory.moved == true || creep.fatigue != 0) return;
-		let option = {ignoreCreeps:true, reusePath:50};
+		let option = {ignoreCreeps:true, reusePath:50, ignoreRoads: ignoreRoads};
 		if(range == null || range == undefined) {
 			range = 0;
 		}
@@ -653,7 +654,7 @@ module.exports = function() {
 				if(creep.memory.rolewaypoint != -1) {
 					var waypointFlag = Game.flags[flagRoom + "_waypoint"];
 					if(waypointFlag != undefined) {
-						if(creep.approachPos(waypointFlag.pos, 1)) {
+						if(creep.approachPos(waypointFlag.pos, 1, true)) {
 							creep.memory.moved = true;
 							return false;
 						} else {
