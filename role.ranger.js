@@ -40,7 +40,7 @@ module.exports = {
 			move = false;
 		}
 		if(creep.approachAssignedFlag(999) == false) return;
-		if(creep.attackHostileStructure("FLAG"),true,true) return;
+		//if(creep.attackHostileStructure("FLAG"),true,true) return;
 		if(!healing) {
 			target = creep.pos.findClosestByRange(FIND_CREEPS, {
 	                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax && c.memory.role != "skminer"
