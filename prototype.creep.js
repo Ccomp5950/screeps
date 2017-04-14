@@ -276,8 +276,11 @@ module.exports = function() {
 		}
 	}
 	Creep.prototype.attackHostileStructure =
-	function(structure, disregardRampart) {
+	function(structure, disregardRampart, ranged) {
 		let creep = this;
+                if(ranged != true) {
+                        ranged = false;
+		}
 		let target = null;
 		let cs = false;
 		if(disregardRampart != true) {
@@ -344,7 +347,7 @@ module.exports = function() {
 					return false;
 				}
                                 }
-                            if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+                            if ((!ranged && creep.attack(target) == ERR_NOT_IN_RANGE) || (ranged && creep.rangedAttack(target) == ERR_NOT_IN_RANGE)) {
 				if(creep.moveTo(target, {maxRooms:1}) == ERR_NO_PATH) {
 					creep.cancelOrder('move');
 					return false;
