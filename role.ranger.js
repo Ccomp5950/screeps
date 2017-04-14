@@ -18,7 +18,7 @@ module.exports = {
 		var target = null;
 		var ignoreSK = false;
 		var move = true;
-		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3, {filter: (c)=> c.checkIfAlly() == false c.onRampart() == false} );
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3, {filter: (c)=> c.checkIfAlly() == false && c.onRampart() == false} );
 		if(targets.length > 1) {
 			let score=0;
 			let damage = [0,10,4,1];
