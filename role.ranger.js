@@ -18,8 +18,7 @@ module.exports = {
 		var target = null;
 		var ignoreSK = false;
 		var move = true;
-		if(creep.attackHostileStructure("FLAG"),true,true) return;
-		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3, {filter: (c)=> c.checkIfAlly() == false } );
+		var targets = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3, {filter: (c)=> c.checkIfAlly() == false c.onRampart() == false} );
 		if(targets.length > 1) {
 			let score=0;
 			let damage = [0,10,4,1];
@@ -41,7 +40,7 @@ module.exports = {
 			move = false;
 		}
 		if(creep.approachAssignedFlag(999) == false) return;
-
+		if(creep.attackHostileStructure("FLAG"),true,true) return;
 		if(!healing) {
 			target = creep.pos.findClosestByRange(FIND_CREEPS, {
 	                                        filter: (c) => c.my == true && c.id != creep.id && c.hits < c.hitsMax && c.memory.role != "skminer"
