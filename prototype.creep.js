@@ -280,7 +280,6 @@ module.exports = function() {
 		let creep = this;
                 if(ranged != true) {
                         ranged = false;
-	                 attackRange = 1;
 		}
 									                }
 		let target = null;
