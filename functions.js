@@ -286,6 +286,20 @@
 
 		return nuke;
 	}
+	global.retainEnergy =
+	function(opt) {
+		if(opt != false) opt = true;
+		for(let room in Memory.rooms) {
+			let roomO = Game.rooms[room];
+			if(roomO == undefined || roomO.controller == undefined || roomO.controller.level <= 4) continue;
+			roomO.memory.only1upgrader = opt;
+			if(opt == true && roomO.memory.role.groundskeeper.minimum >= 1 roomO.controller.level > 5)
+				roomO.memory.role.groundskeeper.minimum = 1;
+				roomO.memory.role.repairer.minimum = 1;
+				roomO.memory.role.repairer.requirement = 1800;
+		}
+	}
+
 	global.toUTF16 =
 	function(codePoint) {
 		var TEN_BITS = parseInt('1111111111', 2);
