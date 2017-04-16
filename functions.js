@@ -293,10 +293,15 @@
 			let roomO = Game.rooms[room];
 			if(roomO == undefined || roomO.controller == undefined || roomO.controller.level <= 4) continue;
 			roomO.memory.only1upgrader = opt;
-			if(opt == true && roomO.memory.role.groundskeeper.minimum >= 1 && roomO.controller.level > 5)
+			if(opt == true && roomO.memory.role.groundskeeper.minimum >= 1 && roomO.controller.level > 5) {
 				roomO.memory.role.groundskeeper.minimum = 1;
 				roomO.memory.role.repairer.minimum = 1;
 				roomO.memory.role.repairer.requirement = 1800;
+			}
+			if(opt == false && roomO.controller.level >=7) {
+				roomO.memory.role.repairer.minimum = 2;
+				roomO.memory.role.repairer.requirement = 3650;
+			}
 		}
 	}
 
