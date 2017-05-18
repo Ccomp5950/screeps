@@ -138,6 +138,7 @@ module.exports.loop = function () {
 	var overflow  = Memory.config.pumpEnergyHereNext;
 	var sentLimit = 0;
 	var sent = 0;
+	
 	if(Game.time % 50 == 27) {
 	
 		for(let room in Memory.rooms) {
@@ -221,7 +222,7 @@ module.exports.loop = function () {
 		// get the creep object
 		var creep = Game.creeps[name];
 		if(creep.spawning != true) creep.doVisual();
-		Memory.rooms[creep.memory.spawnRoom].totalCreeps++;
+		if(creep.memory.spawnRoom != undefined && Memory.rooms[creep.memory.spawnRoom] != undefined) Memory.rooms[creep.memory.spawnRoom].totalCreeps++;
 		creep.memory.ticksToLive = creep.ticksToLive;
 		creep.memory.currentRoom = creep.room.name;
 		creep.memory.currentHits = creep.hits;
