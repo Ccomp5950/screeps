@@ -44,7 +44,7 @@ module.exports = {
 
 			} else {
 */
-				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 25);
+				var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, 25);
 				if(target) {
 					if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
 					        if(creep.moveTo(target, {maxRooms:0}) == 0) {

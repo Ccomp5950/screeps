@@ -83,7 +83,7 @@ module.exports = {
 		                }
 			} else {
 				creep.memory.container = null;
-				var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, 3);
+				var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, 3);
 				if(target) {
 					if(creep.pos.getRangeTo(target) > 1) {
 						creep.moveToRange(target.pos,1);
