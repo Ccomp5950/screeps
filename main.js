@@ -228,7 +228,10 @@ module.exports.loop = function () {
 		creep.memory.currentHits = creep.hits;
 		creep.memory.currentMaxHits = creep.hitsMax;
 		creep.memory.moved = false;
-		if(creep.memory.spawnRoom != undefined && Memory.rooms[creep.memory.spawnRoom].role == undefined) {
+		if(creep.memory.spawnRoom == undefined) {
+			continue;
+		}
+		if(Memory.rooms[creep.memory.spawnRoom].role == undefined) {
 			console.log("[" + creep.name + "] My spawn room has no memory");
 			continue;
 		}
